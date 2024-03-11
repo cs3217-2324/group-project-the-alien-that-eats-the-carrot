@@ -7,5 +7,7 @@
 
 import Foundation
 
+/// All components should conform to this
 protocol Component {
+    static var id: ComponentIdentifier { get }
 }
