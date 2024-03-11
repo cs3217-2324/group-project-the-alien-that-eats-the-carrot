@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0AD891222B9F04070073F479 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD891212B9F04070073F479 /* GameViewModel.swift */; };
+		0AD891242B9F040E0073F479 /* LevelDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD891232B9F040E0073F479 /* LevelDesignerViewModel.swift */; };
 		3F91A1E22B9EB7F0003D87A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A1E12B9EB7F0003D87A6 /* AppDelegate.swift */; };
 		3F91A1E42B9EB7F0003D87A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A1E32B9EB7F0003D87A6 /* SceneDelegate.swift */; };
 		3F91A1E62B9EB7F0003D87A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A1E52B9EB7F0003D87A6 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0AD891212B9F04070073F479 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		0AD891232B9F040E0073F479 /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F91A1E12B9EB7F0003D87A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F91A1E32B9EB7F0003D87A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AD8911F2B9F036F0073F479 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0AD891212B9F04070073F479 /* GameViewModel.swift */,
+				0AD891232B9F040E0073F479 /* LevelDesignerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0AD891202B9F037F0073F479 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		3F91A1D52B9EB7F0003D87A6 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +119,8 @@
 		3F91A1E02B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot */ = {
 			isa = PBXGroup;
 			children = (
+				0AD891202B9F037F0073F479 /* View */,
+				0AD8911F2B9F036F0073F479 /* ViewModel */,
 				3F91A1E12B9EB7F0003D87A6 /* AppDelegate.swift */,
 				3F91A1E32B9EB7F0003D87A6 /* SceneDelegate.swift */,
 				3F91A1E52B9EB7F0003D87A6 /* ViewController.swift */,
@@ -279,6 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD891242B9F040E0073F479 /* LevelDesignerViewModel.swift in Sources */,
+				0AD891222B9F04070073F479 /* GameViewModel.swift in Sources */,
 				3F91A1E62B9EB7F0003D87A6 /* ViewController.swift in Sources */,
 				3F91A1E22B9EB7F0003D87A6 /* AppDelegate.swift in Sources */,
 				3F91A1E42B9EB7F0003D87A6 /* SceneDelegate.swift in Sources */,
