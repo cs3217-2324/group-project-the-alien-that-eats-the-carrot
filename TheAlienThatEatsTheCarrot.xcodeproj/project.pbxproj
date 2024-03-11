@@ -13,6 +13,7 @@
 		0AD891192B9EF4730073F479 /* ComponentIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD891182B9EF4730073F479 /* ComponentIdentifier.swift */; };
 		0AD8911B2B9EF4A80073F479 /* Nexus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8911A2B9EF4A80073F479 /* Nexus.swift */; };
 		1C8D57652B9EF6DC007A8CA8 /* System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8D57642B9EF6DC007A8CA8 /* System.swift */; };
+		0AD8911E2B9EFEFC0073F479 /* DestroyableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8911D2B9EFEFC0073F479 /* DestroyableComponent.swift */; };
 		3F91A1E22B9EB7F0003D87A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A1E12B9EB7F0003D87A6 /* AppDelegate.swift */; };
 		3F91A1E42B9EB7F0003D87A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A1E32B9EB7F0003D87A6 /* SceneDelegate.swift */; };
 		3F91A1E62B9EB7F0003D87A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A1E52B9EB7F0003D87A6 /* ViewController.swift */; };
@@ -48,6 +49,7 @@
 		0AD891182B9EF4730073F479 /* ComponentIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentIdentifier.swift; sourceTree = "<group>"; };
 		0AD8911A2B9EF4A80073F479 /* Nexus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Nexus.swift; sourceTree = "<group>"; };
 		1C8D57642B9EF6DC007A8CA8 /* System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = System.swift; sourceTree = "<group>"; };
+		0AD8911D2B9EFEFC0073F479 /* DestroyableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyableComponent.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F91A1E12B9EB7F0003D87A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F91A1E32B9EB7F0003D87A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 		0AD891132B9EF3210073F479 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				0AD8911C2B9EFE010073F479 /* GameComponents */,
 				0AD891142B9EF32C0073F479 /* Component.swift */,
 				0AD891182B9EF4730073F479 /* ComponentIdentifier.swift */,
 			);
@@ -123,6 +126,14 @@
 				1C8D57642B9EF6DC007A8CA8 /* System.swift */,
 			);
 			path = Systems;
+			sourceTree = "<group>";
+		};
+		0AD8911C2B9EFE010073F479 /* GameComponents */ = {
+			isa = PBXGroup;
+			children = (
+				0AD8911D2B9EFEFC0073F479 /* DestroyableComponent.swift */,
+			);
+			path = GameComponents;
 			sourceTree = "<group>";
 		};
 		3F91A1D52B9EB7F0003D87A6 = {
@@ -329,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD8911E2B9EFEFC0073F479 /* DestroyableComponent.swift in Sources */,
 				3F91A1E62B9EB7F0003D87A6 /* ViewController.swift in Sources */,
 				0AD8911B2B9EF4A80073F479 /* Nexus.swift in Sources */,
 				0AD891192B9EF4730073F479 /* ComponentIdentifier.swift in Sources */,
