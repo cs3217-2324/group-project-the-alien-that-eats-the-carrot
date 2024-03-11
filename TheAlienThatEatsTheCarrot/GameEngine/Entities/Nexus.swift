@@ -13,7 +13,7 @@ final class Nexus {
     
     // MARK: Entities
     func getEntities<T: Component>(with type: T.Type) -> [Entity] {
-        let componentId = type.id
+        let componentId = type.typeId
         return componentIdToEntities[componentId]?.compactMap { $0 } ?? []
     }
         
@@ -21,7 +21,7 @@ final class Nexus {
     func getComponents<T: Component>(of type: T.Type) -> [T] {
         var components = [T]()
         for entityComponents in entities.values {
-            if let comps = entityComponents[type.id] as? [T] {
+            if let comps = entityComponents[type.typeId] as? [T] {
                 components.append(contentsOf: comps)
             }
         }
@@ -29,13 +29,13 @@ final class Nexus {
     }
     
     func addComponent<T: Component>(_ component: T, to entity: Entity) {
-        let componentId = type(of: component).id
+        let componentId = type(of: component).typeId
         entities[entity, default: [:]][componentId, default: []].append(component)
         componentIdToEntities[componentId, default: Set<Entity>()].insert(entity)
     }
     
     func removeComponents<T: Component>(of type: T.Type) {
-        let componentId = type.id
+        let componentId = type.typeId
         entities.keys.forEach { entity in
             entities[entity]?[componentId]?.removeAll()
         }
@@ -46,7 +46,7 @@ final class Nexus {
         if entities[entity] == nil {
             return
         }
-        let componentId = type.id
+        let componentId = type.typeId
         entities[entity]?[componentId]?.removeAll()
         componentIdToEntities[componentId]?.remove(entity)
     }

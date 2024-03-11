@@ -9,5 +9,10 @@ import Foundation
 
 /// All components should conform to this
 protocol Component {
-    static var id: ComponentIdentifier { get }
+    static var typeId: ComponentIdentifier { get }
+    var entity: Entity { get }
+}
+
+extension Component {
+    static var typeId: ComponentIdentifier { ComponentIdentifier(Self.self) }
 }
