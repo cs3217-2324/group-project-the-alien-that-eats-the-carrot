@@ -11,9 +11,9 @@ class NormalCharacter: Character {
     static let NORMAL_CHARACTER_WIDTH = 50.0
     static let NORMAL_CHARACTER_HEIGHT = 50.0
     // TODO: update when adding asset
-    static let image = ""
+    static let imageName = ""
 
-    override init(position: CGPoint = .zero, width: CGFloat = NORMAL_CHARACTER_WIDTH, height: CGFloat = NORMAL_CHARACTER_HEIGHT) {
-        super.init(position: position, width: width, height: height)
+    init(position: CGPoint = .zero, width: CGFloat = NORMAL_CHARACTER_WIDTH, height: CGFloat = NORMAL_CHARACTER_HEIGHT) {
+        super.init(imageName: NormalCharacter.imageName, position: position, width: width, height: height)
     }
 }

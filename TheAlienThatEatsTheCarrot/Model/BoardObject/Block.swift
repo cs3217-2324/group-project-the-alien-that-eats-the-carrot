@@ -11,8 +11,10 @@ class Block: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
+    var imageName: String?
 
-    init(position: CGPoint = .zero, width: CGFloat = 50.0, height: CGFloat = 50.0) {
+    init(imageName: String, position: CGPoint = .zero, width: CGFloat = 50.0, height: CGFloat = 50.0) {
+        self.imageName = imageName
         self.position = position
         self.width = width
         self.height = height

@@ -12,6 +12,7 @@ protocol BoardObject {
     var position: CGPoint { get set }
     var width: CGFloat { get set }
     var height: CGFloat { get set }
+    var imageName: String? { get set }
 
     func move(to newPosition: CGPoint)
 }
