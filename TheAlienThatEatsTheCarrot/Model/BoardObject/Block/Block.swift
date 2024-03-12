@@ -12,8 +12,10 @@ class Block: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
+    static let DEFAULT_BLOCK_WIDTH: CGFloat = 50.0
+    static let DEFAULT_BLOCK_HEIGHT: CGFloat = 50.0
 
-    init(imageName: String, position: CGPoint = .zero, width: CGFloat = 50.0, height: CGFloat = 50.0) {
+    init(imageName: String, position: CGPoint = .zero, width: CGFloat = Block.DEFAULT_BLOCK_WIDTH, height: CGFloat = Block.DEFAULT_BLOCK_HEIGHT) {
         self.imageName = imageName
         self.position = position
         self.width = width
