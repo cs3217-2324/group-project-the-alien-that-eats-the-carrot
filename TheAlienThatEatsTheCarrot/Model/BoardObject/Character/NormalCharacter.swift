@@ -14,6 +14,6 @@ class NormalCharacter: Character {
     static let imageName = ""
 
     init(position: CGPoint = .zero, width: CGFloat = NORMAL_CHARACTER_WIDTH, height: CGFloat = NORMAL_CHARACTER_HEIGHT) {
-        super.init(imageName: NormalCharacter.imageName, position: position, width: width, height: height)
+        super.init(imageName: NormalCharacter.imageName, width: width, height: height, position: position)
     }
 }
