@@ -5,7 +5,7 @@
 //  Created by Sun Xinyu on 12/3/24.
 //
 
-import Foundation
+import CoreGraphics
 
 class Enemy: BoardObject {
     var position: CGPoint = .zero
@@ -13,11 +13,11 @@ class Enemy: BoardObject {
     var height: CGFloat
     var imageName: String?
 
-    init(imageName: String, position: CGPoint = .zero, width: CGFloat = 50.0, height: CGFloat = 100.0) {
+    init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
         self.imageName = imageName
-        self.position = position
         self.width = width
         self.height = height
+        self.position = position
     }
 
     func move(to newPosition: CGPoint) {

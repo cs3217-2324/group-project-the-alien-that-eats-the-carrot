@@ -14,6 +14,6 @@ class NormalEnemy: Enemy {
     static let imageName = ""
 
     init(position: CGPoint = .zero, width: CGFloat = NORMAL_ENEMY_WIDTH, height: CGFloat = NORMAL_ENEMY_HEIGHT) {
-        super.init(imageName: NormalEnemy.imageName, position: position, width: width, height: height)
+        super.init(imageName: NormalEnemy.imageName, width: width, height: height, position: position)
     }
 }
