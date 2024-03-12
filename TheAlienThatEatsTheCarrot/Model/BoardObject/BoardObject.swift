@@ -14,5 +14,6 @@ protocol BoardObject {
     var height: CGFloat { get set }
     var imageName: String? { get set }
 
+    // TODO: remove when ECS is implemented
     func move(to newPosition: CGPoint)
 }
