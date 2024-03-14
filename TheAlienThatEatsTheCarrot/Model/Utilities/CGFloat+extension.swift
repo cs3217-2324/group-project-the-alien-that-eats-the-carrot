@@ -8,7 +8,7 @@
 import Foundation
 
 extension CGFloat {
-    func square() ->CGFloat {
+    func square() -> CGFloat {
         self * self
     }
 

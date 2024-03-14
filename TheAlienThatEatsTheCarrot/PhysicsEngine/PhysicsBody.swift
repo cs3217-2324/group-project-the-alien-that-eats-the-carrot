@@ -16,7 +16,6 @@ final class PhysicsBody {
     var velocity: CGVector
     var restitution: CGFloat
     var position: CGPoint
-    
     // MARK: Force related properties
     var isTrigger: Bool
     var isDynamic: Bool

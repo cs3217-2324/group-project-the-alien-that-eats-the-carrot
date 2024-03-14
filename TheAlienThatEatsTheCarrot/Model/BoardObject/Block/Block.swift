@@ -5,7 +5,7 @@
 //  Created by Sun Xinyu on 12/3/24.
 //
 
-import Foundation
+import CoreGraphics
 
 class Block: BoardObject {
     var position: CGPoint = .zero
