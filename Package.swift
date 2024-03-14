@@ -9,7 +9,7 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "group-project-the-alien-that-eats-the-carrot",
-            targets: ["group-project-the-alien-that-eats-the-carrot"]),
+            targets: ["group-project-the-alien-that-eats-the-carrot"])
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -18,6 +18,6 @@ let package = Package(
             name: "group-project-the-alien-that-eats-the-carrot"),
         .testTarget(
             name: "group-project-the-alien-that-eats-the-carrotTests",
-            dependencies: ["group-project-the-alien-that-eats-the-carrot"]),
+            dependencies: ["group-project-the-alien-that-eats-the-carrot"])
     ]
 )
