@@ -24,13 +24,8 @@ struct CollisionPoints {
         self.depth = (pointB - pointA).magnitude
     }
 
-    static var noCollision: CollisionPoints {
-        CollisionPoints(hasCollision: false, pointA: .zero, pointB: .zero)
-    }
-
-    static var collision: CollisionPoints {
-        CollisionPoints(hasCollision: true, pointA: .zero, pointB: .zero)
-    }
+    static let noCollision = CollisionPoints(hasCollision: false, pointA: .zero, pointB: .zero)
+    static let collision = CollisionPoints(hasCollision: true, pointA: .zero, pointB: .zero)
 }
 
 extension CollisionPoints: Hashable {
