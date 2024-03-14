@@ -48,6 +48,11 @@
 		9F9DB2C72BA2A59800CB5CEA /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2C62BA2A59800CB5CEA /* PhysicsConstants.swift */; };
 		9F9DB2C92BA2A5CE00CB5CEA /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2C82BA2A5CE00CB5CEA /* PhysicsBody.swift */; };
 		9F9DB2CB2BA2A5F700CB5CEA /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2CA2BA2A5F700CB5CEA /* Shape.swift */; };
+		9F9DB2CD2BA2B6A700CB5CEA /* Collider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2CC2BA2B6A700CB5CEA /* Collider.swift */; };
+		9F9DB2CF2BA2B6C600CB5CEA /* CollisionPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2CE2BA2B6C600CB5CEA /* CollisionPoints.swift */; };
+		9F9DB2D12BA2B71700CB5CEA /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2D02BA2B71700CB5CEA /* Collision.swift */; };
+		9F9DB2D32BA2B74600CB5CEA /* CircleCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2D22BA2B74600CB5CEA /* CircleCollider.swift */; };
+		9F9DB2D52BA2B75300CB5CEA /* RectangleCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2D42BA2B75300CB5CEA /* RectangleCollider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +118,11 @@
 		9F9DB2C62BA2A59800CB5CEA /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
 		9F9DB2C82BA2A5CE00CB5CEA /* PhysicsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
 		9F9DB2CA2BA2A5F700CB5CEA /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
+		9F9DB2CC2BA2B6A700CB5CEA /* Collider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collider.swift; sourceTree = "<group>"; };
+		9F9DB2CE2BA2B6C600CB5CEA /* CollisionPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionPoints.swift; sourceTree = "<group>"; };
+		9F9DB2D02BA2B71700CB5CEA /* Collision.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collision.swift; sourceTree = "<group>"; };
+		9F9DB2D22BA2B74600CB5CEA /* CircleCollider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleCollider.swift; sourceTree = "<group>"; };
+		9F9DB2D42BA2B75300CB5CEA /* RectangleCollider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleCollider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +224,7 @@
 		9F9DB2872BA2A3F600CB5CEA /* PhysicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				9F9DB2D62BA2B77B00CB5CEA /* Collision */,
 				9F9DB2C62BA2A59800CB5CEA /* PhysicsConstants.swift */,
 				9F9DB2C82BA2A5CE00CB5CEA /* PhysicsBody.swift */,
 				9F9DB2CA2BA2A5F700CB5CEA /* Shape.swift */,
@@ -309,6 +320,18 @@
 				9F9DB2AA2BA2A55200CB5CEA /* BreakableBlock.swift */,
 			);
 			path = Block;
+			sourceTree = "<group>";
+		};
+		9F9DB2D62BA2B77B00CB5CEA /* Collision */ = {
+			isa = PBXGroup;
+			children = (
+				9F9DB2CC2BA2B6A700CB5CEA /* Collider.swift */,
+				9F9DB2CE2BA2B6C600CB5CEA /* CollisionPoints.swift */,
+				9F9DB2D02BA2B71700CB5CEA /* Collision.swift */,
+				9F9DB2D22BA2B74600CB5CEA /* CircleCollider.swift */,
+				9F9DB2D42BA2B75300CB5CEA /* RectangleCollider.swift */,
+			);
+			path = Collision;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -466,6 +489,7 @@
 			files = (
 				9F9DB2BD2BA2A55200CB5CEA /* AttackPowerup.swift in Sources */,
 				9F9DB2C12BA2A55200CB5CEA /* Block.swift in Sources */,
+				9F9DB2D32BA2B74600CB5CEA /* CircleCollider.swift in Sources */,
 				9F9DB2BE2BA2A55200CB5CEA /* Powerup.swift in Sources */,
 				9F9DB2C92BA2A5CE00CB5CEA /* PhysicsBody.swift in Sources */,
 				9F9DB2BA2BA2A55200CB5CEA /* DoubleJumpPowerup.swift in Sources */,
@@ -475,6 +499,8 @@
 				0AD891242B9F040E0073F479 /* LevelDesignerViewModel.swift in Sources */,
 				9F9DB2AD2BA2A55200CB5CEA /* CGFloat+extension.swift in Sources */,
 				9F9DB2CB2BA2A5F700CB5CEA /* Shape.swift in Sources */,
+				9F9DB2CD2BA2B6A700CB5CEA /* Collider.swift in Sources */,
+				9F9DB2D12BA2B71700CB5CEA /* Collision.swift in Sources */,
 				9F9DB2B02BA2A55200CB5CEA /* NormalEnemy.swift in Sources */,
 				9F9DB2C32BA2A55200CB5CEA /* PowerupBlock.swift in Sources */,
 				9F9DB2C22BA2A55200CB5CEA /* GroundBlock.swift in Sources */,
@@ -487,8 +513,10 @@
 				9F9DB2AB2BA2A55200CB5CEA /* CGPoint+extensions.swift in Sources */,
 				9F9DB2C72BA2A59800CB5CEA /* PhysicsConstants.swift in Sources */,
 				9F9DB2C52BA2A55200CB5CEA /* BreakableBlock.swift in Sources */,
+				9F9DB2CF2BA2B6C600CB5CEA /* CollisionPoints.swift in Sources */,
 				9F9DB2B12BA2A55200CB5CEA /* Enemy.swift in Sources */,
 				9F9DB2B42BA2A55200CB5CEA /* FastEnemy.swift in Sources */,
+				9F9DB2D52BA2B75300CB5CEA /* RectangleCollider.swift in Sources */,
 				9F9DB2B92BA2A55200CB5CEA /* BoardObject.swift in Sources */,
 				9F9DB2B82BA2A55200CB5CEA /* Heart.swift in Sources */,
 				9F9DB2C02BA2A55200CB5CEA /* NormalBlock.swift in Sources */,
