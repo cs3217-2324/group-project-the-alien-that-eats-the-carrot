@@ -24,6 +24,14 @@ final class PhysicsBody {
     var netForce: CGVector {
         forces.reduce(CGVector.zero, +)
     }
+    var collider: Collider {
+            switch shape {
+            case .circle:
+                return CircleCollider(center: position, radius: size.width / 2)
+            case .rectangle:
+                return RectangleCollider(center: position, size: size, rotation: rotation)
+            }
+        }
 
     init(shape: Shape,
          position: CGPoint,

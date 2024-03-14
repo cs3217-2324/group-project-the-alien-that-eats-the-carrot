@@ -6,6 +6,6 @@
 //
 
 enum Shape: String {
-    case Circle
-    case Rectangle
+    case circle
+    case rectangle
 }
