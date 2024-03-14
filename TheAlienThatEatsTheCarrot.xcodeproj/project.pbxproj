@@ -45,6 +45,9 @@
 		9F9DB2C32BA2A55200CB5CEA /* PowerupBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2A82BA2A55200CB5CEA /* PowerupBlock.swift */; };
 		9F9DB2C42BA2A55200CB5CEA /* PushableBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2A92BA2A55200CB5CEA /* PushableBlock.swift */; };
 		9F9DB2C52BA2A55200CB5CEA /* BreakableBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2AA2BA2A55200CB5CEA /* BreakableBlock.swift */; };
+		9F9DB2C72BA2A59800CB5CEA /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2C62BA2A59800CB5CEA /* PhysicsConstants.swift */; };
+		9F9DB2C92BA2A5CE00CB5CEA /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2C82BA2A5CE00CB5CEA /* PhysicsBody.swift */; };
+		9F9DB2CB2BA2A5F700CB5CEA /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9DB2CA2BA2A5F700CB5CEA /* Shape.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,6 +110,9 @@
 		9F9DB2A82BA2A55200CB5CEA /* PowerupBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupBlock.swift; sourceTree = "<group>"; };
 		9F9DB2A92BA2A55200CB5CEA /* PushableBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushableBlock.swift; sourceTree = "<group>"; };
 		9F9DB2AA2BA2A55200CB5CEA /* BreakableBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakableBlock.swift; sourceTree = "<group>"; };
+		9F9DB2C62BA2A59800CB5CEA /* PhysicsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsConstants.swift; sourceTree = "<group>"; };
+		9F9DB2C82BA2A5CE00CB5CEA /* PhysicsBody.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsBody.swift; sourceTree = "<group>"; };
+		9F9DB2CA2BA2A5F700CB5CEA /* Shape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shape.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -208,6 +214,9 @@
 		9F9DB2872BA2A3F600CB5CEA /* PhysicsEngine */ = {
 			isa = PBXGroup;
 			children = (
+				9F9DB2C62BA2A59800CB5CEA /* PhysicsConstants.swift */,
+				9F9DB2C82BA2A5CE00CB5CEA /* PhysicsBody.swift */,
+				9F9DB2CA2BA2A5F700CB5CEA /* Shape.swift */,
 			);
 			path = PhysicsEngine;
 			sourceTree = "<group>";
@@ -458,12 +467,14 @@
 				9F9DB2BD2BA2A55200CB5CEA /* AttackPowerup.swift in Sources */,
 				9F9DB2C12BA2A55200CB5CEA /* Block.swift in Sources */,
 				9F9DB2BE2BA2A55200CB5CEA /* Powerup.swift in Sources */,
+				9F9DB2C92BA2A5CE00CB5CEA /* PhysicsBody.swift in Sources */,
 				9F9DB2BA2BA2A55200CB5CEA /* DoubleJumpPowerup.swift in Sources */,
 				9F9DB2AE2BA2A55200CB5CEA /* Character.swift in Sources */,
 				9F9DB2AC2BA2A55200CB5CEA /* CGVector+extension.swift in Sources */,
 				9F9DB2BC2BA2A55200CB5CEA /* InvinciblePowerup.swift in Sources */,
 				0AD891242B9F040E0073F479 /* LevelDesignerViewModel.swift in Sources */,
 				9F9DB2AD2BA2A55200CB5CEA /* CGFloat+extension.swift in Sources */,
+				9F9DB2CB2BA2A5F700CB5CEA /* Shape.swift in Sources */,
 				9F9DB2B02BA2A55200CB5CEA /* NormalEnemy.swift in Sources */,
 				9F9DB2C32BA2A55200CB5CEA /* PowerupBlock.swift in Sources */,
 				9F9DB2C22BA2A55200CB5CEA /* GroundBlock.swift in Sources */,
@@ -474,6 +485,7 @@
 				9F9DB2B22BA2A55200CB5CEA /* TurretEnemy.swift in Sources */,
 				0AD891222B9F04070073F479 /* GameViewModel.swift in Sources */,
 				9F9DB2AB2BA2A55200CB5CEA /* CGPoint+extensions.swift in Sources */,
+				9F9DB2C72BA2A59800CB5CEA /* PhysicsConstants.swift in Sources */,
 				9F9DB2C52BA2A55200CB5CEA /* BreakableBlock.swift in Sources */,
 				9F9DB2B12BA2A55200CB5CEA /* Enemy.swift in Sources */,
 				9F9DB2B42BA2A55200CB5CEA /* FastEnemy.swift in Sources */,
