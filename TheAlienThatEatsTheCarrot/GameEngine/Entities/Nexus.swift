@@ -28,10 +28,21 @@ final class Nexus {
         return components
     }
     
+    func getComponent<T: Component>(of type: T.Type, for entity: Entity) -> T? {
+        let componentId = type.typeId
+        return entities[entity]?[componentId]?.compactMap { $0 as? T }.first
+    }
+    
     func addComponent<T: Component>(_ component: T, to entity: Entity) {
         let componentId = type(of: component).typeId
         entities[entity, default: [:]][componentId, default: []].append(component)
         componentIdToEntities[componentId, default: Set<Entity>()].insert(entity)
+    }
+    
+    func addComponents(_ components: [Component], to entity: Entity) {
+        for component in components {
+            addComponent(component, to: entity)
+        }
     }
     
     func removeComponents<T: Component>(of type: T.Type) {

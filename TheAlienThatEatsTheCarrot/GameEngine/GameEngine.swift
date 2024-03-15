@@ -15,13 +15,18 @@ class GameEngine {
 
     init() {
         self.systems = []
+        initGameEntities()
     }
 
     func update(deltaTime: CGFloat) {
         updateSystems(deltaTime: deltaTime)
     }
-
+    
     private func updateSystems(deltaTime: CGFloat) {
         systems.forEach { $0.update(deltaTime: deltaTime) }
+    }
+    
+    private func initGameEntities() {
+        nexus.addCharacter()
     }
 }
