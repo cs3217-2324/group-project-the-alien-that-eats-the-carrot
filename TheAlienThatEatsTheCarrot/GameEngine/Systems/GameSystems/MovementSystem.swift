@@ -15,7 +15,7 @@ class MovementSystem: System {
     }
     
     func update(deltaTime: CGFloat) {
-        var movableComponents = nexus.getComponents(of: MovableComponent.self)
+        let movableComponents = nexus.getComponents(of: MovableComponent.self)
         for movableComponent in movableComponents {
             let entity = movableComponent.entity
             guard let positionalComponent = nexus.getComponent(of: PositionalComponent.self, for: entity) else {
@@ -29,6 +29,7 @@ class MovementSystem: System {
             )
             
             positionalComponent.position = newPosition
+            print("New position: x \(newPosition.x) y \(newPosition.y)")
         }
     }
     
