@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum GameObjectsType {
+enum ObjectType {
     case enemy(EnemyType)
     case block(BlockType)
     case collectable(CollectableType)

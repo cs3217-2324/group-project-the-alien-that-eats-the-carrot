@@ -18,7 +18,7 @@ extension Nexus {
     }
     
     /// Factory to create game objects
-    func addGameObject(type: GameObjectsType) {
+    func addGameObject(type: ObjectType) {
         let entity = Entity()
         
         switch type {
@@ -35,7 +35,7 @@ extension Nexus {
 }
 
 extension Nexus {
-    private func addGameEnemy(type: GameObjectsType.EnemyType, for entity: Entity) {
+    private func addGameEnemy(type: ObjectType.EnemyType, for entity: Entity) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -48,7 +48,7 @@ extension Nexus {
         }
     }
     
-    private func addGameBlock(type: GameObjectsType.BlockType, for entity: Entity) {
+    private func addGameBlock(type: ObjectType.BlockType, for entity: Entity) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -63,7 +63,7 @@ extension Nexus {
         }
     }
     
-    private func addGameCollectable(type: GameObjectsType.CollectableType, for entity: Entity) {
+    private func addGameCollectable(type: ObjectType.CollectableType, for entity: Entity) {
         switch type {
         case .coin:
             print("TODO: implement")
@@ -74,7 +74,7 @@ extension Nexus {
         }
     }
     
-    private func addGamePowerup(type: GameObjectsType.PowerupType, for entity: Entity) {
+    private func addGamePowerup(type: ObjectType.PowerupType, for entity: Entity) {
         switch type {
         case .attack:
             print("TODO: implement")
