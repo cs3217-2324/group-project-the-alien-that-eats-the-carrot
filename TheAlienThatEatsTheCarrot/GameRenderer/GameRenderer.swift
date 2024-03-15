@@ -33,7 +33,6 @@ class GameRenderer {
             return
         }
         let timeInterval = displaylink.targetTimestamp - displaylink.timestamp
-        print("\(timeInterval)")
         gameEngine?.update(deltaTime: timeInterval)
     }
 }

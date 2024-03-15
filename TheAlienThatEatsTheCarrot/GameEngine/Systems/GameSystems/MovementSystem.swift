@@ -9,11 +9,11 @@ import Foundation
 
 class MovementSystem: System {
     var nexus: Nexus
-    
+
     init(nexus: Nexus) {
         self.nexus = nexus
     }
-    
+
     func update(deltaTime: CGFloat) {
         let movableComponents = nexus.getComponents(of: MovableComponent.self)
         for movableComponent in movableComponents {
@@ -29,10 +29,9 @@ class MovementSystem: System {
             )
             
             positionalComponent.position = newPosition
-            print("New position: x \(newPosition.x) y \(newPosition.y)")
         }
     }
-    
+
     private func calculateNewPosition(currentPosition: CGPoint, direction: Direction, length: CGFloat, deltaTime: CGFloat) -> CGPoint {
         let angle = direction.radians
         let dx = cos(angle) * length * deltaTime
