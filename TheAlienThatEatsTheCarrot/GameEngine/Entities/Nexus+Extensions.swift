@@ -13,7 +13,77 @@ extension Nexus {
         let positionalComponent = PositionalComponent(entity: entity, position: CGPoint(x: 200, y: 200))
         let playerComponent = PlayerComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        let movableComponent = MovableComponent(entity: entity, direction: Direction.right, length: 10.0)
+        let movableComponent = MovableComponent(entity: entity, direction: Direction.right, distance: 10.0)
         addComponents([positionalComponent, playerComponent, destroyableComponent, movableComponent], to: entity)
+    }
+    
+    /// Factory to create game objects
+    func addGameObject(type: GameObjectsType) {
+        let entity = Entity()
+        
+        switch type {
+        case .enemy(let enemyType):
+            addGameEnemy(type: enemyType, for: entity)
+        case .block(let blockType):
+            addGameBlock(type: blockType, for: entity)
+        case .collectable(let collectableType):
+            addGameCollectable(type: collectableType, for: entity)
+        case .powerup(let powerupType):
+            addGamePowerup(type: powerupType, for: entity)
+        }
+    }
+}
+
+extension Nexus {
+    private func addGameEnemy(type: GameObjectsType.EnemyType, for entity: Entity) {
+        switch type {
+        case .normal:
+            print("TODO: implement")
+        case .fast:
+            print("TODO: implement")
+        case .stationary:
+            print("TODO: implement")
+        case .turret:
+            print("TODO: implement")
+        }
+    }
+    
+    private func addGameBlock(type: GameObjectsType.BlockType, for entity: Entity) {
+        switch type {
+        case .normal:
+            print("TODO: implement")
+        case .ground:
+            print("TODO: implement")
+        case .breakable:
+            print("TODO: implement")
+        case .pushable:
+            print("TODO: implement")
+        case .spike:
+            print("TODO: implement")
+        }
+    }
+    
+    private func addGameCollectable(type: GameObjectsType.CollectableType, for entity: Entity) {
+        switch type {
+        case .coin:
+            print("TODO: implement")
+        case .carrot:
+            print("TODO: implement")
+        case .heart:
+            print("TODO: implement")
+        }
+    }
+    
+    private func addGamePowerup(type: GameObjectsType.PowerupType, for entity: Entity) {
+        switch type {
+        case .attack:
+            print("TODO: implement")
+        case .doubleJump:
+            print("TODO: implement")
+        case .invinsible:
+            print("TODO: implement")
+        case .strength:
+            print("TODO: implement")
+        }
     }
 }
