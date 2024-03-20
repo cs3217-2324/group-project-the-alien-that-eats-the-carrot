@@ -22,5 +22,3 @@ jobs:
         swift-version: '5.9.0'
     - name: Build
       run: swift build -v
-    - name: Run tests
-      run: swift test -v

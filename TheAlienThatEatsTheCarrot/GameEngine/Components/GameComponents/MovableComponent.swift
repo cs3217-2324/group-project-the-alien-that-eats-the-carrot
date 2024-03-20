@@ -11,7 +11,7 @@ class MovableComponent: Component {
     var entity: Entity
     var direction: Direction
     var distance: CGFloat
-    
+
     init(entity: Entity, direction: Direction, distance: CGFloat) {
         self.entity = entity
         self.direction = direction

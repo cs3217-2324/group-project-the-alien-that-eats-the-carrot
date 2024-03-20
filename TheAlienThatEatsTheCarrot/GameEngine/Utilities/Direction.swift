@@ -17,15 +17,15 @@ struct Direction {
         get { radians * 180 / .pi }
         set { radians = newValue * .pi / 180 }
     }
-    
+
     init(radians: Double) {
         self.radians = radians.truncatingRemainder(dividingBy: 2 * .pi)
     }
-    
+
     init(degrees: Double) {
         self.init(radians: degrees * .pi / 180)
     }
-    
+
     static let up = Direction(radians: .pi * 1.5)
     static let down = Direction(radians: .pi / 2)
     static let left = Direction(radians: 0)

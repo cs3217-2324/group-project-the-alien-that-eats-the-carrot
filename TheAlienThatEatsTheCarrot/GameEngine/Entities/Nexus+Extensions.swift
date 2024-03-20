@@ -16,11 +16,11 @@ extension Nexus {
         let movableComponent = MovableComponent(entity: entity, direction: Direction.right, distance: 10.0)
         addComponents([positionalComponent, playerComponent, destroyableComponent, movableComponent], to: entity)
     }
-    
+
     /// Factory to create game objects
     func addGameObject(type: ObjectType) {
         let entity = Entity()
-        
+
         switch type {
         case .enemy(let enemyType):
             addGameEnemy(type: enemyType, for: entity)
@@ -47,7 +47,7 @@ extension Nexus {
             print("TODO: implement")
         }
     }
-    
+
     private func addGameBlock(type: ObjectType.BlockType, for entity: Entity) {
         switch type {
         case .normal:
@@ -62,7 +62,7 @@ extension Nexus {
             print("TODO: implement")
         }
     }
-    
+
     private func addGameCollectable(type: ObjectType.CollectableType, for entity: Entity) {
         switch type {
         case .coin:
@@ -73,7 +73,7 @@ extension Nexus {
             print("TODO: implement")
         }
     }
-    
+
     private func addGamePowerup(type: ObjectType.PowerupType, for entity: Entity) {
         switch type {
         case .attack:
