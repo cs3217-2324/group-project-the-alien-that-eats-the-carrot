@@ -16,8 +16,5 @@ let package = Package(
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
             name: "group-project-the-alien-that-eats-the-carrot"),
-        .testTarget(
-            name: "group-project-the-alien-that-eats-the-carrotTests",
-            dependencies: ["group-project-the-alien-that-eats-the-carrot"])
     ]
 )
