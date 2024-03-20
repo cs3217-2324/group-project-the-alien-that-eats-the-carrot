@@ -24,7 +24,7 @@ class MovementSystem: System {
             let newPosition = calculateNewPosition(
                 currentPosition: positionalComponent.position,
                 direction: movableComponent.direction,
-                length: movableComponent.length,
+                distance: movableComponent.distance,
                 deltaTime: deltaTime
             )
             
@@ -32,10 +32,10 @@ class MovementSystem: System {
         }
     }
 
-    private func calculateNewPosition(currentPosition: CGPoint, direction: Direction, length: CGFloat, deltaTime: CGFloat) -> CGPoint {
+    private func calculateNewPosition(currentPosition: CGPoint, direction: Direction, distance: CGFloat, deltaTime: CGFloat) -> CGPoint {
         let angle = direction.radians
-        let dx = cos(angle) * length * deltaTime
-        let dy = sin(angle) * length * deltaTime
+        let dx = cos(angle) * distance * deltaTime
+        let dy = sin(angle) * distance * deltaTime
         return CGPoint(
             x: currentPosition.x + dx,
             y: currentPosition.y + dy
