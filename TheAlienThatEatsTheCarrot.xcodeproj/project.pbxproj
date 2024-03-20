@@ -88,8 +88,6 @@
 
 /* Begin PBXFileReference section */
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F91A1F42B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheAlienThatEatsTheCarrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F91A1FE2B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheAlienThatEatsTheCarrotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		9F8C57ED2BAAD71B002E75FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -189,8 +187,6 @@
 			isa = PBXGroup;
 			children = (
 				3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */,
-				3F91A1F42B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.xctest */,
-				3F91A1FE2B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -443,42 +439,6 @@
 			productReference = 3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3F91A1F32B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3F91A20B2B9EB7F1003D87A6 /* Build configuration list for PBXNativeTarget "TheAlienThatEatsTheCarrotTests" */;
-			buildPhases = (
-				3F91A1F02B9EB7F1003D87A6 /* Sources */,
-				3F91A1F12B9EB7F1003D87A6 /* Frameworks */,
-				3F91A1F22B9EB7F1003D87A6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3F91A1F62B9EB7F1003D87A6 /* PBXTargetDependency */,
-			);
-			name = TheAlienThatEatsTheCarrotTests;
-			productName = TheAlienThatEatsTheCarrotTests;
-			productReference = 3F91A1F42B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3F91A1FD2B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3F91A20E2B9EB7F1003D87A6 /* Build configuration list for PBXNativeTarget "TheAlienThatEatsTheCarrotUITests" */;
-			buildPhases = (
-				3F91A1FA2B9EB7F1003D87A6 /* Sources */,
-				3F91A1FB2B9EB7F1003D87A6 /* Frameworks */,
-				3F91A1FC2B9EB7F1003D87A6 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3F91A2002B9EB7F1003D87A6 /* PBXTargetDependency */,
-			);
-			name = TheAlienThatEatsTheCarrotUITests;
-			productName = TheAlienThatEatsTheCarrotUITests;
-			productReference = 3F91A1FE2B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -516,8 +476,6 @@
 			projectRoot = "";
 			targets = (
 				3F91A1DD2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot */,
-				3F91A1F32B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests */,
-				3F91A1FD2B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -860,78 +818,6 @@
 			};
 			name = Release;
 		};
-		3F91A20C2B9EB7F1003D87A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 47X7TKJ478;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = esa.TheAlienThatEatsTheCarrotTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheAlienThatEatsTheCarrot.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TheAlienThatEatsTheCarrot";
-			};
-			name = Debug;
-		};
-		3F91A20D2B9EB7F1003D87A6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 47X7TKJ478;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = esa.TheAlienThatEatsTheCarrotTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TheAlienThatEatsTheCarrot.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TheAlienThatEatsTheCarrot";
-			};
-			name = Release;
-		};
-		3F91A20F2B9EB7F1003D87A6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 47X7TKJ478;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = esa.TheAlienThatEatsTheCarrotUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TheAlienThatEatsTheCarrot;
-			};
-			name = Debug;
-		};
-		3F91A2102B9EB7F1003D87A6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 47X7TKJ478;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = esa.TheAlienThatEatsTheCarrotUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = TheAlienThatEatsTheCarrot;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -949,24 +835,6 @@
 			buildConfigurations = (
 				3F91A2092B9EB7F1003D87A6 /* Debug */,
 				3F91A20A2B9EB7F1003D87A6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3F91A20B2B9EB7F1003D87A6 /* Build configuration list for PBXNativeTarget "TheAlienThatEatsTheCarrotTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3F91A20C2B9EB7F1003D87A6 /* Debug */,
-				3F91A20D2B9EB7F1003D87A6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3F91A20E2B9EB7F1003D87A6 /* Build configuration list for PBXNativeTarget "TheAlienThatEatsTheCarrotUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3F91A20F2B9EB7F1003D87A6 /* Debug */,
-				3F91A2102B9EB7F1003D87A6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
