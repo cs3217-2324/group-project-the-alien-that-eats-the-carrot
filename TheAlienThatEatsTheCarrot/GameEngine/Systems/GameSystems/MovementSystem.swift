@@ -27,7 +27,7 @@ class MovementSystem: System {
                 distance: movableComponent.distance,
                 deltaTime: deltaTime
             )
-            
+
             positionalComponent.position = newPosition
         }
     }
