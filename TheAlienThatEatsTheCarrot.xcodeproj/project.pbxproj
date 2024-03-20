@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F91A1F92B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A1F82B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.swift */; };
-		3F91A2032B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A2022B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.swift */; };
-		3F91A2052B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91A2042B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITestsLaunchTests.swift */; };
 		9F8C583C2BAAD71B002E75FB /* LevelDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */; };
 		9F8C583D2BAAD71B002E75FB /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */; };
 		9F8C583E2BAAD71B002E75FB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57ED2BAAD71B002E75FB /* ViewController.swift */; };
@@ -92,10 +89,7 @@
 /* Begin PBXFileReference section */
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F91A1F42B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheAlienThatEatsTheCarrotTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F91A1F82B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheAlienThatEatsTheCarrotTests.swift; sourceTree = "<group>"; };
 		3F91A1FE2B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TheAlienThatEatsTheCarrotUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F91A2022B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheAlienThatEatsTheCarrotUITests.swift; sourceTree = "<group>"; };
-		3F91A2042B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheAlienThatEatsTheCarrotUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		9F8C57ED2BAAD71B002E75FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,8 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				9F8C57E92BAAD71B002E75FB /* TheAlienThatEatsTheCarrot */,
-				3F91A1F72B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests */,
-				3F91A2012B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests */,
 				3F91A1DF2B9EB7F0003D87A6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -201,23 +193,6 @@
 				3F91A1FE2B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.xctest */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		3F91A1F72B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests */ = {
-			isa = PBXGroup;
-			children = (
-				3F91A1F82B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.swift */,
-			);
-			path = TheAlienThatEatsTheCarrotTests;
-			sourceTree = "<group>";
-		};
-		3F91A2012B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests */ = {
-			isa = PBXGroup;
-			children = (
-				3F91A2022B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.swift */,
-				3F91A2042B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITestsLaunchTests.swift */,
-			);
-			path = TheAlienThatEatsTheCarrotUITests;
 			sourceTree = "<group>";
 		};
 		9F8C57E92BAAD71B002E75FB /* TheAlienThatEatsTheCarrot */ = {
@@ -608,7 +583,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3F91A1F92B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,8 +616,6 @@
 				9F8C58472BAAD71B002E75FB /* Collider.swift in Sources */,
 				9F8C58512BAAD71B002E75FB /* MovableComponent.swift in Sources */,
 				9F8C583C2BAAD71B002E75FB /* LevelDesignerViewModel.swift in Sources */,
-				3F91A2032B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITests.swift in Sources */,
-				3F91A2052B9EB7F1003D87A6 /* TheAlienThatEatsTheCarrotUITestsLaunchTests.swift in Sources */,
 				9F8C58722BAAD71B002E75FB /* PushableBlock.swift in Sources */,
 				9F8C584B2BAAD71B002E75FB /* GameEngine.swift in Sources */,
 				9F8C586F2BAAD71B002E75FB /* Block.swift in Sources */,
