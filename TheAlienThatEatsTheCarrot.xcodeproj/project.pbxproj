@@ -63,6 +63,9 @@
 		0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FE2BAAD71B002E75FB /* CollisionPoints.swift */; };
 		0A76A49E2BAC78B40067BD6E /* Collider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FB2BAAD71B002E75FB /* Collider.swift */; };
 		0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FC2BAAD71B002E75FB /* Collision.swift */; };
+		3FE457092BAC7C7000D8D5A9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57F12BAAD71B002E75FB /* Main.storyboard */; };
+		3FE4570A2BAC7C7300D8D5A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EF2BAAD71B002E75FB /* LaunchScreen.storyboard */; };
+		3FE4570B2BAC7C7800D8D5A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -442,6 +445,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FE457092BAC7C7000D8D5A9 /* Main.storyboard in Resources */,
+				3FE4570B2BAC7C7800D8D5A9 /* Assets.xcassets in Resources */,
+				3FE4570A2BAC7C7300D8D5A9 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
