@@ -11,6 +11,7 @@ class PowerupBlock: Block {
     var powerupsContained: [Powerup]
     // TODO: update when adding asset
     static let imageName = ""
+    static let type = ObjectType.BlockType.powerup
 
     init(position: CGPoint = .zero, powerups: [Powerup] = []) {
         self.powerupsContained = powerups

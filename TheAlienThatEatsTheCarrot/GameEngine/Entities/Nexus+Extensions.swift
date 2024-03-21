@@ -60,6 +60,8 @@ extension Nexus {
             print("TODO: implement")
         case .spike:
             print("TODO: implement")
+        case .powerup:
+            print("TODO: implement")
         }
     }
 
