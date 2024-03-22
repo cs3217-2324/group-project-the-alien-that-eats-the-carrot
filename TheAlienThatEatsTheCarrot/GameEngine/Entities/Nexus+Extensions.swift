@@ -13,7 +13,7 @@ extension Nexus {
         let positionalComponent = PositionalComponent(entity: entity, position: CGPoint(x: 200, y: 200))
         let playerComponent = PlayerComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        let movableComponent = MovableComponent(entity: entity, direction: Direction.right, distance: 10.0)
+        let movableComponent = MovableComponent(entity: entity, direction: Direction.right, velocity: 10.0)
         addComponents([positionalComponent, playerComponent, destroyableComponent, movableComponent], to: entity)
     }
 
