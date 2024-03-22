@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		0A76A4682BAC78200067BD6E /* GameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57F42BAAD71B002E75FB /* GameRenderer.swift */; };
 		0A76A4692BAC78250067BD6E /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58002BAAD71B002E75FB /* GameEngine.swift */; };
-		0A76A46A2BAC78290067BD6E /* LevelDesignerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */; };
-		0A76A46B2BAC782B0067BD6E /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */; };
-		0A76A46C2BAC782F0067BD6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57ED2BAAD71B002E75FB /* ViewController.swift */; };
 		0A76A46D2BAC783B0067BD6E /* PhysicsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57F62BAAD71B002E75FB /* PhysicsConstants.swift */; };
 		0A76A46E2BAC783D0067BD6E /* Shape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57F72BAAD71B002E75FB /* Shape.swift */; };
 		0A76A46F2BAC78400067BD6E /* PhysicsBody.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57F82BAAD71B002E75FB /* PhysicsBody.swift */; };
@@ -51,7 +48,6 @@
 		0A76A4912BAC787D0067BD6E /* Block.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58322BAAD71B002E75FB /* Block.swift */; };
 		0A76A4922BAC787D0067BD6E /* GroundBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58332BAAD71B002E75FB /* GroundBlock.swift */; };
 		0A76A4932BAC787D0067BD6E /* NormalBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58312BAAD71B002E75FB /* NormalBlock.swift */; };
-		0A76A4942BAC78840067BD6E /* Sample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58382BAAD71B002E75FB /* Sample.swift */; };
 		0A76A4952BAC78840067BD6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58392BAAD71B002E75FB /* AppDelegate.swift */; };
 		0A76A4962BAC78870067BD6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C583B2BAAD71B002E75FB /* SceneDelegate.swift */; };
 		0A76A4972BAC78960067BD6E /* MovableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58092BAAD71B002E75FB /* MovableComponent.swift */; };
@@ -64,13 +60,12 @@
 		0A76A49E2BAC78B40067BD6E /* Collider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FB2BAAD71B002E75FB /* Collider.swift */; };
 		0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FC2BAAD71B002E75FB /* Collision.swift */; };
 		0A76A4A02BAC7E270067BD6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57F12BAAD71B002E75FB /* Main.storyboard */; };
+		3FE4570D2BADAB8E00D8D5A9 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
-		9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
-		9F8C57ED2BAAD71B002E75FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F8C57F02BAAD71B002E75FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9F8C57F22BAAD71B002E75FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -124,7 +119,6 @@
 		9F8C58342BAAD71B002E75FB /* PowerupBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerupBlock.swift; sourceTree = "<group>"; };
 		9F8C58352BAAD71B002E75FB /* PushableBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PushableBlock.swift; sourceTree = "<group>"; };
 		9F8C58362BAAD71B002E75FB /* BreakableBlock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BreakableBlock.swift; sourceTree = "<group>"; };
-		9F8C58382BAAD71B002E75FB /* Sample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sample.swift; sourceTree = "<group>"; };
 		9F8C58392BAAD71B002E75FB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F8C583A2BAAD71B002E75FB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F8C583B2BAAD71B002E75FB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -160,8 +154,6 @@
 		9F8C57E92BAAD71B002E75FB /* TheAlienThatEatsTheCarrot */ = {
 			isa = PBXGroup;
 			children = (
-				9F8C57EA2BAAD71B002E75FB /* ViewModel */,
-				9F8C57ED2BAAD71B002E75FB /* ViewController.swift */,
 				9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */,
 				9F8C57EF2BAAD71B002E75FB /* LaunchScreen.storyboard */,
 				9F8C57F12BAAD71B002E75FB /* Main.storyboard */,
@@ -176,15 +168,6 @@
 			);
 			path = TheAlienThatEatsTheCarrot;
 			sourceTree = SOURCE_ROOT;
-		};
-		9F8C57EA2BAAD71B002E75FB /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */,
-				9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
 		};
 		9F8C57F32BAAD71B002E75FB /* GameRenderer */ = {
 			isa = PBXGroup;
@@ -379,7 +362,7 @@
 		9F8C58372BAAD71B002E75FB /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9F8C58382BAAD71B002E75FB /* Sample.swift */,
+				3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -476,7 +459,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A76A4712BAC78470067BD6E /* ComponentIdentifier.swift in Sources */,
-				0A76A46C2BAC782F0067BD6E /* ViewController.swift in Sources */,
+				3FE4570D2BADAB8E00D8D5A9 /* StartScreenViewController.swift in Sources */,
 				0A76A48A2BAC78780067BD6E /* InvinciblePowerup.swift in Sources */,
 				0A76A4792BAC78600067BD6E /* CGPoint+extensions.swift in Sources */,
 				0A76A47A2BAC78600067BD6E /* CGFloat+extension.swift in Sources */,
@@ -486,10 +469,8 @@
 				0A76A4742BAC78510067BD6E /* System.swift in Sources */,
 				0A76A4832BAC78720067BD6E /* Coin.swift in Sources */,
 				0A76A46D2BAC783B0067BD6E /* PhysicsConstants.swift in Sources */,
-				0A76A4942BAC78840067BD6E /* Sample.swift in Sources */,
 				0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */,
 				0A76A4842BAC78720067BD6E /* Collectable.swift in Sources */,
-				0A76A46B2BAC782B0067BD6E /* GameViewModel.swift in Sources */,
 				0A76A4992BAC78960067BD6E /* PositionalComponent.swift in Sources */,
 				0A76A47E2BAC786D0067BD6E /* StationaryEnemy.swift in Sources */,
 				0A76A49B2BAC78B40067BD6E /* CircleCollider.swift in Sources */,
@@ -509,7 +490,6 @@
 				0A76A4882BAC78780067BD6E /* AttackPowerup.swift in Sources */,
 				0A76A47C2BAC78680067BD6E /* Character.swift in Sources */,
 				0A76A46E2BAC783D0067BD6E /* Shape.swift in Sources */,
-				0A76A46A2BAC78290067BD6E /* LevelDesignerViewModel.swift in Sources */,
 				0A76A47D2BAC786D0067BD6E /* TurretEnemy.swift in Sources */,
 				0A76A4772BAC78590067BD6E /* Nexus.swift in Sources */,
 				0A76A46F2BAC78400067BD6E /* PhysicsBody.swift in Sources */,
