@@ -14,7 +14,7 @@ class PowerupBlock: Block {
     override var type: ObjectType {
         .block(.powerup)
     }
-    
+
     init(position: CGPoint = .zero, powerups: [Powerup] = []) {
         self.powerupsContained = powerups
         super.init(imageName: PowerupBlock.imageName, position: position)

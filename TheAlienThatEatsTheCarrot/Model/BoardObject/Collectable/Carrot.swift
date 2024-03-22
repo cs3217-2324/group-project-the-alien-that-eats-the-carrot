@@ -15,8 +15,9 @@ class Carrot: Collectable {
     override var type: ObjectType {
         .collectable(.carrot)
     }
-    
-    init(position: CGPoint = .zero, width: CGFloat = Carrot.CARROT_COLLECTABLE_WIDTH, height: CGFloat = Carrot.CARROT_COLLECTABLE_HEIGHT) {
+
+    init(position: CGPoint = .zero, width: CGFloat = Carrot.CARROT_COLLECTABLE_WIDTH,
+         height: CGFloat = Carrot.CARROT_COLLECTABLE_HEIGHT) {
         super.init(imageName: Carrot.imageName, width: width, height: height, position: position)
     }
 }

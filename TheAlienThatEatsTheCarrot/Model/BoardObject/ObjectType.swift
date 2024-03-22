@@ -29,7 +29,7 @@ public enum ObjectType {
     public enum PowerupType {
         case invinsible, strength, attack, doubleJump
     }
-    
+
     public enum CharacterType {
         case normal
     }

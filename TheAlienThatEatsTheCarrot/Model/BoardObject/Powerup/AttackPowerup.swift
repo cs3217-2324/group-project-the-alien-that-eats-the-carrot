@@ -16,7 +16,8 @@ class AttackPowerup: Powerup {
         .powerup(.attack)
     }
 
-    init(position: CGPoint = .zero, width: CGFloat = AttackPowerup.ATTACK_POWERUP_WIDTH, height: CGFloat = AttackPowerup.ATTACK_POWERUP_HEIGHT) {
+    init(position: CGPoint = .zero, width: CGFloat = AttackPowerup.ATTACK_POWERUP_WIDTH,
+         height: CGFloat = AttackPowerup.ATTACK_POWERUP_HEIGHT) {
         super.init(imageName: AttackPowerup.imageName, width: width, height: height, position: position)
     }
 }

@@ -18,7 +18,6 @@ class Block: BoardObject {
         .block(.normal)
     }
 
-
     init(imageName: String, position: CGPoint = .zero, width: CGFloat = Block.DEFAULT_BLOCK_WIDTH, height: CGFloat = Block.DEFAULT_BLOCK_HEIGHT) {
         self.imageName = imageName
         self.position = position

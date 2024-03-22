@@ -16,7 +16,8 @@ class InvinciblePowerup: Powerup {
         .powerup(.invinsible)
     }
 
-    init(position: CGPoint = .zero, width: CGFloat = InvinciblePowerup.INVINCIBLE_POWERUP_WIDTH, height: CGFloat = InvinciblePowerup.INVINCIBLE_POWERUP_HEIGHT) {
+    init(position: CGPoint = .zero, width: CGFloat = InvinciblePowerup.INVINCIBLE_POWERUP_WIDTH,
+         height: CGFloat = InvinciblePowerup.INVINCIBLE_POWERUP_HEIGHT) {
         super.init(imageName: InvinciblePowerup.imageName, width: width, height: height, position: position)
     }
 }

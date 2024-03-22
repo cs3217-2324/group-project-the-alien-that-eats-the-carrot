@@ -16,7 +16,8 @@ class Heart: Collectable {
         .collectable(.heart)
     }
 
-    init(position: CGPoint = .zero, width: CGFloat = Heart.HEART_COLLECTABLE_WIDTH, height: CGFloat = Heart.HEART_COLLECTABLE_HEIGHT) {
+    init(position: CGPoint = .zero, width: CGFloat = Heart.HEART_COLLECTABLE_WIDTH,
+         height: CGFloat = Heart.HEART_COLLECTABLE_HEIGHT) {
         super.init(imageName: Heart.imageName, width: width, height: height, position: position)
     }
 }

@@ -16,7 +16,8 @@ class Coin: Collectable {
         .collectable(.coin)
     }
 
-    init(position: CGPoint = .zero, width: CGFloat = Coin.COIN_COLLECTABLE_WIDTH, height: CGFloat = Coin.COIN_COLLECTABLE_HEIGHT) {
+    init(position: CGPoint = .zero, width: CGFloat = Coin.COIN_COLLECTABLE_WIDTH,
+         height: CGFloat = Coin.COIN_COLLECTABLE_HEIGHT) {
         super.init(imageName: Coin.imageName, width: width, height: height, position: position)
     }
 }

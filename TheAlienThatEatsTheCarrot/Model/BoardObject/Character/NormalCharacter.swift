@@ -16,7 +16,8 @@ class NormalCharacter: Character {
         .character(.normal)
     }
 
-    init(position: CGPoint = .zero, width: CGFloat = NORMAL_CHARACTER_WIDTH, height: CGFloat = NORMAL_CHARACTER_HEIGHT) {
+    init(position: CGPoint = .zero, width: CGFloat = NORMAL_CHARACTER_WIDTH,
+         height: CGFloat = NORMAL_CHARACTER_HEIGHT) {
         super.init(imageName: NormalCharacter.imageName, width: width, height: height, position: position)
     }
 }

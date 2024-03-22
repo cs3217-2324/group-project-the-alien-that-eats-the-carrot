@@ -13,7 +13,7 @@ class PushableBlock: Block {
     override var type: ObjectType {
         .block(.pushable)
     }
-    
+
     init(position: CGPoint = .zero) {
         super.init(imageName: PushableBlock.imageName, position: position)
     }

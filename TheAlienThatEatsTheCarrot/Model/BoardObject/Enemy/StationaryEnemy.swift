@@ -15,7 +15,7 @@ class StationaryEnemy: Enemy {
     override var type: ObjectType {
         .enemy(.stationary)
     }
-    
+
     init(position: CGPoint = .zero, width: CGFloat = STATIONARY_ENEMY_WIDTH, height: CGFloat = STATIONARY_ENEMY_HEIGHT) {
         super.init(imageName: StationaryEnemy.imageName, width: width, height: height, position: position)
     }
