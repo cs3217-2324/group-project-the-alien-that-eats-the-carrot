@@ -10,11 +10,11 @@ import Foundation
 class MovableComponent: Component {
     var entity: Entity
     var direction: Direction
-    var distance: CGFloat
+    var velocity: CGFloat
 
-    init(entity: Entity, direction: Direction, distance: CGFloat) {
+    init(entity: Entity, direction: Direction, velocity: CGFloat) {
         self.entity = entity
         self.direction = direction
-        self.distance = distance
+        self.velocity = velocity
     }
 }
