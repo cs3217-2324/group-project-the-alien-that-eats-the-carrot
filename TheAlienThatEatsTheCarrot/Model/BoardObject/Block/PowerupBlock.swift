@@ -11,8 +11,10 @@ class PowerupBlock: Block {
     var powerupsContained: [Powerup]
     // TODO: update when adding asset
     static let imageName = ""
-    static let type = ObjectType.BlockType.powerup
-
+    override var type: ObjectType {
+        .block(.powerup)
+    }
+    
     init(position: CGPoint = .zero, powerups: [Powerup] = []) {
         self.powerupsContained = powerups
         super.init(imageName: PowerupBlock.imageName, position: position)

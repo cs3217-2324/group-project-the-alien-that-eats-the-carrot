@@ -12,7 +12,9 @@ class AttackPowerup: Powerup {
     static let ATTACK_POWERUP_HEIGHT: CGFloat = 30.0
     // TODO: update when adding asset
     static let imageName = ""
-    static let type = ObjectType.PowerupType.attack
+    override var type: ObjectType {
+        .powerup(.attack)
+    }
 
     init(position: CGPoint = .zero, width: CGFloat = AttackPowerup.ATTACK_POWERUP_WIDTH, height: CGFloat = AttackPowerup.ATTACK_POWERUP_HEIGHT) {
         super.init(imageName: AttackPowerup.imageName, width: width, height: height, position: position)

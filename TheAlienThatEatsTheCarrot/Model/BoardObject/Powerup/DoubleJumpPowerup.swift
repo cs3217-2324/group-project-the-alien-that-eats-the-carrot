@@ -11,8 +11,10 @@ class DoubleJumpPowerup: Powerup {
     static let DOUBLE_JUMP_POWERUP_WIDTH: CGFloat = 20.0
     static let DOUBLE_JUMP_POWERUP_HEIGHT: CGFloat = 20.0
     // TODO: update when adding asset
-    static let imageName = ""
-    static let type = ObjectType.PowerupType.doubleJump
+    override var type: ObjectType {
+        .powerup(.doubleJump)
+    }
+
 
     init(position: CGPoint = .zero, width: CGFloat = DoubleJumpPowerup.DOUBLE_JUMP_POWERUP_WIDTH, height: CGFloat = DoubleJumpPowerup.DOUBLE_JUMP_POWERUP_HEIGHT) {
         super.init(imageName: DoubleJumpPowerup.imageName, width: width, height: height, position: position)

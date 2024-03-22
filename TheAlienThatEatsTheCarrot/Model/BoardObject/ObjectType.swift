@@ -12,6 +12,7 @@ public enum ObjectType {
     case block(BlockType)
     case collectable(CollectableType)
     case powerup(PowerupType)
+    case character(CharacterType)
 
     public enum EnemyType {
         case normal, fast, stationary, turret
@@ -27,5 +28,9 @@ public enum ObjectType {
 
     public enum PowerupType {
         case invinsible, strength, attack, doubleJump
+    }
+    
+    public enum CharacterType {
+        case normal
     }
 }

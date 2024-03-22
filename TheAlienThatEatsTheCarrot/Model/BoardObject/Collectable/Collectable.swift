@@ -12,7 +12,10 @@ class Collectable: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
-
+    var type: ObjectType {
+        .collectable(.coin)
+    }
+    
     init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
         self.imageName = imageName
         self.width = width

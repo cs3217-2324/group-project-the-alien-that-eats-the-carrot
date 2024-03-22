@@ -12,7 +12,10 @@ class Powerup: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
-
+    var type: ObjectType {
+        .powerup(.attack)
+    }
+    
     init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
         self.imageName = imageName
         self.width = width

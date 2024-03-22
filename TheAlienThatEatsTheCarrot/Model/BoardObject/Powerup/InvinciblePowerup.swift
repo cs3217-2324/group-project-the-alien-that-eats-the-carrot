@@ -12,7 +12,9 @@ class InvinciblePowerup: Powerup {
     static let INVINCIBLE_POWERUP_HEIGHT: CGFloat = 30.0
     // TODO: update when adding asset
     static let imageName = ""
-    static let type = ObjectType.PowerupType.invinsible
+    override var type: ObjectType {
+        .powerup(.invinsible)
+    }
 
     init(position: CGPoint = .zero, width: CGFloat = InvinciblePowerup.INVINCIBLE_POWERUP_WIDTH, height: CGFloat = InvinciblePowerup.INVINCIBLE_POWERUP_HEIGHT) {
         super.init(imageName: InvinciblePowerup.imageName, width: width, height: height, position: position)

@@ -10,7 +10,9 @@ import CoreGraphics
 class BreakableBlock: Block {
     // TODO: update when adding asset
     static let imageName = ""
-    static let type = ObjectType.BlockType.breakable
+    override var type: ObjectType {
+        .block(.breakable)
+    }
 
     init(position: CGPoint = .zero) {
         super.init(imageName: BreakableBlock.imageName, position: position)
