@@ -19,109 +19,107 @@ extension Nexus {
 
     /// Factory to create entities
     func addEntity(type: ObjectType, at point: CGPoint) {
+        let entity = Entity()
+        var factory: EntityFactory
         switch type {
         case .enemy(let enemyType):
-            addEnemyEntity(type: enemyType, at: point)
+            factory = getEnemyFactory(type: enemyType, from: entity)
         case .block(let blockType):
-            addBlockEntity(type: blockType, at: point)
+            factory = getBlockFactory(type: blockType, from: entity)
         case .collectable(let collectableType):
-            addCollectableEntity(type: collectableType, at: point)
+            factory = getCollectableFactory(type: collectableType, from: entity)
         case .powerup(let powerupType):
-            addPowerupEntity(type: powerupType, at: point)
+            factory = getPowerupFactory(type: powerupType, from: entity)
         case .character(let characterType):
-            addCharacterEntity(type: characterType, at: point)
+            factory = getCharacterFactory(type: characterType, from: entity)
         }
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
     }
 }
 
 extension Nexus {
-    private func addEnemyEntity(type: ObjectType.EnemyType, at point: CGPoint) {
+    private func getEnemyFactory(type: ObjectType.EnemyType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .fast:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .stationary:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .turret:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         }
     }
 
-    private func addBlockEntity(type: ObjectType.BlockType, at point: CGPoint) {
+    private func getBlockFactory(type: ObjectType.BlockType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
-            addNormalBlockEntity(at: point)
+            getNormalBlockFactory(from: entity)
         case .ground:
-            addGroundBlockEntity(at: point)
+            getGroundBlockFactory(from: entity)
         case .breakable:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .pushable:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .spike:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .powerup:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         }
     }
 
-    private func addCollectableEntity(type: ObjectType.CollectableType, at point: CGPoint) {
+    private func getCollectableFactory(type: ObjectType.CollectableType, from entity: Entity) -> EntityFactory {
         switch type {
         case .coin:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .carrot:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .heart:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         }
     }
 
-    private func addPowerupEntity(type: ObjectType.PowerupType, at point: CGPoint) {
+    private func getPowerupFactory(type: ObjectType.PowerupType, from entity: Entity) -> EntityFactory {
         switch type {
         case .attack:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .doubleJump:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .invinsible:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         case .strength:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         }
     }
 
-    private func addCharacterEntity(type: ObjectType.CharacterType, at point: CGPoint) {
+    private func getCharacterFactory(type: ObjectType.CharacterType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
-            print("TODO: implement")
+            fatalError("TODO: implement")
         }
     }
 }
 
 extension Nexus {
-    private func addNormalEnemyEntity(at point: CGPoint) {
+    private func getNormalEnemyFactory(from entity: Entity) -> EntityFactory {
         let entity = Entity()
         // TODO: get this from persistence
         let normalEnemyBoardObject = NormalEnemy()
-        let factory = NormalEnemyFactory(from: normalEnemyBoardObject, to: entity)
-        let components = factory.createComponents()
-        addComponents(components, to: entity)
+        return NormalEnemyFactory(from: normalEnemyBoardObject, to: entity)
     }
 
-    private func addNormalBlockEntity(at point: CGPoint) {
+    private func getNormalBlockFactory(from entity: Entity) -> EntityFactory {
         let entity = Entity()
         // TODO: get this from persistence
         let normalBlockBoardObject = NormalBlock()
-        let factory = NormalBlockFactory(from: normalBlockBoardObject, to: entity)
-        let components = factory.createComponents()
-        addComponents(components, to: entity)
+        return NormalBlockFactory(from: normalBlockBoardObject, to: entity)
     }
 
-    private func addGroundBlockEntity(at point: CGPoint) {
+    private func getGroundBlockFactory(from entity: Entity) -> EntityFactory {
         let entity = Entity()
         // TODO: get this from persistence
         let groundBlockBoardObject = GroundBlock()
-        let factory = GroundBlockFactory(from: groundBlockBoardObject, to: entity)
-        let components = factory.createComponents()
-        addComponents(components, to: entity)
+        return GroundBlockFactory(from: groundBlockBoardObject, to: entity)
     }
 }
