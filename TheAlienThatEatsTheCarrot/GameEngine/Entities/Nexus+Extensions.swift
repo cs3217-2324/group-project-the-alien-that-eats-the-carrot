@@ -18,7 +18,7 @@ extension Nexus {
     }
 
     /// Factory to create entities
-    func addEntity(type: ObjectType, at point: CGPoint) {
+    func addEntity(type: ObjectType) {
         let entity = Entity()
         var factory: EntityFactory
         switch type {
