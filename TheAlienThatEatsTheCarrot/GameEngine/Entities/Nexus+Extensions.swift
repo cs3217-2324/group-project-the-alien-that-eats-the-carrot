@@ -17,25 +17,25 @@ extension Nexus {
         addComponents([positionalComponent, playerComponent, destroyableComponent, movableComponent], to: entity)
     }
 
-    /// Factory to create game objects
-    func addGameObject(type: ObjectType, at point: CGPoint) {
+    /// Factory to create entities
+    func addEntity(type: ObjectType, at point: CGPoint) {
         switch type {
         case .enemy(let enemyType):
-            addGameEnemy(type: enemyType, at: point)
+            addEnemyEntity(type: enemyType, at: point)
         case .block(let blockType):
-            addGameBlock(type: blockType, at: point)
+            addBlockEntity(type: blockType, at: point)
         case .collectable(let collectableType):
-            addGameCollectable(type: collectableType, at: point)
+            addCollectableEntity(type: collectableType, at: point)
         case .powerup(let powerupType):
-            addGamePowerup(type: powerupType, at: point)
+            addPowerupEntity(type: powerupType, at: point)
         case .character(let characterType):
-            addGameCharacter(type: characterType, at: point)
+            addCharacterEntity(type: characterType, at: point)
         }
     }
 }
 
 extension Nexus {
-    private func addGameEnemy(type: ObjectType.EnemyType, at point: CGPoint) {
+    private func addEnemyEntity(type: ObjectType.EnemyType, at point: CGPoint) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -48,12 +48,12 @@ extension Nexus {
         }
     }
 
-    private func addGameBlock(type: ObjectType.BlockType, at point: CGPoint) {
+    private func addBlockEntity(type: ObjectType.BlockType, at point: CGPoint) {
         switch type {
         case .normal:
-            print("TODO: implement")
+            addNormalBlockEntity(at: point)
         case .ground:
-            print("TODO: implement")
+            addGroundBlockEntity(at: point)
         case .breakable:
             print("TODO: implement")
         case .pushable:
@@ -65,7 +65,7 @@ extension Nexus {
         }
     }
 
-    private func addGameCollectable(type: ObjectType.CollectableType, at point: CGPoint) {
+    private func addCollectableEntity(type: ObjectType.CollectableType, at point: CGPoint) {
         switch type {
         case .coin:
             print("TODO: implement")
@@ -76,7 +76,7 @@ extension Nexus {
         }
     }
 
-    private func addGamePowerup(type: ObjectType.PowerupType, at point: CGPoint) {
+    private func addPowerupEntity(type: ObjectType.PowerupType, at point: CGPoint) {
         switch type {
         case .attack:
             print("TODO: implement")
@@ -89,10 +89,39 @@ extension Nexus {
         }
     }
 
-    private func addGameCharacter(type: ObjectType.CharacterType, at point: CGPoint) {
+    private func addCharacterEntity(type: ObjectType.CharacterType, at point: CGPoint) {
         switch type {
         case .normal:
             print("TODO: implement")
         }
+    }
+}
+
+extension Nexus {
+    private func addNormalEnemyEntity(at point: CGPoint) {
+        let entity = Entity()
+        // TODO: get this from persistence
+        let normalEnemyBoardObject = NormalEnemy()
+        let factory = NormalEnemyFactory(from: normalEnemyBoardObject, to: entity)
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
+    }
+
+    private func addNormalBlockEntity(at point: CGPoint) {
+        let entity = Entity()
+        // TODO: get this from persistence
+        let normalBlockBoardObject = NormalBlock()
+        let factory = NormalBlockFactory(from: normalBlockBoardObject, to: entity)
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
+    }
+
+    private func addGroundBlockEntity(at point: CGPoint) {
+        let entity = Entity()
+        // TODO: get this from persistence
+        let groundBlockBoardObject = GroundBlock()
+        let factory = GroundBlockFactory(from: groundBlockBoardObject, to: entity)
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
     }
 }
