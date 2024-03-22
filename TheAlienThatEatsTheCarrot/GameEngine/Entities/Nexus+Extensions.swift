@@ -18,26 +18,24 @@ extension Nexus {
     }
 
     /// Factory to create game objects
-    func addGameObject(type: ObjectType) {
-        let entity = Entity()
-
+    func addGameObject(type: ObjectType, at point: CGPoint) {
         switch type {
         case .enemy(let enemyType):
-            addGameEnemy(type: enemyType)
+            addGameEnemy(type: enemyType, at: point)
         case .block(let blockType):
-            addGameBlock(type: blockType)
+            addGameBlock(type: blockType, at: point)
         case .collectable(let collectableType):
-            addGameCollectable(type: collectableType)
+            addGameCollectable(type: collectableType, at: point)
         case .powerup(let powerupType):
-            addGamePowerup(type: powerupType)
+            addGamePowerup(type: powerupType, at: point)
         case .character(let characterType):
-            addGameCharacter(type: characterType)
+            addGameCharacter(type: characterType, at: point)
         }
     }
 }
 
 extension Nexus {
-    private func addGameEnemy(type: ObjectType.EnemyType) {
+    private func addGameEnemy(type: ObjectType.EnemyType, at point: CGPoint) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -50,7 +48,7 @@ extension Nexus {
         }
     }
 
-    private func addGameBlock(type: ObjectType.BlockType) {
+    private func addGameBlock(type: ObjectType.BlockType, at point: CGPoint) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -67,7 +65,7 @@ extension Nexus {
         }
     }
 
-    private func addGameCollectable(type: ObjectType.CollectableType) {
+    private func addGameCollectable(type: ObjectType.CollectableType, at point: CGPoint) {
         switch type {
         case .coin:
             print("TODO: implement")
@@ -78,7 +76,7 @@ extension Nexus {
         }
     }
 
-    private func addGamePowerup(type: ObjectType.PowerupType) {
+    private func addGamePowerup(type: ObjectType.PowerupType, at point: CGPoint) {
         switch type {
         case .attack:
             print("TODO: implement")
@@ -91,7 +89,7 @@ extension Nexus {
         }
     }
 
-    private func addGameCharacter(type: ObjectType.CharacterType) {
+    private func addGameCharacter(type: ObjectType.CharacterType, at point: CGPoint) {
         switch type {
         case .normal:
             print("TODO: implement")
