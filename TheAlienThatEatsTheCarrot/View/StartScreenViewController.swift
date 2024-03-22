@@ -24,7 +24,7 @@ class StartScreenViewController: UIViewController {
         performSegue(withIdentifier: "LevelDesignerSegue", sender: nil)
     }
     
-    @IBAction func multiplayerButtonTapped(_ sender: UIButton) {
+    @IBAction private func multiplayerButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "MultiplayerLevelSelectSegue", sender: nil)
     }
 }

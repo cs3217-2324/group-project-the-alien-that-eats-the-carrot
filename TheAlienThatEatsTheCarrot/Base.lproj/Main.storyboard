@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Start Screen View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="TheAlienThatEatsTheCarrot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="StartScreenViewController" customModule="TheAlienThatEatsTheCarrot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,7 +33,8 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y3E-UH-pfe" kind="presentation" modalPresentationStyle="fullScreen" id="S9Z-Cp-U5i"/>
+                                    <action selector="levelSelectButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KKY-qY-qvY"/>
+                                    <segue destination="Y3E-UH-pfe" kind="presentation" identifier="LevelSelectSegue" modalPresentationStyle="fullScreen" id="S9Z-Cp-U5i"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FK1-wd-dOD">
@@ -44,7 +45,8 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Y3E-UH-pfe" kind="presentation" modalPresentationStyle="fullScreen" id="uRV-qU-f8V"/>
+                                    <action selector="multiplayerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xvy-DV-ZiJ"/>
+                                    <segue destination="Y3E-UH-pfe" kind="presentation" identifier="MultiplayerLevelSelectSegue" modalPresentationStyle="fullScreen" id="uRV-qU-f8V"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egF-Po-AHH">
@@ -55,7 +57,8 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Dzv-ak-6lJ" kind="presentation" modalPresentationStyle="fullScreen" id="U9d-I5-1wC"/>
+                                    <action selector="levelDesignerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2b4-Ls-OWr"/>
+                                    <segue destination="Dzv-ak-6lJ" kind="presentation" identifier="LevelDesignerSegue" modalPresentationStyle="fullScreen" id="U9d-I5-1wC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -76,6 +79,11 @@
                             <constraint firstItem="egF-Po-AHH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="tR9-B8-XIl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="levelDesignerButton" destination="egF-Po-AHH" id="7DH-Eh-JaB"/>
+                        <outlet property="levelSelectButton" destination="9qS-u4-kze" id="QKz-14-slS"/>
+                        <outlet property="multiplayerButton" destination="FK1-wd-dOD" id="cui-eR-wwI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
