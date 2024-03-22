@@ -20,7 +20,7 @@ extension Nexus {
     /// Factory to create game objects
     func addGameObject(type: ObjectType) {
         let entity = Entity()
-
+        
         switch type {
         case .enemy(let enemyType):
             addGameEnemy(type: enemyType, for: entity)
@@ -30,6 +30,8 @@ extension Nexus {
             addGameCollectable(type: collectableType, for: entity)
         case .powerup(let powerupType):
             addGamePowerup(type: powerupType, for: entity)
+        case .character(let characterType):
+            addGameCharacter(type: characterType, for: entity)
         }
     }
 }
@@ -85,6 +87,13 @@ extension Nexus {
         case .invinsible:
             print("TODO: implement")
         case .strength:
+            print("TODO: implement")
+        }
+    }
+    
+    private func addGameCharacter(type: ObjectType.CharacterType, for entity: Entity) {
+        switch type {
+        case .normal:
             print("TODO: implement")
         }
     }
