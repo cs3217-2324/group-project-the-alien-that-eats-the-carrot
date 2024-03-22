@@ -55,9 +55,9 @@ extension Nexus {
     private func getBlockFactory(type: ObjectType.BlockType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
-            getNormalBlockFactory(from: entity)
+            return getNormalBlockFactory(from: entity)
         case .ground:
-            getGroundBlockFactory(from: entity)
+            return getGroundBlockFactory(from: entity)
         case .breakable:
             fatalError("TODO: implement")
         case .pushable:
