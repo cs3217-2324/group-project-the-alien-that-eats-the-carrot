@@ -9,7 +9,7 @@ import Foundation
 
 class IsInPlayerBBufferComponent: Component {
     var entity: Entity
-    
+
     init(entity: Entity) {
         self.entity = entity
     }
