@@ -6,3 +6,11 @@
 //
 
 import Foundation
+
+class EnemyComponent: Component {
+    var entity: Entity
+
+    init(entity: Entity) {
+        self.entity = entity
+    }
+}
