@@ -23,21 +23,21 @@ extension Nexus {
 
         switch type {
         case .enemy(let enemyType):
-            addGameEnemy(type: enemyType, for: entity)
+            addGameEnemy(type: enemyType)
         case .block(let blockType):
-            addGameBlock(type: blockType, for: entity)
+            addGameBlock(type: blockType)
         case .collectable(let collectableType):
-            addGameCollectable(type: collectableType, for: entity)
+            addGameCollectable(type: collectableType)
         case .powerup(let powerupType):
-            addGamePowerup(type: powerupType, for: entity)
+            addGamePowerup(type: powerupType)
         case .character(let characterType):
-            addGameCharacter(type: characterType, for: entity)
+            addGameCharacter(type: characterType)
         }
     }
 }
 
 extension Nexus {
-    private func addGameEnemy(type: ObjectType.EnemyType, for entity: Entity) {
+    private func addGameEnemy(type: ObjectType.EnemyType) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -50,7 +50,7 @@ extension Nexus {
         }
     }
 
-    private func addGameBlock(type: ObjectType.BlockType, for entity: Entity) {
+    private func addGameBlock(type: ObjectType.BlockType) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -67,7 +67,7 @@ extension Nexus {
         }
     }
 
-    private func addGameCollectable(type: ObjectType.CollectableType, for entity: Entity) {
+    private func addGameCollectable(type: ObjectType.CollectableType) {
         switch type {
         case .coin:
             print("TODO: implement")
@@ -78,7 +78,7 @@ extension Nexus {
         }
     }
 
-    private func addGamePowerup(type: ObjectType.PowerupType, for entity: Entity) {
+    private func addGamePowerup(type: ObjectType.PowerupType) {
         switch type {
         case .attack:
             print("TODO: implement")
@@ -91,7 +91,7 @@ extension Nexus {
         }
     }
 
-    private func addGameCharacter(type: ObjectType.CharacterType, for entity: Entity) {
+    private func addGameCharacter(type: ObjectType.CharacterType) {
         switch type {
         case .normal:
             print("TODO: implement")
