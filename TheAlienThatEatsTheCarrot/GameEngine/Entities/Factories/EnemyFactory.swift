@@ -15,9 +15,9 @@ class EnemyFactory: EntityFactory {
         self.boardObject = boardObject
         self.entity = entity
     }
-    
+
     func createComponents() -> [Component] {
-        return []
+        []
     }
 }
 

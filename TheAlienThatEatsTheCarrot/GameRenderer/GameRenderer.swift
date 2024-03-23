@@ -9,7 +9,7 @@ import Foundation
 
 class GameRenderer {
     var gameMode: GameMode
-    
+
     init(gameMode: GameMode) {
         self.gameMode = gameMode
     }

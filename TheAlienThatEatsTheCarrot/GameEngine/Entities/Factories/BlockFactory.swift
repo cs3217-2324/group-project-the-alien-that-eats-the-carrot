@@ -15,9 +15,9 @@ class BlockFactory: EntityFactory {
         self.boardObject = boardObject
         self.entity = entity
     }
-    
+
     func createComponents() -> [Component] {
-        return []
+        []
     }
 }
 

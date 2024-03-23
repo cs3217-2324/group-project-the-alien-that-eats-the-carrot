@@ -11,9 +11,9 @@ class GameViewModel: ObservableObject {
     let gameEngine: GameEngine
     let gameLoop: GameLoop
     let gameRenderer: GameRenderer
-    
+
     var gameMode: GameMode
-    
+
     var renderableComponentsA: [RenderableComponent]
     var renderableComponentsB: [RenderableComponent]
 

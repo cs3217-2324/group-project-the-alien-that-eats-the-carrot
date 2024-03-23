@@ -21,7 +21,7 @@ class GameEngine {
     func update(deltaTime: CGFloat) {
         updateSystems(deltaTime: deltaTime)
     }
-    
+
     func updatePlayersMovement(player: Player, action: ControlAction) {
         switch player {
         case .A:
@@ -36,7 +36,7 @@ class GameEngine {
             updateAction(action, of: playerEntity)
         }
     }
-    
+
     private func updateAction(_ action: ControlAction, of player: Entity) {
         guard let playerComponent = nexus.getComponent(of: PlayerComponent.self, for: player) else {
             return

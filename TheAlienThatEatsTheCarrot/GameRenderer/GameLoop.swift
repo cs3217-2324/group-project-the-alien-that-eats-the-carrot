@@ -15,7 +15,7 @@ class GameLoop {
     init(gameEngine: GameEngine) {
         self.gameEngine = gameEngine
     }
-    
+
     func start() {
         self.displayLink = createDisplayLink()
     }
