@@ -28,4 +28,12 @@ final class Powerup: BoardObject {
     func move(to newPosition: CGPoint) {
         self.position = newPosition
     }
+
+    public static func == (lhs: Powerup, rhs: Powerup) -> Bool {
+        lhs === rhs
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
 }

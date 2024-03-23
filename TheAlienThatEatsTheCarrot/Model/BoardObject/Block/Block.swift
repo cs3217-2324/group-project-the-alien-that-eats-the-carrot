@@ -32,4 +32,12 @@ final class Block: BoardObject {
     func move(to newPosition: CGPoint) {
         self.position = newPosition
     }
+
+    static func == (lhs: Block, rhs: Block) -> Bool {
+        lhs === rhs
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
 }

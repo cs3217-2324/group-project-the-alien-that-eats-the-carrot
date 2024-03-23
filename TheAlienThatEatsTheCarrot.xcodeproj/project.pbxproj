@@ -66,6 +66,7 @@
 		9F8C58CE2BAECC07002E75FB /* CGVector+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58CD2BAECC07002E75FB /* CGVector+extensions.swift */; };
 		9F8C58D02BAECC28002E75FB /* CGFloat+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */; };
 		9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */; };
+		9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +133,7 @@
 		9F8C58CD2BAECC07002E75FB /* CGVector+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardObjectSet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +314,7 @@
 				9F8C58222BAAD71B002E75FB /* Collectable */,
 				9F8C581C2BAAD71B002E75FB /* Enemy */,
 				9F8C58282BAAD71B002E75FB /* Powerup */,
+				9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */,
 			);
 			path = BoardObject;
 			sourceTree = "<group>";
@@ -346,8 +349,8 @@
 		9F8C58282BAAD71B002E75FB /* Powerup */ = {
 			isa = PBXGroup;
 			children = (
-				9F8C58AA2BAEA141002E75FB /* PowerupType.swift */,
 				9F8C582D2BAAD71B002E75FB /* Powerup.swift */,
+				9F8C58AA2BAEA141002E75FB /* PowerupType.swift */,
 			);
 			path = Powerup;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				0A76A4872BAC78780067BD6E /* ObjectType.swift in Sources */,
 				9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */,
 				9F8C58C32BAEB5FD002E75FB /* Enemy+extensions.swift in Sources */,
+				9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
 				9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,

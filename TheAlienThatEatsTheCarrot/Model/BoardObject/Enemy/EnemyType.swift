@@ -13,34 +13,32 @@ public enum EnemyType {
          stationary,
          turret
 
-    static let enemyTypeToAssetNameMap = [normal: "",
-                                          fast: "",
-                                          stationary: "",
-                                          turret: ""]
+    static let typeToAssetNameMap = [normal: "",
+                                     fast: "",
+                                     stationary: "",
+                                     turret: ""]
+    static let typeToTypeNameMap = [normal: "normal",
+                                    fast: "fast",
+                                    stationary: "stationary",
+                                    turret: "turret"]
+    static let typeNameToTypeMap = ["normal": normal,
+                                    "fast": fast,
+                                    "stationary": stationary,
+                                    "turret": turret]
+    static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
+                                fast: CGSize(width: 50, height: 50),
+                                stationary: CGSize(width: 50, height: 50),
+                                turret: CGSize(width: 50, height: 50)]
 
-    static let enemyTypeToTypeNameMap = [normal: "normal",
-                                         fast: "fast",
-                                         stationary: "stationary",
-                                         turret: "turret"]
-
-    static let enemyTypeNameToTypeMap = ["normal": normal,
-                                         "fast": fast,
-                                         "stationary": stationary,
-                                         "turret": turret]
-
-    static let enemyTypeToSizeMap = [normal: CGSize(width: 50, height: 50),
-                                     fast: CGSize(width: 50, height: 50),
-                                     stationary: CGSize(width: 50, height: 50),
-                                     turret: CGSize(width: 50, height: 50)]
     var assetName: String? {
-        EnemyType.enemyTypeToAssetNameMap[self]
+        EnemyType.typeToAssetNameMap[self]
     }
 
     var width: CGFloat {
-        EnemyType.enemyTypeToSizeMap[self]!.width
+        EnemyType.typeToSizeMap[self]!.width
     }
 
     var height: CGFloat {
-        EnemyType.enemyTypeToSizeMap[self]!.height
+        EnemyType.typeToSizeMap[self]!.height
     }
 }

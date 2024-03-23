@@ -28,4 +28,12 @@ class Character: BoardObject {
     func move(to newPosition: CGPoint) {
         self.position = newPosition
     }
+
+    public static func == (lhs: Character, rhs: Character) -> Bool {
+        lhs === rhs
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
+    }
 }

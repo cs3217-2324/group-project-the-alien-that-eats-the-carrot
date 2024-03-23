@@ -10,18 +10,18 @@ import Foundation
 public enum CharacterType {
   case normal
 
-  static let characterTypeToAssetNameMap = [normal: ""]
-  static let characterTypeToTypeNameMap = [normal: "normal"]
-  static let characterTypeNameToTypeMap = ["normal": normal]
-  static let characterTypeToSizeMap = [normal: CGSize(width: 50, height: 50)]
+  static let typeToAssetNameMap = [normal: ""]
+  static let typeToTypeNameMap = [normal: "normal"]
+  static let typeNameToTypeMap = ["normal": normal]
+  static let typeToSizeMap = [normal: CGSize(width: 50, height: 50)]
 
   var assetName: String? {
-    CharacterType.characterTypeToAssetNameMap[self]
+    CharacterType.typeToAssetNameMap[self]
   }
   var width: CGFloat {
-    CharacterType.characterTypeToSizeMap[self]!.width
+    CharacterType.typeToSizeMap[self]!.width
   }
   var height: CGFloat {
-    CharacterType.characterTypeToSizeMap[self]!.height
+    CharacterType.typeToSizeMap[self]!.height
   }
 }

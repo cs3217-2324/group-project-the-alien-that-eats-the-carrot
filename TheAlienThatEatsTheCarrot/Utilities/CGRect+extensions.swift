@@ -29,3 +29,9 @@ extension CGRect: ToDataAble {
         return rectData as NSManagedObject
     }
 }
+
+extension CGRect {
+    func extendOnXAxis(by distance: CGFloat) -> CGRect {
+        CGRect(x: self.minX, y: self.minY, width: self.width + distance, height: self.height)
+    }
+}

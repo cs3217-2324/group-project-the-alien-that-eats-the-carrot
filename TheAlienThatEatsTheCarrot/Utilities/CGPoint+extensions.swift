@@ -55,6 +55,13 @@ extension CGPoint {
     }
 }
 
+extension CGPoint: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.x)
+        hasher.combine(self.y)
+    }
+}
+
 extension CGPoint: FromDataAble {
     init(data: CGPointData) throws {
         self.init(x: data.x, y: data.y)
