@@ -10,8 +10,12 @@ import QuartzCore
 
 class GameLoop {
     private var displayLink: CADisplayLink?
-    var gameEngine: GameEngine?
+    var gameEngine: GameEngine
 
+    init(gameEngine: GameEngine) {
+        self.gameEngine = gameEngine
+    }
+    
     func start() {
         self.displayLink = createDisplayLink()
     }
@@ -29,10 +33,7 @@ class GameLoop {
     }
 
     @objc func step(displaylink: CADisplayLink) {
-        if gameEngine == nil {
-            return
-        }
         let timeInterval = displaylink.targetTimestamp - displaylink.timestamp
-        gameEngine?.update(deltaTime: timeInterval)
+        gameEngine.update(deltaTime: timeInterval)
     }
 }
