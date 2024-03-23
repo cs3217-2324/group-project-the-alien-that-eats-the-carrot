@@ -50,7 +50,7 @@ final class RectangleCollider: Collider {
                                        pointB: CGPoint(x: otherCollider.center.x + overlapX / 2, y: otherCollider.center.y))
             }
         } else {
-            return CollisionPoints(hasCollision: false, pointA: nil, pointB: nil)
+            return CollisionPoints(hasCollision: false, pointA: CGPoint(), pointB: CGPoint())
         }
     }
 }
