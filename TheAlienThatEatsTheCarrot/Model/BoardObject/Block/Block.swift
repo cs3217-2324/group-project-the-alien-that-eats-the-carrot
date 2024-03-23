@@ -12,17 +12,17 @@ class Block: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
-    static let DEFAULT_BLOCK_WIDTH: CGFloat = 50.0
-    static let DEFAULT_BLOCK_HEIGHT: CGFloat = 50.0
+    var blockType: BlockType
     var type: ObjectType {
-        .block(.normal)
+        .block(self.blockType)
     }
 
-    init(imageName: String, position: CGPoint = .zero, width: CGFloat = Block.DEFAULT_BLOCK_WIDTH, height: CGFloat = Block.DEFAULT_BLOCK_HEIGHT) {
-        self.imageName = imageName
+    init(blockType: BlockType, position: CGPoint = .zero) {
+        self.blockType = blockType
         self.position = position
-        self.width = width
-        self.height = height
+        self.imageName = blockType.assetName
+        self.width = blockType.width
+        self.height = blockType.height
     }
 
     func move(to newPosition: CGPoint) {
