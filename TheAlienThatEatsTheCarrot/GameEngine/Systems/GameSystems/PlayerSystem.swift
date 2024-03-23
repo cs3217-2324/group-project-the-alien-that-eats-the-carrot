@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ControllableSystem: System {
+class PlayerSystem: System {
     var nexus: Nexus
 
     init(nexus: Nexus) {
@@ -15,14 +15,14 @@ class ControllableSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        let comtrollableComponents = nexus.getComponents(of: ControllableComponent.self)
-        for controllable in comtrollableComponents {
-            applyPhysicsBasedOnControlAction(for: controllable)
+        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+        for player in playerComponents {
+            applyPhysicsBasedOnControlAction(for: player)
         }
     }
 
-    private func applyPhysicsBasedOnControlAction(for controllable: ControllableComponent) {
-        switch controllable.action {
+    private func applyPhysicsBasedOnControlAction(for player: PlayerComponent) {
+        switch player.action {
         case .idle:
             print("Do nothing")
         case .jump:
