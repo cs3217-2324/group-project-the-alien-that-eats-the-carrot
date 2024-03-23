@@ -43,6 +43,27 @@
 		0A76A49E2BAC78B40067BD6E /* Collider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FB2BAAD71B002E75FB /* Collider.swift */; };
 		0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FC2BAAD71B002E75FB /* Collision.swift */; };
 		0A76A4A02BAC7E270067BD6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57F12BAAD71B002E75FB /* Main.storyboard */; };
+		0A76A4A22BAD222A0067BD6E /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A12BAD222A0067BD6E /* EntityFactory.swift */; };
+		0A76A4A52BAD22C50067BD6E /* EnemyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A42BAD22C50067BD6E /* EnemyFactory.swift */; };
+		0A76A4A72BAD28EB0067BD6E /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A62BAD28EB0067BD6E /* BlockFactory.swift */; };
+		0A76A4A92BAD29310067BD6E /* BlockComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A82BAD29310067BD6E /* BlockComponent.swift */; };
+		0A76A4AB2BAD294D0067BD6E /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4AA2BAD294D0067BD6E /* EnemyComponent.swift */; };
+		0A76A4AD2BAD29580067BD6E /* CollectableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4AC2BAD29580067BD6E /* CollectableComponent.swift */; };
+		0A76A4AF2BAD29760067BD6E /* PowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4AE2BAD29760067BD6E /* PowerupComponent.swift */; };
+		0A76A4B12BAD54C60067BD6E /* GameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4B02BAD54C60067BD6E /* GameRenderer.swift */; };
+		0A76A4B82BAD60F90067BD6E /* IsInPlayerABufferComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4B72BAD60F90067BD6E /* IsInPlayerABufferComponent.swift */; };
+		0A76A4BA2BAD61120067BD6E /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4B92BAD61120067BD6E /* CameraComponent.swift */; };
+		0A76A4BC2BAD61270067BD6E /* IsInPlayerBBufferComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4BB2BAD61270067BD6E /* IsInPlayerBBufferComponent.swift */; };
+		0A76A4BE2BAD61F70067BD6E /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4BD2BAD61F70067BD6E /* GameConstants.swift */; };
+		0A76A4C02BAD63010067BD6E /* IsInPlayerACameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4BF2BAD63010067BD6E /* IsInPlayerACameraComponent.swift */; };
+		0A76A4C22BAD631E0067BD6E /* IsInPlayerBCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C12BAD631E0067BD6E /* IsInPlayerBCameraComponent.swift */; };
+		0A76A4C42BAE81BD0067BD6E /* CameraSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C32BAE81BD0067BD6E /* CameraSystem.swift */; };
+		0A76A4C62BAE82EE0067BD6E /* PlayerAComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C52BAE82EE0067BD6E /* PlayerAComponent.swift */; };
+		0A76A4C82BAE82F80067BD6E /* PlayerBComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C72BAE82F80067BD6E /* PlayerBComponent.swift */; };
+		0A76A4CA2BAEBD2C0067BD6E /* GameStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */; };
+		0A76A4CE2BAEC4D00067BD6E /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4CD2BAEC4D00067BD6E /* PlayerSystem.swift */; };
+		0A76A4D02BAF0C410067BD6E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4CF2BAF0C410067BD6E /* Player.swift */; };
+		0A76A4D22BAF23900067BD6E /* PhysicsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4D12BAF23900067BD6E /* PhysicsComponent.swift */; };
 		9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */; };
 		9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */; };
 		9F8C58A32BAE78C9002E75FB /* FromDataAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */; };
@@ -68,26 +89,6 @@
 		9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */; };
 		9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */; };
 		9F8C58D62BAF0BA0002E75FB /* Level+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */; };
-		0A76A4A22BAD222A0067BD6E /* EntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A12BAD222A0067BD6E /* EntityFactory.swift */; };
-		0A76A4A52BAD22C50067BD6E /* EnemyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A42BAD22C50067BD6E /* EnemyFactory.swift */; };
-		0A76A4A72BAD28EB0067BD6E /* BlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A62BAD28EB0067BD6E /* BlockFactory.swift */; };
-		0A76A4A92BAD29310067BD6E /* BlockComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4A82BAD29310067BD6E /* BlockComponent.swift */; };
-		0A76A4AB2BAD294D0067BD6E /* EnemyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4AA2BAD294D0067BD6E /* EnemyComponent.swift */; };
-		0A76A4AD2BAD29580067BD6E /* CollectableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4AC2BAD29580067BD6E /* CollectableComponent.swift */; };
-		0A76A4AF2BAD29760067BD6E /* PowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4AE2BAD29760067BD6E /* PowerupComponent.swift */; };
-		0A76A4B12BAD54C60067BD6E /* GameRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4B02BAD54C60067BD6E /* GameRenderer.swift */; };
-		0A76A4B82BAD60F90067BD6E /* IsInPlayerABufferComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4B72BAD60F90067BD6E /* IsInPlayerABufferComponent.swift */; };
-		0A76A4BA2BAD61120067BD6E /* CameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4B92BAD61120067BD6E /* CameraComponent.swift */; };
-		0A76A4BC2BAD61270067BD6E /* IsInPlayerBBufferComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4BB2BAD61270067BD6E /* IsInPlayerBBufferComponent.swift */; };
-		0A76A4BE2BAD61F70067BD6E /* GameConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4BD2BAD61F70067BD6E /* GameConstants.swift */; };
-		0A76A4C02BAD63010067BD6E /* IsInPlayerACameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4BF2BAD63010067BD6E /* IsInPlayerACameraComponent.swift */; };
-		0A76A4C22BAD631E0067BD6E /* IsInPlayerBCameraComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C12BAD631E0067BD6E /* IsInPlayerBCameraComponent.swift */; };
-		0A76A4C42BAE81BD0067BD6E /* CameraSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C32BAE81BD0067BD6E /* CameraSystem.swift */; };
-		0A76A4C62BAE82EE0067BD6E /* PlayerAComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C52BAE82EE0067BD6E /* PlayerAComponent.swift */; };
-		0A76A4C82BAE82F80067BD6E /* PlayerBComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C72BAE82F80067BD6E /* PlayerBComponent.swift */; };
-		0A76A4CA2BAEBD2C0067BD6E /* GameStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */; };
-		0A76A4CE2BAEC4D00067BD6E /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4CD2BAEC4D00067BD6E /* PlayerSystem.swift */; };
-		0A76A4D02BAF0C410067BD6E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4CF2BAF0C410067BD6E /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateComponent.swift; sourceTree = "<group>"; };
 		0A76A4CD2BAEC4D00067BD6E /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
 		0A76A4CF2BAF0C410067BD6E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		0A76A4D12BAF23900067BD6E /* PhysicsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsComponent.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 				9F8C58062BAAD71B002E75FB /* DestroyableComponent.swift */,
 				9F8C58072BAAD71B002E75FB /* PlayerComponent.swift */,
 				0A76A4B92BAD61120067BD6E /* CameraComponent.swift */,
+				0A76A4D12BAF23900067BD6E /* PhysicsComponent.swift */,
 				0A76A4A82BAD29310067BD6E /* BlockComponent.swift */,
 				0A76A4AA2BAD294D0067BD6E /* EnemyComponent.swift */,
 				0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */,
@@ -376,7 +379,6 @@
 		9F8C58132BAAD71B002E75FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9F8C58142BAAD71B002E75FB /* Utilities */,
 				9F8C58182BAAD71B002E75FB /* BoardObject */,
 				9F8C58C42BAEBAA3002E75FB /* Level.swift */,
 			);
@@ -619,11 +621,8 @@
 				9F8C58C52BAEBAA3002E75FB /* Level.swift in Sources */,
 				0A76A4952BAC78840067BD6E /* AppDelegate.swift in Sources */,
 				0A76A4862BAC78720067BD6E /* BoardObject.swift in Sources */,
-				0A76A48E2BAC787D0067BD6E /* PowerupBlock.swift in Sources */,
 				0A76A4BC2BAD61270067BD6E /* IsInPlayerBBufferComponent.swift in Sources */,
 				0A76A4BE2BAD61F70067BD6E /* GameConstants.swift in Sources */,
-				0A76A4902BAC787D0067BD6E /* PushableBlock.swift in Sources */,
-				0A76A4882BAC78780067BD6E /* AttackPowerup.swift in Sources */,
 				0A76A47C2BAC78680067BD6E /* Character.swift in Sources */,
 				9F8C58B32BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift in Sources */,
 				0A76A46E2BAC783D0067BD6E /* Shape.swift in Sources */,
@@ -633,6 +632,7 @@
 				0A76A4772BAC78590067BD6E /* Nexus.swift in Sources */,
 				0A76A46F2BAC78400067BD6E /* PhysicsBody.swift in Sources */,
 				0A76A4682BAC78200067BD6E /* GameLoop.swift in Sources */,
+				0A76A4D22BAF23900067BD6E /* PhysicsComponent.swift in Sources */,
 				9F8C58C12BAEB4EB002E75FB /* Powerup+extensions.swift in Sources */,
 				9F8C58BB2BAEAEDF002E75FB /* Block+extensions.swift in Sources */,
 				0A76A4762BAC78570067BD6E /* Nexus+Extensions.swift in Sources */,
@@ -653,7 +653,6 @@
 				0A76A4702BAC78430067BD6E /* Direction.swift in Sources */,
 				0A76A4C62BAE82EE0067BD6E /* PlayerAComponent.swift in Sources */,
 				0A76A4732BAC784E0067BD6E /* MovementSystem.swift in Sources */,
-				0A76A4782BAC78600067BD6E /* CGVector+extension.swift in Sources */,
 				0A76A4AF2BAD29760067BD6E /* PowerupComponent.swift in Sources */,
 				0A76A4CA2BAEBD2C0067BD6E /* GameStateComponent.swift in Sources */,
 			);
