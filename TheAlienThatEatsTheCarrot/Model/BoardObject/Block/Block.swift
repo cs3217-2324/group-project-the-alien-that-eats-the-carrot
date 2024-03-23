@@ -37,7 +37,7 @@ final class Block: BoardObject {
         lhs === rhs
     }
 
-    public func hash(into hasher: inout Hasher) {
+    func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
     }
 }

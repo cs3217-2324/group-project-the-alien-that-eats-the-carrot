@@ -28,36 +28,35 @@ struct BoardObjectSet {
 
     mutating func add(boardObject: any BoardObject) {
         // TODO: check overlap
-        switch boardObject {
-        case is Block:
-            blocks.insert(boardObject as! Block)
-        case is Collectable:
-            collectables.insert(boardObject as! Collectable)
-        case is Enemy:
-            enemies.insert(boardObject as! Enemy)
-        case is Powerup:
-            powerups.insert(boardObject as! Powerup)
-        default:
-            return
+        if let block = boardObject as? Block {
+            blocks.insert(block)
+        }
+        if let collectable = boardObject as? Collectable {
+            collectables.insert(collectable)
+        }
+        if let enemy = boardObject as? Enemy {
+            enemies.insert(enemy)
+        }
+        if let powerup = boardObject as? Powerup {
+            powerups.insert(powerup)
         }
     }
 
     mutating func remove(boardObject: any BoardObject) {
-        switch boardObject {
-        case is Block:
-            blocks.remove(boardObject as! Block)
-        case is Collectable:
-            collectables.remove(boardObject as! Collectable)
-        case is Enemy:
-            enemies.remove(boardObject as! Enemy)
-        case is Powerup:
-            powerups.remove(boardObject as! Powerup)
-        default:
-            return
+        if let block = boardObject as? Block {
+            blocks.remove(block)
+        }
+        if let collectable = boardObject as? Collectable {
+            collectables.remove(collectable)
+        }
+        if let enemy = boardObject as? Enemy {
+            enemies.remove(enemy)
+        }
+        if let powerup = boardObject as? Powerup {
+            powerups.remove(powerup)
         }
     }
 
     mutating func scale(from prevArea: CGRect, to newArea: CGRect) {
-        
     }
 }
