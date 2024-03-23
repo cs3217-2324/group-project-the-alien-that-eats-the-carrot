@@ -34,7 +34,7 @@ class MovementSystem: System {
         )
 
         renderableComponent.position = newPosition
-        handleMovementPattern(movable, newPosition: newPosition)
+        handleMovementPattern(movable, newPosition: newPosition, deltaTime: deltaTime)
     }
 
     private func calculateNewPosition(currentPosition: CGPoint, velocity: CGVector, deltaTime: CGFloat) -> CGPoint {
@@ -46,8 +46,8 @@ class MovementSystem: System {
         )
     }
 
-    private func handleMovementPattern(_ movable: MovableComponent, newPosition: CGPoint) {
-        movable.distanceMoved += movable.velocity.magnitude
+    private func handleMovementPattern(_ movable: MovableComponent, newPosition: CGPoint, deltaTime: CGFloat) {
+        movable.distanceMoved += movable.velocity.magnitude * deltaTime
 
         if movable.distanceMoved >= movable.totalDistanceToMoveBeforeChange {
             switch movable.movementPattern {

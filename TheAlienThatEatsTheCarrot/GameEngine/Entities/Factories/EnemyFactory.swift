@@ -25,7 +25,8 @@ class NormalEnemyFactory: EnemyFactory {
     override func createComponents() -> [Component] {
         let enemyComponent = EnemyComponent(entity: entity)
         let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position)
+        let movableComponent = MovableComponent(entity: entity, velocity: CGVector(dx: 50.0, dy: 0), movementPattern: .leftRight)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        return [enemyComponent, renderableComponent, destroyableComponent]
+        return [enemyComponent, renderableComponent, movableComponent, destroyableComponent]
     }
 }

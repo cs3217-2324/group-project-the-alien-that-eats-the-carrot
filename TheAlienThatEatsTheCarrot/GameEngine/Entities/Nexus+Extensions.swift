@@ -44,7 +44,7 @@ extension Nexus {
     private func getEnemyFactory(type: EnemyType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
-            fatalError("TODO: implement")
+            return getNormalEnemyFactory(from: entity)
         case .fast:
             fatalError("TODO: implement")
         case .stationary:
@@ -105,21 +105,18 @@ extension Nexus {
 
 extension Nexus {
     private func getNormalEnemyFactory(from entity: Entity) -> EntityFactory {
-        let entity = Entity()
         // TODO: get this from persistence
         let normalEnemyBoardObject = Enemy(enemyType: .normal)
         return NormalEnemyFactory(from: normalEnemyBoardObject, to: entity)
     }
 
     private func getNormalBlockFactory(from entity: Entity) -> EntityFactory {
-        let entity = Entity()
         // TODO: get this from persistence
         let normalBlockBoardObject = Block(blockType: .normal, containedPowerupType: nil)
         return NormalBlockFactory(from: normalBlockBoardObject, to: entity)
     }
 
     private func getGroundBlockFactory(from entity: Entity) -> EntityFactory {
-        let entity = Entity()
         // TODO: get this from persistence
         let groundBlockBoardObject = Block(blockType: .ground, containedPowerupType: nil)
         return GroundBlockFactory(from: groundBlockBoardObject, to: entity)

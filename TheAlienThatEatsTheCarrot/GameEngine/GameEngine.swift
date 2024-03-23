@@ -54,5 +54,6 @@ class GameEngine {
 
     private func initGameEntities() {
         nexus.addCharacterForPlayerA()
+        nexus.addEntity(type: .enemy(.normal))
     }
 }
