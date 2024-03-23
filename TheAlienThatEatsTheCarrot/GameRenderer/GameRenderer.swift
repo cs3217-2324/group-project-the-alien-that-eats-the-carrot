@@ -8,10 +8,4 @@
 import Foundation
 
 class GameRenderer {
-    let camera: Camera
-
-    init(camera: Camera) {
-        self.camera = camera
-    }
-
 }

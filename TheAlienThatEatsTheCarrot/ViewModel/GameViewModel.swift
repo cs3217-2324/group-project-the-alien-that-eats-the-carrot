@@ -9,7 +9,7 @@ import Foundation
 
 class GameViewModel: ObservableObject {
     let gameEngine = GameEngine()
-    let gameRenderer = GameRenderer()
+    let gameRenderer = GameLoop()
 
     func start() {
         gameRenderer.gameEngine = gameEngine
