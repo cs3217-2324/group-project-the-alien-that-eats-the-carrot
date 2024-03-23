@@ -196,39 +196,10 @@
                     <connections>
                         <outlet property="scrollView" destination="her-XH-fgC" id="eXB-HR-hIh"/>
                         <outlet property="stackView" destination="30K-eN-b9S" id="vwz-37-fE4"/>
+                        <segue destination="W3e-M2-jBc" kind="presentation" identifier="PlayLevelSegue" modalPresentationStyle="fullScreen" id="XJ7-BW-nur"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MjB-QY-dt7" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="8cT-jB-Pps">
-                    <rect key="frame" x="0.0" y="0.0" width="378" height="527"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" image="board-levelselect" translatesAutoresizingMaskIntoConstraints="NO" id="yKN-sE-0pU">
-                            <rect key="frame" x="0.0" y="0.0" width="378" height="527"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="527" id="Swq-GL-eEE"/>
-                                <constraint firstAttribute="width" constant="378" id="cjd-k4-ujy"/>
-                            </constraints>
-                        </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Level 1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WVO-8W-nkm">
-                            <rect key="frame" x="146.5" y="98" width="85" height="35"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <viewLayoutGuide key="safeArea" id="26g-v8-uhc"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="378" id="Cce-VS-JXA"/>
-                        <constraint firstAttribute="height" constant="527" id="PA6-2D-VrO"/>
-                        <constraint firstItem="WVO-8W-nkm" firstAttribute="centerX" secondItem="8cT-jB-Pps" secondAttribute="centerX" id="Zz6-gC-ihL"/>
-                        <constraint firstItem="WVO-8W-nkm" firstAttribute="top" secondItem="26g-v8-uhc" secondAttribute="top" constant="74" id="msb-0j-dwz"/>
-                        <constraint firstItem="yKN-sE-0pU" firstAttribute="bottom" secondItem="26g-v8-uhc" secondAttribute="bottom" id="t2z-0T-rlZ"/>
-                        <constraint firstItem="yKN-sE-0pU" firstAttribute="trailing" secondItem="26g-v8-uhc" secondAttribute="trailing" id="uNk-4V-ETd"/>
-                        <constraint firstItem="yKN-sE-0pU" firstAttribute="leading" secondItem="26g-v8-uhc" secondAttribute="leading" id="wLa-lX-RYW"/>
-                    </constraints>
-                </view>
             </objects>
             <point key="canvasLocation" x="742" y="9"/>
         </scene>
@@ -1373,7 +1344,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="S9Z-Cp-U5i"/>
+        <segue reference="XJ7-BW-nur"/>
+        <segue reference="uRV-qU-f8V"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background" width="230" height="125"/>

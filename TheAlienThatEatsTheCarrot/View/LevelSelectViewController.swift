@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LevelSelectViewController: UIViewController {
+class LevelSelectViewController: UIViewController, LevelViewDelegate {
     
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var stackView: UIStackView!
@@ -17,7 +17,6 @@ class LevelSelectViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Initialize the level designer with level elements
         initializeLevelDesigner()
     }
 
@@ -29,9 +28,16 @@ class LevelSelectViewController: UIViewController {
                 // Customize the level view with level name and background image
                 levelView.configure(levelName: levelName)
 
+                // Set the view controller as the delegate
+                levelView.delegate = self
+
                 // Add the level view to the horizontal stack view
                 stackView.addArrangedSubview(levelView)
             }
         }
+    }
+    
+    func playButtonTapped(for levelName: String) {
+        performSegue(withIdentifier: "PlayLevelSegue", sender: nil)
     }
 }
