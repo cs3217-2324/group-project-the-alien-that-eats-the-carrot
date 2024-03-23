@@ -12,6 +12,9 @@ class Enemy: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
+    var type: ObjectType {
+        .enemy(.normal)
+    }
 
     init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
         self.imageName = imageName

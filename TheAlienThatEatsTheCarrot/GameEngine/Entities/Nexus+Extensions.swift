@@ -30,6 +30,8 @@ extension Nexus {
             addGameCollectable(type: collectableType, for: entity)
         case .powerup(let powerupType):
             addGamePowerup(type: powerupType, for: entity)
+        case .character(let characterType):
+            addGameCharacter(type: characterType, for: entity)
         }
     }
 }
@@ -60,6 +62,8 @@ extension Nexus {
             print("TODO: implement")
         case .spike:
             print("TODO: implement")
+        case .powerup:
+            print("TODO: implement")
         }
     }
 
@@ -83,6 +87,13 @@ extension Nexus {
         case .invinsible:
             print("TODO: implement")
         case .strength:
+            print("TODO: implement")
+        }
+    }
+
+    private func addGameCharacter(type: ObjectType.CharacterType, for entity: Entity) {
+        switch type {
+        case .normal:
             print("TODO: implement")
         }
     }
