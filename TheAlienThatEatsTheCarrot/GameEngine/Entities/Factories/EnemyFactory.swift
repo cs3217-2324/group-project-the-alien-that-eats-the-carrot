@@ -8,20 +8,20 @@
 import Foundation
 
 class EnemyFactory: EntityFactory {
+    let boardObject: Enemy
+    let entity: Entity
+
+    init(from boardObject: Enemy, to entity: Entity) {
+        self.boardObject = boardObject
+        self.entity = entity
+    }
+    
     func createComponents() -> [Component] {
         return []
     }
 }
 
 class NormalEnemyFactory: EnemyFactory {
-    let boardObject: NormalEnemy
-    let entity: Entity
-
-    init(from boardObject: NormalEnemy, to entity: Entity) {
-        self.boardObject = boardObject
-        self.entity = entity
-    }
-
     override func createComponents() -> [Component] {
         let enemyComponent = EnemyComponent(entity: entity)
         let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position)
