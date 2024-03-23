@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="BlockData" representedClassName="BlockData" syncable="YES" codeGenerationType="class">
+        <relationship name="contains" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PowerupTypeData" inverseName="containedBy" inverseEntity="PowerupTypeData"/>
+        <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="blockDatas" inverseEntity="LevelData"/>
+        <relationship name="position" maxCount="1" deletionRule="Nullify" destinationEntity="CGPointData" inverseName="blockData" inverseEntity="CGPointData"/>
+        <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="BlockTypeData" inverseName="blockData" inverseEntity="BlockTypeData"/>
+    </entity>
+    <entity name="BlockTypeData" representedClassName="BlockTypeData" syncable="YES" codeGenerationType="class">
+        <attribute name="typeName" optional="YES" attributeType="String"/>
+        <relationship name="blockData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockData" inverseName="type" inverseEntity="BlockData"/>
+    </entity>
+    <entity name="CGPointData" representedClassName="CGPointData" syncable="YES" codeGenerationType="class">
+        <attribute name="x" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="blockData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockData" inverseName="position" inverseEntity="BlockData"/>
+        <relationship name="cGRectData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CGRectData" inverseName="position" inverseEntity="CGRectData"/>
+        <relationship name="collectableData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CollectableData" inverseName="position" inverseEntity="CollectableData"/>
+        <relationship name="enemyData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EnemyData" inverseName="position" inverseEntity="EnemyData"/>
+        <relationship name="powerupData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PowerupData" inverseName="position" inverseEntity="PowerupData"/>
+    </entity>
+    <entity name="CGRectData" representedClassName="CGRectData" syncable="YES" codeGenerationType="class">
+        <attribute name="height" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="width" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="areaData" inverseEntity="LevelData"/>
+        <relationship name="position" maxCount="1" deletionRule="Nullify" destinationEntity="CGPointData" inverseName="cGRectData" inverseEntity="CGPointData"/>
+    </entity>
+    <entity name="CollectableData" representedClassName="CollectableData" syncable="YES" codeGenerationType="class">
+        <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="collectableDatas" inverseEntity="LevelData"/>
+        <relationship name="position" maxCount="1" deletionRule="Nullify" destinationEntity="CGPointData" inverseName="collectableData" inverseEntity="CGPointData"/>
+        <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="CollectableTypeData" inverseName="collectableData" inverseEntity="CollectableTypeData"/>
+    </entity>
+    <entity name="CollectableTypeData" representedClassName="CollectableTypeData" syncable="YES" codeGenerationType="class">
+        <attribute name="typeName" optional="YES" attributeType="String"/>
+        <relationship name="collectableData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CollectableData" inverseName="type" inverseEntity="CollectableData"/>
+    </entity>
+    <entity name="EnemyData" representedClassName="EnemyData" syncable="YES" codeGenerationType="class">
+        <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="enemyDatas" inverseEntity="LevelData"/>
+        <relationship name="position" maxCount="1" deletionRule="Nullify" destinationEntity="CGPointData" inverseName="enemyData" inverseEntity="CGPointData"/>
+        <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="EnemyTypeData" inverseName="enemyData" inverseEntity="EnemyTypeData"/>
+    </entity>
+    <entity name="EnemyTypeData" representedClassName="EnemyTypeData" syncable="YES" codeGenerationType="class">
+        <attribute name="typeName" optional="YES" attributeType="String"/>
+        <relationship name="enemyData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EnemyData" inverseName="type" inverseEntity="EnemyData"/>
+    </entity>
+    <entity name="LevelData" representedClassName="LevelData" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="areaData" maxCount="1" deletionRule="Nullify" destinationEntity="CGRectData" inverseName="levelData" inverseEntity="CGRectData"/>
+        <relationship name="blockDatas" toMany="YES" deletionRule="Nullify" destinationEntity="BlockData" inverseName="levelData" inverseEntity="BlockData"/>
+        <relationship name="collectableDatas" toMany="YES" deletionRule="Nullify" destinationEntity="CollectableData" inverseName="levelData" inverseEntity="CollectableData"/>
+        <relationship name="enemyDatas" toMany="YES" deletionRule="Nullify" destinationEntity="EnemyData" inverseName="levelData" inverseEntity="EnemyData"/>
+        <relationship name="powerupDatas" toMany="YES" deletionRule="Nullify" destinationEntity="PowerupData" inverseName="levelData" inverseEntity="PowerupData"/>
+    </entity>
+    <entity name="PowerupData" representedClassName="PowerupData" syncable="YES" codeGenerationType="class">
+        <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="powerupDatas" inverseEntity="LevelData"/>
+        <relationship name="position" maxCount="1" deletionRule="Nullify" destinationEntity="CGPointData" inverseName="powerupData" inverseEntity="CGPointData"/>
+        <relationship name="type" maxCount="1" deletionRule="Nullify" destinationEntity="PowerupTypeData" inverseName="powerupData" inverseEntity="PowerupTypeData"/>
+    </entity>
+    <entity name="PowerupTypeData" representedClassName="PowerupTypeData" syncable="YES" codeGenerationType="class">
+        <attribute name="typeName" optional="YES" attributeType="String"/>
+        <relationship name="containedBy" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockData" inverseName="contains" inverseEntity="BlockData"/>
+        <relationship name="powerupData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PowerupData" inverseName="type" inverseEntity="PowerupData"/>
+    </entity>
+</model>

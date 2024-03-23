@@ -7,23 +7,35 @@
 
 import CoreGraphics
 
-class Powerup: BoardObject {
+final class Powerup: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
+    var powerupType: PowerupType
     var type: ObjectType {
-        .powerup(.attack)
+        .powerup(self.powerupType)
     }
 
-    init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
-        self.imageName = imageName
-        self.width = width
-        self.height = height
+    init(powerupType: PowerupType, position: CGPoint = .zero) {
+        self.powerupType = powerupType
         self.position = position
+        self.imageName = powerupType.assetName
+        self.width = powerupType.width
+        self.height = powerupType.height
     }
 
     func move(to newPosition: CGPoint) {
         self.position = newPosition
+    }
+}
+
+extension Powerup: Hashable {
+    public static func == (lhs: Powerup, rhs: Powerup) -> Bool {
+        lhs === rhs
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }
