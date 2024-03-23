@@ -5,4 +5,22 @@
 //  Created by Sun Xinyu on 23/3/24.
 //
 
-import Foundation
+import CoreData
+
+extension EnemyType: FromDataAble {
+  init(data: EnemyTypeData) throws {
+    guard let name = data.typeName,
+              let type = EnemyType.enemyTypeNameToTypeMap[name] else {
+            throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: data.typeName)
+        }
+        self = type
+  }
+}
+
+extension EnemyType: ToDataAble {
+    func toData(context: NSManagedObjectContext) -> NSManagedObject {
+        let enemyTypeData = EnemyTypeData(context: context)
+        enemyTypeData.typeName = EnemyType.enemyTypeToTypeNameMap[self]
+        return enemyTypeData as NSManagedObject
+    }
+}

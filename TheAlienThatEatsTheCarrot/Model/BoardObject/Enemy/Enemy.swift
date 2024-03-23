@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-class Enemy: BoardObject {
+final class Enemy: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
