@@ -10,7 +10,7 @@ import Foundation
 class ControllableComponent: Component {
     var entity: Entity
     var action: ControlAction
-    
+
     init(entity: Entity, action: ControlAction = .idle) {
         self.entity = entity
         self.action = action

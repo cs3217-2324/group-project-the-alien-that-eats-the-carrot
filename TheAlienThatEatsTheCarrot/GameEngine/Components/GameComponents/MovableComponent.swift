@@ -14,7 +14,7 @@ class MovableComponent: Component {
     var movementPattern: MovementPattern
     var totalDistanceToMoveBeforeChange: CGFloat
     var distanceMoved: CGFloat = 0
-    
+
     init(entity: Entity, velocity: CGVector, movementPattern: MovementPattern, totalDistanceToMoveBeforeChange: CGFloat = MovableComponent.DEFAULT_DISTANCE) {
         self.entity = entity
         self.velocity = velocity

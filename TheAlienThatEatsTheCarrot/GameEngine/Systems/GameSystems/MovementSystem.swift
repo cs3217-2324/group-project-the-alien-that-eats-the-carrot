@@ -20,19 +20,19 @@ class MovementSystem: System {
             updatePosition(for: movable, deltaTime: deltaTime)
         }
     }
-    
+
     private func updatePosition(for movable: MovableComponent, deltaTime: CGFloat) {
         let entity = movable.entity
         guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
             return
         }
-        
+
         let newPosition = calculateNewPosition(
             currentPosition: renderableComponent.position,
             velocity: movable.velocity,
             deltaTime: deltaTime
         )
-        
+
         renderableComponent.position = newPosition
         handleMovementPattern(movable, newPosition: newPosition)
     }
@@ -45,10 +45,10 @@ class MovementSystem: System {
             y: currentPosition.y + dy
         )
     }
-    
+
     private func handleMovementPattern(_ movable: MovableComponent, newPosition: CGPoint) {
         movable.distanceMoved += movable.velocity.magnitude
-        
+
         if movable.distanceMoved >= movable.totalDistanceToMoveBeforeChange {
             switch movable.movementPattern {
             case .leftRight:

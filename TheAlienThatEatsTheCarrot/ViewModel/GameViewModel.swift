@@ -10,7 +10,7 @@ import Foundation
 class GameViewModel: ObservableObject {
     let gameEngine = GameEngine()
     let gameLoop = GameLoop()
-    
+
     init() {
         gameLoop.gameEngine = gameEngine
     }
