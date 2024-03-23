@@ -1,5 +1,5 @@
 //
-//  PlayerACameraComponent.swift
+//  PlayerBCameraComponent.swift
 //  TheAlienThatEatsTheCarrot
 //
 //  Created by Justin Cheah Yun Fei on 22/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PlayerACameraComponent: Component {
+class CameraComponent: Component {
     var entity: Entity
     var cameraBounds: CGRect
 
