@@ -15,9 +15,8 @@ extension Nexus {
         let playerAComponent = PlayerAComponent(entity: entity)
         let cameraComponent = CameraComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        let controllableComponent = ControllableComponent(entity: entity)
         addComponents([renderableComponent, playerComponent, playerAComponent, cameraComponent,
-                       destroyableComponent, controllableComponent], to: entity)
+                       destroyableComponent], to: entity)
     }
 
     /// Factory to create entities
