@@ -67,6 +67,7 @@
 		9F8C58D02BAECC28002E75FB /* CGFloat+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */; };
 		9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */; };
 		9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */; };
+		9F8C58D62BAF0BA0002E75FB /* Level+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardObjectSet.swift; sourceTree = "<group>"; };
+		9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +388,7 @@
 				9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */,
 				9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */,
 				9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */,
+				9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				9F8C58BF2BAEB248002E75FB /* Collectable+extensions.swift in Sources */,
 				9F8C58CC2BAECBBE002E75FB /* CGPoint+extensions.swift in Sources */,
 				0A76A46C2BAC782F0067BD6E /* ViewController.swift in Sources */,
+				9F8C58D62BAF0BA0002E75FB /* Level+extensions.swift in Sources */,
 				9F8C58B52BAEAB7B002E75FB /* CollectableType+extensions.swift in Sources */,
 				0A76A4872BAC78780067BD6E /* ObjectType.swift in Sources */,
 				9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */,
