@@ -65,6 +65,9 @@
 		0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FC2BAAD71B002E75FB /* Collision.swift */; };
 		0A76A4A02BAC7E270067BD6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57F12BAAD71B002E75FB /* Main.storyboard */; };
 		9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */; };
+		9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */; };
+		9F8C58A32BAE78C9002E75FB /* FromDataAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */; };
+		9F8C58A52BAE79A2002E75FB /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A42BAE79A2002E75FB /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +133,9 @@
 		9F8C583A2BAAD71B002E75FB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F8C583B2BAAD71B002E75FB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9F8C589D2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheAlienThatEastsTheCarrot.xcdatamodel; sourceTree = "<group>"; };
+		9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDataAble.swift; sourceTree = "<group>"; };
+		9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FromDataAble.swift; sourceTree = "<group>"; };
+		9F8C58A42BAE79A2002E75FB /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +168,7 @@
 		9F8C57E92BAAD71B002E75FB /* TheAlienThatEatsTheCarrot */ = {
 			isa = PBXGroup;
 			children = (
+				9F8C589F2BAE788D002E75FB /* Persistence */,
 				9F8C57EA2BAAD71B002E75FB /* ViewModel */,
 				9F8C57ED2BAAD71B002E75FB /* ViewController.swift */,
 				9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */,
@@ -387,6 +394,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		9F8C589F2BAE788D002E75FB /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */,
+				9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */,
+				9F8C58A42BAE79A2002E75FB /* CoreDataManager.swift */,
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -484,6 +501,7 @@
 				0A76A4792BAC78600067BD6E /* CGPoint+extensions.swift in Sources */,
 				0A76A47A2BAC78600067BD6E /* CGFloat+extension.swift in Sources */,
 				0A76A4872BAC78780067BD6E /* ObjectType.swift in Sources */,
+				9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
 				0A76A4742BAC78510067BD6E /* System.swift in Sources */,
@@ -495,6 +513,7 @@
 				0A76A46B2BAC782B0067BD6E /* GameViewModel.swift in Sources */,
 				0A76A4992BAC78960067BD6E /* PositionalComponent.swift in Sources */,
 				0A76A47E2BAC786D0067BD6E /* StationaryEnemy.swift in Sources */,
+				9F8C58A52BAE79A2002E75FB /* CoreDataManager.swift in Sources */,
 				0A76A49B2BAC78B40067BD6E /* CircleCollider.swift in Sources */,
 				0A76A4722BAC78490067BD6E /* Component.swift in Sources */,
 				0A76A4892BAC78780067BD6E /* StrengthPowerup.swift in Sources */,
@@ -529,6 +548,7 @@
 				0A76A4812BAC786D0067BD6E /* NormalEnemy.swift in Sources */,
 				0A76A4972BAC78960067BD6E /* MovableComponent.swift in Sources */,
 				0A76A49E2BAC78B40067BD6E /* Collider.swift in Sources */,
+				9F8C58A32BAE78C9002E75FB /* FromDataAble.swift in Sources */,
 				0A76A4822BAC78720067BD6E /* Carrot.swift in Sources */,
 				0A76A47F2BAC786D0067BD6E /* Enemy.swift in Sources */,
 				0A76A4982BAC78960067BD6E /* PlayerComponent.swift in Sources */,
