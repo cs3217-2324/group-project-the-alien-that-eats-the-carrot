@@ -56,7 +56,7 @@
 		0A76A4962BAC78870067BD6E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C583B2BAAD71B002E75FB /* SceneDelegate.swift */; };
 		0A76A4972BAC78960067BD6E /* MovableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58092BAAD71B002E75FB /* MovableComponent.swift */; };
 		0A76A4982BAC78960067BD6E /* PlayerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58072BAAD71B002E75FB /* PlayerComponent.swift */; };
-		0A76A4992BAC78960067BD6E /* PositionalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58082BAAD71B002E75FB /* PositionalComponent.swift */; };
+		0A76A4992BAC78960067BD6E /* RenderableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58082BAAD71B002E75FB /* RenderableComponent.swift */; };
 		0A76A49A2BAC78960067BD6E /* DestroyableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58062BAAD71B002E75FB /* DestroyableComponent.swift */; };
 		0A76A49B2BAC78B40067BD6E /* CircleCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FD2BAAD71B002E75FB /* CircleCollider.swift */; };
 		0A76A49C2BAC78B40067BD6E /* RectangleCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FA2BAAD71B002E75FB /* RectangleCollider.swift */; };
@@ -124,7 +124,7 @@
 		9F8C58042BAAD71B002E75FB /* ComponentIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComponentIdentifier.swift; sourceTree = "<group>"; };
 		9F8C58062BAAD71B002E75FB /* DestroyableComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DestroyableComponent.swift; sourceTree = "<group>"; };
 		9F8C58072BAAD71B002E75FB /* PlayerComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerComponent.swift; sourceTree = "<group>"; };
-		9F8C58082BAAD71B002E75FB /* PositionalComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionalComponent.swift; sourceTree = "<group>"; };
+		9F8C58082BAAD71B002E75FB /* RenderableComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderableComponent.swift; sourceTree = "<group>"; };
 		9F8C58092BAAD71B002E75FB /* MovableComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovableComponent.swift; sourceTree = "<group>"; };
 		9F8C580A2BAAD71B002E75FB /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
 		9F8C580D2BAAD71B002E75FB /* MovementSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovementSystem.swift; sourceTree = "<group>"; };
@@ -318,7 +318,7 @@
 				0A76A4A82BAD29310067BD6E /* BlockComponent.swift */,
 				0A76A4AA2BAD294D0067BD6E /* EnemyComponent.swift */,
 				0A76A4AC2BAD29580067BD6E /* CollectableComponent.swift */,
-				9F8C58082BAAD71B002E75FB /* PositionalComponent.swift */,
+				9F8C58082BAAD71B002E75FB /* RenderableComponent.swift */,
 				0A76A4AE2BAD29760067BD6E /* PowerupComponent.swift */,
 				9F8C58092BAAD71B002E75FB /* MovableComponent.swift */,
 			);
@@ -563,7 +563,7 @@
 				0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */,
 				0A76A4842BAC78720067BD6E /* Collectable.swift in Sources */,
 				0A76A46B2BAC782B0067BD6E /* GameViewModel.swift in Sources */,
-				0A76A4992BAC78960067BD6E /* PositionalComponent.swift in Sources */,
+				0A76A4992BAC78960067BD6E /* RenderableComponent.swift in Sources */,
 				0A76A4AB2BAD294D0067BD6E /* EnemyComponent.swift in Sources */,
 				0A76A47E2BAC786D0067BD6E /* StationaryEnemy.swift in Sources */,
 				0A76A49B2BAC78B40067BD6E /* CircleCollider.swift in Sources */,

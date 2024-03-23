@@ -24,8 +24,8 @@ class NormalBlockFactory: BlockFactory {
 
     override func createComponents() -> [Component] {
         let blockComponent = BlockComponent(entity: entity)
-        let positionalComponent = PositionalComponent(entity: entity, position: boardObject.position)
-        return [blockComponent, positionalComponent]
+        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position)
+        return [blockComponent, renderableComponent]
     }
 }
 
@@ -40,7 +40,7 @@ class GroundBlockFactory: BlockFactory {
 
     override func createComponents() -> [Component] {
         let blockComponent = BlockComponent(entity: entity)
-        let positionalComponent = PositionalComponent(entity: entity, position: boardObject.position)
-        return [blockComponent, positionalComponent]
+        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position)
+        return [blockComponent, renderableComponent]
     }
 }

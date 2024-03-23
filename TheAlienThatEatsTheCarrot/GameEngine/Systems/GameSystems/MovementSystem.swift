@@ -18,17 +18,17 @@ class MovementSystem: System {
         let movableComponents = nexus.getComponents(of: MovableComponent.self)
         for movableComponent in movableComponents {
             let entity = movableComponent.entity
-            guard let positionalComponent = nexus.getComponent(of: PositionalComponent.self, for: entity) else {
+            guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
                 return
             }
             let newPosition = calculateNewPosition(
-                currentPosition: positionalComponent.position,
+                currentPosition: renderableComponent.position,
                 direction: movableComponent.direction,
                 velocity: movableComponent.velocity,
                 deltaTime: deltaTime
             )
 
-            positionalComponent.position = newPosition
+            renderableComponent.position = newPosition
         }
     }
 

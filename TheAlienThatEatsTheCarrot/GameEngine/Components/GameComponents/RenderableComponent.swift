@@ -1,5 +1,5 @@
 //
-//  PositionalComponent.swift
+//  renderableComponent.swift
 //  TheAlienThatEatsTheCarrot
 //
 //  Created by Justin Cheah Yun Fei on 15/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PositionalComponent: Component {
+class RenderableComponent: Component {
     var entity: Entity
     var position: CGPoint
 
