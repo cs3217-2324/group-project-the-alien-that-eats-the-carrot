@@ -28,7 +28,9 @@ final class Collectable: BoardObject {
     func move(to newPosition: CGPoint) {
         self.position = newPosition
     }
+}
 
+extension Collectable: Hashable {
     public static func == (lhs: Collectable, rhs: Collectable) -> Bool {
         lhs === rhs
     }

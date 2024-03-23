@@ -8,7 +8,7 @@
 import CoreGraphics
 
 // TODO: merged to GameObject in Component of ECS
-protocol BoardObject: AnyObject & Hashable {
+protocol BoardObject: AnyObject {
     var position: CGPoint { get set }
     var width: CGFloat { get set }
     var height: CGFloat { get set }
@@ -17,13 +17,4 @@ protocol BoardObject: AnyObject & Hashable {
 
     // TODO: remove when ECS is implemented
     func move(to newPosition: CGPoint)
-    func hash(into hasher: inout Hasher)
-}
-
-extension BoardObject {
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.position)
-        hasher.combine(self.width)
-        hasher.combine(self.height)
-    }
 }

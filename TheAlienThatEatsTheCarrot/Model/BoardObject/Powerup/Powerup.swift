@@ -28,7 +28,9 @@ final class Powerup: BoardObject {
     func move(to newPosition: CGPoint) {
         self.position = newPosition
     }
+}
 
+extension Powerup: Hashable {
     public static func == (lhs: Powerup, rhs: Powerup) -> Bool {
         lhs === rhs
     }

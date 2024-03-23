@@ -28,7 +28,9 @@ final class Enemy: BoardObject {
     func move(to newPosition: CGPoint) {
         self.position = newPosition
     }
+}
 
+extension Enemy: Hashable {
     public static func == (lhs: Enemy, rhs: Enemy) -> Bool {
         lhs === rhs
     }
