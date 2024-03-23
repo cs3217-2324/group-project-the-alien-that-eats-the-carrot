@@ -12,28 +12,28 @@ public enum BlockType {
 
     static let blockTypeToAssetNameMap = [normal: "",
                                           ground: "",
-                                           spike: "",
-                                       breakable: "",
-                                        pushable: "",
-                                         powerup: ""]
+                                          spike: "",
+                                          breakable: "",
+                                          pushable: "",
+                                          powerup: ""]
     static let blockTypeToTypeNameMap = [normal: "normal",
                                          ground: "ground",
-                                          spike: "spike",
-                                      breakable: "breakable",
-                                      pushable: "pushable",
-                                      powerup: "powerup"]
+                                         spike: "spike",
+                                         breakable: "breakable",
+                                         pushable: "pushable",
+                                         powerup: "powerup"]
     static let blockTypeNameToTypeMap = ["normal": normal,
                                          "ground": ground,
-                                          "spike": spike,
-                                      "breakable": breakable,
-                                       "pushable": pushable,
-                                        "powerup": powerup]
+                                         "spike": spike,
+                                         "breakable": breakable,
+                                         "pushable": pushable,
+                                         "powerup": powerup]
     static let blockTypeToSizeMap = [normal: CGSize(width: 50, height: 50),
-                                    ground: CGSize(width: 50, height: 50),
+                                     ground: CGSize(width: 50, height: 50),
                                      spike: CGSize(width: 50, height: 50),
-                                 breakable: CGSize(width: 50, height: 50),
-                                  pushable: CGSize(width: 50, height: 50),
-                                   powerup: CGSize(width: 50, height: 50)]
+                                     breakable: CGSize(width: 50, height: 50),
+                                     pushable: CGSize(width: 50, height: 50),
+                                     powerup: CGSize(width: 50, height: 50)]
 
     var assetName: String? {
         BlockType.blockTypeToAssetNameMap[self]

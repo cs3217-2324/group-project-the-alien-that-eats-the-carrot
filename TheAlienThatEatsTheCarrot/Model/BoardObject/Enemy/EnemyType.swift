@@ -14,28 +14,28 @@ public enum EnemyType {
          turret
 
     static let enemyTypeToAssetNameMap = [normal: "",
-                                            fast: "",
-                                      stationary: "",
+                                          fast: "",
+                                          stationary: "",
                                           turret: ""]
-    
+
     static let enemyTypeToTypeNameMap = [normal: "normal",
-                                           fast: "fast",
-                                     stationary: "stationary",
+                                         fast: "fast",
+                                         stationary: "stationary",
                                          turret: "turret"]
-    
+
     static let enemyTypeNameToTypeMap = ["normal": normal,
                                          "fast": fast,
                                          "stationary": stationary,
                                          "turret": turret]
-    
+
     static let enemyTypeToSizeMap = [normal: CGSize(width: 50, height: 50),
-                                       fast: CGSize(width: 50, height: 50),
-                                 stationary: CGSize(width: 50, height: 50),
+                                     fast: CGSize(width: 50, height: 50),
+                                     stationary: CGSize(width: 50, height: 50),
                                      turret: CGSize(width: 50, height: 50)]
     var assetName: String? {
         EnemyType.enemyTypeToAssetNameMap[self]
     }
-    
+
     var width: CGFloat {
         EnemyType.enemyTypeToSizeMap[self]!.width
     }
