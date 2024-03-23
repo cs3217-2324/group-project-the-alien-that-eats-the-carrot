@@ -31,6 +31,6 @@ class GameEngine {
     }
 
     private func initGameEntities() {
-        nexus.addCharacter()
+        nexus.addCharacterForPlayerA()
     }
 }
