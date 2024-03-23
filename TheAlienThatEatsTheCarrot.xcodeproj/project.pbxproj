@@ -83,6 +83,7 @@
 		0A76A4C82BAE82F80067BD6E /* PlayerBComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C72BAE82F80067BD6E /* PlayerBComponent.swift */; };
 		0A76A4CA2BAEBD2C0067BD6E /* GameStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */; };
 		0A76A4CE2BAEC4D00067BD6E /* PlayerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4CD2BAEC4D00067BD6E /* PlayerSystem.swift */; };
+		0A76A4D02BAF0C410067BD6E /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4CF2BAF0C410067BD6E /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +106,7 @@
 		0A76A4C72BAE82F80067BD6E /* PlayerBComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBComponent.swift; sourceTree = "<group>"; };
 		0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateComponent.swift; sourceTree = "<group>"; };
 		0A76A4CD2BAEC4D00067BD6E /* PlayerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerSystem.swift; sourceTree = "<group>"; };
+		0A76A4CF2BAF0C410067BD6E /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				9F8C58022BAAD71B002E75FB /* Direction.swift */,
+				0A76A4CF2BAF0C410067BD6E /* Player.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -564,6 +567,7 @@
 				0A76A4832BAC78720067BD6E /* Coin.swift in Sources */,
 				0A76A46D2BAC783B0067BD6E /* PhysicsConstants.swift in Sources */,
 				0A76A4942BAC78840067BD6E /* Sample.swift in Sources */,
+				0A76A4D02BAF0C410067BD6E /* Player.swift in Sources */,
 				0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */,
 				0A76A4842BAC78720067BD6E /* Collectable.swift in Sources */,
 				0A76A46B2BAC782B0067BD6E /* GameViewModel.swift in Sources */,
