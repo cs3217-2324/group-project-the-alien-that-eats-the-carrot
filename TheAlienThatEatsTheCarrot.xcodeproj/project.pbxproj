@@ -272,8 +272,8 @@
 		9F8C58132BAAD71B002E75FB /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9F8C58142BAAD71B002E75FB /* Utilities */,
 				9F8C58182BAAD71B002E75FB /* BoardObject */,
+				9F8C58142BAAD71B002E75FB /* Utilities */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,13 +291,13 @@
 		9F8C58182BAAD71B002E75FB /* BoardObject */ = {
 			isa = PBXGroup;
 			children = (
-				9F8C58192BAAD71B002E75FB /* Character */,
-				9F8C581C2BAAD71B002E75FB /* Enemy */,
-				9F8C58222BAAD71B002E75FB /* Collectable */,
 				9F8C58272BAAD71B002E75FB /* BoardObject.swift */,
-				9F8C58282BAAD71B002E75FB /* Powerup */,
 				9F8C582E2BAAD71B002E75FB /* ObjectType.swift */,
 				9F8C582F2BAAD71B002E75FB /* Block */,
+				9F8C58192BAAD71B002E75FB /* Character */,
+				9F8C58222BAAD71B002E75FB /* Collectable */,
+				9F8C581C2BAAD71B002E75FB /* Enemy */,
+				9F8C58282BAAD71B002E75FB /* Powerup */,
 			);
 			path = BoardObject;
 			sourceTree = "<group>";
