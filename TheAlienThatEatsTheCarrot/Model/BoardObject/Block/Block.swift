@@ -7,19 +7,23 @@
 
 import CoreGraphics
 
-class Block: BoardObject {
+final class Block: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
     var blockType: BlockType
+    var containedPowerupType: PowerupType?
     var type: ObjectType {
         .block(self.blockType)
     }
 
-    init(blockType: BlockType, position: CGPoint = .zero) {
+    init(blockType: BlockType,
+         containedPowerupType: PowerupType?,
+         position: CGPoint = .zero) {
         self.blockType = blockType
         self.position = position
+        self.containedPowerupType = containedPowerupType
         self.imageName = blockType.assetName
         self.width = blockType.width
         self.height = blockType.height
