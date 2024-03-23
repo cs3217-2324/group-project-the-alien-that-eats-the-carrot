@@ -41,7 +41,7 @@ extension Nexus {
 }
 
 extension Nexus {
-    private func getEnemyFactory(type: ObjectType.EnemyType, from entity: Entity) -> EntityFactory {
+    private func getEnemyFactory(type: EnemyType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
             fatalError("TODO: implement")
@@ -54,7 +54,7 @@ extension Nexus {
         }
     }
 
-    private func getBlockFactory(type: ObjectType.BlockType, from entity: Entity) -> EntityFactory {
+    private func getBlockFactory(type: BlockType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
             return getNormalBlockFactory(from: entity)
@@ -71,7 +71,7 @@ extension Nexus {
         }
     }
 
-    private func getCollectableFactory(type: ObjectType.CollectableType, from entity: Entity) -> EntityFactory {
+    private func getCollectableFactory(type: CollectableType, from entity: Entity) -> EntityFactory {
         switch type {
         case .coin:
             fatalError("TODO: implement")
@@ -82,7 +82,7 @@ extension Nexus {
         }
     }
 
-    private func getPowerupFactory(type: ObjectType.PowerupType, from entity: Entity) -> EntityFactory {
+    private func getPowerupFactory(type: PowerupType, from entity: Entity) -> EntityFactory {
         switch type {
         case .attack:
             fatalError("TODO: implement")
@@ -95,7 +95,7 @@ extension Nexus {
         }
     }
 
-    private func getCharacterFactory(type: ObjectType.CharacterType, from entity: Entity) -> EntityFactory {
+    private func getCharacterFactory(type: CharacterType, from entity: Entity) -> EntityFactory {
         switch type {
         case .normal:
             fatalError("TODO: implement")

@@ -8,7 +8,7 @@
 import CoreGraphics
 
 // TODO: merged to GameObject in Component of ECS
-protocol BoardObject {
+protocol BoardObject: AnyObject {
     var position: CGPoint { get set }
     var width: CGFloat { get set }
     var height: CGFloat { get set }
