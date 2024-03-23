@@ -23,9 +23,6 @@
 		0A76A4752BAC78550067BD6E /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58102BAAD71B002E75FB /* Entity.swift */; };
 		0A76A4762BAC78570067BD6E /* Nexus+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58112BAAD71B002E75FB /* Nexus+Extensions.swift */; };
 		0A76A4772BAC78590067BD6E /* Nexus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58122BAAD71B002E75FB /* Nexus.swift */; };
-		0A76A4782BAC78600067BD6E /* CGVector+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58162BAAD71B002E75FB /* CGVector+extension.swift */; };
-		0A76A4792BAC78600067BD6E /* CGPoint+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58152BAAD71B002E75FB /* CGPoint+extensions.swift */; };
-		0A76A47A2BAC78600067BD6E /* CGFloat+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58172BAAD71B002E75FB /* CGFloat+extension.swift */; };
 		0A76A47C2BAC78680067BD6E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C581A2BAAD71B002E75FB /* Character.swift */; };
 		0A76A47F2BAC786D0067BD6E /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C581E2BAAD71B002E75FB /* Enemy.swift */; };
 		0A76A4842BAC78720067BD6E /* Collectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58252BAAD71B002E75FB /* Collectable.swift */; };
@@ -61,10 +58,14 @@
 		9F8C58B72BAEAC20002E75FB /* EnemyType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */; };
 		9F8C58B92BAEACB4002E75FB /* PowerupType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */; };
 		9F8C58BB2BAEAEDF002E75FB /* Block+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */; };
-		9F8C58BD2BAEB01A002E75FB /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58BC2BAEB01A002E75FB /* CGPoint+extension.swift */; };
 		9F8C58BF2BAEB248002E75FB /* Collectable+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */; };
 		9F8C58C12BAEB4EB002E75FB /* Powerup+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */; };
 		9F8C58C32BAEB5FD002E75FB /* Enemy+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */; };
+		9F8C58C52BAEBAA3002E75FB /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58C42BAEBAA3002E75FB /* Level.swift */; };
+		9F8C58CC2BAECBBE002E75FB /* CGPoint+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58CB2BAECBBE002E75FB /* CGPoint+extensions.swift */; };
+		9F8C58CE2BAECC07002E75FB /* CGVector+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58CD2BAECC07002E75FB /* CGVector+extensions.swift */; };
+		9F8C58D02BAECC28002E75FB /* CGFloat+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */; };
+		9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,9 +98,6 @@
 		9F8C58102BAAD71B002E75FB /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		9F8C58112BAAD71B002E75FB /* Nexus+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Nexus+Extensions.swift"; sourceTree = "<group>"; };
 		9F8C58122BAAD71B002E75FB /* Nexus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Nexus.swift; sourceTree = "<group>"; };
-		9F8C58152BAAD71B002E75FB /* CGPoint+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGPoint+extensions.swift"; sourceTree = "<group>"; };
-		9F8C58162BAAD71B002E75FB /* CGVector+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGVector+extension.swift"; sourceTree = "<group>"; };
-		9F8C58172BAAD71B002E75FB /* CGFloat+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGFloat+extension.swift"; sourceTree = "<group>"; };
 		9F8C581A2BAAD71B002E75FB /* Character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		9F8C581E2BAAD71B002E75FB /* Enemy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		9F8C58252BAAD71B002E75FB /* Collectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collectable.swift; sourceTree = "<group>"; };
@@ -126,10 +124,14 @@
 		9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnemyType+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PowerupType+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Block+extensions.swift"; sourceTree = "<group>"; };
-		9F8C58BC2BAEB01A002E75FB /* CGPoint+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
 		9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collectable+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Powerup+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enemy+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58C42BAEBAA3002E75FB /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		9F8C58CB2BAECBBE002E75FB /* CGPoint+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58CD2BAECC07002E75FB /* CGVector+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGVector+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 		9F8C57E92BAAD71B002E75FB /* TheAlienThatEatsTheCarrot */ = {
 			isa = PBXGroup;
 			children = (
+				9F8C58CA2BAECBAF002E75FB /* Utilities */,
 				9F8C589F2BAE788D002E75FB /* Persistence */,
 				9F8C57EA2BAAD71B002E75FB /* ViewModel */,
 				9F8C57ED2BAAD71B002E75FB /* ViewController.swift */,
@@ -294,19 +297,9 @@
 			isa = PBXGroup;
 			children = (
 				9F8C58182BAAD71B002E75FB /* BoardObject */,
-				9F8C58142BAAD71B002E75FB /* Utilities */,
+				9F8C58C42BAEBAA3002E75FB /* Level.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		9F8C58142BAAD71B002E75FB /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				9F8C58152BAAD71B002E75FB /* CGPoint+extensions.swift */,
-				9F8C58162BAAD71B002E75FB /* CGVector+extension.swift */,
-				9F8C58172BAAD71B002E75FB /* CGFloat+extension.swift */,
-			);
-			path = Utilities;
 			sourceTree = "<group>";
 		};
 		9F8C58182BAAD71B002E75FB /* BoardObject */ = {
@@ -390,9 +383,19 @@
 				9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */,
 				9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */,
 				9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */,
-				9F8C58BC2BAEB01A002E75FB /* CGPoint+extension.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		9F8C58CA2BAECBAF002E75FB /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				9F8C58CB2BAECBBE002E75FB /* CGPoint+extensions.swift */,
+				9F8C58CD2BAECC07002E75FB /* CGVector+extensions.swift */,
+				9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */,
+				9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,15 +491,14 @@
 			files = (
 				0A76A4712BAC78470067BD6E /* ComponentIdentifier.swift in Sources */,
 				9F8C58BF2BAEB248002E75FB /* Collectable+extensions.swift in Sources */,
+				9F8C58CC2BAECBBE002E75FB /* CGPoint+extensions.swift in Sources */,
 				0A76A46C2BAC782F0067BD6E /* ViewController.swift in Sources */,
-				9F8C58BD2BAEB01A002E75FB /* CGPoint+extension.swift in Sources */,
-				0A76A4792BAC78600067BD6E /* CGPoint+extensions.swift in Sources */,
-				0A76A47A2BAC78600067BD6E /* CGFloat+extension.swift in Sources */,
 				9F8C58B52BAEAB7B002E75FB /* CollectableType+extensions.swift in Sources */,
 				0A76A4872BAC78780067BD6E /* ObjectType.swift in Sources */,
 				9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */,
 				9F8C58C32BAEB5FD002E75FB /* Enemy+extensions.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
+				9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
 				0A76A4742BAC78510067BD6E /* System.swift in Sources */,
 				9F8C58B12BAEA8EC002E75FB /* BlockType+extensions.swift in Sources */,
@@ -516,6 +518,7 @@
 				9F8C58AB2BAEA141002E75FB /* PowerupType.swift in Sources */,
 				0A76A49A2BAC78960067BD6E /* DestroyableComponent.swift in Sources */,
 				9F8C58A72BAE9A51002E75FB /* CollectableType.swift in Sources */,
+				9F8C58C52BAEBAA3002E75FB /* Level.swift in Sources */,
 				0A76A4952BAC78840067BD6E /* AppDelegate.swift in Sources */,
 				0A76A4862BAC78720067BD6E /* BoardObject.swift in Sources */,
 				0A76A47C2BAC78680067BD6E /* Character.swift in Sources */,
@@ -532,6 +535,8 @@
 				0A76A4762BAC78570067BD6E /* Nexus+Extensions.swift in Sources */,
 				9F8C58A92BAE9D49002E75FB /* EnemyType.swift in Sources */,
 				0A76A4692BAC78250067BD6E /* GameEngine.swift in Sources */,
+				9F8C58CE2BAECC07002E75FB /* CGVector+extensions.swift in Sources */,
+				9F8C58D02BAECC28002E75FB /* CGFloat+extensions.swift in Sources */,
 				0A76A48C2BAC78780067BD6E /* Powerup.swift in Sources */,
 				0A76A49C2BAC78B40067BD6E /* RectangleCollider.swift in Sources */,
 				0A76A4962BAC78870067BD6E /* SceneDelegate.swift in Sources */,
@@ -542,7 +547,6 @@
 				0A76A4982BAC78960067BD6E /* PlayerComponent.swift in Sources */,
 				0A76A4702BAC78430067BD6E /* Direction.swift in Sources */,
 				0A76A4732BAC784E0067BD6E /* MovementSystem.swift in Sources */,
-				0A76A4782BAC78600067BD6E /* CGVector+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
