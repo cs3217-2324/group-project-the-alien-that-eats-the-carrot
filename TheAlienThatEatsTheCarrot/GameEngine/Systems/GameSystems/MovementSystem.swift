@@ -16,19 +16,25 @@ class MovementSystem: System {
 
     func update(deltaTime: CGFloat) {
         let movableComponents = nexus.getComponents(of: MovableComponent.self)
-        for movableComponent in movableComponents {
-            let entity = movableComponent.entity
-            guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
-                return
-            }
-            let newPosition = calculateNewPosition(
-                currentPosition: renderableComponent.position,
-                velocity: movableComponent.velocity,
-                deltaTime: deltaTime
-            )
-
-            renderableComponent.position = newPosition
+        for movable in movableComponents {
+            updatePosition(for: movable, deltaTime: deltaTime)
         }
+    }
+    
+    private func updatePosition(for movable: MovableComponent, deltaTime: CGFloat) {
+        let entity = movable.entity
+        guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
+            return
+        }
+        
+        let newPosition = calculateNewPosition(
+            currentPosition: renderableComponent.position,
+            velocity: movable.velocity,
+            deltaTime: deltaTime
+        )
+        
+        renderableComponent.position = newPosition
+        handleMovementPattern(movable, newPosition: newPosition)
     }
 
     private func calculateNewPosition(currentPosition: CGPoint, velocity: CGVector, deltaTime: CGFloat) -> CGPoint {
@@ -38,5 +44,20 @@ class MovementSystem: System {
             x: currentPosition.x + dx,
             y: currentPosition.y + dy
         )
+    }
+    
+    private func handleMovementPattern(_ movable: MovableComponent, newPosition: CGPoint) {
+        movable.distanceMoved += movable.velocity.magnitude
+        
+        if movable.distanceMoved >= movable.totalDistanceToMoveBeforeChange {
+            switch movable.movementPattern {
+            case .leftRight:
+                movable.velocity.dx *= -1
+            case .upDown:
+                movable.velocity.dy *= -1
+                movable.distanceMoved = 0
+            }
+            movable.distanceMoved = 0
+        }
     }
 }
