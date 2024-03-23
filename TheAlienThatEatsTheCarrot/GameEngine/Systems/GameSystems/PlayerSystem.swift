@@ -18,6 +18,7 @@ class PlayerSystem: System {
         let playerComponents = nexus.getComponents(of: PlayerComponent.self)
         for player in playerComponents {
             applyPhysicsBasedOnControlAction(for: player)
+            player.action = .idle
         }
     }
 
