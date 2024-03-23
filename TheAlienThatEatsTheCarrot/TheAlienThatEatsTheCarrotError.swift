@@ -6,3 +6,14 @@
 //
 
 import Foundation
+
+enum TheAlienThatEatsTheCarrotError: Error {
+    case invalidObjectTypeDataError(typeName: String?)
+
+    var errorMessage: String? {
+        switch self {
+        case .invalidObjectTypeDataError(let typeName):
+            return "'\(String(describing: typeName))' is an invalid block type"
+        }
+    }
+}

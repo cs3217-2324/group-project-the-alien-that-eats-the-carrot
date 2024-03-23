@@ -55,6 +55,16 @@
 		9F8C58AB2BAEA141002E75FB /* PowerupType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58AA2BAEA141002E75FB /* PowerupType.swift */; };
 		9F8C58AD2BAEA2E5002E75FB /* BlockType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58AC2BAEA2E5002E75FB /* BlockType.swift */; };
 		9F8C58AF2BAEA45D002E75FB /* CharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58AE2BAEA45D002E75FB /* CharacterType.swift */; };
+		9F8C58B12BAEA8EC002E75FB /* BlockType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58B02BAEA8EC002E75FB /* BlockType+extensions.swift */; };
+		9F8C58B32BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58B22BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift */; };
+		9F8C58B52BAEAB7B002E75FB /* CollectableType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58B42BAEAB7A002E75FB /* CollectableType+extensions.swift */; };
+		9F8C58B72BAEAC20002E75FB /* EnemyType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */; };
+		9F8C58B92BAEACB4002E75FB /* PowerupType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */; };
+		9F8C58BB2BAEAEDF002E75FB /* Block+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */; };
+		9F8C58BD2BAEB01A002E75FB /* CGPoint+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58BC2BAEB01A002E75FB /* CGPoint+extension.swift */; };
+		9F8C58BF2BAEB248002E75FB /* Collectable+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */; };
+		9F8C58C12BAEB4EB002E75FB /* Powerup+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */; };
+		9F8C58C32BAEB5FD002E75FB /* Enemy+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +120,16 @@
 		9F8C58AA2BAEA141002E75FB /* PowerupType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupType.swift; sourceTree = "<group>"; };
 		9F8C58AC2BAEA2E5002E75FB /* BlockType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockType.swift; sourceTree = "<group>"; };
 		9F8C58AE2BAEA45D002E75FB /* CharacterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterType.swift; sourceTree = "<group>"; };
+		9F8C58B02BAEA8EC002E75FB /* BlockType+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BlockType+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58B22BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TheAlienThatEatsTheCarrotError.swift; sourceTree = "<group>"; };
+		9F8C58B42BAEAB7A002E75FB /* CollectableType+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CollectableType+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EnemyType+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PowerupType+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Block+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58BC2BAEB01A002E75FB /* CGPoint+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGPoint+extension.swift"; sourceTree = "<group>"; };
+		9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collectable+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Powerup+extensions.swift"; sourceTree = "<group>"; };
+		9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enemy+extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +177,7 @@
 				9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */,
 				9F8C583A2BAAD71B002E75FB /* Info.plist */,
 				9F8C583B2BAAD71B002E75FB /* SceneDelegate.swift */,
+				9F8C58B22BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift */,
 			);
 			path = TheAlienThatEatsTheCarrot;
 			sourceTree = SOURCE_ROOT;
@@ -361,6 +382,15 @@
 				9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */,
 				9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */,
 				9F8C58A42BAE79A2002E75FB /* CoreDataManager.swift */,
+				9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */,
+				9F8C58B02BAEA8EC002E75FB /* BlockType+extensions.swift */,
+				9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */,
+				9F8C58B42BAEAB7A002E75FB /* CollectableType+extensions.swift */,
+				9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */,
+				9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */,
+				9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */,
+				9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */,
+				9F8C58BC2BAEB01A002E75FB /* CGPoint+extension.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -457,14 +487,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A76A4712BAC78470067BD6E /* ComponentIdentifier.swift in Sources */,
+				9F8C58BF2BAEB248002E75FB /* Collectable+extensions.swift in Sources */,
 				0A76A46C2BAC782F0067BD6E /* ViewController.swift in Sources */,
+				9F8C58BD2BAEB01A002E75FB /* CGPoint+extension.swift in Sources */,
 				0A76A4792BAC78600067BD6E /* CGPoint+extensions.swift in Sources */,
 				0A76A47A2BAC78600067BD6E /* CGFloat+extension.swift in Sources */,
+				9F8C58B52BAEAB7B002E75FB /* CollectableType+extensions.swift in Sources */,
 				0A76A4872BAC78780067BD6E /* ObjectType.swift in Sources */,
 				9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */,
+				9F8C58C32BAEB5FD002E75FB /* Enemy+extensions.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
 				0A76A4742BAC78510067BD6E /* System.swift in Sources */,
+				9F8C58B12BAEA8EC002E75FB /* BlockType+extensions.swift in Sources */,
 				0A76A46D2BAC783B0067BD6E /* PhysicsConstants.swift in Sources */,
 				0A76A4942BAC78840067BD6E /* Sample.swift in Sources */,
 				0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */,
@@ -473,6 +508,7 @@
 				0A76A4992BAC78960067BD6E /* PositionalComponent.swift in Sources */,
 				9F8C58A52BAE79A2002E75FB /* CoreDataManager.swift in Sources */,
 				0A76A49B2BAC78B40067BD6E /* CircleCollider.swift in Sources */,
+				9F8C58B92BAEACB4002E75FB /* PowerupType+extensions.swift in Sources */,
 				9F8C58AD2BAEA2E5002E75FB /* BlockType.swift in Sources */,
 				0A76A4722BAC78490067BD6E /* Component.swift in Sources */,
 				0A76A4912BAC787D0067BD6E /* Block.swift in Sources */,
@@ -483,12 +519,16 @@
 				0A76A4952BAC78840067BD6E /* AppDelegate.swift in Sources */,
 				0A76A4862BAC78720067BD6E /* BoardObject.swift in Sources */,
 				0A76A47C2BAC78680067BD6E /* Character.swift in Sources */,
+				9F8C58B32BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift in Sources */,
 				0A76A46E2BAC783D0067BD6E /* Shape.swift in Sources */,
 				0A76A46A2BAC78290067BD6E /* LevelDesignerViewModel.swift in Sources */,
+				9F8C58B72BAEAC20002E75FB /* EnemyType+extensions.swift in Sources */,
 				9F8C58AF2BAEA45D002E75FB /* CharacterType.swift in Sources */,
 				0A76A4772BAC78590067BD6E /* Nexus.swift in Sources */,
 				0A76A46F2BAC78400067BD6E /* PhysicsBody.swift in Sources */,
 				0A76A4682BAC78200067BD6E /* GameRenderer.swift in Sources */,
+				9F8C58C12BAEB4EB002E75FB /* Powerup+extensions.swift in Sources */,
+				9F8C58BB2BAEAEDF002E75FB /* Block+extensions.swift in Sources */,
 				0A76A4762BAC78570067BD6E /* Nexus+Extensions.swift in Sources */,
 				9F8C58A92BAE9D49002E75FB /* EnemyType.swift in Sources */,
 				0A76A4692BAC78250067BD6E /* GameEngine.swift in Sources */,

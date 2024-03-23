@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-class Collectable: BoardObject {
+final class Collectable: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat

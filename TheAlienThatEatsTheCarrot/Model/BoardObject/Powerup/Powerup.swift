@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-class Powerup: BoardObject {
+final class Powerup: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
