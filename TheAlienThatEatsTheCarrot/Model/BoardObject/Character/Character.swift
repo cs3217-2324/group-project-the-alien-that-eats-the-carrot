@@ -12,15 +12,17 @@ class Character: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
+    var characterType: CharacterType
     var type: ObjectType {
-        .character(.normal)
+        .character(self.characterType)
     }
 
-    init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
-        self.imageName = imageName
-        self.width = width
-        self.height = height
+    init(characterType: CharacterType, position: CGPoint = .zero) {
+        self.characterType = characterType
         self.position = position
+        self.imageName = characterType.assetName
+        self.width = characterType.width
+        self.height = characterType.height
     }
 
     func move(to newPosition: CGPoint) {
