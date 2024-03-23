@@ -12,15 +12,17 @@ class Powerup: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
+    var powerupType: PowerupType
     var type: ObjectType {
-        .powerup(.attack)
+        .powerup(self.powerupType)
     }
 
-    init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
-        self.imageName = imageName
-        self.width = width
-        self.height = height
+    init(powerupType: PowerupType, position: CGPoint = .zero) {
+        self.powerupType = powerupType
         self.position = position
+        self.imageName = powerupType.assetName
+        self.width = powerupType.width
+        self.height = powerupType.height
     }
 
     func move(to newPosition: CGPoint) {
