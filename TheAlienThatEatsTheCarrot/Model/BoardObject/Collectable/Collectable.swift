@@ -12,15 +12,17 @@ class Collectable: BoardObject {
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
+    var collectableType: CollectableType
     var type: ObjectType {
-        .collectable(.coin)
+        .collectable(self.collectableType)
     }
 
-    init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
-        self.imageName = imageName
-        self.width = width
-        self.height = height
+    init(collectableType: CollectableType, position: CGPoint = .zero) {
+        self.collectableType = collectableType
         self.position = position
+        self.imageName = collectableType.assetName
+        self.width = collectableType.width
+        self.height = collectableType.height
     }
 
     func move(to newPosition: CGPoint) {
