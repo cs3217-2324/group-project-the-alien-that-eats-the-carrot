@@ -107,21 +107,21 @@ extension Nexus {
     private func getNormalEnemyFactory(from entity: Entity) -> EntityFactory {
         let entity = Entity()
         // TODO: get this from persistence
-        let normalEnemyBoardObject = NormalEnemy()
+        let normalEnemyBoardObject = Enemy(enemyType: .normal)
         return NormalEnemyFactory(from: normalEnemyBoardObject, to: entity)
     }
 
     private func getNormalBlockFactory(from entity: Entity) -> EntityFactory {
         let entity = Entity()
         // TODO: get this from persistence
-        let normalBlockBoardObject = NormalBlock()
+        let normalBlockBoardObject = Block(blockType: .normal, containedPowerupType: nil)
         return NormalBlockFactory(from: normalBlockBoardObject, to: entity)
     }
 
     private func getGroundBlockFactory(from entity: Entity) -> EntityFactory {
         let entity = Entity()
         // TODO: get this from persistence
-        let groundBlockBoardObject = GroundBlock()
+        let groundBlockBoardObject = Block(blockType: .ground, containedPowerupType: nil)
         return GroundBlockFactory(from: groundBlockBoardObject, to: entity)
     }
 }
