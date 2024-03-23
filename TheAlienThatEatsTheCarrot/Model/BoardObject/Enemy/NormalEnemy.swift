@@ -12,6 +12,9 @@ class NormalEnemy: Enemy {
     static let NORMAL_ENEMY_HEIGHT: CGFloat = 50.0
     // TODO: update when adding asset
     static let imageName = ""
+    override var type: ObjectType {
+        .enemy(.normal)
+    }
 
     init(position: CGPoint = .zero, width: CGFloat = NORMAL_ENEMY_WIDTH, height: CGFloat = NORMAL_ENEMY_HEIGHT) {
         super.init(imageName: NormalEnemy.imageName, width: width, height: height, position: position)
