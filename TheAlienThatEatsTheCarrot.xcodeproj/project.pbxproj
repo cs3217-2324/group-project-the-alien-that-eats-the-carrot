@@ -81,6 +81,7 @@
 		0A76A4C42BAE81BD0067BD6E /* CameraSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C32BAE81BD0067BD6E /* CameraSystem.swift */; };
 		0A76A4C62BAE82EE0067BD6E /* PlayerAComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C52BAE82EE0067BD6E /* PlayerAComponent.swift */; };
 		0A76A4C82BAE82F80067BD6E /* PlayerBComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C72BAE82F80067BD6E /* PlayerBComponent.swift */; };
+		0A76A4CA2BAEBD2C0067BD6E /* GameStateComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		0A76A4C32BAE81BD0067BD6E /* CameraSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSystem.swift; sourceTree = "<group>"; };
 		0A76A4C52BAE82EE0067BD6E /* PlayerAComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerAComponent.swift; sourceTree = "<group>"; };
 		0A76A4C72BAE82F80067BD6E /* PlayerBComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerBComponent.swift; sourceTree = "<group>"; };
+		0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStateComponent.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				0A76A4B92BAD61120067BD6E /* CameraComponent.swift */,
 				0A76A4A82BAD29310067BD6E /* BlockComponent.swift */,
 				0A76A4AA2BAD294D0067BD6E /* EnemyComponent.swift */,
+				0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */,
 				0A76A4AC2BAD29580067BD6E /* CollectableComponent.swift */,
 				9F8C58082BAAD71B002E75FB /* RenderableComponent.swift */,
 				0A76A4AE2BAD29760067BD6E /* PowerupComponent.swift */,
@@ -615,6 +618,7 @@
 				0A76A4732BAC784E0067BD6E /* MovementSystem.swift in Sources */,
 				0A76A4782BAC78600067BD6E /* CGVector+extension.swift in Sources */,
 				0A76A4AF2BAD29760067BD6E /* PowerupComponent.swift in Sources */,
+				0A76A4CA2BAEBD2C0067BD6E /* GameStateComponent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
