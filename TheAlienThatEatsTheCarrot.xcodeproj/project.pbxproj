@@ -64,6 +64,7 @@
 		0A76A49E2BAC78B40067BD6E /* Collider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FB2BAAD71B002E75FB /* Collider.swift */; };
 		0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FC2BAAD71B002E75FB /* Collision.swift */; };
 		0A76A4A02BAC7E270067BD6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57F12BAAD71B002E75FB /* Main.storyboard */; };
+		9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +129,7 @@
 		9F8C58392BAAD71B002E75FB /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9F8C583A2BAAD71B002E75FB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9F8C583B2BAAD71B002E75FB /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9F8C589D2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TheAlienThatEastsTheCarrot.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				9F8C58132BAAD71B002E75FB /* Model */,
 				9F8C58372BAAD71B002E75FB /* View */,
 				9F8C58392BAAD71B002E75FB /* AppDelegate.swift */,
+				9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */,
 				9F8C583A2BAAD71B002E75FB /* Info.plist */,
 				9F8C583B2BAAD71B002E75FB /* SceneDelegate.swift */,
 			);
@@ -497,6 +500,7 @@
 				0A76A4892BAC78780067BD6E /* StrengthPowerup.swift in Sources */,
 				0A76A4912BAC787D0067BD6E /* Block.swift in Sources */,
 				0A76A48B2BAC78780067BD6E /* DoubleJumpPowerup.swift in Sources */,
+				9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */,
 				0A76A48D2BAC787D0067BD6E /* SpikeBlock.swift in Sources */,
 				0A76A4852BAC78720067BD6E /* Heart.swift in Sources */,
 				0A76A49A2BAC78960067BD6E /* DestroyableComponent.swift in Sources */,
@@ -758,6 +762,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9F8C589D2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodel */,
+			);
+			currentVersion = 9F8C589D2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodel */;
+			path = TheAlienThatEastsTheCarrot.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3F91A1D62B9EB7F0003D87A6 /* Project object */;
 }
