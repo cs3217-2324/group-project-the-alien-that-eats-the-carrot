@@ -12,6 +12,9 @@ struct BoardObjectSet {
     var collectables: Set<Collectable>
     var enemies: Set<Enemy>
     var powerups: Set<Powerup>
+    var allObjects: [any BoardObject] {
+        Array(blocks) + Array(collectables) + Array(enemies) + Array(powerups)
+    }
 
     init(blocks: Set<Block> = Set(),
          collectables: Set<Collectable> = Set(),
