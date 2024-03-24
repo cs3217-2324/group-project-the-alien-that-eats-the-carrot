@@ -165,6 +165,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		9F0C91AE2BAFC47F0049EB94 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */,
+				9F8C58B02BAEA8EC002E75FB /* BlockType+extensions.swift */,
+				9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */,
+				9F8C58B42BAEAB7A002E75FB /* CollectableType+extensions.swift */,
+				9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */,
+				9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */,
+				9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */,
+				9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */,
+				9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */,
+			);
+			path = extensions;
+			sourceTree = "<group>";
+		};
 		9F8C57E92BAAD71B002E75FB /* TheAlienThatEatsTheCarrot */ = {
 			isa = PBXGroup;
 			children = (
@@ -377,18 +393,10 @@
 		9F8C589F2BAE788D002E75FB /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				9F0C91AE2BAFC47F0049EB94 /* extensions */,
 				9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */,
 				9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */,
 				9F8C58A42BAE79A2002E75FB /* CoreDataManager.swift */,
-				9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */,
-				9F8C58B02BAEA8EC002E75FB /* BlockType+extensions.swift */,
-				9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */,
-				9F8C58B42BAEAB7A002E75FB /* CollectableType+extensions.swift */,
-				9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */,
-				9F8C58B62BAEAC20002E75FB /* EnemyType+extensions.swift */,
-				9F8C58C02BAEB4EB002E75FB /* Powerup+extensions.swift */,
-				9F8C58B82BAEACB4002E75FB /* PowerupType+extensions.swift */,
-				9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
