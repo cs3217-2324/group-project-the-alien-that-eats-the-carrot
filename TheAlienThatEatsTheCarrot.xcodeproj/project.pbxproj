@@ -552,7 +552,6 @@
 				3F6874AD2BAFFD52009C526D /* TerrainsViewController.swift in Sources */,
 				0A76A48A2BAC78780067BD6E /* InvinciblePowerup.swift in Sources */,
 				0A76A4792BAC78600067BD6E /* CGPoint+extensions.swift in Sources */,
-				0A76A47A2BAC78600067BD6E /* CGFloat+extension.swift in Sources */,
 				9F8C58BF2BAEB248002E75FB /* Collectable+extensions.swift in Sources */,
 				9F8C58CC2BAECBBE002E75FB /* CGPoint+extensions.swift in Sources */,
 				0A76A46C2BAC782F0067BD6E /* ViewController.swift in Sources */,
