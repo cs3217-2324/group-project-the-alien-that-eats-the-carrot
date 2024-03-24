@@ -64,6 +64,8 @@
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
 		3F68076D2BADBCD200EB7682 /* LevelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076C2BADBCD200EB7682 /* LevelView.swift */; };
 		3F68076F2BAE779E00EB7682 /* LevelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F68076E2BAE779E00EB7682 /* LevelView.xib */; };
+		3F6807712BAE916900EB7682 /* GamePlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6807702BAE916900EB7682 /* GamePlayViewController.swift */; };
+		3F6807772BAEB40600EB7682 /* PauseScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6807762BAEB40600EB7682 /* PauseScreenViewController.swift */; };
 		3FE4570D2BADAB8E00D8D5A9 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
 		3F68076E2BAE779E00EB7682 /* LevelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LevelView.xib; sourceTree = "<group>"; };
+		3F6807702BAE916900EB7682 /* GamePlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayViewController.swift; sourceTree = "<group>"; };
+		3F6807762BAEB40600EB7682 /* PauseScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScreenViewController.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -373,6 +377,8 @@
 				3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */,
 				3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */,
 				3F68076C2BADBCD200EB7682 /* LevelView.swift */,
+				3F6807702BAE916900EB7682 /* GamePlayViewController.swift */,
+				3F6807762BAEB40600EB7682 /* PauseScreenViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 				0A76A4872BAC78780067BD6E /* ObjectType.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
+				3F6807772BAEB40600EB7682 /* PauseScreenViewController.swift in Sources */,
 				0A76A4742BAC78510067BD6E /* System.swift in Sources */,
 				0A76A4832BAC78720067BD6E /* Coin.swift in Sources */,
 				0A76A46D2BAC783B0067BD6E /* PhysicsConstants.swift in Sources */,
@@ -508,6 +515,7 @@
 				0A76A46F2BAC78400067BD6E /* PhysicsBody.swift in Sources */,
 				0A76A48F2BAC787D0067BD6E /* BreakableBlock.swift in Sources */,
 				0A76A4682BAC78200067BD6E /* GameRenderer.swift in Sources */,
+				3F6807712BAE916900EB7682 /* GamePlayViewController.swift in Sources */,
 				0A76A47B2BAC78680067BD6E /* NormalCharacter.swift in Sources */,
 				0A76A4762BAC78570067BD6E /* Nexus+Extensions.swift in Sources */,
 				0A76A4692BAC78250067BD6E /* GameEngine.swift in Sources */,

@@ -21,7 +21,6 @@ class LevelView: UIView {
     @IBOutlet private var carrot3: UIImageView!
     @IBOutlet private var bestScoreText: UILabel!
     @IBOutlet private var bestTimeText: UILabel!
-    @IBOutlet private var playButton: UIButton!
     
     // Function to configure the level view with data
     func configure(levelName: String) {

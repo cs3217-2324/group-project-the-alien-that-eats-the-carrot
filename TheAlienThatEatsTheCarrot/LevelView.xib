@@ -103,7 +103,6 @@
                 <outlet property="carrot2" destination="6eq-ej-MbK" id="3cV-8D-t6c"/>
                 <outlet property="carrot3" destination="8QB-gm-HNp" id="YXS-vv-0EC"/>
                 <outlet property="levelNameText" destination="uNr-1x-fVO" id="KL9-G8-XBg"/>
-                <outlet property="playButton" destination="dwc-LB-K18" id="82r-B6-8hq"/>
             </connections>
             <point key="canvasLocation" x="-5.8536585365853657" y="237.20338983050848"/>
         </view>

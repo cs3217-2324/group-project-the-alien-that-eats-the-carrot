@@ -40,4 +40,12 @@ class LevelSelectViewController: UIViewController, LevelViewDelegate {
     func playButtonTapped(for levelName: String) {
         performSegue(withIdentifier: "PlayLevelSegue", sender: nil)
     }
+    
+    @IBAction private func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
+    
+    @IBAction func unwindToLevelSelect(_ segue: UIStoryboardSegue) {
+        // This method will be called when unwinding from the pause screen
+    }
 }
