@@ -31,6 +31,26 @@ final class RectangleCollider: Collider {
     }
 
     func checkCollision(with otherCollider: RectangleCollider) -> CollisionPoints {
-        CollisionPoints.noCollision
+        let dx = abs(self.center.x - otherCollider.center.x)
+        let dy = abs(self.center.y - otherCollider.center.y)
+        let combinedHalfWidths = (self.size.width + otherCollider.size.width) / 2.0
+        let combinedHalfHeights = (self.size.height + otherCollider.size.height) / 2.0
+
+        if dx < combinedHalfWidths && dy < combinedHalfHeights {
+            let overlapX = combinedHalfWidths - dx
+            let overlapY = combinedHalfHeights - dy
+
+            if overlapX > overlapY {
+                return CollisionPoints(hasCollision: true,
+                                       pointA: CGPoint(x: self.center.x, y: self.center.y - overlapY / 2),
+                                       pointB: CGPoint(x: otherCollider.center.x, y: otherCollider.center.y + overlapY / 2))
+            } else {
+                return CollisionPoints(hasCollision: true,
+                                       pointA: CGPoint(x: self.center.x - overlapX / 2, y: self.center.y),
+                                       pointB: CGPoint(x: otherCollider.center.x + overlapX / 2, y: otherCollider.center.y))
+            }
+        } else {
+            return CollisionPoints(hasCollision: false, pointA: CGPoint(), pointB: CGPoint())
+        }
     }
 }
