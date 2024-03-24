@@ -1,10 +1,11 @@
 //
-//  CGPoint+extension.swift
+//  CGPoint+extensions.swift
 //  TheAlienThatEatsTheCarrot
 //
-//  Created by Sun Xinyu on 12/3/24.
+//  Created by Sun Xinyu on 23/3/24.
 //
 
+import CoreData
 import CoreGraphics
 
 extension CGPoint {
@@ -51,5 +52,27 @@ extension CGPoint {
             .concatenating(translateOriginToPivot)
 
         return self.applying(rotateAroundPivot)
+    }
+}
+
+extension CGPoint: Hashable {
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.x)
+        hasher.combine(self.y)
+    }
+}
+
+extension CGPoint: FromDataAble {
+    init(data: CGPointData) throws {
+        self.init(x: data.x, y: data.y)
+    }
+}
+
+extension CGPoint: ToDataAble {
+    func toData(context: NSManagedObjectContext) -> NSManagedObject {
+        let pointData = CGPointData(context: context)
+        pointData.x = x
+        pointData.y = y
+        return pointData as NSManagedObject
     }
 }

@@ -7,22 +7,39 @@
 
 import CoreGraphics
 
-class Block: BoardObject {
+final class Block: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
-    static let DEFAULT_BLOCK_WIDTH: CGFloat = 50.0
-    static let DEFAULT_BLOCK_HEIGHT: CGFloat = 50.0
+    var blockType: BlockType
+    var containedPowerupType: PowerupType?
+    var type: ObjectType {
+        .block(self.blockType)
+    }
 
-    init(imageName: String, position: CGPoint = .zero, width: CGFloat = Block.DEFAULT_BLOCK_WIDTH, height: CGFloat = Block.DEFAULT_BLOCK_HEIGHT) {
-        self.imageName = imageName
+    init(blockType: BlockType,
+         containedPowerupType: PowerupType?,
+         position: CGPoint = .zero) {
+        self.blockType = blockType
         self.position = position
-        self.width = width
-        self.height = height
+        self.containedPowerupType = containedPowerupType
+        self.imageName = blockType.assetName
+        self.width = blockType.width
+        self.height = blockType.height
     }
 
     func move(to newPosition: CGPoint) {
         self.position = newPosition
+    }
+}
+
+extension Block: Hashable {
+    public static func == (lhs: Block, rhs: Block) -> Bool {
+        lhs === rhs
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }

@@ -30,12 +30,14 @@ extension Nexus {
             addGameCollectable(type: collectableType, for: entity)
         case .powerup(let powerupType):
             addGamePowerup(type: powerupType, for: entity)
+        case .character(let characterType):
+            addGameCharacter(type: characterType, for: entity)
         }
     }
 }
 
 extension Nexus {
-    private func addGameEnemy(type: ObjectType.EnemyType, for entity: Entity) {
+    private func addGameEnemy(type: EnemyType, for entity: Entity) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -48,7 +50,7 @@ extension Nexus {
         }
     }
 
-    private func addGameBlock(type: ObjectType.BlockType, for entity: Entity) {
+    private func addGameBlock(type: BlockType, for entity: Entity) {
         switch type {
         case .normal:
             print("TODO: implement")
@@ -60,10 +62,12 @@ extension Nexus {
             print("TODO: implement")
         case .spike:
             print("TODO: implement")
+        case .powerup:
+            print("TODO: implement")
         }
     }
 
-    private func addGameCollectable(type: ObjectType.CollectableType, for entity: Entity) {
+    private func addGameCollectable(type: CollectableType, for entity: Entity) {
         switch type {
         case .coin:
             print("TODO: implement")
@@ -74,7 +78,7 @@ extension Nexus {
         }
     }
 
-    private func addGamePowerup(type: ObjectType.PowerupType, for entity: Entity) {
+    private func addGamePowerup(type: PowerupType, for entity: Entity) {
         switch type {
         case .attack:
             print("TODO: implement")
@@ -83,6 +87,13 @@ extension Nexus {
         case .invinsible:
             print("TODO: implement")
         case .strength:
+            print("TODO: implement")
+        }
+    }
+
+    private func addGameCharacter(type: CharacterType, for entity: Entity) {
+        switch type {
+        case .normal:
             print("TODO: implement")
         }
     }

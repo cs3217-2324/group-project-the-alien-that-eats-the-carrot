@@ -1,8 +1,8 @@
 //
-//  CGVector+extension.swift
+//  CGVector+extensions.swift
 //  TheAlienThatEatsTheCarrot
 //
-//  Created by Sun Xinyu on 12/3/24.
+//  Created by Sun Xinyu on 23/3/24.
 //
 
 import CoreGraphics

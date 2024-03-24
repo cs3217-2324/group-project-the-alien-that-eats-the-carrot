@@ -7,20 +7,35 @@
 
 import CoreGraphics
 
-class Enemy: BoardObject {
+final class Enemy: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
     var imageName: String?
+    var enemyType: EnemyType
+    var type: ObjectType {
+        .enemy(self.enemyType)
+    }
 
-    init(imageName: String, width: CGFloat, height: CGFloat, position: CGPoint = .zero) {
-        self.imageName = imageName
-        self.width = width
-        self.height = height
+    init(enemyType: EnemyType, position: CGPoint = .zero) {
+        self.enemyType = enemyType
         self.position = position
+        self.imageName = enemyType.assetName
+        self.width = enemyType.width
+        self.height = enemyType.height
     }
 
     func move(to newPosition: CGPoint) {
         self.position = newPosition
+    }
+}
+
+extension Enemy: Hashable {
+    public static func == (lhs: Enemy, rhs: Enemy) -> Bool {
+        lhs === rhs
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }
