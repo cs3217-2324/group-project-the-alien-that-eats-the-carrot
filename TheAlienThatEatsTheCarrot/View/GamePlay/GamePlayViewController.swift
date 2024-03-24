@@ -17,13 +17,17 @@ class GamePlayViewController: UIViewController {
     @IBOutlet private var life3: UIImageView!
     @IBOutlet private var coinCountText: UILabel!
 
+
     // MARK: - game loop
-    var gameLoopTimer: CADisplayLink! // game loop
+    let gameEngine = GameEngine()
+    var gameLoop: GameLoop!
+
     private var isGameLoopRunning = false
     var count: Int = 0
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.gameLoop = GameLoop(gameEngine: gameEngine)
         startGameLoop()
     }
 
@@ -31,8 +35,7 @@ class GamePlayViewController: UIViewController {
         guard !isGameLoopRunning else {
             return
         }
-        gameLoopTimer = CADisplayLink(target: self, selector: #selector(gameLoop))
-        gameLoopTimer?.add(to: .main, forMode: .default)
+        gameLoop.start()
         isGameLoopRunning = true
     }
 
@@ -40,21 +43,7 @@ class GamePlayViewController: UIViewController {
         guard isGameLoopRunning else {
             return
         }
-        gameLoopTimer?.invalidate()
-        gameLoopTimer = nil
-        isGameLoopRunning = false
-    }
-
-    @objc func gameLoop() {
-        // call step
-        let deltaTime = gameLoopTimer.targetTimestamp - gameLoopTimer.timestamp
-        print("\(count) delta time: \(deltaTime)")
-        count += 1
-//        do {
-//            try peggleGame.step(deltaTime: deltaTime)
-//        } catch {
-//            presentAlert(message: "Unexpected error: \(error)")
-//        }
+        gameLoop.stop()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
