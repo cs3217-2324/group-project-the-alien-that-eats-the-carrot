@@ -22,6 +22,28 @@ class GameEngine {
         updateSystems(deltaTime: deltaTime)
     }
 
+    func updatePlayersMovement(player: Player, action: ControlAction) {
+        switch player {
+        case .A:
+            guard let playerEntity = nexus.getEntity(with: PlayerAComponent.self) else {
+                return
+            }
+            updateAction(action, of: playerEntity)
+        case .B:
+            guard let playerEntity = nexus.getEntity(with: PlayerBComponent.self) else {
+                return
+            }
+            updateAction(action, of: playerEntity)
+        }
+    }
+
+    private func updateAction(_ action: ControlAction, of player: Entity) {
+        guard let playerComponent = nexus.getComponent(of: PlayerComponent.self, for: player) else {
+            return
+        }
+        playerComponent.action = action
+    }
+
     private func updateSystems(deltaTime: CGFloat) {
         systems.forEach { $0.update(deltaTime: deltaTime) }
     }
@@ -31,6 +53,7 @@ class GameEngine {
     }
 
     private func initGameEntities() {
-        nexus.addCharacter()
+        nexus.addCharacterForPlayerA()
+        nexus.addEntity(type: .enemy(.normal))
     }
 }

@@ -9,8 +9,14 @@ import Foundation
 
 class PlayerComponent: Component {
     var entity: Entity
+    var action: ControlAction
 
-    init(entity: Entity) {
+    init(entity: Entity, action: ControlAction = .idle) {
         self.entity = entity
+        self.action = action
     }
+}
+
+enum ControlAction {
+    case idle, jump, left, right
 }
