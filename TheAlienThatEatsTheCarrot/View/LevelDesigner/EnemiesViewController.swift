@@ -11,15 +11,15 @@ class EnemiesViewController: UIViewController {
 
     weak var delegate: ComponentSelectDelegate?
 
-    @IBAction func snailButtonTapped(_ sender: UIButton) {
+    @IBAction private func snailButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .enemy(.normal))
     }
 
-    @IBAction func stationaryButtonTapped(_ sender: UIButton) {
+    @IBAction private func stationaryButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .enemy(.stationary))
     }
 
-    @IBAction func birdButtonTapped(_ sender: UIButton) {
+    @IBAction private func birdButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .enemy(.fast))
     }
 

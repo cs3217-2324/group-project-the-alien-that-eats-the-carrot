@@ -45,7 +45,7 @@ class LevelSelectViewController: UIViewController, LevelViewDelegate {
         dismiss(animated: true)
     }
 
-    @IBAction func unwindToLevelSelect(_ segue: UIStoryboardSegue) {
+    @IBAction private func unwindToLevelSelect(_ segue: UIStoryboardSegue) {
         // This method will be called when unwinding from the pause screen
     }
 }

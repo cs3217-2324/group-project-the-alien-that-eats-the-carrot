@@ -11,23 +11,23 @@ class CollectiblesViewController: UIViewController {
 
     weak var delegate: ComponentSelectDelegate?
 
-    @IBAction func carrotButtonTapped(_ sender: UIButton) {
+    @IBAction private func carrotButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .collectable(.carrot))
     }
 
-    @IBAction func coinGoldButtonTapped(_ sender: UIButton) {
+    @IBAction private func coinGoldButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .collectable(.coin))
     }
 
-    @IBAction func coinSilverButtonTapped(_ sender: UIButton) {
+    @IBAction private func coinSilverButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .collectable(.coin))
     }
 
-    @IBAction func coinBronzeButtonTapped(_ sender: UIButton) {
+    @IBAction private func coinBronzeButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .collectable(.coin))
     }
 
-    @IBAction func heartButtonTapped(_ sender: UIButton) {
+    @IBAction private func heartButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .collectable(.heart))
     }
 

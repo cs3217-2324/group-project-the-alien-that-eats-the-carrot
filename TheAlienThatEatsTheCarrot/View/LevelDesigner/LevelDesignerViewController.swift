@@ -18,21 +18,23 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var enemiesContainerView: UIView!
     @IBOutlet private var powerupsContainerView: UIView!
     @IBOutlet private var collectiblesContainerView: UIView!
-
     private var componentSelected: ObjectType = .block(.normal)
+
+    @IBOutlet private var boardAreaView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpContainerViews()
+        setUpGestures()
     }
 
     private func setUpContainerViews() {
         hideAllContainers()
         showContainerView(terrainsContainerView)
-
-        // set up delegate = self
     }
-    
+
+    // MARK: - set up tab bars
+    /// Set up container view's view controllers
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TerrainsViewSegue" {
             if let terrainsViewController = segue.destination as? TerrainsViewController {
@@ -68,22 +70,73 @@ class LevelDesignerViewController: UIViewController {
        containerView.isHidden = false
     }
 
-    @IBAction func terrainsButtonTapped(_ sender: UIButton) {
+    @IBAction private func terrainsButtonTapped(_ sender: UIButton) {
        showContainerView(terrainsContainerView)
     }
 
-    @IBAction func enemiesButtonTapped(_ sender: UIButton) {
+    @IBAction private func enemiesButtonTapped(_ sender: UIButton) {
        showContainerView(enemiesContainerView)
     }
 
-    @IBAction func powerupsButtonTapped(_ sender: UIButton) {
+    @IBAction private func powerupsButtonTapped(_ sender: UIButton) {
        showContainerView(powerupsContainerView)
     }
 
-    @IBAction func collectiblesButtonTapped(_ sender: UIButton) {
+    @IBAction private func collectiblesButtonTapped(_ sender: UIButton) {
        showContainerView(collectiblesContainerView)
     }
 
+    // MARK: - user interactions
+    private func setUpGestures() {
+        let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBoardTap(_:)))
+        boardAreaView.addGestureRecognizer(singleTapGesture)
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleBoardLongPress(_:)))
+        boardAreaView.addGestureRecognizer(longPressGesture)
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleBoardPan(_:)))
+        boardAreaView.addGestureRecognizer(panGesture)
+    }
+
+    /// handle tap action in the board area
+    @objc func handleBoardTap(_ gesture: UITapGestureRecognizer) {
+        let tapLocation = gesture.location(in: boardAreaView)
+        print("tap at \(tapLocation)")
+//        levelDesigner.handleTap(at: tapLocation)
+    }
+
+    /// handle long press action in the board area
+    @objc func handleBoardLongPress(_ gesture: UILongPressGestureRecognizer) {
+        if gesture.state == .began {
+            let location = gesture.location(in: boardAreaView)
+            print("long press at \(location)")
+//            levelDesigner.handleLongPress(at: location)
+        }
+    }
+
+    /// handle pan action in the board area
+    @objc func handleBoardPan(_ gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            print("pan began")
+//            let touchPoint = gesture.location(in: boardAreaView)
+//            levelDesigner.handlePanStart(at: touchPoint)
+        case .changed:
+            print("pan change")
+//            let translation = gesture.translation(in: boardAreaView)
+//            levelDesigner.handlePanChange(translation: translation)
+//            gesture.setTranslation(.zero, in: boardAreaView)
+        default:
+            print("pan end")
+            // Gesture ended or canceled
+//            levelDesigner.handlePanEnd()
+        }
+    }
+
+    // MARK: - image handling
+
+    // MARK: - other feature buttons
+    @IBAction private func backButtonPressed(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
 }
 
 extension LevelDesignerViewController: ComponentSelectDelegate {

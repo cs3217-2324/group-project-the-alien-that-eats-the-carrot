@@ -28,14 +28,18 @@ class GamePlayViewController: UIViewController {
     }
 
     private func startGameLoop() {
-        guard !isGameLoopRunning else { return }
+        guard !isGameLoopRunning else {
+            return
+        }
         gameLoopTimer = CADisplayLink(target: self, selector: #selector(gameLoop))
         gameLoopTimer?.add(to: .main, forMode: .default)
         isGameLoopRunning = true
     }
 
     private func stopGameLoop() {
-        guard isGameLoopRunning else { return }
+        guard isGameLoopRunning else {
+            return
+        }
         gameLoopTimer?.invalidate()
         gameLoopTimer = nil
         isGameLoopRunning = false
@@ -44,7 +48,7 @@ class GamePlayViewController: UIViewController {
     @objc func gameLoop() {
         // call step
         let deltaTime = gameLoopTimer.targetTimestamp - gameLoopTimer.timestamp
-        print(count)
+        print("\(count) delta time: \(deltaTime)")
         count += 1
 //        do {
 //            try peggleGame.step(deltaTime: deltaTime)
