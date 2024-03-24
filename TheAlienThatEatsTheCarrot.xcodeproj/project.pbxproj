@@ -43,6 +43,7 @@
 		0A76A49E2BAC78B40067BD6E /* Collider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FB2BAAD71B002E75FB /* Collider.swift */; };
 		0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C57FC2BAAD71B002E75FB /* Collision.swift */; };
 		0A76A4A02BAC7E270067BD6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57F12BAAD71B002E75FB /* Main.storyboard */; };
+		9F0C91B02BAFC5720049EB94 /* LevelDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F0C91AF2BAFC5720049EB94 /* LevelDataManager.swift */; };
 		9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */; };
 		9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */; };
 		9F8C58A32BAE78C9002E75FB /* FromDataAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F0C91AF2BAFC5720049EB94 /* LevelDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDataManager.swift; sourceTree = "<group>"; };
 		9F8C57EB2BAAD71B002E75FB /* LevelDesignerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewModel.swift; sourceTree = "<group>"; };
 		9F8C57EC2BAAD71B002E75FB /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		9F8C57ED2BAAD71B002E75FB /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -395,6 +397,7 @@
 			children = (
 				9F0C91AE2BAFC47F0049EB94 /* extensions */,
 				9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */,
+				9F0C91AF2BAFC5720049EB94 /* LevelDataManager.swift */,
 				9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */,
 				9F8C58A42BAE79A2002E75FB /* CoreDataManager.swift */,
 			);
@@ -561,6 +564,7 @@
 				9F8C58A32BAE78C9002E75FB /* FromDataAble.swift in Sources */,
 				0A76A47F2BAC786D0067BD6E /* Enemy.swift in Sources */,
 				0A76A4982BAC78960067BD6E /* PlayerComponent.swift in Sources */,
+				9F0C91B02BAFC5720049EB94 /* LevelDataManager.swift in Sources */,
 				0A76A4702BAC78430067BD6E /* Direction.swift in Sources */,
 				0A76A4732BAC784E0067BD6E /* MovementSystem.swift in Sources */,
 			);
