@@ -8,9 +8,5 @@
 import UIKit
 
 class PauseScreenViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
 
 }

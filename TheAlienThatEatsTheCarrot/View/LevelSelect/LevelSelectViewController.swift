@@ -8,7 +8,7 @@
 import UIKit
 
 class LevelSelectViewController: UIViewController, LevelViewDelegate {
-    
+
     @IBOutlet private var scrollView: UIScrollView!
     @IBOutlet private var stackView: UIStackView!
 
@@ -22,7 +22,7 @@ class LevelSelectViewController: UIViewController, LevelViewDelegate {
 
     private func initializeLevelDesigner() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
-        
+
         for levelName in levelNames {
             if let levelView = Bundle.main.loadNibNamed("LevelView", owner: nil, options: nil)?.first as? LevelView {
                 // Customize the level view with level name and background image
@@ -36,15 +36,15 @@ class LevelSelectViewController: UIViewController, LevelViewDelegate {
             }
         }
     }
-    
+
     func playButtonTapped(for levelName: String) {
         performSegue(withIdentifier: "PlayLevelSegue", sender: nil)
     }
-    
+
     @IBAction private func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
+
     @IBAction func unwindToLevelSelect(_ segue: UIStoryboardSegue) {
         // This method will be called when unwinding from the pause screen
     }
