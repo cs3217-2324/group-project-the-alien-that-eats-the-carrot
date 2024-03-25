@@ -28,6 +28,10 @@ final class Powerup: BoardObject {
     func move(to newPosition: CGPoint) {
         self.position = newPosition
     }
+
+    func isOverlapping(with boardObject: BoardObject) -> Bool {
+        return boardObject.isOverlapping(with: self)
+    }
 }
 
 extension Powerup: Hashable {
