@@ -100,6 +100,7 @@ class LevelDesignerViewController: UIViewController {
     @objc func handleBoardTap(_ gesture: UITapGestureRecognizer) {
         let tapLocation = gesture.location(in: boardAreaView)
         print("tap at \(tapLocation)")
+        addImage(objectType: componentSelected, center: tapLocation, width: 50, height: 50)
 //        levelDesigner.handleTap(at: tapLocation)
     }
 
@@ -132,6 +133,12 @@ class LevelDesignerViewController: UIViewController {
     }
 
     // MARK: - image handling
+    func addImage(objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
+        print("add image")
+        let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
+        boardAreaView.addSubview(imageView.imageView)
+//        pegViews.append(pegImageView)
+    }
 
     // MARK: - other feature buttons
     @IBAction private func backButtonPressed(_ sender: UIButton) {

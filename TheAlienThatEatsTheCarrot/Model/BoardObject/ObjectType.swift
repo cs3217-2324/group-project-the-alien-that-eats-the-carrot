@@ -13,7 +13,7 @@ public enum ObjectType: Equatable, Hashable {
     case collectable(CollectableType)
     case powerup(PowerupType)
     case character(CharacterType)
-    
+
     var assetName: String? {
         switch self {
         case .enemy(let enemyType):

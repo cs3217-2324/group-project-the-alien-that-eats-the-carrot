@@ -24,7 +24,7 @@ public enum CollectableType: Equatable {
                                 heart: CGSize(width: 20, height: 20)]
 
     var assetName: String? {
-        CollectableType.typeToTypeNameMap[self]
+        CollectableType.typeToAssetNameMap[self]
     }
     var width: CGFloat {
         CollectableType.typeToSizeMap[self]!.width

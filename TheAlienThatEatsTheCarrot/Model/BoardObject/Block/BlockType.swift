@@ -45,9 +45,3 @@ public enum BlockType: Equatable {
         BlockType.typeToSizeMap[self]!.height
     }
 }
-
-extension BlockType: Hashable {
-    public func hash(into hasher: inout Hasher) {
-        hasher.combine(BlockType.typeToTypeNameMap[self])
-    }
-}

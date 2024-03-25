@@ -17,6 +17,7 @@ class RectangularImageView: Hashable {
     var imageView: UIImageView!
 
     init(objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
+        print("initing image view")
         self.objectType = objectType
         self.center = center
         self.width = width
@@ -47,17 +48,19 @@ class RectangularImageView: Hashable {
     }
 
     func getImageName() -> String {
-        objectType.assetName ?? ""
+        print("get image view name")
+//        return "land-top"
+        return objectType.assetName ?? "land-top"
     }
-    
+
     static func == (lhs: RectangularImageView, rhs: RectangularImageView) -> Bool {
-        return lhs.objectType == rhs.objectType &&
+        lhs.objectType == rhs.objectType &&
                lhs.center == rhs.center &&
                lhs.width == rhs.width &&
                lhs.height == rhs.height
         // Add comparisons for any other properties that contribute to equality
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(objectType)
         hasher.combine(center)
