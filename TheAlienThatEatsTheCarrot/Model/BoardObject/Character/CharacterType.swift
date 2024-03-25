@@ -7,10 +7,10 @@
 
 import Foundation
 
-public enum CharacterType {
+public enum CharacterType: Equatable {
   case normal
 
-  static let typeToAssetNameMap = [normal: ""]
+  static let typeToAssetNameMap = [normal: "alien-1"]
   static let typeToTypeNameMap = [normal: "normal"]
   static let typeNameToTypeMap = ["normal": normal]
   static let typeToSizeMap = [normal: CGSize(width: 50, height: 50)]

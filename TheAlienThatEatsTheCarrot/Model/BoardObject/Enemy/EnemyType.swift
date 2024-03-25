@@ -7,16 +7,16 @@
 
 import Foundation
 
-public enum EnemyType {
+public enum EnemyType: Equatable {
     case normal,
          fast,
          stationary,
          turret
 
-    static let typeToAssetNameMap = [normal: "",
-                                     fast: "",
-                                     stationary: "",
-                                     turret: ""]
+    static let typeToAssetNameMap = [normal: "snail-1",
+                                     fast: "bird-1",
+                                     stationary: "stationary-1",
+                                     turret: "stationary-1"]
     static let typeToTypeNameMap = [normal: "normal",
                                     fast: "fast",
                                     stationary: "stationary",

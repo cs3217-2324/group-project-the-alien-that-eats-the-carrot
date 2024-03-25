@@ -7,15 +7,15 @@
 
 import Foundation
 
-public enum BlockType {
+public enum BlockType: Equatable {
     case normal, ground, spike, breakable, pushable, powerup
 
-    static let typeToAssetNameMap = [normal: "",
-                                     ground: "",
-                                     spike: "",
-                                     breakable: "",
-                                     pushable: "",
-                                     powerup: ""]
+    static let typeToAssetNameMap = [normal: "land-top",
+                                     ground: "land-bottom",
+                                     spike: "spike",
+                                     breakable: "block-breakable",
+                                     pushable: "block-pushable",
+                                     powerup: "powerup-unused"]
     static let typeToTypeNameMap = [normal: "normal",
                                     ground: "ground",
                                     spike: "spike",

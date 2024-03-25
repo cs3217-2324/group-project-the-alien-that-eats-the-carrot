@@ -7,13 +7,13 @@
 
 import Foundation
 
-public enum PowerupType {
+public enum PowerupType: Equatable {
     case invinsible, strength, attack, doubleJump
 
-    static let typeToAssetNameMap = [invinsible: "",
-                                     strength: "",
-                                     attack: "",
-                                     doubleJump: ""]
+    static let typeToAssetNameMap = [invinsible: "powerup-invincibility",
+                                     strength: "powerup-strength",
+                                     attack: "powerup-attack",
+                                     doubleJump: "powerup-doublejump"]
     static let typeToTypeNameMap = [invinsible: "invinsible",
                                     strength: "strength",
                                     attack: "attack",
