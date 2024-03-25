@@ -30,7 +30,7 @@ final class Powerup: BoardObject {
     }
 
     func isOverlapping(with boardObject: BoardObject) -> Bool {
-        return boardObject.isOverlapping(with: self)
+        boardObject.isOverlapping(with: self)
     }
 }
 

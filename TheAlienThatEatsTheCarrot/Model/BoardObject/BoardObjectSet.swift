@@ -27,10 +27,8 @@ struct BoardObjectSet {
     }
 
     mutating func add(boardObject: any BoardObject) {
-        for existingBoardObject in self.allObjects {
-            if existingBoardObject.isOverlapping(with: boardObject) {
-                return
-            }
+        for existingBoardObject in self.allObjects where existingBoardObject.isOverlapping(with: boardObject) {
+            return
         }
         if let block = boardObject as? Block {
             blocks.insert(block)
