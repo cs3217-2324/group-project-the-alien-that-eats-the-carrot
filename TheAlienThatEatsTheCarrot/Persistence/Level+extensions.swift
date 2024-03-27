@@ -43,7 +43,7 @@ extension BoardObjectSet {
     mutating func loadBlocks(nsSet: NSSet) throws {
         let blockDatas = nsSet.compactMap({ $0 as? BlockData })
         guard blockDatas.count == nsSet.count else {
-            throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
+            throw TheAlienThatEatsTheCarrotError.invalidNSSetDataError
         }
         for blockData in blockDatas {
             let block = try Block(data: blockData)
@@ -54,7 +54,7 @@ extension BoardObjectSet {
     mutating func loadCollectables(nsSet: NSSet) throws {
         let collectableDatas = nsSet.compactMap({ $0 as? CollectableData })
         guard collectableDatas.count == nsSet.count else {
-            throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
+            throw TheAlienThatEatsTheCarrotError.invalidNSSetDataError
         }
         for collectableData in collectableDatas {
             let collectable = try Collectable(data: collectableData)
@@ -65,7 +65,7 @@ extension BoardObjectSet {
     mutating func loadEnemies(nsSet: NSSet) throws {
         let enemyDatas = nsSet.compactMap({ $0 as? EnemyData })
         guard enemyDatas.count == nsSet.count else {
-            throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
+            throw TheAlienThatEatsTheCarrotError.invalidNSSetDataError
         }
         for enemyData in enemyDatas {
             let enemy = try Enemy(data: enemyData)
@@ -76,7 +76,7 @@ extension BoardObjectSet {
     mutating func loadPowerups(nsSet: NSSet) throws {
         let powerupDatas = nsSet.compactMap({ $0 as? PowerupData })
         guard powerupDatas.count == nsSet.count else {
-            throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
+            throw TheAlienThatEatsTheCarrotError.invalidNSSetDataError
         }
         for powerupData in powerupDatas {
             let powerup = try Powerup(data: powerupData)

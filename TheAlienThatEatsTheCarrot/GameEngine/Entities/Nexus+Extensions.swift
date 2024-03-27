@@ -10,11 +10,12 @@ import Foundation
 extension Nexus {
     func addCharacterForPlayerA() {
         let entity = Entity()
-        let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200), objectType: .character(.normal))
+        let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200))
         let playerComponent = PlayerComponent(entity: entity)
+        let playerAComponent = PlayerAComponent(entity: entity)
         let cameraComponent = CameraComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        addComponents([renderableComponent, playerComponent, cameraComponent,
+        addComponents([renderableComponent, playerComponent, playerAComponent, cameraComponent,
                        destroyableComponent], to: entity)
     }
 
