@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum BlockType {
+public enum BlockType: String {
     case normal, ground, spike, breakable, pushable, powerup
 
     static let typeToAssetNameMap = [normal: "",
@@ -16,18 +16,6 @@ public enum BlockType {
                                      breakable: "",
                                      pushable: "",
                                      powerup: ""]
-    static let typeToTypeNameMap = [normal: "normal",
-                                    ground: "ground",
-                                    spike: "spike",
-                                    breakable: "breakable",
-                                    pushable: "pushable",
-                                    powerup: "powerup"]
-    static let typeNameToTypeMap = ["normal": normal,
-                                    "ground": ground,
-                                    "spike": spike,
-                                    "breakable": breakable,
-                                    "pushable": pushable,
-                                    "powerup": powerup]
     static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
                                 ground: CGSize(width: 50, height: 50),
                                 spike: CGSize(width: 50, height: 50),
@@ -48,6 +36,6 @@ public enum BlockType {
 
 extension BlockType: Hashable {
     public func hash(into hasher: inout Hasher) {
-        hasher.combine(BlockType.typeToTypeNameMap[self])
+        hasher.combine(self.rawValue)
     }
 }
