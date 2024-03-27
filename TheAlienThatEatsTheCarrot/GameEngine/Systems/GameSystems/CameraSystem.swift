@@ -12,7 +12,6 @@ class CameraSystem: System {
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        subscribeToEvents()
     }
 
     func update(deltaTime: CGFloat) {
@@ -20,16 +19,8 @@ class CameraSystem: System {
         updateIsInCamera(deltaTime: deltaTime)
     }
 
-    func subscribeToEvents() {
-        let gameStartObserver = EventManager.shared.subscribe(to: GameStartEvent.self, using: onEventOccur)
-    }
-
-    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
-        print("B Receiving event! \(event.self)")
-    }
-
     private func removeAllIsInCameraComponents() {
-        // TODO: Reset toRender in camera components
+        nexus.getComponents(of: CameraComponent.self).forEach { $0.resetToRender() }
     }
 
     private func updateIsInCamera(deltaTime: CGFloat) {
