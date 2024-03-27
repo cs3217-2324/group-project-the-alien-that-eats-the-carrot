@@ -17,6 +17,7 @@ class GamePlayViewController: UIViewController {
     @IBOutlet private var life3: UIImageView!
     @IBOutlet private var coinCountText: UILabel!
 
+    var renderableComponents: [RenderableComponent] = []
 
     // MARK: - game loop
     let gameEngine = GameEngine()
@@ -27,7 +28,9 @@ class GamePlayViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.gameLoop = GameLoop(gameEngine: gameEngine)
+        self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
+            self?.updateUI()
+        })
         startGameLoop()
     }
 
@@ -44,6 +47,13 @@ class GamePlayViewController: UIViewController {
             return
         }
         gameLoop.stop()
+    }
+
+    private func updateUI() {
+        renderableComponents = gameEngine.getRenderableComponents()
+        for component in renderableComponents {
+            print("type: \(component.objectType) position: \(component.position)")
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
