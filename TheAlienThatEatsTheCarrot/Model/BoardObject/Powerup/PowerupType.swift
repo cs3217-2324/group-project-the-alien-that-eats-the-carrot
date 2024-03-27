@@ -7,21 +7,13 @@
 
 import Foundation
 
-public enum PowerupType {
+public enum PowerupType: String {
     case invinsible, strength, attack, doubleJump
 
     static let typeToAssetNameMap = [invinsible: "",
                                      strength: "",
                                      attack: "",
                                      doubleJump: ""]
-    static let typeToTypeNameMap = [invinsible: "invinsible",
-                                    strength: "strength",
-                                    attack: "attack",
-                                    doubleJump: "doubleJump"]
-    static let typeNameToTypeMap = ["invinsible": invinsible,
-                                    "strength": strength,
-                                    "attack": attack,
-                                    "doubleJump": doubleJump]
     static let typeToSizeMap = [invinsible: CGSize(width: 20, height: 20),
                                 strength: CGSize(width: 20, height: 20),
                                 attack: CGSize(width: 20, height: 20),

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum EnemyType {
+public enum EnemyType: String {
     case normal,
          fast,
          stationary,
@@ -17,14 +17,6 @@ public enum EnemyType {
                                      fast: "",
                                      stationary: "",
                                      turret: ""]
-    static let typeToTypeNameMap = [normal: "normal",
-                                    fast: "fast",
-                                    stationary: "stationary",
-                                    turret: "turret"]
-    static let typeNameToTypeMap = ["normal": normal,
-                                    "fast": fast,
-                                    "stationary": stationary,
-                                    "turret": turret]
     static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
                                 fast: CGSize(width: 50, height: 50),
                                 stationary: CGSize(width: 50, height: 50),
