@@ -12,12 +12,21 @@ class CameraSystem: System {
 
     init(nexus: Nexus) {
         self.nexus = nexus
+        subscribeToEvent()
     }
 
     func update(deltaTime: CGFloat) {
         removeAllIsInCameraComponents()
         updateIsInPlayerACameraEntities(deltaTime: deltaTime)
         updateIsInPlayerBCameraEntities(deltaTime: deltaTime)
+    }
+
+    func subscribeToEvent() {
+        let gameStartObserver = EventManager.shared.subscribe(to: GameStartEvent.self, using: onEventOccur)
+    }
+
+    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
+        print("B Receiving event! \(event.self)")
     }
 
     private func removeAllIsInCameraComponents() {

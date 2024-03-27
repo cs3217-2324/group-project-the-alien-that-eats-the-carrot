@@ -25,7 +25,7 @@ class PlayerSystem: System {
     private func applyPhysicsBasedOnControlAction(for player: PlayerComponent) {
         switch player.action {
         case .idle:
-            print("Do nothing")
+            doNothing()
         case .jump:
             print("Apply upward force to player entity")
         case .left:
@@ -33,5 +33,8 @@ class PlayerSystem: System {
         case .right:
             print("Apply rightward velocity")
         }
+    }
+
+    private func doNothing() {
     }
 }
