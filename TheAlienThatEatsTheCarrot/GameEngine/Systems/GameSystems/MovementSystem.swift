@@ -13,7 +13,7 @@ class MovementSystem: System {
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        subscribeToEvent()
+        subscribeToEvents()
     }
 
     deinit {
@@ -22,7 +22,7 @@ class MovementSystem: System {
         }
     }
 
-    func subscribeToEvent() {
+    func subscribeToEvents() {
         gameStartObserver = EventManager.shared.subscribe(to: GameStartEvent.self, using: onEventOccur)
     }
 

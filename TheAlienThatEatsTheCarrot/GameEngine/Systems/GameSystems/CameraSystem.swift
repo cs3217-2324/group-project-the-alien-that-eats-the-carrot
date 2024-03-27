@@ -12,7 +12,7 @@ class CameraSystem: System {
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        subscribeToEvent()
+        subscribeToEvents()
     }
 
     func update(deltaTime: CGFloat) {
@@ -20,7 +20,7 @@ class CameraSystem: System {
         updateIsInCamera(deltaTime: deltaTime)
     }
 
-    func subscribeToEvent() {
+    func subscribeToEvents() {
         let gameStartObserver = EventManager.shared.subscribe(to: GameStartEvent.self, using: onEventOccur)
     }
 
@@ -43,7 +43,6 @@ class CameraSystem: System {
             for player in playerEntities {
                 addObjectToCameraIfIsWithinBound(object: renderableComponent, player: player)
             }
-            
         }
     }
 
