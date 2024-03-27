@@ -71,6 +71,7 @@
 		3F6874AF2BAFFDA4009C526D /* ComponentSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6874AE2BAFFDA4009C526D /* ComponentSelectDelegate.swift */; };
 		3F6874B12BB0021B009C526D /* EnemiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6874B02BB0021B009C526D /* EnemiesViewController.swift */; };
 		3FAE0EE02BB145D4002521D9 /* RectangularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EDF2BB145D4002521D9 /* RectangularImageView.swift */; };
+		3FAE0EE62BB41A7E002521D9 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EE52BB41A7E002521D9 /* LevelDesigner.swift */; };
 		3FCD00592BB0050D0016389F /* PowerupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD00582BB0050D0016389F /* PowerupsViewController.swift */; };
 		3FCD005B2BB005340016389F /* CollectiblesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD005A2BB005340016389F /* CollectiblesViewController.swift */; };
 		3FCD005D2BB017F20016389F /* LoadLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD005C2BB017F20016389F /* LoadLevelViewController.swift */; };
@@ -136,6 +137,7 @@
 		3F6874B02BB0021B009C526D /* EnemiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesViewController.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAE0EDF2BB145D4002521D9 /* RectangularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularImageView.swift; sourceTree = "<group>"; };
+		3FAE0EE52BB41A7E002521D9 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		3FCD00582BB0050D0016389F /* PowerupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupsViewController.swift; sourceTree = "<group>"; };
 		3FCD005A2BB005340016389F /* CollectiblesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectiblesViewController.swift; sourceTree = "<group>"; };
 		3FCD005C2BB017F20016389F /* LoadLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadLevelViewController.swift; sourceTree = "<group>"; };
@@ -293,6 +295,14 @@
 			path = ImageViews;
 			sourceTree = "<group>";
 		};
+		3FAE0EE42BB41A41002521D9 /* LevelDesigner */ = {
+			isa = PBXGroup;
+			children = (
+				3FAE0EE52BB41A7E002521D9 /* LevelDesigner.swift */,
+			);
+			path = LevelDesigner;
+			sourceTree = "<group>";
+		};
 		9F8C57E92BAAD71B002E75FB /* TheAlienThatEatsTheCarrot */ = {
 			isa = PBXGroup;
 			children = (
@@ -305,6 +315,7 @@
 				9F8C57F52BAAD71B002E75FB /* PhysicsEngine */,
 				9F8C57FF2BAAD71B002E75FB /* GameEngine */,
 				9F8C58132BAAD71B002E75FB /* Model */,
+				3FAE0EE42BB41A41002521D9 /* LevelDesigner */,
 				9F8C58372BAAD71B002E75FB /* View */,
 				9F8C58392BAAD71B002E75FB /* AppDelegate.swift */,
 				3F68076E2BAE779E00EB7682 /* LevelView.xib */,
@@ -684,6 +695,7 @@
 				0A76A4C22BAD631E0067BD6E /* IsInPlayerBCameraComponent.swift in Sources */,
 				9F8C58A72BAE9A51002E75FB /* CollectableType.swift in Sources */,
 				9F8C58C52BAEBAA3002E75FB /* Level.swift in Sources */,
+				3FAE0EE62BB41A7E002521D9 /* LevelDesigner.swift in Sources */,
 				0A76A4952BAC78840067BD6E /* AppDelegate.swift in Sources */,
 				0A76A4862BAC78720067BD6E /* BoardObject.swift in Sources */,
 				0A76A4BC2BAD61270067BD6E /* IsInPlayerBBufferComponent.swift in Sources */,

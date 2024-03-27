@@ -12,11 +12,10 @@ struct Level {
     var area: CGRect
     var boardObjects: BoardObjectSet
 
-    init(name: String,
-         area: CGRect) {
+    init(area: CGRect, name: String = "New Level", boardObjects: BoardObjectSet = BoardObjectSet()) {
         self.name = name
         self.area = area
-        self.boardObjects = BoardObjectSet()
+        self.boardObjects = boardObjects
     }
 
     mutating func scale(toFit newArea: CGRect) {
