@@ -10,7 +10,7 @@ import CoreData
 extension EnemyType: FromDataAble {
   init(data: EnemyTypeData) throws {
     guard let name = data.typeName,
-              let type = EnemyType(rawValue: name) else {
+              let type = EnemyType.typeNameToTypeMap[name] else {
             throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: data.typeName)
         }
         self = type
@@ -20,7 +20,7 @@ extension EnemyType: FromDataAble {
 extension EnemyType: ToDataAble {
     func toData(context: NSManagedObjectContext) -> NSManagedObject {
         let enemyTypeData = EnemyTypeData(context: context)
-        enemyTypeData.typeName = self.rawValue
+        enemyTypeData.typeName = EnemyType.typeToTypeNameMap[self]
         return enemyTypeData as NSManagedObject
     }
 }

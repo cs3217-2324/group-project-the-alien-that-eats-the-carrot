@@ -16,32 +16,25 @@ class GameEngine {
         self.systems = []
         initGameSystems()
         initGameEntities()
-
-        EventManager.shared.postEvent(GameStartEvent())
-        print("Game started")
     }
 
     func update(deltaTime: CGFloat) {
         updateSystems(deltaTime: deltaTime)
     }
 
-    func updatePlayersMovement(player: PlayerRole, action: ControlAction) {
+    func updatePlayersMovement(player: Player, action: ControlAction) {
         switch player {
-        case .one:
-            guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
+        case .A:
+            guard let playerEntity = nexus.getEntity(with: PlayerAComponent.self) else {
                 return
             }
             updateAction(action, of: playerEntity)
-        case .two:
-            guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
+        case .B:
+            guard let playerEntity = nexus.getEntity(with: PlayerBComponent.self) else {
                 return
             }
             updateAction(action, of: playerEntity)
         }
-    }
-
-    func getRenderableComponents() -> [RenderableComponent] {
-        nexus.getComponents(of: RenderableComponent.self)
     }
 
     private func updateAction(_ action: ControlAction, of player: Entity) {
@@ -56,7 +49,7 @@ class GameEngine {
     }
 
     private func initGameSystems() {
-        self.systems = [PlayerSystem(nexus: nexus), MovementSystem(nexus: nexus), CameraSystem(nexus: nexus)]
+        self.systems.append(contentsOf: [MovementSystem(nexus: nexus)])
     }
 
     private func initGameEntities() {

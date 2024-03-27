@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum BlockType: String {
+public enum BlockType: Equatable {
     case normal, ground, spike, breakable, pushable, powerup
 
     static let typeToAssetNameMap = [normal: "land-top",
@@ -16,6 +16,18 @@ public enum BlockType: String {
                                      breakable: "block-breakable",
                                      pushable: "block-pushable",
                                      powerup: "powerup-unused"]
+    static let typeToTypeNameMap = [normal: "normal",
+                                    ground: "ground",
+                                    spike: "spike",
+                                    breakable: "breakable",
+                                    pushable: "pushable",
+                                    powerup: "powerup"]
+    static let typeNameToTypeMap = ["normal": normal,
+                                    "ground": ground,
+                                    "spike": spike,
+                                    "breakable": breakable,
+                                    "pushable": pushable,
+                                    "powerup": powerup]
     static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
                                 ground: CGSize(width: 50, height: 50),
                                 spike: CGSize(width: 50, height: 50),

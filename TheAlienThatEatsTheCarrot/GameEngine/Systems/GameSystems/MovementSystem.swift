@@ -9,25 +9,9 @@ import Foundation
 
 class MovementSystem: System {
     var nexus: Nexus
-    private var gameStartObserver: NSObjectProtocol?
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        subscribeToEvents()
-    }
-
-    deinit {
-        if let observer = gameStartObserver {
-            EventManager.shared.unsubscribe(from: observer)
-        }
-    }
-
-    func subscribeToEvents() {
-        gameStartObserver = EventManager.shared.subscribe(to: GameStartEvent.self, using: onEventOccur)
-    }
-
-    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
-        print("A Receiving event! \(event.self)")
     }
 
     func update(deltaTime: CGFloat) {

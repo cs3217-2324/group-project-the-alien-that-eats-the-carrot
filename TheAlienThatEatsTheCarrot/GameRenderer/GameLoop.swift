@@ -11,11 +11,9 @@ import QuartzCore
 class GameLoop {
     private var displayLink: CADisplayLink?
     var gameEngine: GameEngine
-    var updateUI: (() -> Void)?
 
-    init(gameEngine: GameEngine, updateUI: (() -> Void)? = nil) {
+    init(gameEngine: GameEngine) {
         self.gameEngine = gameEngine
-        self.updateUI = updateUI
     }
 
     func start() {
@@ -37,6 +35,5 @@ class GameLoop {
     @objc func step(displaylink: CADisplayLink) {
         let timeInterval = displaylink.targetTimestamp - displaylink.timestamp
         gameEngine.update(deltaTime: timeInterval)
-        updateUI?()
     }
 }

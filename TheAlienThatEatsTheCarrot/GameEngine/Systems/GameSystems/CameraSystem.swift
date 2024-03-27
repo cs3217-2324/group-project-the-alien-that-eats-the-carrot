@@ -16,35 +16,33 @@ class CameraSystem: System {
 
     func update(deltaTime: CGFloat) {
         removeAllIsInCameraComponents()
-        updateIsInCamera(deltaTime: deltaTime)
+        updateIsInPlayerACameraEntities(deltaTime: deltaTime)
+        updateIsInPlayerBCameraEntities(deltaTime: deltaTime)
     }
 
     private func removeAllIsInCameraComponents() {
-        nexus.getComponents(of: CameraComponent.self).forEach { $0.resetToRender() }
+        nexus.removeComponents(of: IsInPlayerACameraComponent.self)
+        nexus.removeComponents(of: IsInPlayerBCameraComponent.self)
     }
 
-    private func updateIsInCamera(deltaTime: CGFloat) {
-        let playerEntities = nexus.getEntities(with: PlayerComponent.self)
-
+    private func updateIsInPlayerACameraEntities(deltaTime: CGFloat) {
+        guard let playerAEntity = nexus.getEntity(with: PlayerAComponent.self),
+              let cameraAComponent = nexus.getComponent(of: CameraComponent.self, for: playerAEntity) else {
+            return
+        }
         let entities = nexus.getEntities(with: RenderableComponent.self)
         for entity in entities {
             guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
                 continue
             }
-            for player in playerEntities {
-                addObjectToCameraIfIsWithinBound(object: renderableComponent, player: player)
+            if isObjectWithinBound(position: renderableComponent.position, size: renderableComponent.size, bound: cameraAComponent.cameraBounds) {
+                let isInPlayerACameraComponent = IsInPlayerACameraComponent(entity: entity)
+                nexus.addComponent(isInPlayerACameraComponent, to: entity)
             }
         }
     }
 
-    private func addObjectToCameraIfIsWithinBound(object: RenderableComponent, player: Entity) {
-        guard let cameraComponent = nexus.getComponent(of: CameraComponent.self, for: player) else {
-            return
-        }
-        if isObjectWithinBound(position: object.position, size: object.size,
-                               bound: cameraComponent.cameraBounds) {
-            cameraComponent.toRender.append(object)
-        }
+    private func updateIsInPlayerBCameraEntities(deltaTime: CGFloat) {
     }
 
     private func isObjectWithinBound(position: CGPoint, size: CGSize, bound: CGRect) -> Bool {
