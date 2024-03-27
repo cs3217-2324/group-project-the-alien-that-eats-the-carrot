@@ -21,7 +21,3 @@ class RenderableComponent: Component {
         self.size = size
     }
 }
-
-enum ImageAsset {
-    case player, normalEnemy, normalBlock
-}
