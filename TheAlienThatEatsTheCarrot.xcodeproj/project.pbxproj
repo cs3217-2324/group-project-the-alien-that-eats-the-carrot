@@ -667,7 +667,6 @@
 				0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */,
 				3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */,
 				0A76A4842BAC78720067BD6E /* Collectable.swift in Sources */,
-				0A76A4992BAC78960067BD6E /* RenderableComponent.swift in Sources */,
 				0A76A4AB2BAD294D0067BD6E /* EnemyComponent.swift in Sources */,
 				0A76A4992BAC78960067BD6E /* RenderableComponent.swift in Sources */,
 				9F8C58A52BAE79A2002E75FB /* CoreDataManager.swift in Sources */,
