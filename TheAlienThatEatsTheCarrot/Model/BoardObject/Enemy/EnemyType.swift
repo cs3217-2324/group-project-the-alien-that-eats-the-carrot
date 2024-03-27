@@ -13,10 +13,10 @@ public enum EnemyType: String {
          stationary,
          turret
 
-    static let typeToAssetNameMap = [normal: "",
-                                     fast: "",
-                                     stationary: "",
-                                     turret: ""]
+    static let typeToAssetNameMap = [normal: "snail-1",
+                                     fast: "bird-1",
+                                     stationary: "stationary-1",
+                                     turret: "stationary-1"]
     static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
                                 fast: CGSize(width: 50, height: 50),
                                 stationary: CGSize(width: 50, height: 50),

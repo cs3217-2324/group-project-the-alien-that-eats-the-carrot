@@ -10,9 +10,9 @@ import Foundation
 public enum CollectableType: String, Equatable {
     case coin, carrot, heart
 
-    static let typeToAssetNameMap = [coin: "",
-                                     carrot: "",
-                                     heart: ""]
+    static let typeToAssetNameMap = [coin: "coin-gold",
+                                     carrot: "carrot-collect",
+                                     heart: "heart-full"]
     static let typeToSizeMap = [coin: CGSize(width: 20, height: 20),
                                 carrot: CGSize(width: 20, height: 20),
                                 heart: CGSize(width: 20, height: 20)]

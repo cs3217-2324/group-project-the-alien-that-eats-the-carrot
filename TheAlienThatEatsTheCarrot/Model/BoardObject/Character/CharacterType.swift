@@ -10,7 +10,7 @@ import Foundation
 public enum CharacterType: String {
   case normal
 
-  static let typeToAssetNameMap = [normal: ""]
+  static let typeToAssetNameMap = [normal: "alien-1"]
   static let typeToSizeMap = [normal: CGSize(width: 50, height: 50)]
 
   var assetName: String? {

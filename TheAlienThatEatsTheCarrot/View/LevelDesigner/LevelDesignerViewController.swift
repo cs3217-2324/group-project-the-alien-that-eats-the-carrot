@@ -21,6 +21,7 @@ class LevelDesignerViewController: UIViewController {
     private var componentSelected: ObjectType = .block(.normal)
 
     @IBOutlet private var boardAreaView: UIView!
+    var levelDesigner: LevelDesigner! // controller
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +32,19 @@ class LevelDesignerViewController: UIViewController {
     private func setUpContainerViews() {
         hideAllContainers()
         showContainerView(terrainsContainerView)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // initialise level desinger based on boardAreaView
+        let frame = boardAreaView.frame
+        let origin = CGPoint(x: frame.minX, y: frame.minY)
+        let size = CGSize(width: frame.maxX - frame.minX, height: frame.maxY - frame.minY)
+        let area = CGRect(origin: origin, size: size)
+        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area)")
+        if levelDesigner == nil {
+            self.levelDesigner = LevelDesigner(area: area, view: self)
+        }
     }
 
     // MARK: - set up tab bars
@@ -101,6 +115,7 @@ class LevelDesignerViewController: UIViewController {
         let tapLocation = gesture.location(in: boardAreaView)
         print("tap at \(tapLocation)")
 //        levelDesigner.handleTap(at: tapLocation)
+        addImage(objectType: componentSelected, center: tapLocation, width: 50, height: 50)
     }
 
     /// handle long press action in the board area
@@ -132,6 +147,12 @@ class LevelDesignerViewController: UIViewController {
     }
 
     // MARK: - image handling
+    func addImage(objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
+        print("add image")
+        let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
+        boardAreaView.addSubview(imageView.imageView)
+//        pegViews.append(pegImageView)
+    }
 
     // MARK: - other feature buttons
     @IBAction private func backButtonPressed(_ sender: UIButton) {

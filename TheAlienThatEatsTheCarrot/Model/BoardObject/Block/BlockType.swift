@@ -10,12 +10,12 @@ import Foundation
 public enum BlockType: String {
     case normal, ground, spike, breakable, pushable, powerup
 
-    static let typeToAssetNameMap = [normal: "",
-                                     ground: "",
-                                     spike: "",
-                                     breakable: "",
-                                     pushable: "",
-                                     powerup: ""]
+    static let typeToAssetNameMap = [normal: "land-top",
+                                     ground: "land-bottom",
+                                     spike: "spike",
+                                     breakable: "block-breakable",
+                                     pushable: "block-pushable",
+                                     powerup: "powerup-unused"]
     static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
                                 ground: CGSize(width: 50, height: 50),
                                 spike: CGSize(width: 50, height: 50),

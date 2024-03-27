@@ -44,6 +44,13 @@ struct BoardObjectSet {
         }
     }
 
+    func canAdd(boardObject: any BoardObject) -> Bool {
+        for existingBoardObject in self.allObjects where existingBoardObject.isOverlapping(with: boardObject) {
+            return false
+        }
+        return true
+    }
+
     mutating func remove(boardObject: any BoardObject) {
         if let block = boardObject as? Block {
             blocks.remove(block)
