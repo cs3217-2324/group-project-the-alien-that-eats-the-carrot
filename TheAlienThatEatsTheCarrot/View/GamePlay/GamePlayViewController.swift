@@ -52,7 +52,6 @@ class GamePlayViewController: UIViewController {
     private func updateUI() {
         renderableComponents = gameEngine.getRenderableComponents()
         for component in renderableComponents {
-            print("type: \(component.objectType) position: \(component.position)")
         }
     }
 
@@ -77,28 +76,33 @@ class GamePlayViewController: UIViewController {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
         print("left true")
+        EventManager.shared.postEvent(PlayerMoveEvent(action: .left))
     }
 
     @IBAction private func moveLeftButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
         print("left false")
+        EventManager.shared.postEvent(PlayerMoveEvent(action: .idle))
     }
 
     @IBAction private func moveRightButtonTouchDown(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
         print("right true")
+        EventManager.shared.postEvent(PlayerMoveEvent(action: .right))
     }
 
     @IBAction private func moveRightButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
         print("right false")
+        EventManager.shared.postEvent(PlayerMoveEvent(action: .idle))
     }
 
     @IBAction private func jumpButtonTapped(_ sender: UIButton) {
         print("jump")
+        EventManager.shared.postEvent(PlayerMoveEvent(action: .jump))
     }
 
     // MARK: - pause
