@@ -16,7 +16,7 @@ class CameraComponent: Component {
         self.entity = entity
         self.cameraBounds = cameraBounds
     }
-    
+
     func updateCameraBoundsFromCenter(center: CGPoint) {
         let size = cameraBounds.size
         var newOriginX = center.x - size.width / 2
@@ -27,5 +27,9 @@ class CameraComponent: Component {
         newOriginY = max(newOriginY, 0)
 
         cameraBounds.origin = CGPoint(x: newOriginX, y: newOriginY)
+    }
+
+    func resetToRender() {
+        self.toRender = []
     }
 }
