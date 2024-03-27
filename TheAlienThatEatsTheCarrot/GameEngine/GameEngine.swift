@@ -25,15 +25,15 @@ class GameEngine {
         updateSystems(deltaTime: deltaTime)
     }
 
-    func updatePlayersMovement(player: Player, action: ControlAction) {
+    func updatePlayersMovement(player: PlayerRole, action: ControlAction) {
         switch player {
-        case .A:
-            guard let playerEntity = nexus.getEntity(with: PlayerAComponent.self) else {
+        case .one:
+            guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
                 return
             }
             updateAction(action, of: playerEntity)
-        case .B:
-            guard let playerEntity = nexus.getEntity(with: PlayerBComponent.self) else {
+        case .two:
+            guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
                 return
             }
             updateAction(action, of: playerEntity)

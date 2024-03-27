@@ -10,6 +10,7 @@ import Foundation
 class CameraComponent: Component {
     var entity: Entity
     var cameraBounds: CGRect
+    var toRender: [RenderableComponent] = []
 
     init(entity: Entity, cameraBounds: CGRect = GameConstants.DEFAULT_CAMERA_BOUNDS) {
         self.entity = entity

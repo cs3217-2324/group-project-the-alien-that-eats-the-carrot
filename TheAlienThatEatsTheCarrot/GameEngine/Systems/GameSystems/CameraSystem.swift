@@ -17,8 +17,7 @@ class CameraSystem: System {
 
     func update(deltaTime: CGFloat) {
         removeAllIsInCameraComponents()
-        updateIsInPlayerACameraEntities(deltaTime: deltaTime)
-        updateIsInPlayerBCameraEntities(deltaTime: deltaTime)
+        updateIsInCamera(deltaTime: deltaTime)
     }
 
     func subscribeToEvent() {
@@ -30,28 +29,32 @@ class CameraSystem: System {
     }
 
     private func removeAllIsInCameraComponents() {
-        nexus.removeComponents(of: IsInPlayerACameraComponent.self)
-        nexus.removeComponents(of: IsInPlayerBCameraComponent.self)
+        // TODO: Reset toRender in camera components
     }
 
-    private func updateIsInPlayerACameraEntities(deltaTime: CGFloat) {
-        guard let playerAEntity = nexus.getEntity(with: PlayerAComponent.self),
-              let cameraAComponent = nexus.getComponent(of: CameraComponent.self, for: playerAEntity) else {
-            return
-        }
+    private func updateIsInCamera(deltaTime: CGFloat) {
+        let playerEntities = nexus.getEntities(with: PlayerComponent.self)
+
         let entities = nexus.getEntities(with: RenderableComponent.self)
         for entity in entities {
             guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: entity) else {
                 continue
             }
-            if isObjectWithinBound(position: renderableComponent.position, size: renderableComponent.size, bound: cameraAComponent.cameraBounds) {
-                let isInPlayerACameraComponent = IsInPlayerACameraComponent(entity: entity)
-                nexus.addComponent(isInPlayerACameraComponent, to: entity)
+            for player in playerEntities {
+                addObjectToCameraIfIsWithinBound(object: renderableComponent, player: player)
             }
+            
         }
     }
 
-    private func updateIsInPlayerBCameraEntities(deltaTime: CGFloat) {
+    private func addObjectToCameraIfIsWithinBound(object: RenderableComponent, player: Entity) {
+        guard let cameraComponent = nexus.getComponent(of: CameraComponent.self, for: player) else {
+            return
+        }
+        if isObjectWithinBound(position: object.position, size: object.size,
+                               bound: cameraComponent.cameraBounds) {
+            cameraComponent.toRender.append(object)
+        }
     }
 
     private func isObjectWithinBound(position: CGPoint, size: CGSize, bound: CGRect) -> Bool {
