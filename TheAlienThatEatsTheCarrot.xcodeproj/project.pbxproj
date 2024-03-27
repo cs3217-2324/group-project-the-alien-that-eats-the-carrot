@@ -57,7 +57,7 @@
 		0AC860AB2BB3A2D10060EF90 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860AA2BB3A2D10060EF90 /* Event.swift */; };
 		0AC860AD2BB3A3930060EF90 /* EventManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860AC2BB3A3930060EF90 /* EventManager.swift */; };
 		0AC860B22BB3A5360060EF90 /* GameStartEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860B12BB3A5360060EF90 /* GameStartEvent.swift */; };
-		0AC860B72BB3D3550060EF90 /* PlayerMoveEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860B62BB3D3550060EF90 /* PlayerMoveEvent.swift */; };
+		0AC860B72BB3D3550060EF90 /* PlayerControlActionEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860B62BB3D3550060EF90 /* PlayerControlActionEvent.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -120,7 +120,7 @@
 		0AC860AA2BB3A2D10060EF90 /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0AC860AC2BB3A3930060EF90 /* EventManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventManager.swift; sourceTree = "<group>"; };
 		0AC860B12BB3A5360060EF90 /* GameStartEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStartEvent.swift; sourceTree = "<group>"; };
-		0AC860B62BB3D3550060EF90 /* PlayerMoveEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerMoveEvent.swift; sourceTree = "<group>"; };
+		0AC860B62BB3D3550060EF90 /* PlayerControlActionEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlActionEvent.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC860B12BB3A5360060EF90 /* GameStartEvent.swift */,
-				0AC860B62BB3D3550060EF90 /* PlayerMoveEvent.swift */,
+				0AC860B62BB3D3550060EF90 /* PlayerControlActionEvent.swift */,
 			);
 			path = GameEvents;
 			sourceTree = "<group>";
@@ -662,7 +662,7 @@
 				3FCD005F2BB0184D0016389F /* SaveLevelViewController.swift in Sources */,
 				9F8C58B12BAEA8EC002E75FB /* BlockType+extensions.swift in Sources */,
 				0A76A46D2BAC783B0067BD6E /* PhysicsConstants.swift in Sources */,
-				0AC860B72BB3D3550060EF90 /* PlayerMoveEvent.swift in Sources */,
+				0AC860B72BB3D3550060EF90 /* PlayerControlActionEvent.swift in Sources */,
 				0A76A4D02BAF0C410067BD6E /* PlayerRole.swift in Sources */,
 				0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */,
 				3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */,

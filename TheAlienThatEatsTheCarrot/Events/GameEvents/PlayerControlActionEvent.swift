@@ -1,5 +1,5 @@
 //
-//  PlayerMoveEvent.swift
+//  PlayerControlActionEvent.swift
 //  TheAlienThatEatsTheCarrot
 //
 //  Created by Justin Cheah Yun Fei on 27/3/24.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct PlayerMoveEvent: Event {
-    static var name: Notification.Name = .playerMove
+struct PlayerControlActionEvent: Event {
+    static var name: Notification.Name = .playerControlAction
     var action: ControlAction
     var playerRole: PlayerRole
 
@@ -19,5 +19,5 @@ struct PlayerMoveEvent: Event {
 }
 
 extension Notification.Name {
-    static let playerMove = Notification.Name("playerMove")
+    static let playerControlAction = Notification.Name("playerControlAction")
 }

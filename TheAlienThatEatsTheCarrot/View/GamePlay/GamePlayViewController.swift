@@ -76,33 +76,33 @@ class GamePlayViewController: UIViewController {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
         print("left true")
-        EventManager.shared.postEvent(PlayerMoveEvent(action: .left))
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .left))
     }
 
     @IBAction private func moveLeftButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
         print("left false")
-        EventManager.shared.postEvent(PlayerMoveEvent(action: .idle))
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
     @IBAction private func moveRightButtonTouchDown(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
         print("right true")
-        EventManager.shared.postEvent(PlayerMoveEvent(action: .right))
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .right))
     }
 
     @IBAction private func moveRightButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
         print("right false")
-        EventManager.shared.postEvent(PlayerMoveEvent(action: .idle))
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
     @IBAction private func jumpButtonTapped(_ sender: UIButton) {
         print("jump")
-        EventManager.shared.postEvent(PlayerMoveEvent(action: .jump))
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .jump))
     }
 
     // MARK: - pause

@@ -9,7 +9,7 @@ import Foundation
 
 class PlayerSystem: System {
     var nexus: Nexus
-    private var playerMoveObserver: NSObjectProtocol?
+    private var playerControlActionObserver: NSObjectProtocol?
 
     init(nexus: Nexus) {
         self.nexus = nexus
@@ -17,7 +17,7 @@ class PlayerSystem: System {
     }
 
     deinit {
-        if let observer = playerMoveObserver {
+        if let observer = playerControlActionObserver {
             EventManager.shared.unsubscribe(from: observer)
         }
     }
@@ -32,21 +32,21 @@ class PlayerSystem: System {
     }
 
     func subscribeToEvents() {
-        playerMoveObserver = EventManager.shared.subscribe(to: PlayerMoveEvent.self, using: onEventOccur)
+        playerControlActionObserver = EventManager.shared.subscribe(to: PlayerControlActionEvent.self, using: onEventOccur)
     }
 
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
         guard
-            let playerMoveEvent = event as? PlayerMoveEvent,
+            let playerControlActionEvent = event as? PlayerControlActionEvent,
             let playerComponents = self?.nexus.getComponents(of: PlayerComponent.self)
         else {
             return
         }
         for playerComponent in playerComponents
-        where playerComponent.playerRole == playerMoveEvent.playerRole {
+        where playerComponent.playerRole == playerControlActionEvent.playerRole {
             let oldAction = playerComponent.action
-            playerComponent.action = playerMoveEvent.action
-            print("changed \(oldAction) to \(playerMoveEvent.action)")
+            playerComponent.action = playerControlActionEvent.action
+            print("changed \(oldAction) to \(playerControlActionEvent.action)")
             break
         }
     }
