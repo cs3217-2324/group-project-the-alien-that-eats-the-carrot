@@ -10,10 +10,12 @@ import Foundation
 class PlayerComponent: Component {
     var entity: Entity
     var action: ControlAction
+    var playerRole: PlayerRole
 
-    init(entity: Entity, action: ControlAction = .idle) {
+    init(entity: Entity, action: ControlAction = .idle, playerRole: PlayerRole = .one) {
         self.entity = entity
         self.action = action
+        self.playerRole = playerRole
     }
 }
 

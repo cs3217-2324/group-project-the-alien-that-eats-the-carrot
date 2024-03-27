@@ -17,13 +17,20 @@ class GamePlayViewController: UIViewController {
     @IBOutlet private var life3: UIImageView!
     @IBOutlet private var coinCountText: UILabel!
 
+    var renderableComponents: [RenderableComponent] = []
+
     // MARK: - game loop
-    var gameLoopTimer: CADisplayLink! // game loop
+    let gameEngine = GameEngine()
+    var gameLoop: GameLoop!
+
     private var isGameLoopRunning = false
     var count: Int = 0
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
+            self?.updateUI()
+        })
         startGameLoop()
     }
 
@@ -31,8 +38,7 @@ class GamePlayViewController: UIViewController {
         guard !isGameLoopRunning else {
             return
         }
-        gameLoopTimer = CADisplayLink(target: self, selector: #selector(gameLoop))
-        gameLoopTimer?.add(to: .main, forMode: .default)
+        gameLoop.start()
         isGameLoopRunning = true
     }
 
@@ -40,21 +46,13 @@ class GamePlayViewController: UIViewController {
         guard isGameLoopRunning else {
             return
         }
-        gameLoopTimer?.invalidate()
-        gameLoopTimer = nil
-        isGameLoopRunning = false
+        gameLoop.stop()
     }
 
-    @objc func gameLoop() {
-        // call step
-        let deltaTime = gameLoopTimer.targetTimestamp - gameLoopTimer.timestamp
-        print("\(count) delta time: \(deltaTime)")
-        count += 1
-//        do {
-//            try peggleGame.step(deltaTime: deltaTime)
-//        } catch {
-//            presentAlert(message: "Unexpected error: \(error)")
-//        }
+    private func updateUI() {
+        renderableComponents = gameEngine.getRenderableComponents()
+        for component in renderableComponents {
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,28 +76,33 @@ class GamePlayViewController: UIViewController {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
         print("left true")
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .left))
     }
 
     @IBAction private func moveLeftButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
         print("left false")
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
     @IBAction private func moveRightButtonTouchDown(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
         print("right true")
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .right))
     }
 
     @IBAction private func moveRightButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
         print("right false")
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
     @IBAction private func jumpButtonTapped(_ sender: UIButton) {
         print("jump")
+        EventManager.shared.postEvent(PlayerControlActionEvent(action: .jump))
     }
 
     // MARK: - pause

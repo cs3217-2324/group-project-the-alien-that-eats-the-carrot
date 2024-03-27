@@ -10,7 +10,7 @@ import CoreData
 extension CollectableType: FromDataAble {
   init(data: CollectableTypeData) throws {
     guard let name = data.typeName,
-              let type = CollectableType.typeNameToTypeMap[name] else {
+              let type = CollectableType(rawValue: name) else {
             throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: data.typeName)
         }
         self = type
@@ -20,7 +20,7 @@ extension CollectableType: FromDataAble {
 extension CollectableType: ToDataAble {
     func toData(context: NSManagedObjectContext) -> NSManagedObject {
         let collectableTypeData = BlockTypeData(context: context)
-        collectableTypeData.typeName = CollectableType.typeToTypeNameMap[self]
+        collectableTypeData.typeName = self.rawValue
         return collectableTypeData as NSManagedObject
     }
 }

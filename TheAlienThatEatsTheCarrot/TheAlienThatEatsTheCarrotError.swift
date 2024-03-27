@@ -9,14 +9,17 @@ import Foundation
 
 enum TheAlienThatEatsTheCarrotError: Error {
     case invalidObjectTypeDataError(typeName: String?)
-    case invalidNSSetDataError
+    case invalidPersistenceDataError
+    case duplicateLevelNameError(levelName: String)
 
     var errorMessage: String? {
         switch self {
         case .invalidObjectTypeDataError(let typeName):
             return "'\(String(describing: typeName))' is an invalid block type"
-        case .invalidNSSetDataError:
+        case .invalidPersistenceDataError:
             return "Persistence data is invalid"
+        case .duplicateLevelNameError(let levelName):
+            return "'\(levelName)' is a duplicate name. This is not allowed"
         }
     }
 }
