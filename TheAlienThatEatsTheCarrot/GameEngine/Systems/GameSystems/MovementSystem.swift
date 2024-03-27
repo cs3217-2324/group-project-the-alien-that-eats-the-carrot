@@ -48,7 +48,7 @@ class MovementSystem: System {
             velocity: movable.velocity,
             deltaTime: deltaTime
         )
-        
+
         renderableComponent.position = newPosition
         handleMovementPattern(movable, newPosition: newPosition, deltaTime: deltaTime)
     }

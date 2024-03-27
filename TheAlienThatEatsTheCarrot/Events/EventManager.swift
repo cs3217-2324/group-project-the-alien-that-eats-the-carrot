@@ -15,7 +15,7 @@ class EventManager {
     }
 
     func subscribe<T: Event>(to eventType: T.Type, using block: @escaping (T) -> Void) -> NSObjectProtocol {
-        return NotificationCenter.default.addObserver(forName: T.name, object: nil, queue: nil) { notification in
+        NotificationCenter.default.addObserver(forName: T.name, object: nil, queue: nil) { notification in
             if let event = notification.object as? T {
                 block(event)
             }

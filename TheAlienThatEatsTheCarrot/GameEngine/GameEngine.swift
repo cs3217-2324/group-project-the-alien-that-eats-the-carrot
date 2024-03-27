@@ -41,7 +41,7 @@ class GameEngine {
     }
 
     func getRenderableComponents() -> [RenderableComponent] {
-        return nexus.getComponents(of: RenderableComponent.self)
+        nexus.getComponents(of: RenderableComponent.self)
     }
 
     private func updateAction(_ action: ControlAction, of player: Entity) {
