@@ -9,6 +9,7 @@ import Foundation
 
 protocol GamePowerup {
     var duration: CGFloat { get }
+    var restoreAction: (() -> Void)? { get set }
 
     // Entity normally refers to (but is not limited to) the entity of the player
     func effectToEntity(_ entity: Entity, delegate: PowerupActionDelegate)

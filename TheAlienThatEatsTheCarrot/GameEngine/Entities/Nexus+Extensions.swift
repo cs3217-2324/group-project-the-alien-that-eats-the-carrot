@@ -91,7 +91,7 @@ extension Nexus {
         case .invinsible:
             fatalError("TODO: implement")
         case .strength:
-            fatalError("TODO: implement")
+            return getStrengthPowerupFactory(from: entity)
         }
     }
 
@@ -103,13 +103,17 @@ extension Nexus {
     }
 }
 
+// MARK: Enemies
 extension Nexus {
     private func getNormalEnemyFactory(from entity: Entity) -> EntityFactory {
         // TODO: get this from persistence
         let normalEnemyBoardObject = Enemy(enemyType: .normal)
         return NormalEnemyFactory(from: normalEnemyBoardObject, to: entity)
     }
+}
 
+// MARK: Blocks
+extension Nexus {
     private func getNormalBlockFactory(from entity: Entity) -> EntityFactory {
         // TODO: get this from persistence
         let normalBlockBoardObject = Block(blockType: .normal, containedPowerupType: nil)
@@ -120,5 +124,13 @@ extension Nexus {
         // TODO: get this from persistence
         let groundBlockBoardObject = Block(blockType: .ground, containedPowerupType: nil)
         return GroundBlockFactory(from: groundBlockBoardObject, to: entity)
+    }
+}
+
+// MARK: Powerups
+extension Nexus {
+    private func getStrengthPowerupFactory(from entity: Entity) -> EntityFactory {
+        let powerupBlockObject = Powerup(powerupType: .strength, position: CGPoint(x: 200.0, y: 200.0))
+        return StrengthPowerupFactory(boardObject: powerupBlockObject, entity: entity)
     }
 }

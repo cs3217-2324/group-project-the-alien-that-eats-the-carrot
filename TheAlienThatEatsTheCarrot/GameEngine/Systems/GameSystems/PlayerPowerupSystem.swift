@@ -1,5 +1,5 @@
 //
-//  PowerupSystem.swift
+//  PlayerPowerupSystem.swift
 //  TheAlienThatEatsTheCarrot
 //
 //  Created by Justin Cheah Yun Fei on 29/3/24.
@@ -8,15 +8,32 @@
 import Foundation
 
 /// This system is responsible for checking if the powerups are being consumed
-class PowerupSystem: System, PowerupActionDelegate {
+class PlayerPowerupSystem: System, PowerupActionDelegate {
     var nexus: Nexus
-    
+    private var powerupElapseOserver: NSObjectProtocol?
+
     init(nexus: Nexus) {
         self.nexus = nexus
+        subscribeToEvents()
     }
 
-    // TODO: add listener to powerup elapse event to restore default
-    
+    deinit {
+        if let observer = powerupElapseOserver {
+            EventManager.shared.unsubscribe(from: observer)
+        }
+    }
+
+    func subscribeToEvents() {
+        powerupElapseOserver = EventManager.shared.subscribe(to: PowerupElapseEvent.self, using: onEventOccur)
+    }
+
+    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
+        guard let powerupElapseEvent = event as? PowerupElapseEvent else {
+            return
+        }
+        powerupElapseEvent.powerup.restoreDefault()
+    }
+
     func update(deltaTime: CGFloat) {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
         let playerComponents = nexus.getComponents(of: PlayerComponent.self)
@@ -28,15 +45,15 @@ class PowerupSystem: System, PowerupActionDelegate {
                     return
                 }
                 if playerRenderableComponent.overlapsWith(powerupRenderableComponent) {
-                    // TODO: pass in delegate
                     powerupComponent.activatePowerupForEntity(playerComponent.entity, delegate: self)
+                    nexus.removeComponent(powerupRenderableComponent, from: powerupComponent.entity)
                 }
             }
         }
     }
 
     func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T : Component {
-        return nexus.getComponent(of: type, for: entity)
+        nexus.getComponent(of: type, for: entity)
     }
 
     func addComponent<T: Component>(_ component: T, to entity: Entity) {
