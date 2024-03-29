@@ -89,7 +89,7 @@ extension Nexus {
         case .doubleJump:
             fatalError("TODO: implement")
         case .invinsible:
-            fatalError("TODO: implement")
+            return getInvinsiblePowerupFactory(from: entity)
         case .strength:
             return getStrengthPowerupFactory(from: entity)
         }
@@ -131,6 +131,11 @@ extension Nexus {
 extension Nexus {
     private func getStrengthPowerupFactory(from entity: Entity) -> EntityFactory {
         let powerupBlockObject = Powerup(powerupType: .strength, position: CGPoint(x: 200.0, y: 200.0))
+        return StrengthPowerupFactory(boardObject: powerupBlockObject, entity: entity)
+    }
+
+    private func getInvinsiblePowerupFactory(from entity: Entity) -> EntityFactory {
+        let powerupBlockObject = Powerup(powerupType: .invinsible, position: CGPoint(x: 300.0, y: 200.0))
         return StrengthPowerupFactory(boardObject: powerupBlockObject, entity: entity)
     }
 }
