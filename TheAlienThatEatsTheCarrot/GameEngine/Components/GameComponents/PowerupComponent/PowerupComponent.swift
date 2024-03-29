@@ -16,7 +16,7 @@ class PowerupComponent: Component {
         self.powerup = powerup
     }
 
-    func activatePowerupForEntity(_ entity: Entity) {
-        powerup.effectToEntity(entity)
+    func activatePowerupForEntity(_ entity: Entity, delegate: PowerupActionDelegate) {
+        powerup.effectToEntity(entity, delegate: delegate)
     }
 }

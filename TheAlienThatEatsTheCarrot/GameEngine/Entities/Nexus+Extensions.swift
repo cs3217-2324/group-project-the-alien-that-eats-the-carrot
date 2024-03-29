@@ -13,8 +13,9 @@ extension Nexus {
         let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200), objectType: .character(.normal))
         let playerComponent = PlayerComponent(entity: entity)
         let cameraComponent = CameraComponent(entity: entity)
+        let attackableComponent = AttackableComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        addComponents([renderableComponent, playerComponent, cameraComponent,
+        addComponents([renderableComponent, playerComponent, cameraComponent, attackableComponent,
                        destroyableComponent], to: entity)
     }
 

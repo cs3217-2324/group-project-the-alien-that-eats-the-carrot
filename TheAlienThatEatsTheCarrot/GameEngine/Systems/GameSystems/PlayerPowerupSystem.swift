@@ -8,13 +8,15 @@
 import Foundation
 
 /// This system is responsible for checking if the powerups are being consumed
-class PowerupSystem: System {
+class PowerupSystem: System, PowerupActionDelegate {
     var nexus: Nexus
-
+    
     init(nexus: Nexus) {
         self.nexus = nexus
     }
 
+    // TODO: add listener to powerup elapse event to restore default
+    
     func update(deltaTime: CGFloat) {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
         let playerComponents = nexus.getComponents(of: PlayerComponent.self)
@@ -26,10 +28,18 @@ class PowerupSystem: System {
                     return
                 }
                 if playerRenderableComponent.overlapsWith(powerupRenderableComponent) {
-                    powerupComponent.activatePowerupForEntity(playerComponent.entity)
+                    // TODO: pass in delegate
+                    powerupComponent.activatePowerupForEntity(playerComponent.entity, delegate: self)
                 }
             }
         }
     }
 
+    func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T : Component {
+        return nexus.getComponent(of: type, for: entity)
+    }
+
+    func addComponent<T: Component>(_ component: T, to entity: Entity) {
+        nexus.addComponent(component, to: entity)
+    }
 }
