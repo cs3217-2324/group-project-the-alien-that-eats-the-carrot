@@ -20,19 +20,3 @@ class BlockFactory: EntityFactory {
         []
     }
 }
-
-class NormalBlockFactory: BlockFactory {
-    override func createComponents() -> [Component] {
-        let blockComponent = BlockComponent(entity: entity)
-        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .block(.normal))
-        return [blockComponent, renderableComponent]
-    }
-}
-
-class GroundBlockFactory: BlockFactory {
-    override func createComponents() -> [Component] {
-        let blockComponent = BlockComponent(entity: entity)
-        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .block(.ground))
-        return [blockComponent, renderableComponent]
-    }
-}
