@@ -1,5 +1,5 @@
 //
-//  ControllableSystem.swift
+//  PlayerMovementSystem.swift
 //  TheAlienThatEatsTheCarrot
 //
 //  Created by Justin Cheah Yun Fei on 23/3/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class PlayerSystem: System {
+class PlayerMovementSystem: System {
     var nexus: Nexus
     private var playerControlActionObserver: NSObjectProtocol?
 
