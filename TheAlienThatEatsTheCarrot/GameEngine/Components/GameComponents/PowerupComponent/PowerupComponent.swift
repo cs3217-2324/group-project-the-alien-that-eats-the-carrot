@@ -9,8 +9,14 @@ import Foundation
 
 class PowerupComponent: Component {
     var entity: Entity
+    var powerup: GamePowerup
 
-    init(entity: Entity) {
+    init(entity: Entity, powerup: GamePowerup) {
         self.entity = entity
+        self.powerup = powerup
+    }
+
+    func activatePowerupForEntity(_ entity: Entity) {
+        powerup.effectToEntity(entity)
     }
 }
