@@ -15,4 +15,8 @@ class AttackableComponent: Component {
         self.entity = entity
         self.attackStyle = attackStyle
     }
+
+    func attackIfPossible(attackee: Entity, delegate: AttackableDelegate) {
+        attackStyle.attack(attacker: entity, attackee: attackee, delegate: delegate)
+    }
 }
