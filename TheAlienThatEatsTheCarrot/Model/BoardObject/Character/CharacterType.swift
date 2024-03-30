@@ -20,11 +20,11 @@ public enum CharacterType: String {
     var size: CGSize? {
         CharacterType.typeToSizeMap[self]
     }
-    
+
     var width: CGFloat {
         CharacterType.typeToSizeMap[self]!.width
     }
-    
+
     var height: CGFloat {
         CharacterType.typeToSizeMap[self]!.height
     }

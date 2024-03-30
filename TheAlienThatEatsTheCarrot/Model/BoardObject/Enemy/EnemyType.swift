@@ -29,7 +29,7 @@ public enum EnemyType: String {
     var size: CGSize? {
         EnemyType.typeToSizeMap[self]
     }
-    
+
     var width: CGFloat {
         EnemyType.typeToSizeMap[self]!.width
     }

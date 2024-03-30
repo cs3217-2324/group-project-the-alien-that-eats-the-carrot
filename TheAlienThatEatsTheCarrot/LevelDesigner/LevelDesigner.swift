@@ -23,21 +23,23 @@ class LevelDesigner {
 //        self.selectedTool = DefaultTool.factory(typeToCreate: selectedTool, delegate: self)
 //    }
 //
-    func handleTap(at tapLocation: CGPoint, objectType: ObjectType) {
-        let boardObject = ObjectType.createObject(from: objectType, position: tapLocation)
+    func handleTap(at location: CGPoint, objectType: ObjectType) {
+        let boardObject = ObjectType.createObject(from: objectType, position: location)
         add(boardObject: boardObject)
     }
 
     func handleLongPress(at location: CGPoint) {
-//        selectedTool.handleLongPress(at: location)
+        guard let boardObject = level.findBoardObject(at: location) else {
+            return
+        }
+        remove(boardObject: boardObject)
     }
-//
-//    func handlePinchStart(at touchPoint: CGPoint) {
-//        guard let object = findGameObject(at: touchPoint) else {
-//            // no obj found for panning
+
+//    func handlePinchStart(at location: CGPoint) {
+//        guard let boardObject = level.findBoardObject(at: location) else {
 //            return
 //        }
-//        selectedTool.handlePinchStart(for: object)
+//        panObject = boardObject
 //    }
 //
 //    func handlePinchChange(scale: CGFloat) {
@@ -52,24 +54,28 @@ class LevelDesigner {
 //        selectedTool.handlePinchEnd()
 //    }
 //
-//    func handlePanStart(at touchPoint: CGPoint) {
-//        guard let object = findGameObject(at: touchPoint) else {
-//            // no obj found for panning
-//            return
-//        }
-//        selectedTool.handlePanStart(for: object, touchPoint: touchPoint)
-//        view.selectPanImage(at: object.center, displayAt: touchPoint)
-//    }
-//
-//    func handlePanChange(translation: CGPoint) {
-//        selectedTool.handlePanChange(translation: translation)
-//        view.translatePanImage(translation: translation)
-//    }
-//
-//    func handlePanEnd() {
-//        selectedTool.handlePanEnd()
-//        view.clearPanPegImage()
-//    }
+    private var panObject: (any BoardObject)?
+
+    func handlePanStart(at location: CGPoint) {
+        guard let boardObject = level.findBoardObject(at: location) else {
+            return
+        }
+        print("handle pan start - object found")
+        panObject = boardObject
+    }
+
+    func handlePanChange(at location: CGPoint) {
+        guard let boardObject = panObject else {
+            return
+        }
+        print("handle pan change - object found")
+        move(boardObject: boardObject, to: location)
+    }
+
+    func handlePanEnd() {
+        print("handle pan end")
+        panObject = nil
+    }
 //
 //    func handleSwipeLeft(at touchPoint: CGPoint) {
 //        guard let peg = findGameObject(at: touchPoint) as? Peg else {
@@ -119,19 +125,36 @@ class LevelDesigner {
 //
     // MARK: - Delegating to view and model
     func add(boardObject: BoardObject, addToView: Bool = true) {
+        print("adding object - check canAdd()")
         if !level.canAdd(boardObject: boardObject) {
             return
         }
+        print("adding object to level")
         level.add(boardObject: boardObject)
         if addToView {
-            view.addImage(objectType: boardObject.type, center: boardObject.position, width: boardObject.width, height: boardObject.height)
+            print("adding object to view")
+            let id = ObjectIdentifier(boardObject)
+            view.addImage(id: id, objectType: boardObject.type, center: boardObject.position, width: boardObject.width, height: boardObject.height)
         }
     }
-//
-//    func remove(peg: Peg) {
-//        level.remove(gameObject: peg)
-//        view.removePegImage(at: peg.center)
-//    }
+
+    func remove(boardObject: BoardObject) {
+        level.remove(boardObject: boardObject)
+        view.removeImage(id: ObjectIdentifier(boardObject))
+    }
+
+    func move(boardObject: BoardObject, to location: CGPoint) {
+        print("object moving")
+        remove(boardObject: boardObject)
+
+        var newBoardObject = ObjectType.createObject(from: boardObject.type, position: location)
+        print("new object created")
+        if !level.canAdd(boardObject: newBoardObject) {
+            newBoardObject = boardObject
+        }
+        add(boardObject: newBoardObject)
+        panObject = newBoardObject
+    }
 //
 //    func add(block: Block, addToView: Bool = true) {
 //        if !level.canAdd(gameObject: block) {

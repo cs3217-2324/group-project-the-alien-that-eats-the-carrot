@@ -29,7 +29,7 @@ public enum ObjectType: Equatable, Hashable {
             return characterType.assetName
         }
     }
-    
+
     var size: CGSize? {
         switch self {
         case .enemy(let enemyType):
@@ -44,7 +44,7 @@ public enum ObjectType: Equatable, Hashable {
             return characterType.size
         }
     }
-    
+
     // Factory method to create instances based on ObjectType
     static func createObject(from objectType: ObjectType, position: CGPoint) -> any BoardObject {
         switch objectType {
@@ -81,6 +81,4 @@ public enum ObjectType: Equatable, Hashable {
         Character(characterType: characterType, position: position)
     }
 
-    
-    
 }

@@ -21,6 +21,7 @@ class LevelDesignerViewController: UIViewController {
     private var componentSelected: ObjectType = .block(.normal)
 
     @IBOutlet private var boardAreaView: UIView!
+    private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
     var levelDesigner: LevelDesigner! // controller
 
     override func viewDidLoad() {
@@ -36,7 +37,7 @@ class LevelDesignerViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         // initialise level desinger based on boardAreaView
         let frame = boardAreaView.frame
         let origin = CGPoint(x: 0, y: 0)
@@ -45,7 +46,7 @@ class LevelDesignerViewController: UIViewController {
         if levelDesigner == nil {
             self.levelDesigner = LevelDesigner(area: area, view: self)
         }
-        
+
         print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area)")
     }
 
@@ -132,26 +133,33 @@ class LevelDesignerViewController: UIViewController {
         switch gesture.state {
         case .began:
             print("pan began")
-//            let touchPoint = gesture.location(in: boardAreaView)
-//            levelDesigner.handlePanStart(at: touchPoint)
+            let touchPoint = gesture.location(in: boardAreaView)
+            levelDesigner.handlePanStart(at: touchPoint)
         case .changed:
             print("pan change")
-//            let translation = gesture.translation(in: boardAreaView)
-//            levelDesigner.handlePanChange(translation: translation)
-//            gesture.setTranslation(.zero, in: boardAreaView)
+            let touchPoint = gesture.location(in: boardAreaView)
+            levelDesigner.handlePanChange(at: touchPoint)
         default:
             print("pan end")
-            // Gesture ended or canceled
-//            levelDesigner.handlePanEnd()
+            levelDesigner.handlePanEnd()
         }
     }
 
     // MARK: - image handling
-    func addImage(objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
-        print("add image")
+    func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
+        print("image added at \(center) for \(id)")
         let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
+        imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
-//        pegViews.append(pegImageView)
+    }
+
+    func removeImage(id: ObjectIdentifier) {
+        print("image removed for \(id)")
+        guard let removedImageView = imageViews.removeValue(forKey: id) else {
+            return
+        }
+        removedImageView.imageView.removeFromSuperview()
+        removedImageView.imageView = nil
     }
 
     // MARK: - other feature buttons

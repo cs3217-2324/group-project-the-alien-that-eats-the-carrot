@@ -26,11 +26,11 @@ public enum BlockType: String {
     var assetName: String? {
         BlockType.typeToAssetNameMap[self]
     }
-    
+
     var size: CGSize? {
         BlockType.typeToSizeMap[self]
     }
-    
+
     var width: CGFloat {
         BlockType.typeToSizeMap[self]!.width
     }
