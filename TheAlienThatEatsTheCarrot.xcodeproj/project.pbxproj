@@ -77,6 +77,7 @@
 		0AC860E22BB71CA60060EF90 /* LeftRightPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860E12BB71CA60060EF90 /* LeftRightPattern.swift */; };
 		0AC860E42BB71CE20060EF90 /* MovementPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860E32BB71CE20060EF90 /* MovementPattern.swift */; };
 		0AC860E62BB71F550060EF90 /* MovableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860E52BB71F550060EF90 /* MovableDelegate.swift */; };
+		0AC860E82BB7BC170060EF90 /* DestroyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -159,6 +160,7 @@
 		0AC860E12BB71CA60060EF90 /* LeftRightPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftRightPattern.swift; sourceTree = "<group>"; };
 		0AC860E32BB71CE20060EF90 /* MovementPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovementPattern.swift; sourceTree = "<group>"; };
 		0AC860E52BB71F550060EF90 /* MovableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableDelegate.swift; sourceTree = "<group>"; };
+		0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyEvent.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				0AC860B12BB3A5360060EF90 /* GameStartEvent.swift */,
 				0AC860B62BB3D3550060EF90 /* PlayerControlActionEvent.swift */,
 				0AC860D72BB6B0750060EF90 /* PowerupElapseEvent.swift */,
+				0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */,
 			);
 			path = GameEvents;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				3F6807712BAE916900EB7682 /* GamePlayViewController.swift in Sources */,
 				9F8C58C12BAEB4EB002E75FB /* Powerup+extensions.swift in Sources */,
 				9F8C58BB2BAEAEDF002E75FB /* Block+extensions.swift in Sources */,
+				0AC860E82BB7BC170060EF90 /* DestroyEvent.swift in Sources */,
 				0A76A4762BAC78570067BD6E /* Nexus+Extensions.swift in Sources */,
 				9F8C58A92BAE9D49002E75FB /* EnemyType.swift in Sources */,
 				0AC860AD2BB3A3930060EF90 /* EventManager.swift in Sources */,

@@ -9,15 +9,18 @@ import Foundation
 
 class DestroyableComponent: Component {
     static let DEFAULT_DESTROYABLE_HEALTH = 100.0
+    static let DEFAULT_LIVES = 1
     var entity: Entity
     var health: CGFloat
+    var lives: Int
     var isDestroyed: Bool
     var isInvinsible: Bool
 
     init(entity: Entity, health: CGFloat = DestroyableComponent.DEFAULT_DESTROYABLE_HEALTH,
-         isDestroyed: Bool = false, isInvinsible: Bool = false) {
+         lives: Int = DestroyableComponent.DEFAULT_LIVES, isDestroyed: Bool = false, isInvinsible: Bool = false) {
         self.entity = entity
         self.health = health
+        self.lives = lives
         self.isDestroyed = isDestroyed
         self.isInvinsible = isInvinsible
     }
@@ -25,7 +28,11 @@ class DestroyableComponent: Component {
     func takeDamage(_ damage: CGFloat) {
         health -= damage
         if health <= 0 {
+            lives -= 1
+        }
+        if lives <= 0 {
             isDestroyed = true
+            EventManager.shared.postEvent(DestroyEvent(entity: entity))
         }
     }
 }
