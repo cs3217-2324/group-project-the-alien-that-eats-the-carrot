@@ -11,7 +11,7 @@ class AttackableComponent: Component {
     static var DEFAULT_DAMAGE = 100.0
     var entity: Entity
     var damage: CGFloat
-    
+
     init(entity: Entity, damage: CGFloat = AttackableComponent.DEFAULT_DAMAGE) {
         self.entity = entity
         self.damage = damage

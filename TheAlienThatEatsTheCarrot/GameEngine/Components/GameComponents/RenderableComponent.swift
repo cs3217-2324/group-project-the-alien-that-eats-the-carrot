@@ -29,7 +29,7 @@ extension RenderableComponent {
 
         let myRect = CGRect(origin: myOrigin, size: size)
         let otherRect = CGRect(origin: otherOrigin, size: other.size)
-        
+
         return myRect.intersects(otherRect)
     }
 }
