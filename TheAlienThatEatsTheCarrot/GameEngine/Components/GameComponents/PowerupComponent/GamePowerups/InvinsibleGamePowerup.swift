@@ -27,8 +27,8 @@ class InvinsibleGamePowerup: GamePowerup {
         let timerComponent = TimerComponent(entity: entity, duration: duration, event: eventWhenPowerupElapse)
         delegate.addComponent(timerComponent, to: entity)
 
-        self.restoreAction = { [weak self, weak entity] in
-            guard let strongSelf = self, let entity = entity,
+        self.restoreAction = { [weak entity] in
+            guard let entity = entity,
                   let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: entity) else {
                 return
             }
