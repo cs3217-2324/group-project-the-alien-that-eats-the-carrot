@@ -50,6 +50,16 @@ final class Nexus {
         }
     }
 
+    func removeComponent<T: Component>(_ component: T, from entity: Entity) where T: AnyObject {
+        let componentId = T.typeId
+        if let index = entities[entity]?[componentId]?.firstIndex(where: { $0 as? T === component }) {
+            entities[entity]?[componentId]?.remove(at: index)
+            if entities[entity]?[componentId]?.isEmpty ?? true {
+                componentIdToEntities[componentId]?.remove(entity)
+            }
+        }
+    }
+
     func removeComponents<T: Component>(of type: T.Type) {
         let componentId = type.typeId
         entities.keys.forEach { entity in
