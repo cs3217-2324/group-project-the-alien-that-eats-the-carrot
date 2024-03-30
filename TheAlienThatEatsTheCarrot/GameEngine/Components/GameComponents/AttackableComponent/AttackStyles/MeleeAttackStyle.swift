@@ -8,15 +8,21 @@
 import Foundation
 
 class MeleeAttackStyle: AttackStyle {
+    static let DEFAULT_DAMAGE = 50.0
+    var damage: CGFloat
+
+    init(damage: CGFloat = MeleeAttackStyle.DEFAULT_DAMAGE) {
+        self.damage = damage
+    }
+
     func attack(attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
         guard
-            let attackableComponent = delegate.getComponent(of: AttackableComponent.self, for: attacker),
             let attackerRenderableComponent = delegate.getComponent(of: RenderableComponent.self, for: attacker),
             let attackeeRenderableComponent = delegate.getComponent(of: RenderableComponent.self, for: attackee) else {
             return
         }
         if attackerRenderableComponent.overlapsWith(attackeeRenderableComponent) {
-            dealDamage(attackableComponent.damage, to: attackee, delegate: delegate)
+            dealDamage(damage, to: attackee, delegate: delegate)
         }
     }
 
