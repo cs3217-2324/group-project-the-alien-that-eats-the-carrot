@@ -17,7 +17,7 @@ final class Collectable: BoardObject {
         .collectable(self.collectableType)
     }
 
-    init(collectableType: CollectableType, position: CGPoint) {
+    init(collectableType: CollectableType, position: CGPoint = .zero) {
         self.collectableType = collectableType
         self.position = position
         self.imageName = collectableType.assetName
