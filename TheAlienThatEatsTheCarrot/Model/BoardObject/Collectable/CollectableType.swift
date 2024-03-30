@@ -20,9 +20,15 @@ public enum CollectableType: String, Equatable {
     var assetName: String? {
         CollectableType.typeToAssetNameMap[self]
     }
+    
+    var size: CGSize? {
+        CollectableType.typeToSizeMap[self]
+    }
+    
     var width: CGFloat {
         CollectableType.typeToSizeMap[self]!.width
     }
+    
     var height: CGFloat {
         CollectableType.typeToSizeMap[self]!.height
     }

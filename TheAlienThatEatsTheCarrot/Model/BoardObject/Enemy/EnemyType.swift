@@ -26,6 +26,10 @@ public enum EnemyType: String {
         EnemyType.typeToAssetNameMap[self]
     }
 
+    var size: CGSize? {
+        EnemyType.typeToSizeMap[self]
+    }
+    
     var width: CGFloat {
         EnemyType.typeToSizeMap[self]!.width
     }

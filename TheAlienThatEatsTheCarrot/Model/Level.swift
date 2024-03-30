@@ -34,4 +34,8 @@ struct Level {
     mutating func remove(boardObject: any BoardObject) {
         self.boardObjects.remove(boardObject: boardObject)
     }
+    
+    func findBoardObject(at point: CGPoint) -> (any BoardObject)? {
+        boardObjects.findBoardObject(at: point)
+    }
 }

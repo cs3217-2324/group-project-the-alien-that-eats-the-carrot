@@ -36,15 +36,17 @@ class LevelDesignerViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         // initialise level desinger based on boardAreaView
         let frame = boardAreaView.frame
-        let origin = CGPoint(x: frame.minX, y: frame.minY)
+        let origin = CGPoint(x: 0, y: 0)
         let size = CGSize(width: frame.maxX - frame.minX, height: frame.maxY - frame.minY)
         let area = CGRect(origin: origin, size: size)
-        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area)")
         if levelDesigner == nil {
             self.levelDesigner = LevelDesigner(area: area, view: self)
         }
+        
+        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area)")
     }
 
     // MARK: - set up tab bars
@@ -113,9 +115,7 @@ class LevelDesignerViewController: UIViewController {
     /// handle tap action in the board area
     @objc func handleBoardTap(_ gesture: UITapGestureRecognizer) {
         let tapLocation = gesture.location(in: boardAreaView)
-        print("tap at \(tapLocation)")
-//        levelDesigner.handleTap(at: tapLocation)
-        addImage(objectType: componentSelected, center: tapLocation, width: 50, height: 50)
+        levelDesigner.handleTap(at: tapLocation, objectType: componentSelected)
     }
 
     /// handle long press action in the board area
@@ -123,7 +123,7 @@ class LevelDesignerViewController: UIViewController {
         if gesture.state == .began {
             let location = gesture.location(in: boardAreaView)
             print("long press at \(location)")
-//            levelDesigner.handleLongPress(at: location)
+            levelDesigner.handleLongPress(at: location)
         }
     }
 

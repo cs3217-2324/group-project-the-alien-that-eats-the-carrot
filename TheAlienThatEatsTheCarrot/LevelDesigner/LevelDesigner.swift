@@ -23,13 +23,14 @@ class LevelDesigner {
 //        self.selectedTool = DefaultTool.factory(typeToCreate: selectedTool, delegate: self)
 //    }
 //
-//    func handleTap(at tapLocation: CGPoint) {
-//        selectedTool.handleTap(at: tapLocation)
-//    }
-//
-//    func handleLongPress(at location: CGPoint) {
+    func handleTap(at tapLocation: CGPoint, objectType: ObjectType) {
+        let boardObject = ObjectType.createObject(from: objectType, position: tapLocation)
+        add(boardObject: boardObject)
+    }
+
+    func handleLongPress(at location: CGPoint) {
 //        selectedTool.handleLongPress(at: location)
-//    }
+    }
 //
 //    func handlePinchStart(at touchPoint: CGPoint) {
 //        guard let object = findGameObject(at: touchPoint) else {
@@ -114,19 +115,18 @@ class LevelDesigner {
 //        view.loadLevel(with: level.gameObjects)
 //    }
 //
-// }
+
 //
-// MARK: +ToolDelegate
-// extension LevelDesigner: ToolDelegate {
-//    func add(peg: Peg, addToView: Bool = true) {
-//        if !level.canAdd(gameObject: peg) {
-//            return
-//        }
-//        level.add(gameObject: peg)
-//        if addToView {
-//            view.addPegImage(peg: peg)
-//        }
-//    }
+    // MARK: - Delegating to view and model
+    func add(boardObject: BoardObject, addToView: Bool = true) {
+        if !level.canAdd(boardObject: boardObject) {
+            return
+        }
+        level.add(boardObject: boardObject)
+        if addToView {
+            view.addImage(objectType: boardObject.type, center: boardObject.position, width: boardObject.width, height: boardObject.height)
+        }
+    }
 //
 //    func remove(peg: Peg) {
 //        level.remove(gameObject: peg)

@@ -22,9 +22,15 @@ public enum PowerupType: String {
     var assetName: String? {
         PowerupType.typeToAssetNameMap[self]
     }
+    
+    var size: CGSize? {
+        PowerupType.typeToSizeMap[self]
+    }
+    
     var width: CGFloat {
         PowerupType.typeToSizeMap[self]!.width
     }
+    
     var height: CGFloat {
         PowerupType.typeToSizeMap[self]!.height
     }

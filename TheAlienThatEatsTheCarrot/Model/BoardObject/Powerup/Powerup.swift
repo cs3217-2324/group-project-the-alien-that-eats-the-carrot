@@ -32,6 +32,14 @@ final class Powerup: BoardObject {
     func isOverlapping(with boardObject: BoardObject) -> Bool {
         boardObject.isOverlapping(with: self)
     }
+
+    func contains(point: CGPoint) -> Bool {
+        let minX = position.x - width / 2
+        let maxX = position.x + width / 2
+        let minY = position.y - height / 2
+        let maxY = position.y + height / 2
+        return point.x >= minX && point.x <= maxX && point.y >= minY && point.y <= maxY
+    }
 }
 
 extension Powerup: Hashable {

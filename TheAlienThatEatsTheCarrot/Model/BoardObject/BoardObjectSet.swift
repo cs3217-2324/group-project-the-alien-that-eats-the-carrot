@@ -68,4 +68,13 @@ struct BoardObjectSet {
 
     mutating func scale(from prevArea: CGRect, to newArea: CGRect) {
     }
+    
+    func findBoardObject(at point: CGPoint) -> (any BoardObject)? {
+//        for gameObject in gameObjects.set {
+//            if let gameObject = gameObject.base as? (any BoardObject), gameObject.contains(point: point) {
+//                return gameObject
+//            }
+//        }
+        return nil
+    }
 }
