@@ -1,17 +1,17 @@
 //
-//  EnemyFactory.swift
+//  CollectableFactory.swift
 //  TheAlienThatEatsTheCarrot
 //
-//  Created by Justin Cheah Yun Fei on 22/3/24.
+//  Created by Justin Cheah Yun Fei on 30/3/24.
 //
 
 import Foundation
 
-class EnemyFactory: EntityFactory {
-    let boardObject: Enemy
+class CollectableFactory: EntityFactory {
+    let boardObject: BoardObject
     let entity: Entity
 
-    init(from boardObject: Enemy, to entity: Entity) {
+    init(boardObject: BoardObject, entity: Entity) {
         self.boardObject = boardObject
         self.entity = entity
     }

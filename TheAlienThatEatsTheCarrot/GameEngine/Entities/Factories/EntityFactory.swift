@@ -8,5 +8,7 @@
 import Foundation
 
 protocol EntityFactory {
+    var entity: Entity { get }
+
     func createComponents() -> [Component]
 }

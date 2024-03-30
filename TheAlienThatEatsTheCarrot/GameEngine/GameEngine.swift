@@ -56,11 +56,16 @@ class GameEngine {
     }
 
     private func initGameSystems() {
-        self.systems = [PlayerSystem(nexus: nexus), MovementSystem(nexus: nexus), CameraSystem(nexus: nexus)]
+        self.systems = [PlayerMovementSystem(nexus: nexus),
+                        MovementSystem(nexus: nexus),
+                        PlayerPowerupSystem(nexus: nexus),
+                        TimerSystem(nexus: nexus),
+                        CameraSystem(nexus: nexus)]
     }
 
     private func initGameEntities() {
         nexus.addCharacterForPlayerA()
         nexus.addEntity(type: .enemy(.normal))
+        nexus.addEntity(type: .powerup(.strength))
     }
 }
