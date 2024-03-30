@@ -37,7 +37,7 @@ class MovementSystem: System, MovableDelegate {
         }
     }
 
-    func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T : Component {
+    func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T: Component {
         nexus.getComponent(of: type, for: entity)
     }
 }

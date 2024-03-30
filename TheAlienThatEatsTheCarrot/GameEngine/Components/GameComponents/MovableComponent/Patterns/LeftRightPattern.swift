@@ -18,8 +18,7 @@ class LeftRightPattern: MovementPattern {
 
     func move(deltaTime: CGFloat, entity: Entity, delegate: MovableDelegate) {
         guard
-            let physicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: entity),
-            let renderableComponent = delegate.getComponent(of: RenderableComponent.self, for: entity) else {
+            let physicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: entity) else {
             return
         }
         if distanceMoved >= totalDistanceToMoveBeforeChange {
@@ -27,7 +26,7 @@ class LeftRightPattern: MovementPattern {
             distanceMoved = 0
             return
         }
-        let horizontalDistanceMoved = physicsComponent.physicsBody.velocity.dx * deltaTime
+        let horizontalDistanceMoved = physicsComponent.physicsBody.velocity.dx.magnitude * deltaTime
         distanceMoved += horizontalDistanceMoved
     }
 
