@@ -12,10 +12,11 @@ extension Nexus {
         let entity = Entity()
         let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200), objectType: .character(.normal))
         let playerComponent = PlayerComponent(entity: entity)
+        let inventoryComponent = InventoryComponent(entity: entity)
         let cameraComponent = CameraComponent(entity: entity)
         let attackableComponent = AttackableComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        addComponents([renderableComponent, playerComponent, cameraComponent, attackableComponent,
+        addComponents([renderableComponent, playerComponent, inventoryComponent, cameraComponent, attackableComponent,
                        destroyableComponent], to: entity)
     }
 
@@ -74,9 +75,9 @@ extension Nexus {
     private func getCollectableFactory(type: CollectableType, from entity: Entity) -> EntityFactory {
         switch type {
         case .coin:
-            fatalError("TODO: implement")
+            return getCoinCollectableFactory(from: entity)
         case .carrot:
-            fatalError("TODO: implement")
+            return getCarrotCollectableFactory(from: entity)
         case .heart:
             fatalError("TODO: implement")
         }
@@ -137,5 +138,18 @@ extension Nexus {
     private func getInvinsiblePowerupFactory(from entity: Entity) -> EntityFactory {
         let powerupBlockObject = Powerup(powerupType: .invinsible, position: CGPoint(x: 300.0, y: 200.0))
         return StrengthPowerupFactory(boardObject: powerupBlockObject, entity: entity)
+    }
+}
+
+// MARK: Collectables
+extension Nexus {
+    private func getCoinCollectableFactory(from entity: Entity) -> EntityFactory {
+        let coinCollectableObject = Collectable(collectableType: .coin)
+        return CoinCollectableFactory(boardObject: coinCollectableObject, entity: entity)
+    }
+
+    private func getCarrotCollectableFactory(from entity: Entity) -> EntityFactory {
+        let carrotCollectableObject = Collectable(collectableType: .carrot)
+        return CarrotCollectableFactory(boardObject: carrotCollectableObject, entity: entity)
     }
 }
