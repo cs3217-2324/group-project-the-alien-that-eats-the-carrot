@@ -18,4 +18,5 @@ protocol BoardObject: AnyObject {
     // TODO: remove when ECS is implemented
     func move(to newPosition: CGPoint)
     func isOverlapping(with boardObject: BoardObject) -> Bool
+    func contains(point: CGPoint) -> Bool
 }

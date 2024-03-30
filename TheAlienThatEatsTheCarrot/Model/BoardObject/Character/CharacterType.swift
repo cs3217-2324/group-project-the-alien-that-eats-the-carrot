@@ -8,18 +8,24 @@
 import Foundation
 
 public enum CharacterType: String {
-  case normal
+    case normal
 
-  static let typeToAssetNameMap = [normal: ""]
-  static let typeToSizeMap = [normal: CGSize(width: 50, height: 50)]
+    static let typeToAssetNameMap = [normal: "alien-1"]
+    static let typeToSizeMap = [normal: CGSize(width: 50, height: 50)]
 
-  var assetName: String? {
-    CharacterType.typeToAssetNameMap[self]
-  }
-  var width: CGFloat {
-    CharacterType.typeToSizeMap[self]!.width
-  }
-  var height: CGFloat {
-    CharacterType.typeToSizeMap[self]!.height
-  }
+    var assetName: String? {
+        CharacterType.typeToAssetNameMap[self]
+    }
+
+    var size: CGSize? {
+        CharacterType.typeToSizeMap[self]
+    }
+
+    var width: CGFloat {
+        CharacterType.typeToSizeMap[self]!.width
+    }
+
+    var height: CGFloat {
+        CharacterType.typeToSizeMap[self]!.height
+    }
 }

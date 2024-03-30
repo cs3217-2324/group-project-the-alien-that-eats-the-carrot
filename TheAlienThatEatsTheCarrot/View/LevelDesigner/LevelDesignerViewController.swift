@@ -21,6 +21,8 @@ class LevelDesignerViewController: UIViewController {
     private var componentSelected: ObjectType = .block(.normal)
 
     @IBOutlet private var boardAreaView: UIView!
+    private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
+    var levelDesigner: LevelDesigner! // controller
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +33,21 @@ class LevelDesignerViewController: UIViewController {
     private func setUpContainerViews() {
         hideAllContainers()
         showContainerView(terrainsContainerView)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // initialise level desinger based on boardAreaView
+        let frame = boardAreaView.frame
+        let origin = CGPoint(x: 0, y: 0)
+        let size = CGSize(width: frame.maxX - frame.minX, height: frame.maxY - frame.minY)
+        let area = CGRect(origin: origin, size: size)
+        if levelDesigner == nil {
+            self.levelDesigner = LevelDesigner(area: area, view: self)
+        }
+
+        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area)")
     }
 
     // MARK: - set up tab bars
@@ -99,8 +116,7 @@ class LevelDesignerViewController: UIViewController {
     /// handle tap action in the board area
     @objc func handleBoardTap(_ gesture: UITapGestureRecognizer) {
         let tapLocation = gesture.location(in: boardAreaView)
-        print("tap at \(tapLocation)")
-//        levelDesigner.handleTap(at: tapLocation)
+        levelDesigner.handleTap(at: tapLocation, objectType: componentSelected)
     }
 
     /// handle long press action in the board area
@@ -108,7 +124,7 @@ class LevelDesignerViewController: UIViewController {
         if gesture.state == .began {
             let location = gesture.location(in: boardAreaView)
             print("long press at \(location)")
-//            levelDesigner.handleLongPress(at: location)
+            levelDesigner.handleLongPress(at: location)
         }
     }
 
@@ -117,21 +133,34 @@ class LevelDesignerViewController: UIViewController {
         switch gesture.state {
         case .began:
             print("pan began")
-//            let touchPoint = gesture.location(in: boardAreaView)
-//            levelDesigner.handlePanStart(at: touchPoint)
+            let touchPoint = gesture.location(in: boardAreaView)
+            levelDesigner.handlePanStart(at: touchPoint)
         case .changed:
             print("pan change")
-//            let translation = gesture.translation(in: boardAreaView)
-//            levelDesigner.handlePanChange(translation: translation)
-//            gesture.setTranslation(.zero, in: boardAreaView)
+            let touchPoint = gesture.location(in: boardAreaView)
+            levelDesigner.handlePanChange(at: touchPoint)
         default:
             print("pan end")
-            // Gesture ended or canceled
-//            levelDesigner.handlePanEnd()
+            levelDesigner.handlePanEnd()
         }
     }
 
     // MARK: - image handling
+    func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
+        print("image added at \(center) for \(id)")
+        let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
+        imageViews[id] = imageView
+        boardAreaView.addSubview(imageView.imageView)
+    }
+
+    func removeImage(id: ObjectIdentifier) {
+        print("image removed for \(id)")
+        guard let removedImageView = imageViews.removeValue(forKey: id) else {
+            return
+        }
+        removedImageView.imageView.removeFromSuperview()
+        removedImageView.imageView = nil
+    }
 
     // MARK: - other feature buttons
     @IBAction private func backButtonPressed(_ sender: UIButton) {

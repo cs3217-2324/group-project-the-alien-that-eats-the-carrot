@@ -23,8 +23,8 @@ class GameLoop {
     }
 
     func stop() {
-        displayLink?.remove(from: .main, forMode: .default)
         displayLink?.invalidate()
+        displayLink = nil
     }
 
     private func createDisplayLink() -> CADisplayLink {

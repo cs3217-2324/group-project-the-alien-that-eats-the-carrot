@@ -44,6 +44,13 @@ struct BoardObjectSet {
         }
     }
 
+    func canAdd(boardObject: any BoardObject) -> Bool {
+        for existingBoardObject in self.allObjects where existingBoardObject.isOverlapping(with: boardObject) {
+            return false
+        }
+        return true
+    }
+
     mutating func remove(boardObject: any BoardObject) {
         if let block = boardObject as? Block {
             blocks.remove(block)
@@ -60,5 +67,49 @@ struct BoardObjectSet {
     }
 
     mutating func scale(from prevArea: CGRect, to newArea: CGRect) {
+    }
+
+    func findBoardObject(at point: CGPoint) -> (any BoardObject)? {
+        if let block = blocks.first(where: { $0.contains(point: point) }) {
+            return block
+        }
+        if let collectable = collectables.first(where: { $0.contains(point: point) }) {
+            return collectable
+        }
+        if let enemy = enemies.first(where: { $0.contains(point: point) }) {
+            return enemy
+        }
+        if let powerup = powerups.first(where: { $0.contains(point: point) }) {
+            return powerup
+        }
+        return nil
+    }
+
+    func nearestNonOverlappingPosition(for object: BoardObject) -> CGPoint {
+        if allObjects.contains(where: { $0 !== object && $0.isOverlapping(with: object) }) {
+            // If there's an overlap, calculate the nearest non-overlapping position
+            var minDistance = CGFloat.greatestFiniteMagnitude
+            var nearestPosition = object.position
+
+            for existingObject in allObjects where existingObject !== object {
+                let dx = existingObject.position.x - object.position.x
+                let dy = existingObject.position.y - object.position.y
+                let distance = sqrt(dx * dx + dy * dy)
+
+                if distance < minDistance {
+                    minDistance = distance
+                    let overlapDistance = (object.width + existingObject.width) / 2
+                    let ratio = overlapDistance / distance
+                    let newX = object.position.x + dx * ratio
+                    let newY = object.position.y + dy * ratio
+                    nearestPosition = CGPoint(x: newX, y: newY)
+                }
+            }
+
+            return nearestPosition
+        } else {
+            // If no overlap, return the object's current position
+            return object.position
+        }
     }
 }
