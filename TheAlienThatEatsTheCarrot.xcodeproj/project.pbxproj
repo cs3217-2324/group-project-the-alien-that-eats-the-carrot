@@ -87,6 +87,8 @@
 		0AC860FA2BB7C8A00060EF90 /* CoinCollectableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860F92BB7C8A00060EF90 /* CoinCollectableFactory.swift */; };
 		0AC860FC2BB7C8B50060EF90 /* CollectableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860FB2BB7C8B50060EF90 /* CollectableFactory.swift */; };
 		0AC860FE2BB7C9890060EF90 /* CarrotCollectableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860FD2BB7C9890060EF90 /* CarrotCollectableFactory.swift */; };
+		0AC861002BB7E9620060EF90 /* DoubleJumpPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860FF2BB7E9620060EF90 /* DoubleJumpPowerupFactory.swift */; };
+		0AC861022BB7E99D0060EF90 /* DoubleJumpGamePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861012BB7E99D0060EF90 /* DoubleJumpGamePowerup.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -179,6 +181,8 @@
 		0AC860F92BB7C8A00060EF90 /* CoinCollectableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectableFactory.swift; sourceTree = "<group>"; };
 		0AC860FB2BB7C8B50060EF90 /* CollectableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableFactory.swift; sourceTree = "<group>"; };
 		0AC860FD2BB7C9890060EF90 /* CarrotCollectableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrotCollectableFactory.swift; sourceTree = "<group>"; };
+		0AC860FF2BB7E9620060EF90 /* DoubleJumpPowerupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleJumpPowerupFactory.swift; sourceTree = "<group>"; };
+		0AC861012BB7E99D0060EF90 /* DoubleJumpGamePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleJumpGamePowerup.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -337,6 +341,7 @@
 			children = (
 				0AC860C62BB681FE0060EF90 /* StrengthPowerupFactory.swift */,
 				0AC860DD2BB715AF0060EF90 /* InvinsiblePowerupFactory.swift */,
+				0AC860FF2BB7E9620060EF90 /* DoubleJumpPowerupFactory.swift */,
 			);
 			path = PowerupFactories;
 			sourceTree = "<group>";
@@ -356,6 +361,7 @@
 			children = (
 				0AC860CE2BB68ABF0060EF90 /* StrengthGamePowerup.swift */,
 				0AC860DB2BB7144C0060EF90 /* InvinsibleGamePowerup.swift */,
+				0AC861012BB7E99D0060EF90 /* DoubleJumpGamePowerup.swift */,
 			);
 			path = GamePowerups;
 			sourceTree = "<group>";
@@ -813,6 +819,7 @@
 			files = (
 				0A76A4712BAC78470067BD6E /* ComponentIdentifier.swift in Sources */,
 				3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */,
+				0AC861002BB7E9620060EF90 /* DoubleJumpPowerupFactory.swift in Sources */,
 				0AC860E22BB71CA60060EF90 /* LeftRightPattern.swift in Sources */,
 				3FE4570D2BADAB8E00D8D5A9 /* StartScreenViewController.swift in Sources */,
 				0AC860F22BB7C5110060EF90 /* GameCollectable.swift in Sources */,
@@ -883,6 +890,7 @@
 				0A76A47C2BAC78680067BD6E /* Character.swift in Sources */,
 				0AC860E42BB71CE20060EF90 /* MovementPattern.swift in Sources */,
 				0AC860CF2BB68ABF0060EF90 /* StrengthGamePowerup.swift in Sources */,
+				0AC861022BB7E99D0060EF90 /* DoubleJumpGamePowerup.swift in Sources */,
 				9F8C58B32BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift in Sources */,
 				0A76A46E2BAC783D0067BD6E /* Shape.swift in Sources */,
 				9F8C58B72BAEAC20002E75FB /* EnemyType+extensions.swift in Sources */,

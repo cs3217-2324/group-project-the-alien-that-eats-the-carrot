@@ -131,25 +131,30 @@ extension Nexus {
 // MARK: Powerups
 extension Nexus {
     private func getStrengthPowerupFactory(from entity: Entity) -> EntityFactory {
-        let powerupBlockObject = Powerup(powerupType: .strength, position: CGPoint(x: 200.0, y: 200.0))
-        return StrengthPowerupFactory(boardObject: powerupBlockObject, entity: entity)
+        let strengthPowerupBoardObject = Powerup(powerupType: .strength, position: CGPoint(x: 200.0, y: 200.0))
+        return StrengthPowerupFactory(boardObject: strengthPowerupBoardObject, entity: entity)
     }
 
     private func getInvinsiblePowerupFactory(from entity: Entity) -> EntityFactory {
-        let powerupBlockObject = Powerup(powerupType: .invinsible, position: CGPoint(x: 300.0, y: 200.0))
-        return StrengthPowerupFactory(boardObject: powerupBlockObject, entity: entity)
+        let invinsiblePowerupBoardObject = Powerup(powerupType: .invinsible, position: CGPoint(x: 300.0, y: 200.0))
+        return StrengthPowerupFactory(boardObject: invinsiblePowerupBoardObject, entity: entity)
+    }
+
+    private func getDoubleJumpPowerupFactory(from entity: Entity) -> EntityFactory {
+        let doubleJumpPowerupBoardObject = Powerup(powerupType: .doubleJump, position: CGPoint(x: 300.0, y: 200.0))
+        return StrengthPowerupFactory(boardObject: doubleJumpPowerupBoardObject, entity: entity)
     }
 }
 
 // MARK: Collectables
 extension Nexus {
     private func getCoinCollectableFactory(from entity: Entity) -> EntityFactory {
-        let coinCollectableObject = Collectable(collectableType: .coin)
-        return CoinCollectableFactory(boardObject: coinCollectableObject, entity: entity)
+        let coinCollectableBoardObject = Collectable(collectableType: .coin)
+        return CoinCollectableFactory(boardObject: coinCollectableBoardObject, entity: entity)
     }
 
     private func getCarrotCollectableFactory(from entity: Entity) -> EntityFactory {
-        let carrotCollectableObject = Collectable(collectableType: .carrot)
-        return CarrotCollectableFactory(boardObject: carrotCollectableObject, entity: entity)
+        let carrotCollectableBoardObject = Collectable(collectableType: .carrot)
+        return DoubleJumpPowerupFactory(boardObject: carrotCollectableBoardObject, entity: entity)
     }
 }
