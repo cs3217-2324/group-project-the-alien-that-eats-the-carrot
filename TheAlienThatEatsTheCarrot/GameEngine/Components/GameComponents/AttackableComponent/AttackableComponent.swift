@@ -8,11 +8,15 @@
 import Foundation
 
 class AttackableComponent: Component {
+    static let DEFAULT_DAMAGE = 50.0
     var entity: Entity
+    var damage: CGFloat
     var attackStyle: AttackStyle
 
-    init(entity: Entity, attackStyle: AttackStyle = MeleeAttackStyle()) {
+    init(entity: Entity, damage: CGFloat = AttackableComponent.DEFAULT_DAMAGE,
+         attackStyle: AttackStyle = MeleeAttackStyle()) {
         self.entity = entity
+        self.damage = damage
         self.attackStyle = attackStyle
     }
 
