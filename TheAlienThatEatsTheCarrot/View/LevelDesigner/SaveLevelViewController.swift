@@ -18,20 +18,36 @@ class SaveLevelViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         levelNameField.delegate = self
     }
-    
+
     @IBAction private func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         overwrite = false
-        informationLabel.text = " "
+
+        guard let text = textField.text,
+              let updatedTextRange = Range(range, in: text) else {
+            return true
+        }
+        let updatedText = text.replacingCharacters(in: updatedTextRange, with: string)
+        let count = updatedText.count
+
+        if count > 15 {
+            informationLabel.text = "LEVEL NAME IS TOO LONG"
+        } else {
+            informationLabel.text = " "
+        }
         return true
     }
 
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
+    @IBAction private func saveButtonPressed(_ sender: UIButton) {
         guard let levelName = levelNameField.text, !levelName.isEmpty else {
             informationLabel.text = "LEVEL NAME CANNOT BE EMPTY"
+            return
+        }
+        if levelName.count > 15 {
+            informationLabel.text = "LEVEL NAME IS TOO LONG"
             return
         }
         do {
@@ -55,7 +71,6 @@ class SaveLevelViewController: UIViewController, UITextFieldDelegate {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-
 }
 
 protocol SaveLevelViewControllerDelegate: AnyObject {

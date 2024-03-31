@@ -8,8 +8,8 @@
 import UIKit
 
 class LoadLevelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet var tableView: UITableView!
 
+    @IBOutlet private var tableView: UITableView!
     var levelNames: [String]!
     weak var delegate: LoadLevelViewControllerDelegate?
 
