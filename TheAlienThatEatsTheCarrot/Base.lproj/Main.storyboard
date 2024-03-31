@@ -1368,7 +1368,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPP-Hr-O1e">
-                                <rect key="frame" x="661" y="457.5" width="97" height="42"/>
+                                <rect key="frame" x="661" y="459.5" width="97" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CANCEL"/>
@@ -1377,13 +1377,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGF-uX-5mW">
-                                <rect key="frame" x="415" y="461" width="60" height="35"/>
+                                <rect key="frame" x="415" y="463" width="60" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="EYr-Xf-Vrn"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="SAVE"/>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="TPg-5N-R8u" eventType="touchUpInside" id="CMP-ys-WGf"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ENTER A LEVEL NAME: " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3h-30-cNg">
                                 <rect key="frame" x="408.5" y="304" width="363" height="42"/>
@@ -1404,8 +1407,8 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL WITH SAME NAME CANNOT BE OVERWRITTEN" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g9N-nW-j7y">
-                                <rect key="frame" x="425" y="397" width="330" height="16"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <rect key="frame" x="403" y="397" width="374.5" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1428,6 +1431,10 @@
                             <constraint firstItem="g9N-nW-j7y" firstAttribute="top" secondItem="vBx-IX-Pih" secondAttribute="bottom" constant="6" id="oiZ-Ue-HHX"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="informationLabel" destination="g9N-nW-j7y" id="nPx-gQ-DQ9"/>
+                        <outlet property="levelNameField" destination="vBx-IX-Pih" id="x56-BZ-AR9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdM-Tb-QpC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

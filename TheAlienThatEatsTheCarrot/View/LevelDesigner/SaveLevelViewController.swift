@@ -9,8 +9,44 @@ import UIKit
 
 class SaveLevelViewController: UIViewController {
 
+    @IBOutlet private var informationLabel: UILabel!
+    @IBOutlet private var levelNameField: UITextField!
+    weak var delegate: SaveLevelViewControllerDelegate?
+    private var overwrite: Bool = false
+    
     @IBAction private func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        guard let levelName = levelNameField.text, !levelName.isEmpty else {
+            informationLabel.text = "PLEASE ENTER A LEVEL NAME"
+            return
+        }
+        do {
+            try delegate?.saveLevel(levelName: levelName, overwrite: overwrite)
+            informationLabel.text = "LEVEL SAVED SUCCESSFULLY!"
+            overwrite = false
+        } catch TheAlienThatEatsTheCarrotError.duplicateLevelNameError {
+            informationLabel.text = "LEVEL EXISTS, SAVE AGAIN TO OVERWRITE"
+            self.overwrite = true
+//        } catch PeggleError.cannotOverrideDefaultLevelError {
+//            informationLabel.text = "Default levels cannot be overidden."
+        } catch {
+            throwAlert(message: "Unexpected error: \(error)")
+        }
+    }
+    
+    private func throwAlert(message: String) {
+        let alertMessage = message
+        let alert = UIAlertController(title: "Error", message: alertMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Okay", style: .default)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+}
 
+protocol SaveLevelViewControllerDelegate: AnyObject {
+    func saveLevel(levelName: String, overwrite: Bool) throws
 }

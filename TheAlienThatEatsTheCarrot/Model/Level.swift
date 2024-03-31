@@ -42,4 +42,8 @@ struct Level {
     func nearestNonOverlappingPosition(for object: BoardObject) -> CGPoint {
         boardObjects.nearestNonOverlappingPosition(for: object)
     }
+    
+    mutating func reset() {
+        boardObjects.removeAll()
+    }
 }

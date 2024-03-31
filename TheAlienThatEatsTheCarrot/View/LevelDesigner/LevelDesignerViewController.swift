@@ -73,6 +73,18 @@ class LevelDesignerViewController: UIViewController {
                 collectivlesViewController.delegate = self
             }
         }
+        if segue.identifier == "SaveLevelSegue",
+           let destination = segue.destination as? SaveLevelViewController {
+            destination.delegate = self
+        }
+//        if segue.identifier == "LoadLevelSegue",
+//           let destination = segue.destination as? LoadLevelViewController {
+//            destination.delegate = self
+//        }
+//        if segue.identifier == "TestGameSegue",
+//           let gameViewController = segue.destination as? GameViewController {
+//            gameViewController.level = levelDesigner.level
+//        }
     }
 
     private func hideAllContainers() {
@@ -161,16 +173,33 @@ class LevelDesignerViewController: UIViewController {
         removedImageView.imageView.removeFromSuperview()
         removedImageView.imageView = nil
     }
+    
+    
 
     // MARK: - other feature buttons
     @IBAction private func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
+    func reset() {
+        for imageView in imageViews.values {
+            imageView.imageView.removeFromSuperview()
+            imageView.imageView = nil
+        }
+        imageViews.removeAll()
+    }
+    
 }
 
 extension LevelDesignerViewController: ComponentSelectDelegate {
     func buttonTapped(type: ObjectType) {
         componentSelected = type
         print("Type selecteed: \(type)")
+    }
+}
+
+extension LevelDesignerViewController: SaveLevelViewControllerDelegate {
+    func saveLevel(levelName: String, overwrite: Bool) throws {
+        try levelDesigner.saveLevel(levelName: levelName, overwrite: overwrite)
     }
 }

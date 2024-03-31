@@ -37,17 +37,19 @@ struct LevelDataManager {
     ///     - level: the `Level` to be saved.
     ///     - overwrite: whether or not to overwrite any existing `LevelData` with the same name.
     func saveLevelData(level: Level, overwrite: Bool = false) throws {
-        guard let matchingLevelData = try? fetchAllLevelDataMatching(levelName: level.name) else {
-            return
-        }
-        let containsDuplicate = !matchingLevelData.isEmpty
-        if containsDuplicate && !overwrite {
-            throw TheAlienThatEatsTheCarrotError.duplicateLevelNameError(levelName: level.name)
-        } else if containsDuplicate {
-            for duplicate in matchingLevelData {
-                context.delete(duplicate)
+        print("saving level \(level.name) \(overwrite)")
+        if let matchingLevelData = try? fetchAllLevelDataMatching(levelName: level.name) {
+            if !overwrite {
+                print("path1")
+                throw TheAlienThatEatsTheCarrotError.duplicateLevelNameError(levelName: level.name)
+            } else {
+                print("path2")
+                for duplicate in matchingLevelData {
+                    context.delete(duplicate)
+                }
             }
         }
+        print("saving")
         _ = level.toData(context: context)
         try context.save()
     }

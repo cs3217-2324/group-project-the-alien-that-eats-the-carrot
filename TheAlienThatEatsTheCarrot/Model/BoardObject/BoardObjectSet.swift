@@ -112,4 +112,11 @@ struct BoardObjectSet {
             return object.position
         }
     }
+    
+    mutating func removeAll() {
+        blocks.removeAll()
+        collectables.removeAll()
+        enemies.removeAll()
+        powerups.removeAll()
+    }
 }
