@@ -13,7 +13,7 @@ class NormalEnemyFactory: EnemyFactory {
         let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .enemy(.normal))
         let movableComponent = MovableComponent(entity: entity, pattern: LeftRightPattern())
         let attackableComponent = AttackableComponent(entity: entity, attackStyle: MeleeAttackStyle())
-        var physicsBody = PhysicsBody(shape: .rectangle,
+        let physicsBody = PhysicsBody(shape: .rectangle,
                                       position: CGPoint(x: 200.0, y: 200.0),
                                       size: CGSize(width: 50.0, height: 50.0),
                                       isDynamic: false)
