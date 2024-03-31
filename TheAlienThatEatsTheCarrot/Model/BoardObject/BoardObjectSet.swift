@@ -112,7 +112,7 @@ struct BoardObjectSet {
             return object.position
         }
     }
-    
+
     mutating func removeAll() {
         blocks.removeAll()
         collectables.removeAll()

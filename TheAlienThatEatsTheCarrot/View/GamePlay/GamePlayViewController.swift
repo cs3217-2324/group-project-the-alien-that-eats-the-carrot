@@ -75,33 +75,28 @@ class GamePlayViewController: UIViewController {
     @IBAction private func moveLeftButtonTouchDown(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
-        print("left true")
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .left))
     }
 
     @IBAction private func moveLeftButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
-        print("left false")
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
     @IBAction private func moveRightButtonTouchDown(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
         isLeftButtonPressed = true
-        print("right true")
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .right))
     }
 
     @IBAction private func moveRightButtonTouchUp(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         isLeftButtonPressed = false
-        print("right false")
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
     @IBAction private func jumpButtonTapped(_ sender: UIButton) {
-        print("jump")
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .jump))
     }
 
@@ -113,7 +108,6 @@ class GamePlayViewController: UIViewController {
 
     @IBAction private func unwindFromPauseScreen(segue: UIStoryboardSegue) {
         // This method will be called when the PauseScreenViewController is dismissed
-        print("start agains")
         startGameLoop()
     }
 

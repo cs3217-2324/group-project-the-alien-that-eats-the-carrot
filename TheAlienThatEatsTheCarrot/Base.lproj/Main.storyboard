@@ -1319,6 +1319,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="LOAD"/>
+                                <connections>
+                                    <action selector="loadButtonTapped:" destination="cKT-R1-bh7" eventType="touchUpInside" id="dht-5A-jmC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtC-7g-YYY">
                                 <rect key="frame" x="661" y="509" width="97" height="42"/>
@@ -1326,7 +1329,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="CANCEL"/>
                                 <connections>
-                                    <action selector="cancelButtonPressed:" destination="cKT-R1-bh7" eventType="touchUpInside" id="dGu-Jh-BDr"/>
+                                    <action selector="cancelButtonTapped:" destination="cKT-R1-bh7" eventType="touchUpInside" id="fbX-E5-rpd"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1347,6 +1350,9 @@
                             <constraint firstItem="S0Z-r8-HIS" firstAttribute="leading" secondItem="194-Iu-5dK" secondAttribute="leading" constant="405" id="bcy-Ok-xQH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="x27-OW-L5m" id="br0-OQ-08e"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TgY-ME-sbS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

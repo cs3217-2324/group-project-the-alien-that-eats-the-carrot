@@ -90,12 +90,12 @@ extension Level: ToDataAble {
         let levelData = LevelData(context: context)
         levelData.name = name
         levelData.areaData = area.toData(context: context) as? CGRectData
-        
+
         var blockDatas = Set<BlockData>()
         var collectableDatas = Set<CollectableData>()
         var enemyDatas = Set<EnemyData>()
         var powerupDatas = Set<PowerupData>()
-        
+
         for block in self.boardObjects.blocks {
             if let blockData = block.toData(context: context) as? BlockData {
                 blockDatas.insert(blockData)
@@ -116,12 +116,12 @@ extension Level: ToDataAble {
                 powerupDatas.insert(powerupData)
             }
         }
-        
+
         levelData.addToBlockDatas(NSSet(set: blockDatas))
         levelData.addToCollectableDatas(NSSet(set: collectableDatas))
         levelData.addToEnemyDatas(NSSet(set: enemyDatas))
         levelData.addToPowerupDatas(NSSet(set: powerupDatas))
-        
+
         return levelData as NSManagedObject
     }
 }

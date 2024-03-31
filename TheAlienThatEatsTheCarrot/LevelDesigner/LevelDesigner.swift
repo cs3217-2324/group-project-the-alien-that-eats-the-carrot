@@ -35,7 +35,6 @@ class LevelDesigner {
         guard let boardObject = level.findBoardObject(at: location) else {
             return
         }
-        print("handle pan start - object found")
         panObject = boardObject
     }
 
@@ -43,12 +42,10 @@ class LevelDesigner {
         guard let boardObject = panObject else {
             return
         }
-        print("handle pan change - object found")
         move(boardObject: boardObject, to: location)
     }
 
     func handlePanEnd() {
-        print("handle pan end")
         panObject = nil
     }
 
@@ -97,18 +94,16 @@ class LevelDesigner {
     }
 
     func move(boardObject: BoardObject, to location: CGPoint) {
-        print("object moving")
         remove(boardObject: boardObject)
 
         var newBoardObject = ObjectType.createObject(from: boardObject.type, position: location)
-        print("new object created")
         if !level.canAdd(boardObject: newBoardObject) {
             newBoardObject = boardObject
         }
         add(boardObject: newBoardObject)
         panObject = newBoardObject
     }
-    
+
     private func loadView(with boardObjects: BoardObjectSet) {
         for boardObject in boardObjects.allObjects {
             let id = ObjectIdentifier(boardObject)

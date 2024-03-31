@@ -20,9 +20,9 @@ extension Powerup: FromDataAble {
 
 extension Powerup: ToDataAble {
     func toData(context: NSManagedObjectContext) -> NSManagedObject {
-        let powerupData = CollectableData(context: context)
+        let powerupData = PowerupData(context: context)
         powerupData.position = self.position.toData(context: context) as? CGPointData
-        powerupData.type = self.powerupType.toData(context: context) as? CollectableTypeData
+        powerupData.type = self.powerupType.toData(context: context) as? PowerupTypeData
         return powerupData as NSManagedObject
     }
 }

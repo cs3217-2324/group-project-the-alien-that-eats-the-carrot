@@ -12,12 +12,12 @@ class SaveLevelViewController: UIViewController {
     @IBOutlet private var informationLabel: UILabel!
     @IBOutlet private var levelNameField: UITextField!
     weak var delegate: SaveLevelViewControllerDelegate?
-    private var overwrite: Bool = false
-    
+    private var overwrite = false
+
     @IBAction private func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
-    
+
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let levelName = levelNameField.text, !levelName.isEmpty else {
             informationLabel.text = "PLEASE ENTER A LEVEL NAME"
@@ -36,7 +36,7 @@ class SaveLevelViewController: UIViewController {
             throwAlert(message: "Unexpected error: \(error)")
         }
     }
-    
+
     private func throwAlert(message: String) {
         let alertMessage = message
         let alert = UIAlertController(title: "Error", message: alertMessage, preferredStyle: .alert)
@@ -44,7 +44,7 @@ class SaveLevelViewController: UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
-    
+
 }
 
 protocol SaveLevelViewControllerDelegate: AnyObject {

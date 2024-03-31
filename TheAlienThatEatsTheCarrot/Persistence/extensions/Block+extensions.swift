@@ -9,12 +9,16 @@ import CoreData
 
 extension Block: FromDataAble {
     convenience init(data: BlockData) throws {
-        guard let positionData = data.position, let blockTypeData = data.type, let containedPowerupData = data.contains else {
+        guard let positionData = data.position, let blockTypeData = data.type else {
+            
             throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: "block")
         }
         let position = try CGPoint(data: positionData)
         let blockType = try BlockType(data: blockTypeData)
-        let containedPowerupType = try PowerupType(data: containedPowerupData)
+        var containedPowerupType: PowerupType?
+        if let containedPowerupData = data.contains {
+            containedPowerupType = try PowerupType(data: containedPowerupData)
+        }
         self.init(blockType: blockType, containedPowerupType: containedPowerupType, position: position)
     }
 }
