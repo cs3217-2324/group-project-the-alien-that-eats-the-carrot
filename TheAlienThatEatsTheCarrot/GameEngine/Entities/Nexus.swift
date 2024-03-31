@@ -17,6 +17,17 @@ final class Nexus {
         return componentIdToEntities[componentId]?.compactMap { $0 } ?? []
     }
 
+    func getEntities(withComponentTypes types: [Component.Type]) -> [Entity] {
+        var resultEntities: Set<Entity> = []
+        for type in types {
+            let componentId = type.typeId
+            if let entitiesWithComponent = componentIdToEntities[componentId] {
+                resultEntities.formUnion(entitiesWithComponent)
+            }
+        }
+        return Array(resultEntities)
+    }
+
     func getEntity<T: Component>(with type: T.Type) -> Entity? {
         let componentId = type.typeId
         return componentIdToEntities[componentId]?.compactMap { $0 }.first

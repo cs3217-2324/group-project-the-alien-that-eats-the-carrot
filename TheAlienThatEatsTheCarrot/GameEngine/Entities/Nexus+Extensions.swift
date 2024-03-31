@@ -15,8 +15,10 @@ extension Nexus {
         let jumpStateComponent = JumpStateComponent(entity: entity)
         let inventoryComponent = InventoryComponent(entity: entity)
         let cameraComponent = CameraComponent(entity: entity)
-        let attackableComponent = AttackableComponent(entity: entity)
-        let destroyableComponent = DestroyableComponent(entity: entity)
+        let attackableComponent = AttackableComponent(entity: entity,
+                                                      targetables: [EnemyComponent.self, BlockComponent.self],
+                                                      attackStyle: JumpAttackStyle())
+        let destroyableComponent = DestroyableComponent(entity: entity, lives: 3, maxLives: 3)
         addComponents([renderableComponent, playerComponent, jumpStateComponent, inventoryComponent, cameraComponent,
                        attackableComponent, destroyableComponent], to: entity)
     }
@@ -80,7 +82,7 @@ extension Nexus {
         case .carrot:
             return getCarrotCollectableFactory(from: entity)
         case .heart:
-            fatalError("TODO: implement")
+            return getHeartCollectableFactory(from: entity)
         }
     }
 
@@ -89,7 +91,7 @@ extension Nexus {
         case .attack:
             fatalError("TODO: implement")
         case .doubleJump:
-            fatalError("TODO: implement")
+            return getDoubleJumpPowerupFactory(from: entity)
         case .invinsible:
             return getInvinsiblePowerupFactory(from: entity)
         case .strength:
@@ -157,5 +159,10 @@ extension Nexus {
     private func getCarrotCollectableFactory(from entity: Entity) -> EntityFactory {
         let carrotCollectableBoardObject = Collectable(collectableType: .carrot)
         return DoubleJumpPowerupFactory(boardObject: carrotCollectableBoardObject, entity: entity)
+    }
+
+    private func getHeartCollectableFactory(from entity: Entity) -> EntityFactory {
+        let heartCollectableBoardObject = Collectable(collectableType: .heart)
+        return HeartCollectableFactory(boardObject: heartCollectableBoardObject, entity: entity)
     }
 }

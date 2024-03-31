@@ -12,7 +12,8 @@ class NormalEnemyFactory: EnemyFactory {
         let enemyComponent = EnemyComponent(entity: entity)
         let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .enemy(.normal))
         let movableComponent = MovableComponent(entity: entity, pattern: LeftRightPattern())
-        var physicsBody = PhysicsBody(shape: .rectangle,
+        let attackableComponent = AttackableComponent(entity: entity, targetables: [PlayerComponent.self], attackStyle: MeleeAttackStyle())
+        let physicsBody = PhysicsBody(shape: .rectangle,
                                       position: CGPoint(x: 200.0, y: 200.0),
                                       size: CGSize(width: 50.0, height: 50.0),
                                       isDynamic: false)
@@ -20,6 +21,7 @@ class NormalEnemyFactory: EnemyFactory {
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity)
-        return [enemyComponent, renderableComponent, movableComponent, physicsComponent, destroyableComponent]
+        return [enemyComponent, renderableComponent, movableComponent, attackableComponent,
+                physicsComponent, destroyableComponent]
     }
 }
