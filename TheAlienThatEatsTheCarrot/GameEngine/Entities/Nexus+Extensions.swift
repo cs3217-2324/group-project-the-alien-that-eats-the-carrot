@@ -17,7 +17,7 @@ extension Nexus {
         let cameraComponent = CameraComponent(entity: entity)
         let attackableComponent = AttackableComponent(entity: entity,
                                                       targetables: [EnemyComponent.self, BlockComponent.self],
-                                                      attackStyle: MeleeAttackStyle())
+                                                      attackStyle: JumpAttackStyle())
         let destroyableComponent = DestroyableComponent(entity: entity, lives: 3, maxLives: 3)
         addComponents([renderableComponent, playerComponent, jumpStateComponent, inventoryComponent, cameraComponent,
                        attackableComponent, destroyableComponent], to: entity)
