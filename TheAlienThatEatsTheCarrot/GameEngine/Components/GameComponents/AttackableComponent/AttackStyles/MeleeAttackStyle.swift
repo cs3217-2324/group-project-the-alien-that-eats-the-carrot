@@ -8,15 +8,16 @@
 import Foundation
 
 class MeleeAttackStyle: AttackStyle {
-    func attack(attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
+    func attack(damage: CGFloat, attacker: Entity, attackee: Entity,
+                targetables: [Component.Type], delegate: AttackableDelegate) {
         guard
-            let attackableComponent = delegate.getComponent(of: AttackableComponent.self, for: attacker),
             let attackerRenderableComponent = delegate.getComponent(of: RenderableComponent.self, for: attacker),
             let attackeeRenderableComponent = delegate.getComponent(of: RenderableComponent.self, for: attackee) else {
             return
         }
-        if attackerRenderableComponent.overlapsWith(attackeeRenderableComponent) {
-            dealDamage(attackableComponent.damage, to: attackee, delegate: delegate)
+        if canAttack(attackee, with: targetables, using: delegate)
+            && attackerRenderableComponent.overlapsWith(attackeeRenderableComponent) {
+            dealDamage(damage, to: attackee, delegate: delegate)
         }
     }
 
