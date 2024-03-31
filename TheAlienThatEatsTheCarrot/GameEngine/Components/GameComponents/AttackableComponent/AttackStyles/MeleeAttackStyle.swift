@@ -15,7 +15,8 @@ class MeleeAttackStyle: AttackStyle {
             let attackeeRenderableComponent = delegate.getComponent(of: RenderableComponent.self, for: attackee) else {
             return
         }
-        if canAttack(attackee, with: targetables, using: delegate)
+        if attacker != attackee
+            && canAttack(attackee, with: targetables, using: delegate)
             && attackerRenderableComponent.overlapsWith(attackeeRenderableComponent) {
             dealDamage(damage, to: attackee, delegate: delegate)
         }
