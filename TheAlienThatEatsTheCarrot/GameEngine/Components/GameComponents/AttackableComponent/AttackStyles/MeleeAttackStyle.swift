@@ -21,11 +21,4 @@ class MeleeAttackStyle: AttackStyle {
             dealDamage(damage, to: attackee, delegate: delegate)
         }
     }
-
-    private func dealDamage(_ damage: CGFloat, to entity: Entity, delegate: AttackableDelegate) {
-        guard let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: entity) else {
-            return
-        }
-        destroyableComponent.takeDamage(damage)
-    }
 }
