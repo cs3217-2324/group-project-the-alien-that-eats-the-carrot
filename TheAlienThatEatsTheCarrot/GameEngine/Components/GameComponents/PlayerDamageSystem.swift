@@ -16,33 +16,11 @@ class PlayerDamageSystem: System, AttackableDelegate {
     }
 
     func update(deltaTime: CGFloat) {
-        damagePlayersWithBlocks()
-        damagePlayersWithEnemies()
-    }
-
-    private func damagePlayersWithBlocks() {
-        let attackableBlockEntities = nexus.getEntities(withComponentTypes: [BlockComponent.self, AttackableComponent.self])
+        let attackableComponents = nexus.getComponents(of: AttackableComponent.self)
         let playerComponents = nexus.getComponents(of: PlayerComponent.self)
-        for attackableBlockEntity in attackableBlockEntities {
-            guard
-                let attackableComponent = nexus.getComponent(of: AttackableComponent.self, for: attackableBlockEntity) else {
-                return
-            }
+        for attackableComponent in attackableComponents {
             for playerComponent in playerComponents {
-                attackableComponent.attackIfPossible(attackee: playerComponent.entity, delegate: self)
-            }
-        }
-    }
-
-    private func damagePlayersWithEnemies() {
-        let attackableEnemyEntities = nexus.getEntities(withComponentTypes: [EnemyComponent.self, AttackableComponent.self])
-        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
-        for attackableEnemyEntity in attackableEnemyEntities {
-            guard
-                let attackableComponent = nexus.getComponent(of: AttackableComponent.self, for: attackableEnemyEntity) else {
-                return
-            }
-            for playerComponent in playerComponents {
+                // Note that the attackIfPossible handles the logic to determine if the player should be attacked
                 attackableComponent.attackIfPossible(attackee: playerComponent.entity, delegate: self)
             }
         }
