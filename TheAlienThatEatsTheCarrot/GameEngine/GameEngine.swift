@@ -62,7 +62,7 @@ class GameEngine {
                         CollectableSystem(nexus: nexus),
                         TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),
-                        PlayerDamageSystem(nexus: nexus)]
+                        DamageSystem(nexus: nexus)]
     }
 
     private func initGameEntities() {

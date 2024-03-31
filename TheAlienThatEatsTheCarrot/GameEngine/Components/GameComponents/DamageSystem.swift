@@ -1,5 +1,5 @@
 //
-//  PlayerDamageSystem.swift
+//  DamageSystem.swift
 //  TheAlienThatEatsTheCarrot
 //
 //  Created by Justin Cheah Yun Fei on 30/3/24.
@@ -7,8 +7,7 @@
 
 import Foundation
 
-/// Responsible to handling damage to players by blocks / enemies
-class PlayerDamageSystem: System, AttackableDelegate {
+class DamageSystem: System, AttackableDelegate {
     var nexus: Nexus
 
     init(nexus: Nexus) {
@@ -17,11 +16,10 @@ class PlayerDamageSystem: System, AttackableDelegate {
 
     func update(deltaTime: CGFloat) {
         let attackableComponents = nexus.getComponents(of: AttackableComponent.self)
-        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+        let destroyableComponents = nexus.getComponents(of: DestroyableComponent.self)
         for attackableComponent in attackableComponents {
-            for playerComponent in playerComponents {
-                // Note that the attackIfPossible handles the logic to determine if the player should be attacked
-                attackableComponent.attackIfPossible(attackee: playerComponent.entity, delegate: self)
+            for destroyableComponent in destroyableComponents {
+                attackableComponent.attackIfPossible(attackee: destroyableComponent.entity, delegate: self)
             }
         }
     }
