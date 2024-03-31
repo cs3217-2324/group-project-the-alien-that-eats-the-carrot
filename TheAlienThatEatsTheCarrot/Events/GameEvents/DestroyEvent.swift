@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DestroyEvent: Event {
+struct DestroyEvent: Event {
     static var name: Notification.Name = .destroy
     let entity: Entity
 
