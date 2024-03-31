@@ -10,7 +10,7 @@ import CoreData
 extension Block: FromDataAble {
     convenience init(data: BlockData) throws {
         guard let positionData = data.position, let blockTypeData = data.type else {
-            
+
             throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: "block")
         }
         let position = try CGPoint(data: positionData)

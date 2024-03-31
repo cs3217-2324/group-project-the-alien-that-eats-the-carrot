@@ -76,6 +76,10 @@ class LevelDesigner {
         loadView(with: level.boardObjects)
     }
 
+    func fetchLevelNames() -> [String] {
+        storageManager.fetchLevelNames()
+    }
+
     // MARK: - Delegating to view and model
     func add(boardObject: BoardObject, addToView: Bool = true) {
         if !level.canAdd(boardObject: boardObject) {

@@ -36,7 +36,8 @@ struct LevelDataManager {
     ///     - level: the `Level` to be saved.
     ///     - overwrite: whether or not to overwrite any existing `LevelData` with the same name.
     func saveLevelData(level: Level, overwrite: Bool = false) throws {
-        if let matchingLevelData = try? fetchAllLevelDataMatching(levelName: level.name) {
+        let matchingLevelData = try fetchAllLevelDataMatching(levelName: level.name)
+        if !matchingLevelData.isEmpty {
             if !overwrite {
                 throw TheAlienThatEatsTheCarrotError.duplicateLevelNameError(levelName: level.name)
             } else {
@@ -64,5 +65,19 @@ struct LevelDataManager {
         let pred = NSPredicate(format: filter)
         request.predicate = pred
         return request
+    }
+
+    func fetchLevelNames() -> [String] {
+        do {
+            let levelDatas = try fetchAllLevelData()
+            if levelDatas.isEmpty {
+                return []
+            }
+            let levelNames = levelDatas.compactMap({ $0.name })
+            return levelNames
+        } catch {
+            print("Error fetching level data: \(error)")
+            return []
+        }
     }
 }

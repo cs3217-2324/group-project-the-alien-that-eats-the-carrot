@@ -7,20 +7,31 @@
 
 import UIKit
 
-class SaveLevelViewController: UIViewController {
+class SaveLevelViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet private var informationLabel: UILabel!
     @IBOutlet private var levelNameField: UITextField!
     weak var delegate: SaveLevelViewControllerDelegate?
     private var overwrite = false
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        levelNameField.delegate = self
+    }
+    
     @IBAction private func cancelButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
 
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        overwrite = false
+        informationLabel.text = " "
+        return true
+    }
+
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let levelName = levelNameField.text, !levelName.isEmpty else {
-            informationLabel.text = "PLEASE ENTER A LEVEL NAME"
+            informationLabel.text = "LEVEL NAME CANNOT BE EMPTY"
             return
         }
         do {

@@ -80,7 +80,7 @@ class LevelDesignerViewController: UIViewController {
         if segue.identifier == "LoadLevelSegue",
            let destination = segue.destination as? LoadLevelViewController {
             destination.delegate = self
-            destination.levelNames = ["a", "b", "c"]
+            destination.levelNames = levelDesigner.fetchLevelNames()
         }
 //        if segue.identifier == "TestGameSegue",
 //           let gameViewController = segue.destination as? GameViewController {
