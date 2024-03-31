@@ -34,6 +34,11 @@ final class Nexus {
     }
 
     // MARK: Components
+    func containsComponent<T: Component>(for entity: Entity, of type: T.Type) -> Bool {
+        let componentId = type.typeId
+        return entities[entity]?[componentId]?.first(where: { $0 is T }) != nil
+    }
+
     func getComponents<T: Component>(of type: T.Type) -> [T] {
         var components = [T]()
         for entityComponents in entities.values {
