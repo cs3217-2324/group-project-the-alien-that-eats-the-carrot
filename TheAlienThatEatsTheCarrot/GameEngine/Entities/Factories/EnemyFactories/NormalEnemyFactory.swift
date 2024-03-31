@@ -8,6 +8,7 @@
 import Foundation
 
 class NormalEnemyFactory: EnemyFactory {
+    static let SCORE = 100.0
     override func createComponents() -> [Component] {
         let enemyComponent = EnemyComponent(entity: entity)
         let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .enemy(.normal))
@@ -21,7 +22,8 @@ class NormalEnemyFactory: EnemyFactory {
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity)
+        let scoreComponent = ScoreComponent(entity: entity, score: NormalEnemyFactory.SCORE)
         return [enemyComponent, renderableComponent, movableComponent, attackableComponent,
-                physicsComponent, destroyableComponent]
+                physicsComponent, destroyableComponent, scoreComponent]
     }
 }
