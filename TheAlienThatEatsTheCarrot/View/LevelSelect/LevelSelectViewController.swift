@@ -13,10 +13,12 @@ class LevelSelectViewController: UIViewController, LevelViewDelegate {
     @IBOutlet private var stackView: UIStackView!
 
     // Array containing level names
-    let levelNames = ["Level 1", "Level 2", "Level 3", "Level 4", "Level 5"]
+    private var levelNames: [String]!
+    private var storageManager = LevelDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        levelNames = storageManager.fetchLevelNames()
         initializeLevelDesigner()
     }
 

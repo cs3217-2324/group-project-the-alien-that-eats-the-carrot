@@ -21,10 +21,9 @@ struct LevelDataManager {
     ///   - Returns : the fetched `LevelData`.
     func fetchLevelData(levelName: String) throws -> LevelData {
         let levelDatas = try fetchAllLevelDataMatching(levelName: levelName)
-        guard !levelDatas.isEmpty else {
+        if levelDatas.isEmpty {
             throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
-        }
-        guard levelDatas.count == 1 else {
+        } else if levelDatas.count > 1 {
             throw TheAlienThatEatsTheCarrotError.duplicateLevelNameError(levelName: levelName)
         }
         return levelDatas[0]
@@ -37,15 +36,14 @@ struct LevelDataManager {
     ///     - level: the `Level` to be saved.
     ///     - overwrite: whether or not to overwrite any existing `LevelData` with the same name.
     func saveLevelData(level: Level, overwrite: Bool = false) throws {
-        guard let matchingLevelData = try? fetchAllLevelDataMatching(levelName: level.name) else {
-            return
-        }
-        let containsDuplicate = !matchingLevelData.isEmpty
-        if containsDuplicate && !overwrite {
-            throw TheAlienThatEatsTheCarrotError.duplicateLevelNameError(levelName: level.name)
-        } else if containsDuplicate {
-            for duplicate in matchingLevelData {
-                context.delete(duplicate)
+        let matchingLevelData = try fetchAllLevelDataMatching(levelName: level.name)
+        if !matchingLevelData.isEmpty {
+            if !overwrite {
+                throw TheAlienThatEatsTheCarrotError.duplicateLevelNameError(levelName: level.name)
+            } else {
+                for duplicate in matchingLevelData {
+                    context.delete(duplicate)
+                }
             }
         }
         _ = level.toData(context: context)
@@ -67,5 +65,19 @@ struct LevelDataManager {
         let pred = NSPredicate(format: filter)
         request.predicate = pred
         return request
+    }
+
+    func fetchLevelNames() -> [String] {
+        do {
+            let levelDatas = try fetchAllLevelData()
+            if levelDatas.isEmpty {
+                return []
+            }
+            let levelNames = levelDatas.compactMap({ $0.name })
+            return levelNames
+        } catch {
+            print("Error fetching level data: \(error)")
+            return []
+        }
     }
 }
