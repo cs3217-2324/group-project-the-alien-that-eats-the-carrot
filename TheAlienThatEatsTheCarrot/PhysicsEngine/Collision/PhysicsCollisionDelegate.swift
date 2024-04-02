@@ -5,4 +5,9 @@
 //  Created by Sun Xinyu on 2/4/24.
 //
 
-import Foundation
+protocol PhysicsCollisionDelegate: AnyObject {
+
+    func didBegin(_ collision: Collision)
+
+    func didEnd(_ collision: Collision)
+}
