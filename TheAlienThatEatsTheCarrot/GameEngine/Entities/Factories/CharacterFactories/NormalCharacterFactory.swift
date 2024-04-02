@@ -11,7 +11,12 @@ class NormalCharacterFactory: CharacterFactory {
     override func createComponents() -> [Component] {
         let center = CGPoint(x: 200.0, y: 200.0)
         let size = CGSize(width: 100.0, height: 100.0)
-        let physicsBody = PhysicsBody(shape: .rectangle, position: center, size: size, isDynamic: true)
+        let physicsBody = PhysicsBody(shape: .rectangle,
+                                      position: center,
+                                      size: size,
+                                      categoryBitmask: Constants.enemyCategoryBitmask,
+                                      collisionBitmask: Constants.enemyCollisionBitmask,
+                                      isDynamic: true)
         let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200), objectType: .character(.normal))
         let playerComponent = PlayerComponent(entity: entity)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
