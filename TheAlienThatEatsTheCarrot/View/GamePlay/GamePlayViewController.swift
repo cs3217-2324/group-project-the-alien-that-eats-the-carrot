@@ -20,6 +20,7 @@ class GamePlayViewController: UIViewController {
 
     var levelName: String?
     var renderableComponents: [RenderableComponent] = []
+    var gameStats: GameStats!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
 
     // MARK: - game loop
@@ -44,7 +45,6 @@ class GamePlayViewController: UIViewController {
         }
         self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
             self?.updateUI()
-            self?.gameEngine.getGameStats()
         })
         startGameLoop()
     }
@@ -68,6 +68,8 @@ class GamePlayViewController: UIViewController {
         reset() // here I removes everything that is previously added
         // if you want to remove image indiviudally call `removeImage(id: ObjectIdentifier(component))`
         renderableComponents = gameEngine.getRenderableComponents()
+        gameStats = gameEngine.getGameStats()
+        
         for component in renderableComponents {
             addImage(id: ObjectIdentifier(component), objectType: component.objectType, center: component.position, width: component.size.width, height: component.size.height)
         }
