@@ -39,7 +39,7 @@ final class PhysicsBody {
          position: CGPoint,
          size: CGSize,
          categoryBitmask: UInt32,
-        collisionBitmask: UInt32,
+         collisionBitmask: UInt32,
          isDynamic: Bool,
          rotation: CGFloat = .zero,
          mass: CGFloat = 1,
@@ -68,7 +68,11 @@ final class PhysicsBody {
 
     func update(deltaTime: CGFloat) {
         let maxSpeed = PhysicsConstants.maxSpeed
+        if netForce != .zero {
+            print("net force \(netForce)")
+        }
         velocity += netForce / mass * deltaTime
+        print("velocity magnitude: \(velocity.magnitude) max speed: \(maxSpeed)")
         if velocity.magnitude > maxSpeed {
             velocity = velocity.unitVector * maxSpeed
         }

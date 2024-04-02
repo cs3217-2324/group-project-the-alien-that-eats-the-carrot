@@ -33,3 +33,7 @@ extension RenderableComponent {
         return myRect.intersects(otherRect)
     }
 }
+
+extension EnemyType {
+    
+}

@@ -11,6 +11,7 @@ import Combine
 class GameEngine {
     let nexus = Nexus()
     var systems: [System]
+    let physicsWorld = PhysicsWorld()
 
     init(level: Level) {
         self.systems = []
@@ -61,13 +62,14 @@ class GameEngine {
 
     private func initGameSystems() {
         self.systems = [PlayerMovementSystem(nexus: nexus),
-                        PositionalSystem(nexus: nexus),
                         MovementSystem(nexus: nexus),
                         PlayerPowerupSystem(nexus: nexus),
                         CollectableSystem(nexus: nexus),
                         TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),
-                        DamageSystem(nexus: nexus)]
+                        DamageSystem(nexus: nexus),
+                        CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
+                        PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld)]
     }
 
     private func initGameEntities(from boardObjects: [any BoardObject]) {
