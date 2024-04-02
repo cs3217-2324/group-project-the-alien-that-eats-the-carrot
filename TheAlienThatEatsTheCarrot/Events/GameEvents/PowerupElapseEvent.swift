@@ -7,13 +7,9 @@
 
 import Foundation
 
-class PowerupElapseEvent: Event {
+struct PowerupElapseEvent: Event {
     static var name: Notification.Name = .powerupElapse
     let powerup: GamePowerup
-
-    init(powerup: GamePowerup) {
-        self.powerup = powerup
-    }
 }
 
 extension Notification.Name {

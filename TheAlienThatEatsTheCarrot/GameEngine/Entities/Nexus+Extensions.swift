@@ -10,32 +10,38 @@ import Foundation
 extension Nexus {
     func addCharacterForPlayerA() {
         let entity = Entity()
-        let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200), objectType: .character(.normal))
-        let playerComponent = PlayerComponent(entity: entity)
-        let jumpStateComponent = JumpStateComponent(entity: entity)
-        let inventoryComponent = InventoryComponent(entity: entity)
-        let cameraComponent = CameraComponent(entity: entity)
-        let attackableComponent = AttackableComponent(entity: entity,
-                                                      targetables: [EnemyComponent.self, BlockComponent.self],
-                                                      attackStyle: JumpAttackStyle())
-        let destroyableComponent = DestroyableComponent(entity: entity, lives: 3, maxLives: 3)
-        addComponents([renderableComponent, playerComponent, jumpStateComponent, inventoryComponent, cameraComponent,
-                       attackableComponent, destroyableComponent], to: entity)
+        let normalCharacterFactory = NormalCharacterFactory(entity: entity)
+        let components = normalCharacterFactory.createComponents()
+        addComponents(components, to: entity)
     }
 
     /// Factory to create entities
-    func addEntity(type: ObjectType) {
+    func addEntity(from boardObject: BoardObject) {
+        let type = boardObject.type
         let entity = Entity()
         var factory: EntityFactory
         switch type {
         case .enemy(let enemyType):
-            factory = getEnemyFactory(type: enemyType, from: entity)
+            guard let enemy = boardObject as? Enemy else {
+                return
+            }
+            factory = getEnemyFactory(type: enemyType, from: entity, enemy: enemy)
         case .block(let blockType):
-            factory = getBlockFactory(type: blockType, from: entity)
+            guard let block = boardObject as? Block else {
+                return
+            }
+            factory = getBlockFactory(type: blockType, from: entity, block: block)
         case .collectable(let collectableType):
-            factory = getCollectableFactory(type: collectableType, from: entity)
+            guard let collectable = boardObject as? Collectable else {
+                return
+            }
+            factory = getCollectableFactory(type: collectableType, from: entity,
+                                            collectable: collectable)
         case .powerup(let powerupType):
-            factory = getPowerupFactory(type: powerupType, from: entity)
+            guard let powerup = boardObject as? Powerup else {
+                return
+            }
+            factory = getPowerupFactory(type: powerupType, from: entity, powerup: powerup)
         case .character(let characterType):
             factory = getCharacterFactory(type: characterType, from: entity)
         }
@@ -45,10 +51,11 @@ extension Nexus {
 }
 
 extension Nexus {
-    private func getEnemyFactory(type: EnemyType, from entity: Entity) -> EntityFactory {
+    private func getEnemyFactory(type: EnemyType, from entity: Entity,
+                                 enemy: Enemy) -> EntityFactory {
         switch type {
         case .normal:
-            return getNormalEnemyFactory(from: entity)
+            return getNormalEnemyFactory(from: entity, enemy: enemy)
         case .fast:
             fatalError("TODO: implement")
         case .stationary:
@@ -58,12 +65,13 @@ extension Nexus {
         }
     }
 
-    private func getBlockFactory(type: BlockType, from entity: Entity) -> EntityFactory {
+    private func getBlockFactory(type: BlockType, from entity: Entity,
+                                 block: Block) -> EntityFactory {
         switch type {
         case .normal:
-            return getNormalBlockFactory(from: entity)
+            return getNormalBlockFactory(from: entity, block: block)
         case .ground:
-            return getGroundBlockFactory(from: entity)
+            return getGroundBlockFactory(from: entity, block: block)
         case .breakable:
             fatalError("TODO: implement")
         case .pushable:
@@ -75,27 +83,29 @@ extension Nexus {
         }
     }
 
-    private func getCollectableFactory(type: CollectableType, from entity: Entity) -> EntityFactory {
+    private func getCollectableFactory(type: CollectableType, from entity: Entity,
+                                       collectable: Collectable) -> EntityFactory {
         switch type {
         case .coin:
-            return getCoinCollectableFactory(from: entity)
+            return getCoinCollectableFactory(from: entity, collectable: collectable)
         case .carrot:
-            return getCarrotCollectableFactory(from: entity)
+            return getCarrotCollectableFactory(from: entity, collectable: collectable)
         case .heart:
-            return getHeartCollectableFactory(from: entity)
+            return getHeartCollectableFactory(from: entity, collectable: collectable)
         }
     }
 
-    private func getPowerupFactory(type: PowerupType, from entity: Entity) -> EntityFactory {
+    private func getPowerupFactory(type: PowerupType, from entity: Entity,
+                                   powerup: Powerup) -> EntityFactory {
         switch type {
         case .attack:
             fatalError("TODO: implement")
         case .doubleJump:
-            return getDoubleJumpPowerupFactory(from: entity)
+            return getDoubleJumpPowerupFactory(from: entity, powerup: powerup)
         case .invinsible:
-            return getInvinsiblePowerupFactory(from: entity)
+            return getInvinsiblePowerupFactory(from: entity, powerup: powerup)
         case .strength:
-            return getStrengthPowerupFactory(from: entity)
+            return getStrengthPowerupFactory(from: entity, powerup: powerup)
         }
     }
 
@@ -109,60 +119,57 @@ extension Nexus {
 
 // MARK: Enemies
 extension Nexus {
-    private func getNormalEnemyFactory(from entity: Entity) -> EntityFactory {
-        // TODO: get this from persistence
-        let normalEnemyBoardObject = Enemy(enemyType: .normal)
-        return NormalEnemyFactory(from: normalEnemyBoardObject, to: entity)
+    private func getNormalEnemyFactory(from entity: Entity,
+                                       enemy: Enemy) -> EntityFactory {
+        NormalEnemyFactory(from: enemy, to: entity)
     }
 }
 
 // MARK: Blocks
 extension Nexus {
-    private func getNormalBlockFactory(from entity: Entity) -> EntityFactory {
-        // TODO: get this from persistence
-        let normalBlockBoardObject = Block(blockType: .normal, containedPowerupType: nil)
-        return NormalBlockFactory(from: normalBlockBoardObject, to: entity)
+    private func getNormalBlockFactory(from entity: Entity,
+                                       block: Block) -> EntityFactory {
+        NormalBlockFactory(from: block, to: entity)
     }
 
-    private func getGroundBlockFactory(from entity: Entity) -> EntityFactory {
-        // TODO: get this from persistence
-        let groundBlockBoardObject = Block(blockType: .ground, containedPowerupType: nil)
-        return GroundBlockFactory(from: groundBlockBoardObject, to: entity)
+    private func getGroundBlockFactory(from entity: Entity,
+                                       block: Block) -> EntityFactory {
+        GroundBlockFactory(from: block, to: entity)
     }
 }
 
 // MARK: Powerups
 extension Nexus {
-    private func getStrengthPowerupFactory(from entity: Entity) -> EntityFactory {
-        let strengthPowerupBoardObject = Powerup(powerupType: .strength, position: CGPoint(x: 200.0, y: 200.0))
-        return StrengthPowerupFactory(boardObject: strengthPowerupBoardObject, entity: entity)
+    private func getStrengthPowerupFactory(from entity: Entity,
+                                           powerup: Powerup) -> EntityFactory {
+        StrengthPowerupFactory(boardObject: powerup, entity: entity)
     }
 
-    private func getInvinsiblePowerupFactory(from entity: Entity) -> EntityFactory {
-        let invinsiblePowerupBoardObject = Powerup(powerupType: .invinsible, position: CGPoint(x: 300.0, y: 200.0))
-        return StrengthPowerupFactory(boardObject: invinsiblePowerupBoardObject, entity: entity)
+    private func getInvinsiblePowerupFactory(from entity: Entity,
+                                             powerup: Powerup) -> EntityFactory {
+        StrengthPowerupFactory(boardObject: powerup, entity: entity)
     }
 
-    private func getDoubleJumpPowerupFactory(from entity: Entity) -> EntityFactory {
-        let doubleJumpPowerupBoardObject = Powerup(powerupType: .doubleJump, position: CGPoint(x: 300.0, y: 200.0))
-        return StrengthPowerupFactory(boardObject: doubleJumpPowerupBoardObject, entity: entity)
+    private func getDoubleJumpPowerupFactory(from entity: Entity,
+                                             powerup: Powerup) -> EntityFactory {
+        StrengthPowerupFactory(boardObject: powerup, entity: entity)
     }
 }
 
 // MARK: Collectables
 extension Nexus {
-    private func getCoinCollectableFactory(from entity: Entity) -> EntityFactory {
-        let coinCollectableBoardObject = Collectable(collectableType: .coin)
-        return CoinCollectableFactory(boardObject: coinCollectableBoardObject, entity: entity)
+    private func getCoinCollectableFactory(from entity: Entity,
+                                           collectable: Collectable) -> EntityFactory {
+        CoinCollectableFactory(boardObject: collectable, entity: entity)
     }
 
-    private func getCarrotCollectableFactory(from entity: Entity) -> EntityFactory {
-        let carrotCollectableBoardObject = Collectable(collectableType: .carrot)
-        return DoubleJumpPowerupFactory(boardObject: carrotCollectableBoardObject, entity: entity)
+    private func getCarrotCollectableFactory(from entity: Entity,
+                                             collectable: Collectable) -> EntityFactory {
+        DoubleJumpPowerupFactory(boardObject: collectable, entity: entity)
     }
 
-    private func getHeartCollectableFactory(from entity: Entity) -> EntityFactory {
-        let heartCollectableBoardObject = Collectable(collectableType: .heart)
-        return HeartCollectableFactory(boardObject: heartCollectableBoardObject, entity: entity)
+    private func getHeartCollectableFactory(from entity: Entity,
+                                            collectable: Collectable) -> EntityFactory {
+        HeartCollectableFactory(boardObject: collectable, entity: entity)
     }
 }

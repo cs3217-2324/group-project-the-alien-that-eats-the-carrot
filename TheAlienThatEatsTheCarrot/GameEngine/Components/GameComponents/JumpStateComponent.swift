@@ -10,7 +10,7 @@ import Foundation
 class JumpStateComponent: Component {
     static let DEFAULT_MAX_JUMP = 1
     var entity: Entity
-    var canJump = true
+    var isGrounded = true
     var maxJump: Int
     var remainingJump: Int
 

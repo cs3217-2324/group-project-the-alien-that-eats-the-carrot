@@ -34,6 +34,11 @@ final class Nexus {
     }
 
     // MARK: Components
+    func containsComponent<T: Component>(for entity: Entity, of type: T.Type) -> Bool {
+        let componentId = type.typeId
+        return entities[entity]?[componentId]?.first(where: { $0 is T }) != nil
+    }
+
     func getComponents<T: Component>(of type: T.Type) -> [T] {
         var components = [T]()
         for entityComponents in entities.values {
@@ -86,5 +91,15 @@ final class Nexus {
         let componentId = type.typeId
         entities[entity]?[componentId]?.removeAll()
         componentIdToEntities[componentId]?.remove(entity)
+    }
+
+    func containsAnyComponent(of types: [Component.Type], in entity: Entity) -> Bool {
+        for type in types {
+            let componentId = type.typeId
+            if let entityComponents = entities[entity], entityComponents[componentId] != nil {
+                return true
+            }
+        }
+        return false
     }
 }

@@ -27,5 +27,11 @@ extension AttackStyle {
             return
         }
         destroyableComponent.takeDamage(damage)
+        if destroyableComponent.isDestroyed {
+            guard let renderableComponent = delegate.getComponent(of: RenderableComponent.self, for: destroyableComponent.entity) else {
+                return
+            }
+            delegate.removeComponent(renderableComponent, from: destroyableComponent.entity)
+        }
     }
 }

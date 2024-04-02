@@ -9,8 +9,12 @@ import Foundation
 
 class HeartCollectableFactory: CollectableFactory {
     override func createComponents() -> [Component] {
+        let size = CGSize(width: boardObject.width, height: boardObject.height)
         let collectableComponent = CollectableComponent(entity: entity, collectable: HeartGameCollectable())
-        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .collectable(.heart))
+        let renderableComponent = RenderableComponent(entity: entity,
+                                                      position: boardObject.position,
+                                                      objectType: .collectable(.heart),
+                                                      size: size)
         return [collectableComponent, renderableComponent]
     }
 }
