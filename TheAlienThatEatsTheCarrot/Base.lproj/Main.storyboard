@@ -206,10 +206,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Un0-jt-gCv">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Pd-ri-dRU" userLabel="Board">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="Un0-jt-gCv">
+                                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cKF-8F-ESf">
                                 <rect key="frame" x="1098" y="0.0" width="82" height="82"/>
                                 <subviews>
@@ -393,6 +399,8 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="jumpButtonTapped:" destination="W3e-M2-jBc" eventType="touchUpInside" id="Pfk-kz-9xn"/>
+                                    <action selector="jumpButtonTouchDown:" destination="W3e-M2-jBc" eventType="touchDown" id="5Qp-HV-A8F"/>
+                                    <action selector="jumpButtonTouchUpOutside:" destination="W3e-M2-jBc" eventType="touchUpOutside" id="ixF-hs-2HN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -400,15 +408,19 @@
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="Cht-yz-AKE" firstAttribute="leading" secondItem="x7j-hl-HCX" secondAttribute="leading" id="0cN-bC-4Ce"/>
+                            <constraint firstItem="6Pd-ri-dRU" firstAttribute="leading" secondItem="x7j-hl-HCX" secondAttribute="leading" id="1bi-ki-v7l"/>
                             <constraint firstItem="dNy-2I-pNf" firstAttribute="centerX" secondItem="44l-ro-zMB" secondAttribute="centerX" id="2Wh-Vf-MGt"/>
                             <constraint firstItem="x7j-hl-HCX" firstAttribute="trailing" secondItem="Kuy-1j-vSH" secondAttribute="trailing" constant="67" id="3ef-JM-Q26"/>
                             <constraint firstItem="9Jz-jg-0fL" firstAttribute="leading" secondItem="9in-Sc-Qz9" secondAttribute="trailing" constant="50" id="Azl-sm-Oxe"/>
                             <constraint firstItem="9in-Sc-Qz9" firstAttribute="leading" secondItem="x7j-hl-HCX" secondAttribute="leading" constant="61" id="CbM-hS-DiN"/>
                             <constraint firstItem="x7j-hl-HCX" firstAttribute="bottom" secondItem="Kuy-1j-vSH" secondAttribute="bottom" constant="31" id="Cl0-xh-5HZ"/>
+                            <constraint firstItem="6Pd-ri-dRU" firstAttribute="trailing" secondItem="x7j-hl-HCX" secondAttribute="trailing" id="E8q-bX-qkO"/>
                             <constraint firstItem="x7j-hl-HCX" firstAttribute="trailing" secondItem="cKF-8F-ESf" secondAttribute="trailing" id="Q7Y-M8-1Au"/>
+                            <constraint firstAttribute="bottom" secondItem="6Pd-ri-dRU" secondAttribute="bottom" id="RPD-4T-Ffw"/>
                             <constraint firstItem="dNy-2I-pNf" firstAttribute="top" secondItem="44l-ro-zMB" secondAttribute="top" id="RuM-oL-TX9"/>
                             <constraint firstItem="9Jz-jg-0fL" firstAttribute="width" secondItem="9Jz-jg-0fL" secondAttribute="height" multiplier="1:1" id="Tco-o2-ldV"/>
                             <constraint firstItem="Cht-yz-AKE" firstAttribute="top" secondItem="44l-ro-zMB" secondAttribute="top" id="YzG-IA-ISh"/>
+                            <constraint firstItem="6Pd-ri-dRU" firstAttribute="top" secondItem="44l-ro-zMB" secondAttribute="top" id="h6B-Ug-DtB"/>
                             <constraint firstItem="Kuy-1j-vSH" firstAttribute="width" secondItem="Kuy-1j-vSH" secondAttribute="height" multiplier="1:1" id="hJL-K2-UwZ"/>
                             <constraint firstItem="Kuy-1j-vSH" firstAttribute="width" secondItem="Kuy-1j-vSH" secondAttribute="height" multiplier="1:1" id="qqz-qo-r5D"/>
                             <constraint firstItem="x7j-hl-HCX" firstAttribute="bottom" secondItem="9in-Sc-Qz9" secondAttribute="bottom" constant="31" id="uiY-VI-Fuf"/>
@@ -418,6 +430,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="WKU-K0-tLc"/>
                     <connections>
+                        <outlet property="boardAreaView" destination="6Pd-ri-dRU" id="SpL-hE-Sex"/>
                         <outlet property="carrot1" destination="85n-7Q-WM5" id="Aew-0t-1tc"/>
                         <outlet property="carrot2" destination="mRp-gh-gPw" id="bMB-RC-w9I"/>
                         <outlet property="carrot3" destination="14o-OM-6tO" id="ywm-Y6-z9O"/>
@@ -430,7 +443,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1D-Fk-150" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="733" y="749"/>
+            <point key="canvasLocation" x="732.71186440677968" y="748.53658536585363"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="iP0-TW-ClR">
