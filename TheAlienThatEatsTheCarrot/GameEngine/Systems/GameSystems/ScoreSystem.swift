@@ -23,7 +23,7 @@ class ScoreSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        <#code#>
+        // test
     }
 
     func subscribeToEvents() {
