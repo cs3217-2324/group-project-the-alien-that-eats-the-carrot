@@ -18,7 +18,7 @@ class NormalEnemyFactory: EnemyFactory {
                                       position: CGPoint(x: 200.0, y: 200.0),
                                       size: CGSize(width: 50.0, height: 50.0),
                                       isDynamic: false)
-        physicsBody.velocity = CGVector(dx: 50.0, dy: 0)
+        physicsBody.velocity = CGVector(dx: 20.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity)

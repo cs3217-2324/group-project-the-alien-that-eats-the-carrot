@@ -8,7 +8,7 @@
 import Foundation
 
 class LeftRightPattern: MovementPattern {
-    static let DEFAULT_DISTANCE: CGFloat = 100.0
+    static let DEFAULT_DISTANCE: CGFloat = 10.0
     var totalDistanceToMoveBeforeChange: CGFloat
     var distanceMoved: CGFloat = 0
 

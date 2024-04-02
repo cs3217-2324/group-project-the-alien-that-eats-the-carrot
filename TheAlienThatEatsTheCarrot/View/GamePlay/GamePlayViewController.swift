@@ -68,6 +68,33 @@ class GamePlayViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
+<<<<<<< Updated upstream
+=======
+    // MARK: - image handling
+    func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
+        let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
+        imageViews[id] = imageView
+        boardAreaView.addSubview(imageView.imageView)
+    }
+
+    func removeImage(id: ObjectIdentifier) {
+        print("image removed for \(id)")
+        guard let removedImageView = imageViews.removeValue(forKey: id) else {
+            return
+        }
+        removedImageView.imageView.removeFromSuperview()
+        removedImageView.imageView = nil
+    }
+
+    func reset() {
+        for imageView in imageViews.values {
+            imageView.imageView.removeFromSuperview()
+            imageView.imageView = nil
+        }
+        imageViews.removeAll()
+    }
+
+>>>>>>> Stashed changes
     // MARK: - character movement
     var isLeftButtonPressed = false
     var isRightButtonPressed = false

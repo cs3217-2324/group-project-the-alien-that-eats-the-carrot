@@ -57,6 +57,7 @@ class GameEngine {
 
     private func initGameSystems() {
         self.systems = [PlayerMovementSystem(nexus: nexus),
+                        PositionalSystem(nexus: nexus),
                         MovementSystem(nexus: nexus),
                         PlayerPowerupSystem(nexus: nexus),
                         CollectableSystem(nexus: nexus),
