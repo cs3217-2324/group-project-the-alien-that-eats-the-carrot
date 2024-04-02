@@ -10,13 +10,17 @@ import Foundation
 class NormalEnemyFactory: EnemyFactory {
     static let SCORE = 100.0
     override func createComponents() -> [Component] {
+        let size = CGSize(width: boardObject.width, height: boardObject.height)
         let enemyComponent = EnemyComponent(entity: entity)
-        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .enemy(.normal))
+        let renderableComponent = RenderableComponent(entity: entity,
+                                                      position: boardObject.position,
+                                                      objectType: .enemy(.normal),
+                                                      size: size)
         let movableComponent = MovableComponent(entity: entity, pattern: LeftRightPattern())
         let attackableComponent = AttackableComponent(entity: entity, targetables: [PlayerComponent.self], attackStyle: MeleeAttackStyle())
         let physicsBody = PhysicsBody(shape: .rectangle,
-                                      position: CGPoint(x: 200.0, y: 200.0),
-                                      size: CGSize(width: 50.0, height: 50.0),
+                                      position: boardObject.position,
+                                      size: size,
                                       isDynamic: false)
         physicsBody.velocity = CGVector(dx: 20.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,

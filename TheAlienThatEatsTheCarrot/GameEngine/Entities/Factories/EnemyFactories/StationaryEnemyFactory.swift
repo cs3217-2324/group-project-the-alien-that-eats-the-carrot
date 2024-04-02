@@ -10,8 +10,12 @@ import Foundation
 class StationaryEnemyFactory: EnemyFactory {
     static let SCORE = 200.0
     override func createComponents() -> [Component] {
+        let size = CGSize(width: boardObject.width, height: boardObject.height)
         let enemyComponent = EnemyComponent(entity: entity)
-        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .enemy(.normal))
+        let renderableComponent = RenderableComponent(entity: entity,
+                                                      position: boardObject.position,
+                                                      objectType: .enemy(.normal),
+                                                      size: size)
         let movableComponent = MovableComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
         let scoreComponent = ScoreComponent(entity: entity, score: StationaryEnemyFactory.SCORE)
