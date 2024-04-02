@@ -29,6 +29,11 @@ struct LevelDataManager {
         return levelDatas[0]
     }
 
+    func fetchLevel(levelName: String) throws -> Level {
+        let levelData = try fetchLevelData(levelName: levelName)
+        return try Level(data: levelData)
+    }
+
     /// Saves the given `Level`, with the option to overwrite any existing `LevelData` with the same name.
     /// Throws an error if an existing `LevelData` has the same name as the `Level` provided and
     /// overwrite is set to `false`.
