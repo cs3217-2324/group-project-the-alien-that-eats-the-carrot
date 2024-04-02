@@ -22,7 +22,7 @@ class NormalEnemyFactory: EnemyFactory {
                                       position: boardObject.position,
                                       size: size,
                                       isDynamic: false)
-        physicsBody.velocity = CGVector(dx: 20.0, dy: 0)
+        physicsBody.velocity = CGVector(dx: 5.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity)

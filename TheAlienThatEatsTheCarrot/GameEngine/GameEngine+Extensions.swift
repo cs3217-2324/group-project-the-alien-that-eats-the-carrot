@@ -27,7 +27,6 @@ extension GameEngine {
             coinsArr.append(coins)
             carrotsArr.append(carrots)
         }
-        print("Coins \(coinsArr), Carrots: \(carrotsArr), Lives: \(livesArr)")
         let gameStats = GameStats(coins: coinsArr, carrots: carrotsArr,
                                   scores: scoresArr, lives: livesArr)
         return gameStats

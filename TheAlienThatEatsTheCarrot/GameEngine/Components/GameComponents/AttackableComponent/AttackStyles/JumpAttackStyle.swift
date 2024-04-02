@@ -17,7 +17,7 @@ class JumpAttackStyle: AttackStyle {
             return
         }
         // TODO: replace this with the actual check to see whether the bottom of attacker is colliding with top of attackee
-        let isAttackerJumpingOnAttackee = true
+        let isAttackerJumpingOnAttackee = false
         if attacker != attackee
             && canAttack(attackee, with: targetables, using: delegate)
             && isAttackerJumpingOnAttackee {
