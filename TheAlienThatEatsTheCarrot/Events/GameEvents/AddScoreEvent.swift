@@ -10,10 +10,6 @@ import Foundation
 struct AddScoreEvent: Event {
     static var name: Notification.Name = .addScore
     let score: CGFloat
-
-    init(score: CGFloat) {
-        self.score = score
-    }
 }
 
 extension Notification.Name {

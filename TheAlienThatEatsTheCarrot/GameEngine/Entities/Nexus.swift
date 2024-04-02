@@ -92,7 +92,7 @@ final class Nexus {
         entities[entity]?[componentId]?.removeAll()
         componentIdToEntities[componentId]?.remove(entity)
     }
-    
+
     func containsAnyComponent(of types: [Component.Type], in entity: Entity) -> Bool {
         for type in types {
             let componentId = type.typeId

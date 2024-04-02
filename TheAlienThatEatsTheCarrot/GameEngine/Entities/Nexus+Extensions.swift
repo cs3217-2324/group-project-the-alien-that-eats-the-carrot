@@ -133,7 +133,7 @@ extension Nexus {
 extension Nexus {
     private func getNormalEnemyFactory(from entity: Entity,
                                        enemy: Enemy) -> EntityFactory {
-        return NormalEnemyFactory(from: enemy, to: entity)
+        NormalEnemyFactory(from: enemy, to: entity)
     }
 }
 
@@ -141,12 +141,12 @@ extension Nexus {
 extension Nexus {
     private func getNormalBlockFactory(from entity: Entity,
                                        block: Block) -> EntityFactory {
-        return NormalBlockFactory(from: block, to: entity)
+        NormalBlockFactory(from: block, to: entity)
     }
 
     private func getGroundBlockFactory(from entity: Entity,
                                        block: Block) -> EntityFactory {
-        return GroundBlockFactory(from: block, to: entity)
+        GroundBlockFactory(from: block, to: entity)
     }
 }
 
@@ -154,17 +154,17 @@ extension Nexus {
 extension Nexus {
     private func getStrengthPowerupFactory(from entity: Entity,
                                            powerup: Powerup) -> EntityFactory {
-        return StrengthPowerupFactory(boardObject: powerup, entity: entity)
+        StrengthPowerupFactory(boardObject: powerup, entity: entity)
     }
 
     private func getInvinsiblePowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        return StrengthPowerupFactory(boardObject: powerup, entity: entity)
+        StrengthPowerupFactory(boardObject: powerup, entity: entity)
     }
 
     private func getDoubleJumpPowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        return StrengthPowerupFactory(boardObject: powerup, entity: entity)
+        StrengthPowerupFactory(boardObject: powerup, entity: entity)
     }
 }
 
@@ -172,16 +172,16 @@ extension Nexus {
 extension Nexus {
     private func getCoinCollectableFactory(from entity: Entity,
                                            collectable: Collectable) -> EntityFactory {
-        return CoinCollectableFactory(boardObject: collectable, entity: entity)
+        CoinCollectableFactory(boardObject: collectable, entity: entity)
     }
 
     private func getCarrotCollectableFactory(from entity: Entity,
                                              collectable: Collectable) -> EntityFactory {
-        return DoubleJumpPowerupFactory(boardObject: collectable, entity: entity)
+        DoubleJumpPowerupFactory(boardObject: collectable, entity: entity)
     }
 
     private func getHeartCollectableFactory(from entity: Entity,
                                             collectable: Collectable) -> EntityFactory {
-        return HeartCollectableFactory(boardObject: collectable, entity: entity)
+        HeartCollectableFactory(boardObject: collectable, entity: entity)
     }
 }

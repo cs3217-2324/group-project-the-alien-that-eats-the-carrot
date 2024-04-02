@@ -10,10 +10,6 @@ import Foundation
 struct DestroyEvent: Event {
     static var name: Notification.Name = .destroy
     let entity: Entity
-
-    init(entity: Entity) {
-        self.entity = entity
-    }
 }
 
 extension Notification.Name {
