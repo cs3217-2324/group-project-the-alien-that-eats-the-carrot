@@ -71,8 +71,5 @@ class GameEngine {
         for boardObject in boardObjects {
             nexus.addEntity(from: boardObject)
         }
-        // nexus.addEntity(type: .enemy(.normal))
-        // nexus.addEntity(type: .powerup(.strength))
-        // nexus.addEntity(type: .collectable(.coin))
     }
 }
