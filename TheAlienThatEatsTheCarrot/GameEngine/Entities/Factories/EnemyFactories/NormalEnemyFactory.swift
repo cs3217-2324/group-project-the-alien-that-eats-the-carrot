@@ -16,6 +16,8 @@ class NormalEnemyFactory: EnemyFactory {
         let physicsBody = PhysicsBody(shape: .rectangle,
                                       position: CGPoint(x: 200.0, y: 200.0),
                                       size: CGSize(width: 50.0, height: 50.0),
+                                      categoryBitmask: Constants.enemyCategoryBitmask,
+                                      collisionBitmask: Constants.enemyCollisionBitmask,
                                       isDynamic: false)
         physicsBody.velocity = CGVector(dx: 50.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
