@@ -68,7 +68,7 @@ class GameEngine {
 
     private func initGameEntities() {
         nexus.addCharacterForPlayerA()
-        nexus.addEntity(type: .enemy(.normal))
+        //nexus.addEntity(type: .enemy(.normal))
         nexus.addEntity(type: .powerup(.strength))
     }
 }

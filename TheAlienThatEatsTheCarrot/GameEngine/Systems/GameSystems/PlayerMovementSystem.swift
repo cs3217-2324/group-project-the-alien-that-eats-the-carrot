@@ -58,7 +58,7 @@ class PlayerMovementSystem: System {
         }
         // TODO: add a system that modifies canJump if the player is standing on an object
         // This can either be in the physics system or a separate system
-        if jumpStateComponent.canJump {
+        if jumpStateComponent.isGrounded {
             jumpStateComponent.remainingJump = jumpStateComponent.maxJump
         }
     }
@@ -66,13 +66,13 @@ class PlayerMovementSystem: System {
     private func applyPhysicsBasedOnControlAction(for player: PlayerComponent) {
         switch player.action {
         case .idle:
-            doNothing()
+            resetVelocityToZeroIfGrounded(for: player)
         case .jump:
-            jumpIfPlayerHasJumpsAvailable(player: player)
+            jumpIfPlayerHasJumpsAvailable(for: player)
         case .left:
-            print("Apply leftward velocity")
+            setVelocity(for: player, velocity: ControlAction.DEFAULT_LEFT_VELOCITY)
         case .right:
-            print("Apply rightward velocity")
+            setVelocity(for: player, velocity: ControlAction.DEFAULT_RIGHT_VELOCITY)
         }
     }
 
@@ -92,15 +92,33 @@ class PlayerMovementSystem: System {
         camera.updateCameraBoundsFromCenter(center: renderableComponent.position)
     }
 
-    private func doNothing() {
+    private func resetVelocityToZeroIfGrounded(for player: PlayerComponent) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity),
+              let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
+            return
+        }
+        if jumpStateComponent.isGrounded {
+            physicsComponent.physicsBody.velocity = .zero
+        }
     }
 
-    private func jumpIfPlayerHasJumpsAvailable(player: PlayerComponent) {
+    private func jumpIfPlayerHasJumpsAvailable(for player: PlayerComponent) {
         guard let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
             return
         }
         if jumpStateComponent.remainingJump > 0 {
             // TODO: jump, either by applying force to the player physics body, or modify the velocity
+        }
+    }
+
+    private func setVelocity(for player: PlayerComponent, velocity: CGVector) {
+        guard
+            let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity),
+            let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
+            return
+        }
+        if jumpStateComponent.isGrounded {
+            physicsComponent.physicsBody.velocity = velocity
         }
     }
 }

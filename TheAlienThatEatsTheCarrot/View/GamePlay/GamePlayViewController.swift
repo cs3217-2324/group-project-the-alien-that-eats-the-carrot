@@ -75,14 +75,12 @@ class GamePlayViewController: UIViewController {
 
     // MARK: - image handling
     func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
-        print("image added at \(center) for \(id)")
         let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
         imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }
 
     func removeImage(id: ObjectIdentifier) {
-        print("image removed for \(id)")
         guard let removedImageView = imageViews.removeValue(forKey: id) else {
             return
         }
