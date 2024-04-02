@@ -18,6 +18,7 @@ class GamePlayViewController: UIViewController {
     @IBOutlet private var coinCountText: UILabel!
     @IBOutlet private var boardAreaView: UIView!
 
+    var levelName: String?
     var renderableComponents: [RenderableComponent] = []
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
 
@@ -34,6 +35,7 @@ class GamePlayViewController: UIViewController {
             self?.updateUI()
         })
         startGameLoop()
+        print("level name \(levelName)")
     }
 
     private func startGameLoop() {
