@@ -47,7 +47,6 @@ class PlayerMovementSystem: System {
         where playerComponent.playerRole == playerControlActionEvent.playerRole {
             let oldAction = playerComponent.action
             playerComponent.action = playerControlActionEvent.action
-            print("changed \(oldAction) to \(playerControlActionEvent.action)")
             break
         }
     }

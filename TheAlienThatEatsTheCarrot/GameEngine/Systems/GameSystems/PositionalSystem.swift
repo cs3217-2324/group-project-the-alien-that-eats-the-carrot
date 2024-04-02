@@ -19,7 +19,7 @@ class PositionalSystem: System {
         for physicsComponent in physicsComponents {
             physicsComponent.physicsBody.position += physicsComponent.physicsBody.velocity
             guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: physicsComponent.entity) else {
-                return
+                continue
             }
             renderableComponent.position = physicsComponent.physicsBody.position
         }
