@@ -8,6 +8,7 @@
 import CoreGraphics
 
 final class PhysicsSystem: System {
+    static let GRAVITY_FORCE = CGVector(dx: 0, dy: 200.0)
     let nexus: Nexus
     let physicsWorld: PhysicsWorld
 
@@ -21,12 +22,11 @@ final class PhysicsSystem: System {
 
         entities.forEach { entity in
             updateRenderable(entity)
+            applyGravityTo(entity)
         }
 
         updatePhysicsBodies(deltaTime: deltaTime)
     }
-
-    func lateUpdate(deltaTime: CGFloat) {}
 
     private func updatePhysicsBodies(deltaTime: CGFloat) {
         let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
@@ -40,5 +40,12 @@ final class PhysicsSystem: System {
             return
         }
         renderableComponent.position = physicsComponent.physicsBody.position
+    }
+
+    private func applyGravityTo(_ entity: Entity) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
+            return
+        }
+        physicsComponent.physicsBody.applyForce(PhysicsSystem.GRAVITY_FORCE)
     }
 }
