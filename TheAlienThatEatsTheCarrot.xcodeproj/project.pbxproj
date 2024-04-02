@@ -150,6 +150,12 @@
 		9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */; };
 		9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */; };
 		9F8C58D62BAF0BA0002E75FB /* Level+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */; };
+		9F9D15F52BBC29CF005D1985 /* CollisionComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D15F42BBC29CF005D1985 /* CollisionComponent.swift */; };
+		9F9D15F72BBC2A15005D1985 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D15F62BBC2A15005D1985 /* Constants.swift */; };
+		9F9D15F92BBC2A82005D1985 /* CollisionSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D15F82BBC2A82005D1985 /* CollisionSystem.swift */; };
+		9F9D15FB2BBC2A98005D1985 /* PhysicsSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D15FA2BBC2A98005D1985 /* PhysicsSystem.swift */; };
+		9F9D15FD2BBC2ADB005D1985 /* PhysicsCollisionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D15FC2BBC2ADB005D1985 /* PhysicsCollisionDelegate.swift */; };
+		9F9D15FF2BBC2B32005D1985 /* PhysicsWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D15FE2BBC2B32005D1985 /* PhysicsWorld.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -299,6 +305,12 @@
 		9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+extensions.swift"; sourceTree = "<group>"; };
 		9F8C58D32BAED978002E75FB /* BoardObjectSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardObjectSet.swift; sourceTree = "<group>"; };
 		9F8C58D52BAF0BA0002E75FB /* Level+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Level+extensions.swift"; sourceTree = "<group>"; };
+		9F9D15F42BBC29CF005D1985 /* CollisionComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionComponent.swift; sourceTree = "<group>"; };
+		9F9D15F62BBC2A15005D1985 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9F9D15F82BBC2A82005D1985 /* CollisionSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionSystem.swift; sourceTree = "<group>"; };
+		9F9D15FA2BBC2A98005D1985 /* PhysicsSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsSystem.swift; sourceTree = "<group>"; };
+		9F9D15FC2BBC2ADB005D1985 /* PhysicsCollisionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsCollisionDelegate.swift; sourceTree = "<group>"; };
+		9F9D15FE2BBC2B32005D1985 /* PhysicsWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsWorld.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -610,6 +622,7 @@
 				9F8C57F72BAAD71B002E75FB /* Shape.swift */,
 				9F8C57F82BAAD71B002E75FB /* PhysicsBody.swift */,
 				9F8C57F92BAAD71B002E75FB /* Collision */,
+				9F9D15FE2BBC2B32005D1985 /* PhysicsWorld.swift */,
 			);
 			path = PhysicsEngine;
 			sourceTree = "<group>";
@@ -622,6 +635,7 @@
 				9F8C57FC2BAAD71B002E75FB /* Collision.swift */,
 				9F8C57FD2BAAD71B002E75FB /* CircleCollider.swift */,
 				9F8C57FE2BAAD71B002E75FB /* CollisionPoints.swift */,
+				9F9D15FC2BBC2ADB005D1985 /* PhysicsCollisionDelegate.swift */,
 			);
 			path = Collision;
 			sourceTree = "<group>";
@@ -679,6 +693,7 @@
 				0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */,
 				9F8C58082BAAD71B002E75FB /* RenderableComponent.swift */,
 				0AC860EB2BB7C2810060EF90 /* InventoryComponent.swift */,
+				9F9D15F42BBC29CF005D1985 /* CollisionComponent.swift */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -705,6 +720,8 @@
 				0AC861192BB92D5D0060EF90 /* ScoreSystem.swift */,
 				0AC861232BBBBB580060EF90 /* PositionalSystem.swift */,
 				0AC861212BBBB9BF0060EF90 /* DamageSystem.swift */,
+				9F9D15F82BBC2A82005D1985 /* CollisionSystem.swift */,
+				9F9D15FA2BBC2A98005D1985 /* PhysicsSystem.swift */,
 			);
 			path = GameSystems;
 			sourceTree = "<group>";
@@ -820,6 +837,7 @@
 				9F8C58CD2BAECC07002E75FB /* CGVector+extensions.swift */,
 				9F8C58CF2BAECC28002E75FB /* CGFloat+extensions.swift */,
 				9F8C58D12BAECC41002E75FB /* CGRect+extensions.swift */,
+				9F9D15F62BBC2A15005D1985 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -925,6 +943,7 @@
 				0AC860F22BB7C5110060EF90 /* GameCollectable.swift in Sources */,
 				3F6874AD2BAFFD52009C526D /* TerrainsViewController.swift in Sources */,
 				9F8C58BF2BAEB248002E75FB /* Collectable+extensions.swift in Sources */,
+				9F9D15FF2BBC2B32005D1985 /* PhysicsWorld.swift in Sources */,
 				9F8C58CC2BAECBBE002E75FB /* CGPoint+extensions.swift in Sources */,
 				9F874E4D2BB3C130002EFA86 /* LevelDataManager.swift in Sources */,
 				0A76A4CE2BAEC4D00067BD6E /* PlayerMovementSystem.swift in Sources */,
@@ -1015,6 +1034,7 @@
 				0AC860DC2BB7144C0060EF90 /* InvinsibleGamePowerup.swift in Sources */,
 				3FCD00592BB0050D0016389F /* PowerupsViewController.swift in Sources */,
 				0A76A4682BAC78200067BD6E /* GameLoop.swift in Sources */,
+				9F9D15F72BBC2A15005D1985 /* Constants.swift in Sources */,
 				0A76A4D22BAF23900067BD6E /* PhysicsComponent.swift in Sources */,
 				3F6807712BAE916900EB7682 /* GamePlayViewController.swift in Sources */,
 				0AC861042BB7EEB60060EF90 /* JumpStateComponent.swift in Sources */,
@@ -1032,6 +1052,7 @@
 				0AC860BF2BB67FB30060EF90 /* GroundBlockFactory.swift in Sources */,
 				0AC861262BBBEEE10060EF90 /* CharacterFactory.swift in Sources */,
 				0A76A48C2BAC78780067BD6E /* Powerup.swift in Sources */,
+				9F9D15FD2BBC2ADB005D1985 /* PhysicsCollisionDelegate.swift in Sources */,
 				0A76A49C2BAC78B40067BD6E /* RectangleCollider.swift in Sources */,
 				0A76A4962BAC78870067BD6E /* SceneDelegate.swift in Sources */,
 				0A76A4972BAC78960067BD6E /* MovableComponent.swift in Sources */,
@@ -1042,8 +1063,10 @@
 				3F68076D2BADBCD200EB7682 /* LevelView.swift in Sources */,
 				0AC860DA2BB6D7F90060EF90 /* TimerSystem.swift in Sources */,
 				3FCD005B2BB005340016389F /* CollectiblesViewController.swift in Sources */,
+				9F9D15F52BBC29CF005D1985 /* CollisionComponent.swift in Sources */,
 				0AC860B22BB3A5360060EF90 /* GameStartEvent.swift in Sources */,
 				0AC860EC2BB7C2810060EF90 /* InventoryComponent.swift in Sources */,
+				9F9D15FB2BBC2A98005D1985 /* PhysicsSystem.swift in Sources */,
 				0A76A4A72BAD28EB0067BD6E /* BlockFactory.swift in Sources */,
 				9F8C58A32BAE78C9002E75FB /* FromDataAble.swift in Sources */,
 				0AC860D12BB694E60060EF90 /* AttackableComponent.swift in Sources */,
@@ -1056,6 +1079,7 @@
 				0A76A4702BAC78430067BD6E /* Direction.swift in Sources */,
 				0A76A4732BAC784E0067BD6E /* MovementSystem.swift in Sources */,
 				0A76A4AF2BAD29760067BD6E /* PowerupComponent.swift in Sources */,
+				9F9D15F92BBC2A82005D1985 /* CollisionSystem.swift in Sources */,
 				0A76A4CA2BAEBD2C0067BD6E /* GameStateComponent.swift in Sources */,
 				0AC861222BBBB9BF0060EF90 /* DamageSystem.swift in Sources */,
 			);

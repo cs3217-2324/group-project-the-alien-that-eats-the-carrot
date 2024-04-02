@@ -16,6 +16,9 @@ final class PhysicsBody {
     var velocity: CGVector
     var restitution: CGFloat
     var position: CGPoint
+    var categoryBitmask: UInt32
+    var collisionBitmask: UInt32
+
     // MARK: Force related properties
     var isTrigger: Bool
     var isDynamic: Bool
@@ -35,6 +38,8 @@ final class PhysicsBody {
     init(shape: Shape,
          position: CGPoint,
          size: CGSize,
+         categoryBitmask: UInt32,
+        collisionBitmask: UInt32,
          isDynamic: Bool,
          rotation: CGFloat = .zero,
          mass: CGFloat = 1,
@@ -46,6 +51,8 @@ final class PhysicsBody {
         self.position = position
         self.size = CGSize(width: max(size.width, PhysicsConstants.physicsBodyMinimumSize),
                            height: max(size.height, PhysicsConstants.physicsBodyMinimumSize))
+        self.categoryBitmask = categoryBitmask
+        self.collisionBitmask = collisionBitmask
         self.rotation = rotation
         self.mass = mass
         self.velocity = velocity
