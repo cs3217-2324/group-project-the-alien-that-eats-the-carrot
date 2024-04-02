@@ -68,9 +68,6 @@ final class PhysicsBody {
 
     func update(deltaTime: CGFloat) {
         let maxSpeed = PhysicsConstants.maxSpeed
-        if netForce != .zero {
-            print("net force \(netForce)")
-        }
         velocity += netForce / mass * deltaTime
         if velocity.magnitude > maxSpeed {
             velocity = velocity.unitVector * maxSpeed

@@ -14,8 +14,8 @@ class NormalCharacterFactory: CharacterFactory {
         let physicsBody = PhysicsBody(shape: .rectangle,
                                       position: center,
                                       size: size,
-                                      categoryBitmask: Constants.enemyCategoryBitmask,
-                                      collisionBitmask: Constants.enemyCollisionBitmask,
+                                      categoryBitmask: Constants.characterCategoryBitmask,
+                                      collisionBitmask: Constants.characterCollisionBitmask,
                                       isDynamic: true)
         let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200), objectType: .character(.normal))
         let playerComponent = PlayerComponent(entity: entity)

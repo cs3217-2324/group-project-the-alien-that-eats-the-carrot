@@ -9,7 +9,6 @@ import Foundation
 
 class NormalBlockFactory: BlockFactory {
     override func createComponents() -> [Component] {
-        print("creating normal block")
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)
         let renderableComponent = RenderableComponent(entity: entity,
