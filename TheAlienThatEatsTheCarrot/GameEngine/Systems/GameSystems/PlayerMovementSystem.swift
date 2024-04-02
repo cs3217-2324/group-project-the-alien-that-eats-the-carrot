@@ -69,9 +69,9 @@ class PlayerMovementSystem: System {
         case .jump:
             jumpIfPlayerHasJumpsAvailable(for: player)
         case .left:
-            setVelocity(for: player, velocity: ControlAction.DEFAULT_LEFT_VELOCITY)
+            addHorizontalForce(for: player, force: ControlAction.DEFAULT_LEFT_FORCE)
         case .right:
-            setVelocity(for: player, velocity: ControlAction.DEFAULT_RIGHT_VELOCITY)
+            addHorizontalForce(for: player, force: ControlAction.DEFAULT_RIGHT_FORCE)
         }
     }
 
@@ -107,14 +107,14 @@ class PlayerMovementSystem: System {
         }
     }
 
-    private func setVelocity(for player: PlayerComponent, velocity: CGVector) {
+    private func addHorizontalForce(for player: PlayerComponent, force: CGVector) {
         guard
             let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity),
             let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
             return
         }
         if jumpStateComponent.isGrounded {
-            physicsComponent.physicsBody.velocity = velocity
+            physicsComponent.physicsBody.applyForce(force)
         }
     }
 }
