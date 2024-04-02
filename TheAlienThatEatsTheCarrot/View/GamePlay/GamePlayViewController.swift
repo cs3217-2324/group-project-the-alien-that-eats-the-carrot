@@ -16,8 +16,10 @@ class GamePlayViewController: UIViewController {
     @IBOutlet private var life2: UIImageView!
     @IBOutlet private var life3: UIImageView!
     @IBOutlet private var coinCountText: UILabel!
+    @IBOutlet private var boardAreaView: UIView!
 
     var renderableComponents: [RenderableComponent] = []
+    private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
 
     // MARK: - game loop
     let gameEngine = GameEngine()
@@ -50,8 +52,11 @@ class GamePlayViewController: UIViewController {
     }
 
     private func updateUI() {
+        reset() // here I removes everything that is previously added
+        // if you want to remove image indiviudally call `removeImage(id: ObjectIdentifier(component))`
         renderableComponents = gameEngine.getRenderableComponents()
         for component in renderableComponents {
+            addImage(id: ObjectIdentifier(component), objectType: component.objectType, center: component.position, width: component.size.width, height: component.size.height)
         }
     }
 
@@ -66,6 +71,31 @@ class GamePlayViewController: UIViewController {
         let okAction = UIAlertAction(title: "Okay", style: .default)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
+    }
+
+    // MARK: - image handling
+    func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
+        print("image added at \(center) for \(id)")
+        let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
+        imageViews[id] = imageView
+        boardAreaView.addSubview(imageView.imageView)
+    }
+
+    func removeImage(id: ObjectIdentifier) {
+        print("image removed for \(id)")
+        guard let removedImageView = imageViews.removeValue(forKey: id) else {
+            return
+        }
+        removedImageView.imageView.removeFromSuperview()
+        removedImageView.imageView = nil
+    }
+
+    func reset() {
+        for imageView in imageViews.values {
+            imageView.imageView.removeFromSuperview()
+            imageView.imageView = nil
+        }
+        imageViews.removeAll()
     }
 
     // MARK: - character movement
@@ -96,8 +126,17 @@ class GamePlayViewController: UIViewController {
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
+    @IBAction func jumpButtonTouchDown(_ sender: UIButton) {
+        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
+    }
+
     @IBAction private func jumpButtonTapped(_ sender: UIButton) {
+        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .jump))
+    }
+
+    @IBAction func jumpButtonTouchUpOutside(_ sender: UIButton) {
+        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
     }
 
     // MARK: - pause
