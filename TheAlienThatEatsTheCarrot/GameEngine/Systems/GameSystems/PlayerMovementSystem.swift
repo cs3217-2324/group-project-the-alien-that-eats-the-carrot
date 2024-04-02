@@ -65,7 +65,7 @@ class PlayerMovementSystem: System {
     private func applyPhysicsBasedOnControlAction(for player: PlayerComponent) {
         switch player.action {
         case .idle:
-            resetVelocityToZeroIfGrounded(for: player)
+            doNothing()
         case .jump:
             jumpIfPlayerHasJumpsAvailable(for: player)
         case .left:
@@ -91,14 +91,8 @@ class PlayerMovementSystem: System {
         camera.updateCameraBoundsFromCenter(center: renderableComponent.position)
     }
 
-    private func resetVelocityToZeroIfGrounded(for player: PlayerComponent) {
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity),
-              let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
-            return
-        }
-        if jumpStateComponent.isGrounded {
-            physicsComponent.physicsBody.velocity = .zero
-        }
+    private func doNothing() {
+        // do nothing
     }
 
     private func jumpIfPlayerHasJumpsAvailable(for player: PlayerComponent) {
