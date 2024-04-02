@@ -19,7 +19,7 @@ extension CollectableType: FromDataAble {
 
 extension CollectableType: ToDataAble {
     func toData(context: NSManagedObjectContext) -> NSManagedObject {
-        let collectableTypeData = BlockTypeData(context: context)
+        let collectableTypeData = CollectableTypeData(context: context)
         collectableTypeData.typeName = self.rawValue
         return collectableTypeData as NSManagedObject
     }

@@ -20,9 +20,9 @@ extension Enemy: FromDataAble {
 
 extension Enemy: ToDataAble {
     func toData(context: NSManagedObjectContext) -> NSManagedObject {
-        let enemyData = CollectableData(context: context)
+        let enemyData = EnemyData(context: context)
         enemyData.position = self.position.toData(context: context) as? CGPointData
-        enemyData.type = self.enemyType.toData(context: context) as? CollectableTypeData
+        enemyData.type = self.enemyType.toData(context: context) as? EnemyTypeData
         return enemyData as NSManagedObject
     }
 }

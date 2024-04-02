@@ -73,6 +73,19 @@ class LevelDesignerViewController: UIViewController {
                 collectivlesViewController.delegate = self
             }
         }
+        if segue.identifier == "SaveLevelSegue",
+           let destination = segue.destination as? SaveLevelViewController {
+            destination.delegate = self
+        }
+        if segue.identifier == "LoadLevelSegue",
+           let destination = segue.destination as? LoadLevelViewController {
+            destination.delegate = self
+            destination.levelNames = levelDesigner.fetchLevelNames()
+        }
+//        if segue.identifier == "TestGameSegue",
+//           let gameViewController = segue.destination as? GameViewController {
+//            gameViewController.level = levelDesigner.level
+//        }
     }
 
     private func hideAllContainers() {
@@ -147,14 +160,14 @@ class LevelDesignerViewController: UIViewController {
 
     // MARK: - image handling
     func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
-        print("image added at \(center) for \(id)")
+//        print("image added at \(center) for \(id)")
         let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
         imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }
 
     func removeImage(id: ObjectIdentifier) {
-        print("image removed for \(id)")
+//        print("image removed for \(id)")
         guard let removedImageView = imageViews.removeValue(forKey: id) else {
             return
         }
@@ -166,11 +179,31 @@ class LevelDesignerViewController: UIViewController {
     @IBAction private func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
     }
+
+    func reset() {
+        for imageView in imageViews.values {
+            imageView.imageView.removeFromSuperview()
+            imageView.imageView = nil
+        }
+        imageViews.removeAll()
+    }
+
 }
 
 extension LevelDesignerViewController: ComponentSelectDelegate {
     func buttonTapped(type: ObjectType) {
         componentSelected = type
-        print("Type selecteed: \(type)")
+    }
+}
+
+extension LevelDesignerViewController: SaveLevelViewControllerDelegate {
+    func saveLevel(levelName: String, overwrite: Bool) throws {
+        try levelDesigner.saveLevel(levelName: levelName, overwrite: overwrite)
+    }
+}
+
+extension LevelDesignerViewController: LoadLevelViewControllerDelegate {
+    func loadLevel(levelName: String) throws {
+        try levelDesigner.loadLevel(levelName: levelName)
     }
 }
