@@ -200,7 +200,7 @@
 		0AC861032BB7EEB60060EF90 /* JumpStateComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JumpStateComponent.swift; sourceTree = "<group>"; };
 		0AC861072BB862710060EF90 /* HeartGameCollectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartGameCollectable.swift; sourceTree = "<group>"; };
 		0AC861092BB864930060EF90 /* HeartCollectableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartCollectableFactory.swift; sourceTree = "<group>"; };
-		0AC8610B2BB867190060EF90 /* DamageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageSystem.swift; sourceTree = "<group>"; };
+		0AC8610B2BB867190060EF90 /* DamageSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DamageSystem.swift; path = ../../Components/GameComponents/DamageSystem.swift; sourceTree = "<group>"; };
 		0AC8610F2BB868D70060EF90 /* AttackStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackStyle.swift; sourceTree = "<group>"; };
 		0AC861112BB869080060EF90 /* AttackableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackableDelegate.swift; sourceTree = "<group>"; };
 		0AC861132BB869380060EF90 /* MeleeAttackStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeleeAttackStyle.swift; sourceTree = "<group>"; };
@@ -654,7 +654,6 @@
 				0A76A4C92BAEBD2C0067BD6E /* GameStateComponent.swift */,
 				9F8C58082BAAD71B002E75FB /* RenderableComponent.swift */,
 				0AC860EB2BB7C2810060EF90 /* InventoryComponent.swift */,
-				0AC8610B2BB867190060EF90 /* DamageSystem.swift */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -679,6 +678,7 @@
 				0A76A4C32BAE81BD0067BD6E /* CameraSystem.swift */,
 				0AC860D92BB6D7F90060EF90 /* TimerSystem.swift */,
 				0AC861192BB92D5D0060EF90 /* ScoreSystem.swift */,
+				0AC8610B2BB867190060EF90 /* DamageSystem.swift */,
 			);
 			path = GameSystems;
 			sourceTree = "<group>";
