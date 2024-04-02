@@ -72,7 +72,6 @@ final class PhysicsBody {
             print("net force \(netForce)")
         }
         velocity += netForce / mass * deltaTime
-        print("velocity magnitude: \(velocity.magnitude) max speed: \(maxSpeed)")
         if velocity.magnitude > maxSpeed {
             velocity = velocity.unitVector * maxSpeed
         }
