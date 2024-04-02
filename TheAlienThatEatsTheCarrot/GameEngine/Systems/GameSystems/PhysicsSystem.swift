@@ -38,6 +38,10 @@ final class PhysicsSystem: System {
             return
         }
 
-        // TODO: implement renderable
+        let renderableComponents = nexus.getComponents(of: RenderableComponent.self, for: entity)
+
+        renderableComponents.forEach { renderableComponent in
+            renderableComponent.position = physicsComponent.physicsBody.position
+        }
     }
 }

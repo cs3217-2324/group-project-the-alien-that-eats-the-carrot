@@ -49,6 +49,17 @@ final class Nexus {
         return entities[entity]?[componentId]?.compactMap { $0 as? T }.first
     }
 
+    func getComponents<T: Component>(of type: T.Type, for entity: Entity) -> [T] {
+        guard
+            let componentsDict = entities[entity],
+            let components = componentsDict[T.typeId] as? [T]
+        else {
+            return []
+        }
+
+        return components
+    }
+
     func addComponent<T: Component>(_ component: T, to entity: Entity) {
         let componentId = type(of: component).typeId
         entities[entity, default: [:]][componentId, default: []].append(component)
