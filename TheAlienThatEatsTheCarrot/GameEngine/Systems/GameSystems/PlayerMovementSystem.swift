@@ -103,11 +103,14 @@ class PlayerMovementSystem: System {
     }
 
     private func jumpIfPlayerHasJumpsAvailable(for player: PlayerComponent) {
-        guard let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
+        guard
+            let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity),
+            let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
             return
         }
         if jumpStateComponent.remainingJump > 0 {
-            // TODO: jump, either by applying force to the player physics body, or modify the velocity
+            physicsComponent.physicsBody.applyForce(ControlAction.DEFAULT_JUMP_FORCE)
+            jumpStateComponent.remainingJump -= 1
         }
     }
 
