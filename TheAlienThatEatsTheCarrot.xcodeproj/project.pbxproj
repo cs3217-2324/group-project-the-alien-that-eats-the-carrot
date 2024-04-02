@@ -102,6 +102,8 @@
 		0AC8611E2BB93B2A0060EF90 /* AddScoreEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8611D2BB93B2A0060EF90 /* AddScoreEvent.swift */; };
 		0AC861222BBBB9BF0060EF90 /* DamageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861212BBBB9BF0060EF90 /* DamageSystem.swift */; };
 		0AC861242BBBBB580060EF90 /* PositionalSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861232BBBBB580060EF90 /* PositionalSystem.swift */; };
+		0AC861262BBBEEE10060EF90 /* CharacterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861252BBBEEE00060EF90 /* CharacterFactory.swift */; };
+		0AC861292BBBEF260060EF90 /* NormalCharacterFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861282BBBEF260060EF90 /* NormalCharacterFactory.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -211,6 +213,8 @@
 		0AC8611D2BB93B2A0060EF90 /* AddScoreEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreEvent.swift; sourceTree = "<group>"; };
 		0AC861212BBBB9BF0060EF90 /* DamageSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageSystem.swift; sourceTree = "<group>"; };
 		0AC861232BBBBB580060EF90 /* PositionalSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionalSystem.swift; sourceTree = "<group>"; };
+		0AC861252BBBEEE00060EF90 /* CharacterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterFactory.swift; sourceTree = "<group>"; };
+		0AC861282BBBEF260060EF90 /* NormalCharacterFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalCharacterFactory.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -305,6 +309,7 @@
 		0A76A4A32BAD22AC0067BD6E /* Factories */ = {
 			isa = PBXGroup;
 			children = (
+				0AC861272BBBEF170060EF90 /* CharacterFactories */,
 				0AC860BB2BB67F710060EF90 /* PowerupFactories */,
 				0AC860BA2BB67F630060EF90 /* CollectableFactories */,
 				0AC860B92BB67F5B0060EF90 /* BlockFactories */,
@@ -313,6 +318,7 @@
 				0A76A4A62BAD28EB0067BD6E /* BlockFactory.swift */,
 				0AC860C42BB681350060EF90 /* PowerupFactory.swift */,
 				0AC860FB2BB7C8B50060EF90 /* CollectableFactory.swift */,
+				0AC861252BBBEEE00060EF90 /* CharacterFactory.swift */,
 				0A76A4A12BAD222A0067BD6E /* EntityFactory.swift */,
 			);
 			path = Factories;
@@ -465,6 +471,14 @@
 				0AC861172BB916780060EF90 /* JumpAttackStyle.swift */,
 			);
 			path = AttackStyles;
+			sourceTree = "<group>";
+		};
+		0AC861272BBBEF170060EF90 /* CharacterFactories */ = {
+			isa = PBXGroup;
+			children = (
+				0AC861282BBBEF260060EF90 /* NormalCharacterFactory.swift */,
+			);
+			path = CharacterFactories;
 			sourceTree = "<group>";
 		};
 		3F6874A92BAFFD13009C526D /* GamePlay */ = {
@@ -933,6 +947,7 @@
 				9F8C58B12BAEA8EC002E75FB /* BlockType+extensions.swift in Sources */,
 				0A76A46D2BAC783B0067BD6E /* PhysicsConstants.swift in Sources */,
 				0AC861142BB869380060EF90 /* MeleeAttackStyle.swift in Sources */,
+				0AC861292BBBEF260060EF90 /* NormalCharacterFactory.swift in Sources */,
 				0AC8611E2BB93B2A0060EF90 /* AddScoreEvent.swift in Sources */,
 				0AC860CD2BB6863C0060EF90 /* PlayerPowerupSystem.swift in Sources */,
 				0AC860F62BB7C6950060EF90 /* CoinGameCollectable.swift in Sources */,
@@ -1003,6 +1018,7 @@
 				0AC861082BB862710060EF90 /* HeartGameCollectable.swift in Sources */,
 				9F8C58D02BAECC28002E75FB /* CGFloat+extensions.swift in Sources */,
 				0AC860BF2BB67FB30060EF90 /* GroundBlockFactory.swift in Sources */,
+				0AC861262BBBEEE10060EF90 /* CharacterFactory.swift in Sources */,
 				0A76A48C2BAC78780067BD6E /* Powerup.swift in Sources */,
 				0A76A49C2BAC78B40067BD6E /* RectangleCollider.swift in Sources */,
 				0A76A4962BAC78870067BD6E /* SceneDelegate.swift in Sources */,

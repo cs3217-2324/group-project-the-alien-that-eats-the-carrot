@@ -10,21 +10,9 @@ import Foundation
 extension Nexus {
     func addCharacterForPlayerA() {
         let entity = Entity()
-        let center = CGPoint(x: 200.0, y: 200.0)
-        let size = CGSize(width: 100.0, height: 100.0)
-        let physicsBody = PhysicsBody(shape: .rectangle, position: center, size: size, isDynamic: true)
-        let renderableComponent = RenderableComponent(entity: entity, position: CGPoint(x: 200, y: 200), objectType: .character(.normal))
-        let playerComponent = PlayerComponent(entity: entity)
-        let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
-        let jumpStateComponent = JumpStateComponent(entity: entity)
-        let inventoryComponent = InventoryComponent(entity: entity)
-        let cameraComponent = CameraComponent(entity: entity)
-        let attackableComponent = AttackableComponent(entity: entity,
-                                                      targetables: [EnemyComponent.self, BlockComponent.self],
-                                                      attackStyle: JumpAttackStyle())
-        let destroyableComponent = DestroyableComponent(entity: entity, lives: 3, maxLives: 3)
-        addComponents([renderableComponent, playerComponent, physicsComponent, jumpStateComponent, inventoryComponent,
-                       cameraComponent, attackableComponent, destroyableComponent], to: entity)
+        let normalCharacterFactory = NormalCharacterFactory(entity: entity)
+        let components = normalCharacterFactory.createComponents()
+        addComponents(components, to: entity)
     }
 
     /// Factory to create entities
