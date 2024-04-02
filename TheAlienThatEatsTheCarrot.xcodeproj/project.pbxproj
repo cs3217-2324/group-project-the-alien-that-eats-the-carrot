@@ -101,6 +101,7 @@
 		0AC8611C2BB933CB0060EF90 /* ScoreComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8611B2BB933CB0060EF90 /* ScoreComponent.swift */; };
 		0AC8611E2BB93B2A0060EF90 /* AddScoreEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8611D2BB93B2A0060EF90 /* AddScoreEvent.swift */; };
 		0AC861222BBBB9BF0060EF90 /* DamageSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861212BBBB9BF0060EF90 /* DamageSystem.swift */; };
+		0AC861242BBBBB580060EF90 /* PositionalSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861232BBBBB580060EF90 /* PositionalSystem.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -209,6 +210,7 @@
 		0AC8611B2BB933CB0060EF90 /* ScoreComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreComponent.swift; sourceTree = "<group>"; };
 		0AC8611D2BB93B2A0060EF90 /* AddScoreEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreEvent.swift; sourceTree = "<group>"; };
 		0AC861212BBBB9BF0060EF90 /* DamageSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DamageSystem.swift; sourceTree = "<group>"; };
+		0AC861232BBBBB580060EF90 /* PositionalSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PositionalSystem.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -678,6 +680,7 @@
 				0A76A4C32BAE81BD0067BD6E /* CameraSystem.swift */,
 				0AC860D92BB6D7F90060EF90 /* TimerSystem.swift */,
 				0AC861192BB92D5D0060EF90 /* ScoreSystem.swift */,
+				0AC861232BBBBB580060EF90 /* PositionalSystem.swift */,
 				0AC861212BBBB9BF0060EF90 /* DamageSystem.swift */,
 			);
 			path = GameSystems;
@@ -915,6 +918,7 @@
 				9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */,
 				0AC860D42BB6A2060060EF90 /* PowerupActionDelegate.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
+				0AC861242BBBBB580060EF90 /* PositionalSystem.swift in Sources */,
 				9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
 				0AC860D82BB6B0750060EF90 /* PowerupElapseEvent.swift in Sources */,
