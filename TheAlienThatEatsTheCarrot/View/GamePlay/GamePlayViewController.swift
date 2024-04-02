@@ -23,19 +23,29 @@ class GamePlayViewController: UIViewController {
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
 
     // MARK: - game loop
-    let gameEngine = GameEngine()
+    var gameEngine: GameEngine!
     var gameLoop: GameLoop!
+    var levelDataManager = LevelDataManager()
 
     private var isGameLoopRunning = false
     var count: Int = 0
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard let levelNameToLoad = levelName else {
+            return
+        }
+        do {
+            let level = try levelDataManager.fetchLevel(levelName: levelNameToLoad)
+            gameEngine = GameEngine(level: level)
+        } catch {
+            print("Error loading level \(levelNameToLoad): \(error)")
+            presentAlert(message: "Failed to load level: \(error.localizedDescription)")
+        }
         self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
             self?.updateUI()
         })
         startGameLoop()
-        print("level name \(levelName)")
     }
 
     private func startGameLoop() {
