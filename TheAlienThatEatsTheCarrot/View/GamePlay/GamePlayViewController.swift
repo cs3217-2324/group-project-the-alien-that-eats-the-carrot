@@ -44,6 +44,7 @@ class GamePlayViewController: UIViewController {
         }
         self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
             self?.updateUI()
+            self?.gameEngine.getGameStats()
         })
         startGameLoop()
     }

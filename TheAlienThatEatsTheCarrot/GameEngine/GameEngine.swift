@@ -44,6 +44,10 @@ class GameEngine {
         nexus.getComponents(of: RenderableComponent.self)
     }
 
+    func getGameStats() -> GameStats {
+        createGameStatsFromECS()
+    }
+
     private func updateAction(_ action: ControlAction, of player: Entity) {
         guard let playerComponent = nexus.getComponent(of: PlayerComponent.self, for: player) else {
             return
