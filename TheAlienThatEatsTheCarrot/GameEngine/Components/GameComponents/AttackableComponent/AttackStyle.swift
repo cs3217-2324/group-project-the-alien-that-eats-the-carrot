@@ -28,10 +28,16 @@ extension AttackStyle {
         }
         destroyableComponent.takeDamage(damage)
         if destroyableComponent.isDestroyed {
-            guard let renderableComponent = delegate.getComponent(of: RenderableComponent.self, for: destroyableComponent.entity) else {
-                return
-            }
-            delegate.removeComponent(renderableComponent, from: destroyableComponent.entity)
+            removeRelevantComponentsForDestroyedEntity(destroyableComponent.entity, delegate: delegate)
+        }
+    }
+
+    private func removeRelevantComponentsForDestroyedEntity(_ entity: Entity, delegate: AttackableDelegate) {
+        if let renderableComponent = delegate.getComponent(of: RenderableComponent.self, for: entity) {
+            delegate.removeComponent(renderableComponent, from: entity)
+        }
+        if let physicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: entity) {
+            delegate.removeComponent(physicsComponent, from: entity)
         }
     }
 }
