@@ -98,15 +98,6 @@ extension PhysicsBody {
         }
         let collisionAngle = collisionPoints.normal.angle
         var angleInDegrees = (collisionAngle * 180 / Double.pi).truncatingRemainder(dividingBy: 360)
-        if (-135...(-45)).contains(angleInDegrees) {
-            print("up")
-        } else if (45...135).contains(angleInDegrees) {
-            print("down")
-        } else if (135...180).contains(angleInDegrees) || (-180...(-135)).contains(angleInDegrees) {
-            print("left")
-        } else if (-45...45).contains(angleInDegrees) {
-            print("right")
-        }
         switch direction {
         case .up:
             return (-135...(-45)).contains(angleInDegrees)
