@@ -93,3 +93,27 @@ extension PhysicsBody: Hashable {
         hasher.combine(ObjectIdentifier(self))
     }
 }
+
+extension PhysicsBody {
+    func isCollidingWith(_ other: PhysicsBody, on direction: Direction) -> Bool {
+        let collisionPoints = self.collider.checkCollision(with: other.collider)
+        if !collisionPoints.hasCollision {
+            return false
+        }
+        let collisionNormal = self.position - other.position
+        let collisionAngle = collisionNormal.angle
+        var angleInDegrees = (collisionAngle * 180 / Double.pi).truncatingRemainder(dividingBy: 360)
+        switch direction {
+        case .up:
+            return 225 <= angleInDegrees && angleInDegrees <= 315
+        case .down:
+            return 45 <= angleInDegrees && angleInDegrees <= 135
+        case .left:
+            return 135 <= angleInDegrees && angleInDegrees <= 225
+        case .right:
+            return angleInDegrees <= 45 || angleInDegrees >= 315
+        default:
+            return false
+        }
+    }
+}
