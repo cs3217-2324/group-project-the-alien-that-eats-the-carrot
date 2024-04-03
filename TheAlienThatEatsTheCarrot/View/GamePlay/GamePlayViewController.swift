@@ -62,6 +62,7 @@ class GamePlayViewController: UIViewController {
             return
         }
         gameLoop.stop()
+        isGameLoopRunning = false
     }
 
     private func updateUI() {
@@ -69,7 +70,7 @@ class GamePlayViewController: UIViewController {
         // if you want to remove image indiviudally call `removeImage(id: ObjectIdentifier(component))`
         renderableComponents = gameEngine.getRenderableComponents()
         gameStats = gameEngine.getGameStats()
-        
+
         for component in renderableComponents {
             addImage(id: ObjectIdentifier(component), objectType: component.objectType, center: component.position, width: component.size.width, height: component.size.height)
         }
