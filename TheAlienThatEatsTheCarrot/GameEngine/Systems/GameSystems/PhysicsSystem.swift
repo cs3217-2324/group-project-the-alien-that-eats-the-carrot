@@ -26,6 +26,7 @@ final class PhysicsSystem: System {
         }
 
         updatePhysicsBodies(deltaTime: deltaTime)
+        nexus.removeComponents(of: CollisionComponent.self)
     }
 
     private func updatePhysicsBodies(deltaTime: CGFloat) {

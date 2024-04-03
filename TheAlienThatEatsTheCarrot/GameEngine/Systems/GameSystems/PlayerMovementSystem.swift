@@ -52,7 +52,9 @@ class PlayerMovementSystem: System {
     }
 
     private func updateJumpState(for player: PlayerComponent) {
-        guard let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
+        guard
+            let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity),
+            let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity) else {
             return
         }
         // TODO: add a system that modifies canJump if the player is standing on an object
@@ -103,6 +105,7 @@ class PlayerMovementSystem: System {
         }
         if jumpStateComponent.remainingJump > 0 {
             physicsComponent.physicsBody.applyForce(ControlAction.DEFAULT_JUMP_FORCE)
+            jumpStateComponent.isGrounded = false
             jumpStateComponent.remainingJump -= 1
         }
     }

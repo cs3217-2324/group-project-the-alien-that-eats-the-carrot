@@ -127,7 +127,7 @@ final class PhysicsWorld {
                                   depth: CGFloat,
                                   deltaTime: CGFloat) {
         // Decouple physics bodies
-        dynamicBody.position += normal * depth
+        dynamicBody.position += normal
 
         // Resolve velocity
         guard dynamicBody.restitution != .zero else {
