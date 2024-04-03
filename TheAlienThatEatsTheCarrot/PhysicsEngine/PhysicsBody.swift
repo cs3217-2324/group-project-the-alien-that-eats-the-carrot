@@ -86,13 +86,13 @@ final class PhysicsBody {
     func isOverlapping(with other: PhysicsBody, on direction: Direction) -> Bool {
         switch direction {
         case .up:
-            return self.position.y < other.position.y
+            return self.position.y < other.position.y && self.position.y + self.size.height < other.position.y + other.size.height
         case .down:
-            return self.position.y + self.size.height > other.position.y + other.size.height
+            return self.position.y > other.position.y && self.position.y + self.size.height > other.position.y + other.size.height
         case .left:
-            return self.position.x < other.position.x
+            return self.position.x < other.position.x && self.position.x + self.size.width < other.position.x + other.size.width
         case .right:
-            return self.position.x + self.size.width > other.position.x + other.size.width
+            return self.position.x > other.position.x && self.position.x + self.size.width > other.position.x + other.size.width
         default:
             return false
         }
