@@ -16,7 +16,7 @@ struct Constants {
     static let enemyCategoryBitmask: UInt32 = 1 << 1
     static let blockCategoryBitmask: UInt32 = 1 << 2
     static let powerupCategortBitmask: UInt32 = 1 << 3
-    static let collectableCategortBitmask: UInt32 = 1 << 4
+    static let collectableCategoryBitmask: UInt32 = 1 << 4
 
     // Collision Bitmasks
     static let characterCollisionBitmask: UInt32 = enemyCategoryBitmask | blockCategoryBitmask
