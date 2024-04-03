@@ -25,8 +25,6 @@ class JumpAttackStyle: AttackStyle {
     }
 
     private func isAttackerJumpingOnAttackee(attacker: PhysicsBody, attackee: PhysicsBody) -> Bool {
-        attacker.isOverlapping(with: attackee, on: .up)
-            && (attacker.isOverlapping(with: attackee, on: .left)
-                || attacker.isOverlapping(with: attackee, on: .right))
+        attacker.isCollidingWith(attackee, on: .up)
     }
 }
