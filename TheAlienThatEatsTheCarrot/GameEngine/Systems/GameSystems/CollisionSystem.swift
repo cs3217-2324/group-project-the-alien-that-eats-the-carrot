@@ -17,7 +17,10 @@ final class CollisionSystem: System {
         self.physicsWorld.collisionDelegate = self
     }
 
-    func update(deltaTime: CGFloat) {}
+    func update(deltaTime: CGFloat) {
+        let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
+        physicsWorld.resolveCollisions(for: physicsBodies, deltaTime: deltaTime)
+    }
 
     func lateUpdate(deltaTime: CGFloat) {
         nexus.removeComponents(of: CollisionComponent.self)

@@ -31,7 +31,7 @@ final class PhysicsSystem: System {
 
     private func updatePhysicsBodies(deltaTime: CGFloat) {
         let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
-        physicsWorld.update(physicsBodies, deltaTime: deltaTime)
+        physicsWorld.updatePhysicsBodies(physicsBodies, deltaTime: deltaTime)
     }
 
     private func updateRenderable(_ entity: Entity) {

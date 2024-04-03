@@ -21,7 +21,7 @@ final class PhysicsWorld {
         resolveCollisions(for: physicsBodies, deltaTime: deltaTime)
     }
 
-    private func updatePhysicsBodies(_ physicsBodies: [PhysicsBody],
+    func updatePhysicsBodies(_ physicsBodies: [PhysicsBody],
                                      deltaTime: CGFloat) {
         for physicsBody in physicsBodies {
             physicsBody.update(deltaTime: deltaTime)
@@ -93,7 +93,7 @@ final class PhysicsWorld {
         || (bodyA.categoryBitmask & bodyB.collisionBitmask != .zero)
     }
 
-    private func resolveCollisions(for physicsBodies: [PhysicsBody], deltaTime: CGFloat) {
+    func resolveCollisions(for physicsBodies: [PhysicsBody], deltaTime: CGFloat) {
         let collisions = detectCollisions(for: physicsBodies)
 
         for collision in collisions {
