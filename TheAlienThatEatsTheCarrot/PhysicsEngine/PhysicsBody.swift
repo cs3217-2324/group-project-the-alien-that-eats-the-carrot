@@ -82,6 +82,21 @@ final class PhysicsBody {
 
         forces = []
     }
+
+    func isOverlapping(with other: PhysicsBody, on direction: Direction) -> Bool {
+        switch direction {
+        case .up:
+            return self.position.y < other.position.y + other.size.height && self.position.y + self.size.height > other.position.y
+        case .down:
+            return self.position.y + self.size.height > other.position.y && self.position.y < other.position.y + other.size.height
+        case .left:
+            return self.position.x < other.position.x + other.size.width && self.position.x + other.size.width > other.position.x
+        case .right:
+            return self.position.x + self.size.width > other.position.x && self.position.x < other.position.x + other.size.width
+        default:
+            return false
+        }
+    }
 }
 
 extension PhysicsBody: Hashable {
