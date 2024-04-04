@@ -15,6 +15,11 @@ class NormalBlockFactory: BlockFactory {
                                                       position: boardObject.position,
                                                       objectType: .block(.normal),
                                                       size: size)
-        return [blockComponent, renderableComponent]
+        let physicsBody = PhysicsBody(shape: .rectangle, position: boardObject.position,
+                                      size: size, categoryBitmask: Constants.blockCategoryBitmask,
+                                      collisionBitmask: Constants.blockCollisionBitmask,
+                                      isDynamic: false)
+        let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
+        return [blockComponent, renderableComponent, physicsComponent]
     }
 }

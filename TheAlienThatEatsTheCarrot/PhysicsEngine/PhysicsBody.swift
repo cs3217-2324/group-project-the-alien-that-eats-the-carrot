@@ -68,11 +68,7 @@ final class PhysicsBody {
 
     func update(deltaTime: CGFloat) {
         let maxSpeed = PhysicsConstants.maxSpeed
-        if netForce != .zero {
-            print("net force \(netForce)")
-        }
         velocity += netForce / mass * deltaTime
-        print("velocity magnitude: \(velocity.magnitude) max speed: \(maxSpeed)")
         if velocity.magnitude > maxSpeed {
             velocity = velocity.unitVector * maxSpeed
         }
@@ -100,18 +96,17 @@ extension PhysicsBody {
         if !collisionPoints.hasCollision {
             return false
         }
-        let collisionNormal = self.position - other.position
-        let collisionAngle = collisionNormal.angle
+        let collisionAngle = collisionPoints.normal.angle
         var angleInDegrees = (collisionAngle * 180 / Double.pi).truncatingRemainder(dividingBy: 360)
         switch direction {
         case .up:
-            return 225 <= angleInDegrees && angleInDegrees <= 315
+            return (-135...(-45)).contains(angleInDegrees)
         case .down:
-            return 45 <= angleInDegrees && angleInDegrees <= 135
+            return (45...135).contains(angleInDegrees)
         case .left:
-            return 135 <= angleInDegrees && angleInDegrees <= 225
+            return (135...180).contains(angleInDegrees) || (-180...(-135)).contains(angleInDegrees)
         case .right:
-            return angleInDegrees <= 45 || angleInDegrees >= 315
+            return (-45...45).contains(angleInDegrees)
         default:
             return false
         }

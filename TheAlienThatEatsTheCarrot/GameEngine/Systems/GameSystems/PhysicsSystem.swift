@@ -8,6 +8,7 @@
 import CoreGraphics
 
 final class PhysicsSystem: System {
+    static let GRAVITY_FORCE = CGVector(dx: 0, dy: 1000.0)
     let nexus: Nexus
     let physicsWorld: PhysicsWorld
 
@@ -21,16 +22,16 @@ final class PhysicsSystem: System {
 
         entities.forEach { entity in
             updateRenderable(entity)
+            applyGravityTo(entity)
         }
 
         updatePhysicsBodies(deltaTime: deltaTime)
+        nexus.removeComponents(of: CollisionComponent.self)
     }
-
-    func lateUpdate(deltaTime: CGFloat) {}
 
     private func updatePhysicsBodies(deltaTime: CGFloat) {
         let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
-        physicsWorld.update(physicsBodies, deltaTime: deltaTime)
+        physicsWorld.updatePhysicsBodies(physicsBodies, deltaTime: deltaTime)
     }
 
     private func updateRenderable(_ entity: Entity) {
@@ -40,5 +41,18 @@ final class PhysicsSystem: System {
             return
         }
         renderableComponent.position = physicsComponent.physicsBody.position
+    }
+
+    private func applyGravityTo(_ entity: Entity) {
+        if !nexus.containsAnyComponent(of: [PlayerComponent.self, EnemyComponent.self], in: entity) {
+            return
+        }
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
+            return
+        }
+        if physicsComponent.disableGravity {
+            return
+        }
+        physicsComponent.physicsBody.applyForce(PhysicsSystem.GRAVITY_FORCE)
     }
 }

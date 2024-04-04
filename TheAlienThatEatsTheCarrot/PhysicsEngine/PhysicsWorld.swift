@@ -21,14 +21,14 @@ final class PhysicsWorld {
         resolveCollisions(for: physicsBodies, deltaTime: deltaTime)
     }
 
-    private func updatePhysicsBodies(_ physicsBodies: [PhysicsBody],
+    func updatePhysicsBodies(_ physicsBodies: [PhysicsBody],
                                      deltaTime: CGFloat) {
         for physicsBody in physicsBodies {
             physicsBody.update(deltaTime: deltaTime)
         }
     }
 
-    private func detectCollisions(for physicsBodies: [PhysicsBody]) -> Set<Collision> {
+    private func detectCollisions(for physicsBodies: [PhysicsBody], toIgnore: Set<[PhysicsBody]>) -> Set<Collision> {
         var currentCollisions: Set<Collision> = []
 
         guard physicsBodies.count >= 2 else {
@@ -41,7 +41,7 @@ final class PhysicsWorld {
                 let bodyA = physicsBodies[i]
                 let bodyB = physicsBodies[j]
 
-                if !canCollide(bodyA, bodyB) {
+                if !canCollide(bodyA, bodyB) || toBeIgnored(bodyA, bodyB, toIgnore: toIgnore) {
                     continue
                 }
 
@@ -56,6 +56,10 @@ final class PhysicsWorld {
         publishCollisions(currentCollisions)
 
         return currentCollisions
+    }
+
+    private func toBeIgnored(_ bodyA: PhysicsBody, _ bodyB: PhysicsBody, toIgnore: Set<[PhysicsBody]>) -> Bool {
+        return toIgnore.contains([bodyA, bodyB]) || toIgnore.contains([bodyB, bodyA])
     }
 
     private func publishCollisions(_ currentCollisions: Set<Collision>) {
@@ -93,8 +97,8 @@ final class PhysicsWorld {
         || (bodyA.categoryBitmask & bodyB.collisionBitmask != .zero)
     }
 
-    private func resolveCollisions(for physicsBodies: [PhysicsBody], deltaTime: CGFloat) {
-        let collisions = detectCollisions(for: physicsBodies)
+    func resolveCollisions(for physicsBodies: [PhysicsBody], deltaTime: CGFloat, toIgnore: Set<[PhysicsBody]> = Set()) {
+        let collisions = detectCollisions(for: physicsBodies, toIgnore: toIgnore)
 
         for collision in collisions {
             guard [collision.bodyA, collision.bodyB].allSatisfy({ $0.isTrigger == false }) else {
@@ -127,7 +131,7 @@ final class PhysicsWorld {
                                   depth: CGFloat,
                                   deltaTime: CGFloat) {
         // Decouple physics bodies
-        dynamicBody.position += normal * depth
+        dynamicBody.position += normal
 
         // Resolve velocity
         guard dynamicBody.restitution != .zero else {
