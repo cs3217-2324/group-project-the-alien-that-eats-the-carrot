@@ -16,6 +16,9 @@ final class PhysicsBody {
     var velocity: CGVector
     var restitution: CGFloat
     var position: CGPoint
+    var categoryBitmask: UInt32
+    var collisionBitmask: UInt32
+
     // MARK: Force related properties
     var isTrigger: Bool
     var isDynamic: Bool
@@ -35,6 +38,8 @@ final class PhysicsBody {
     init(shape: Shape,
          position: CGPoint,
          size: CGSize,
+         categoryBitmask: UInt32,
+         collisionBitmask: UInt32,
          isDynamic: Bool,
          rotation: CGFloat = .zero,
          mass: CGFloat = 1,
@@ -46,6 +51,8 @@ final class PhysicsBody {
         self.position = position
         self.size = CGSize(width: max(size.width, PhysicsConstants.physicsBodyMinimumSize),
                            height: max(size.height, PhysicsConstants.physicsBodyMinimumSize))
+        self.categoryBitmask = categoryBitmask
+        self.collisionBitmask = collisionBitmask
         self.rotation = rotation
         self.mass = mass
         self.velocity = velocity
@@ -61,7 +68,11 @@ final class PhysicsBody {
 
     func update(deltaTime: CGFloat) {
         let maxSpeed = PhysicsConstants.maxSpeed
+        if netForce != .zero {
+            print("net force \(netForce)")
+        }
         velocity += netForce / mass * deltaTime
+        print("velocity magnitude: \(velocity.magnitude) max speed: \(maxSpeed)")
         if velocity.magnitude > maxSpeed {
             velocity = velocity.unitVector * maxSpeed
         }
@@ -80,5 +91,29 @@ extension PhysicsBody: Hashable {
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(self))
+    }
+}
+
+extension PhysicsBody {
+    func isCollidingWith(_ other: PhysicsBody, on direction: Direction) -> Bool {
+        let collisionPoints = self.collider.checkCollision(with: other.collider)
+        if !collisionPoints.hasCollision {
+            return false
+        }
+        let collisionNormal = self.position - other.position
+        let collisionAngle = collisionNormal.angle
+        var angleInDegrees = (collisionAngle * 180 / Double.pi).truncatingRemainder(dividingBy: 360)
+        switch direction {
+        case .up:
+            return 225 <= angleInDegrees && angleInDegrees <= 315
+        case .down:
+            return 45 <= angleInDegrees && angleInDegrees <= 135
+        case .left:
+            return 135 <= angleInDegrees && angleInDegrees <= 225
+        case .right:
+            return angleInDegrees <= 45 || angleInDegrees >= 315
+        default:
+            return false
+        }
     }
 }

@@ -18,18 +18,31 @@ class GamePlayViewController: UIViewController {
     @IBOutlet private var coinCountText: UILabel!
     @IBOutlet private var boardAreaView: UIView!
 
+    var levelName: String?
     var renderableComponents: [RenderableComponent] = []
+    var gameStats: GameStats!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
 
     // MARK: - game loop
-    let gameEngine = GameEngine()
+    var gameEngine: GameEngine!
     var gameLoop: GameLoop!
+    var levelDataManager = LevelDataManager()
 
     private var isGameLoopRunning = false
     var count: Int = 0
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard let levelNameToLoad = levelName else {
+            return
+        }
+        do {
+            let level = try levelDataManager.fetchLevel(levelName: levelNameToLoad)
+            gameEngine = GameEngine(level: level)
+        } catch {
+            print("Error loading level \(levelNameToLoad): \(error)")
+            presentAlert(message: "Failed to load level: \(error.localizedDescription)")
+        }
         self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
             self?.updateUI()
         })
@@ -55,6 +68,8 @@ class GamePlayViewController: UIViewController {
         reset() // here I removes everything that is previously added
         // if you want to remove image indiviudally call `removeImage(id: ObjectIdentifier(component))`
         renderableComponents = gameEngine.getRenderableComponents()
+        gameStats = gameEngine.getGameStats()
+        
         for component in renderableComponents {
             addImage(id: ObjectIdentifier(component), objectType: component.objectType, center: component.position, width: component.size.width, height: component.size.height)
         }
@@ -75,14 +90,12 @@ class GamePlayViewController: UIViewController {
 
     // MARK: - image handling
     func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
-        print("image added at \(center) for \(id)")
         let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
         imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }
 
     func removeImage(id: ObjectIdentifier) {
-        print("image removed for \(id)")
         guard let removedImageView = imageViews.removeValue(forKey: id) else {
             return
         }

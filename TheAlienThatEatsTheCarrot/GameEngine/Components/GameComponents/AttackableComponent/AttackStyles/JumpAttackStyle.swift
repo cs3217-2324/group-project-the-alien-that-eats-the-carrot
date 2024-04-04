@@ -16,12 +16,15 @@ class JumpAttackStyle: AttackStyle {
               let attackeePhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attackee) else {
             return
         }
-        // TODO: replace this with the actual check to see whether the bottom of attacker is colliding with top of attackee
-        let isAttackerJumpingOnAttackee = true
         if attacker != attackee
             && canAttack(attackee, with: targetables, using: delegate)
-            && isAttackerJumpingOnAttackee {
+            && self.isAttackerJumpingOnAttackee(attacker: attackerPhysicsComponent.physicsBody,
+                                                attackee: attackeePhysicsComponent.physicsBody) {
             dealDamage(damage, to: attackee, delegate: delegate)
         }
+    }
+
+    private func isAttackerJumpingOnAttackee(attacker: PhysicsBody, attackee: PhysicsBody) -> Bool {
+        attacker.isCollidingWith(attackee, on: .up)
     }
 }

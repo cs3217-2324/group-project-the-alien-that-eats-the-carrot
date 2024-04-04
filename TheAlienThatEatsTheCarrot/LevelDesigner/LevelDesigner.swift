@@ -62,8 +62,7 @@ class LevelDesigner {
     func loadLevel(levelName: String) throws {
         reset()
         do {
-            let levelData = try storageManager.fetchLevelData(levelName: levelName)
-            self.level = try Level(data: levelData)
+            self.level = try storageManager.fetchLevel(levelName: levelName)
             loadView(with: level.boardObjects)
         } catch {
             throw error

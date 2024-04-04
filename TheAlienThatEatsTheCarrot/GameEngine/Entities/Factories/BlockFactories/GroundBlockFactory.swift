@@ -9,8 +9,12 @@ import Foundation
 
 class GroundBlockFactory: BlockFactory {
     override func createComponents() -> [Component] {
+        let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)
-        let renderableComponent = RenderableComponent(entity: entity, position: boardObject.position, objectType: .block(.ground))
+        let renderableComponent = RenderableComponent(entity: entity,
+                                                      position: boardObject.position,
+                                                      objectType: .block(.ground),
+                                                      size: size)
         return [blockComponent, renderableComponent]
     }
 }

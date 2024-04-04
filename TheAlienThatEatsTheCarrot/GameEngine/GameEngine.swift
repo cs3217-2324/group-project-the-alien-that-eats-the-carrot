@@ -11,11 +11,12 @@ import Combine
 class GameEngine {
     let nexus = Nexus()
     var systems: [System]
+    let physicsWorld = PhysicsWorld()
 
-    init() {
+    init(level: Level) {
         self.systems = []
         initGameSystems()
-        initGameEntities()
+        initGameEntities(from: level.boardObjects.allObjects)
 
         EventManager.shared.postEvent(GameStartEvent())
         print("Game started")
@@ -44,6 +45,10 @@ class GameEngine {
         nexus.getComponents(of: RenderableComponent.self)
     }
 
+    func getGameStats() -> GameStats {
+        createGameStatsFromECS()
+    }
+
     private func updateAction(_ action: ControlAction, of player: Entity) {
         guard let playerComponent = nexus.getComponent(of: PlayerComponent.self, for: player) else {
             return
@@ -62,12 +67,15 @@ class GameEngine {
                         CollectableSystem(nexus: nexus),
                         TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),
-                        DamageSystem(nexus: nexus)]
+                        DamageSystem(nexus: nexus),
+                        CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
+                        PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld)]
     }
 
-    private func initGameEntities() {
+    private func initGameEntities(from boardObjects: [any BoardObject]) {
         nexus.addCharacterForPlayerA()
-        nexus.addEntity(type: .enemy(.normal))
-        nexus.addEntity(type: .powerup(.strength))
+        for boardObject in boardObjects {
+            nexus.addEntity(from: boardObject)
+        }
     }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Direction {
+struct Direction: Equatable {
     var radians: Double {
         didSet {
             radians = radians.truncatingRemainder(dividingBy: 2 * .pi)

@@ -9,9 +9,9 @@ import Foundation
 
 /// Move for a fixed distance before changing to a random direction (up down left or right)
 class RandomPattern: MovementPattern {
-    static let DEFAULT_DISTANCE: CGFloat = 50.0
-    static let SPEED_LOWER_BOUND: CGFloat = -50.0
-    static let SPEED_UPPER_BOUND: CGFloat = 50.0
+    static let DEFAULT_DISTANCE: CGFloat = 100.0
+    static let SPEED_LOWER_BOUND: CGFloat = -100.0
+    static let SPEED_UPPER_BOUND: CGFloat = 100.0
     var totalDistanceToMoveBeforeChange: CGFloat
     var distanceMoved: CGFloat = 0
     var currentVelocity: CGVector = .zero

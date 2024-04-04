@@ -42,7 +42,7 @@ class PlayerPowerupSystem: System, PowerupActionDelegate {
                 guard
                     let powerupRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupComponent.entity),
                     let playerRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: playerComponent.entity) else {
-                    return
+                    continue
                 }
                 if playerRenderableComponent.overlapsWith(powerupRenderableComponent) {
                     powerupComponent.activatePowerupForEntity(playerComponent.entity, delegate: self)

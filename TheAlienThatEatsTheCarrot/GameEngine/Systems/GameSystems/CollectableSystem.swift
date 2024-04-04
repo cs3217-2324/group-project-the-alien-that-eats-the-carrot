@@ -22,7 +22,7 @@ class CollectableSystem: System, CollectableActionDelegate {
                 guard
                     let collectableRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: collectableComponent.entity),
                     let playerRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: playerComponent.entity) else {
-                    return
+                    continue
                 }
                 if playerRenderableComponent.overlapsWith(collectableRenderableComponent) {
                     collectableComponent.collectCollectableForEntity(playerComponent.entity, delegate: self)
