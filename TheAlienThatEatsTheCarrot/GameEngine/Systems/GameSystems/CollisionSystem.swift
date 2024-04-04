@@ -19,7 +19,9 @@ final class CollisionSystem: System {
 
     func update(deltaTime: CGFloat) {
         // Strategy used from https://gamedev.stackexchange.com/questions/16813/handling-collisions-with-ground
-        let toIgnore = getPhysicsComponentsToDisableGravity()
+        // If a physics body is standing on the ground (block) with negligible y speed, we disable gravity and
+        // skip collision resolution with that ground
+        let toIgnore = getToIgnoresAndHandleGroundedPhysicsBodies()
         let allPhysicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
         physicsWorld.resolveCollisions(for: allPhysicsBodies, deltaTime: deltaTime, toIgnore: toIgnore)
     }
@@ -28,7 +30,7 @@ final class CollisionSystem: System {
         nexus.removeComponents(of: CollisionComponent.self)
     }
 
-    private func getPhysicsComponentsToDisableGravity() -> Set<[PhysicsBody]> {
+    private func getToIgnoresAndHandleGroundedPhysicsBodies() -> Set<[PhysicsBody]> {
         var toIgnore: Set<[PhysicsBody]> = Set()
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
         let groundPhysicsComponents = physicsComponents.filter {
