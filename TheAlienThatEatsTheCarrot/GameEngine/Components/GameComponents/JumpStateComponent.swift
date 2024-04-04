@@ -20,4 +20,9 @@ class JumpStateComponent: Component {
         self.maxJump = maxJump
         self.remainingJump = remainingJump
     }
+
+    func setIsGrounded() {
+        isGrounded = true
+        remainingJump = maxJump
+    }
 }
