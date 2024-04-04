@@ -9,6 +9,7 @@ import Foundation
 
 protocol AttackableDelegate {
     func getComponent<T: Component>(of type: T.Type, for entity: Entity) -> T?
+    func addComponent<T: Component>(_ component: T, to entity: Entity)
 
     func removeComponent<T: Component>(_ component: T, from entity: Entity) where T: AnyObject
 }
