@@ -20,7 +20,7 @@ struct Constants {
 
     // Collision Bitmasks
     static let characterCollisionBitmask: UInt32 = enemyCategoryBitmask | blockCategoryBitmask
-    static let enemyCollisionBitmask: UInt32 = characterCategoryBitmask
+    static let enemyCollisionBitmask: UInt32 = characterCategoryBitmask | blockCategoryBitmask
     static let blockCollisionBitmask: UInt32 = characterCategoryBitmask
     static let powerupCollisionBitmask: UInt32 = 0
     static let collectibleCollisionBitmask: UInt32 = 0

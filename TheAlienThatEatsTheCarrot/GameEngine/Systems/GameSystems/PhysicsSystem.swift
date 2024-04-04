@@ -50,6 +50,9 @@ final class PhysicsSystem: System {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
             return
         }
+        if physicsComponent.disableGravity {
+            return
+        }
         physicsComponent.physicsBody.applyForce(PhysicsSystem.GRAVITY_FORCE)
     }
 }

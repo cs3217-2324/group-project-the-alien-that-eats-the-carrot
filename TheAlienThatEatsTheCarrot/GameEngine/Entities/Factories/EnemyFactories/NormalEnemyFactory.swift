@@ -23,8 +23,8 @@ class NormalEnemyFactory: EnemyFactory {
                                       size: size,
                                       categoryBitmask: Constants.enemyCategoryBitmask,
                                       collisionBitmask: Constants.enemyCollisionBitmask,
-                                      isDynamic: false)
-        physicsBody.velocity = CGVector(dx: 500.0, dy: 0)
+                                      isDynamic: true)
+        physicsBody.velocity = CGVector(dx: 50.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity)
