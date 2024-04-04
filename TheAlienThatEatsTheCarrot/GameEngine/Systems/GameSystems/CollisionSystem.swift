@@ -19,20 +19,17 @@ final class CollisionSystem: System {
 
     func update(deltaTime: CGFloat) {
         // Strategy used from https://gamedev.stackexchange.com/questions/16813/handling-collisions-with-ground
-        let physicsComponentsToDisableGravity = getPhysicsComponentsToDisableGravity()
-        disableGravity(for: physicsComponentsToDisableGravity)
-        let physicsBodiesToDisableGravity = physicsComponentsToDisableGravity.map { $0.physicsBody }
+        let toIgnore = getPhysicsComponentsToDisableGravity()
         let allPhysicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
-        let physicsBodiesToResolveCollisions = allPhysicsBodies.filter { !physicsBodiesToDisableGravity.contains($0) }
-        physicsWorld.resolveCollisions(for: physicsBodiesToResolveCollisions, deltaTime: deltaTime)
+        physicsWorld.resolveCollisions(for: allPhysicsBodies, deltaTime: deltaTime, toIgnore: toIgnore)
     }
 
     func lateUpdate(deltaTime: CGFloat) {
         nexus.removeComponents(of: CollisionComponent.self)
     }
 
-    private func getPhysicsComponentsToDisableGravity() -> [PhysicsComponent] {
-        var toDisable: [PhysicsComponent] = []
+    private func getPhysicsComponentsToDisableGravity() -> Set<[PhysicsBody]> {
+        var toIgnore: Set<[PhysicsBody]> = Set()
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
         let groundPhysicsComponents = physicsComponents.filter {
             nexus.containsComponent(for: $0.entity, of: BlockComponent.self)
@@ -41,26 +38,30 @@ final class CollisionSystem: System {
             !nexus.containsComponent(for: $0.entity, of: BlockComponent.self)
         }
         for notGroundPhysicsComponent in notGroundPhysicsComponents {
+            var isCollidingWithGround = false
             for groundPhysicsComponent in groundPhysicsComponents {
                 if notGroundPhysicsComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
                     && notGroundPhysicsComponent.physicsBody.hasNegligibleYVelocity() {
-                    toDisable.append(notGroundPhysicsComponent)
+                    disableGravity(for: notGroundPhysicsComponent)
+                    isCollidingWithGround = true
+                    toIgnore.insert([notGroundPhysicsComponent.physicsBody, groundPhysicsComponent.physicsBody])
                 } else if !notGroundPhysicsComponent.physicsBody.hasNegligibleYVelocity() {
                     restoreGravity(for: notGroundPhysicsComponent)
                 }
             }
+            if !isCollidingWithGround {
+                restoreGravity(for: notGroundPhysicsComponent)
+            }
         }
-        return toDisable
+        return toIgnore
     }
 
-    private func disableGravity(for physicsComponents: [PhysicsComponent]) {
-        for physicsComponent in physicsComponents {
-            if let jumpComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) {
-                jumpComponent.setIsGrounded()
-            }
-            physicsComponent.physicsBody.velocity.dy = 0
-            physicsComponent.disableGravity = true
+    private func disableGravity(for physicsComponent: PhysicsComponent) {
+        if let jumpComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) {
+            jumpComponent.setIsGrounded()
         }
+        physicsComponent.physicsBody.velocity.dy = 0
+        physicsComponent.disableGravity = true
     }
 
     private func restoreGravity(for physicsComponent: PhysicsComponent) {
