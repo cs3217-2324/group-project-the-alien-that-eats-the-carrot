@@ -101,6 +101,6 @@ extension PhysicsBody {
     static let NEGLIGIBLE_SPEED_THRESHOLD = 60.0
 
     func hasNegligibleYVelocity() -> Bool {
-        return velocity.dy.magnitude < PhysicsBody.NEGLIGIBLE_SPEED_THRESHOLD
+        velocity.dy.magnitude < PhysicsBody.NEGLIGIBLE_SPEED_THRESHOLD
     }
 }

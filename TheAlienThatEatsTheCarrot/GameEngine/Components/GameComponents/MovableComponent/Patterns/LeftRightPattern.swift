@@ -8,12 +8,16 @@
 import Foundation
 
 class LeftRightPattern: MovementPattern {
-    static let DEFAULT_DISTANCE: CGFloat = 200.0
+    static let DEFAULT_DISTANCE: CGFloat = 400.0
+    static let DEFAULT_VELOCITY = CGVector(dx: 250.0, dy: 0)
+    var velocity: CGVector
     var totalDistanceToMoveBeforeChange: CGFloat
     var distanceMoved: CGFloat = 0
 
-    init(totalDistanceToMoveBeforeChange: CGFloat = LeftRightPattern.DEFAULT_DISTANCE) {
+    init(totalDistanceToMoveBeforeChange: CGFloat = LeftRightPattern.DEFAULT_DISTANCE,
+         velocity: CGVector = LeftRightPattern.DEFAULT_VELOCITY) {
         self.totalDistanceToMoveBeforeChange = totalDistanceToMoveBeforeChange
+        self.velocity = velocity
     }
 
     func move(deltaTime: CGFloat, entity: Entity, delegate: MovableDelegate) {
@@ -22,15 +26,16 @@ class LeftRightPattern: MovementPattern {
             return
         }
         if distanceMoved >= totalDistanceToMoveBeforeChange {
-            changeXDirectionFor(physicsComponent)
+            changeXDirection()
             distanceMoved = 0
             return
         }
-        let horizontalDistanceMoved = physicsComponent.physicsBody.velocity.dx.magnitude * deltaTime
+        let horizontalDistanceMoved = velocity.magnitude * deltaTime
+        physicsComponent.physicsBody.velocity = velocity
         distanceMoved += horizontalDistanceMoved
     }
 
-    private func changeXDirectionFor(_ physicsComponent: PhysicsComponent) {
-        physicsComponent.physicsBody.velocity.dx *= -1
+    private func changeXDirection() {
+        self.velocity.dx *= -1
     }
 }
