@@ -44,13 +44,10 @@ final class PhysicsSystem: System {
     }
 
     private func applyGravityTo(_ entity: Entity) {
-        if !nexus.containsAnyComponent(of: [PlayerComponent.self, EnemyComponent.self], in: entity) {
-            return
-        }
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
             return
         }
-        if physicsComponent.disableGravity {
+        if physicsComponent.disableGravity || !physicsComponent.physicsBody.isDynamic {
             return
         }
         physicsComponent.physicsBody.applyForce(PhysicsSystem.GRAVITY_FORCE)
