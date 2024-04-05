@@ -93,9 +93,16 @@ class MeleeAttackStyle: AttackStyle {
 extension Direction {
     var vectorAngle: CGFloat {
         switch self {
-        case .left: return 0
-        case .right: return CGFloat.pi
-        default: return 0
+        case .left:
+            0
+        case .right:
+            CGFloat.pi
+        case .up:
+            CGFloat.pi / 2
+        case .down:
+            3 * CGFloat.pi / 2
+        default:
+            0
         }
     }
 }
