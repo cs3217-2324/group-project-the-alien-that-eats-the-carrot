@@ -75,7 +75,7 @@ extension Nexus {
         case .breakable:
             fatalError("TODO: implement")
         case .pushable:
-            fatalError("TODO: implement")
+            return getPushableBlockFactory(from: entity, block: block)
         case .spike:
             return getSpikeBlockFactory(from: entity, block: block)
         case .powerup:
@@ -145,6 +145,11 @@ extension Nexus {
     private func getSpikeBlockFactory(from entity: Entity,
                                       block: Block) -> EntityFactory {
         SpikeBlockFactory(from: block, to: entity)
+    }
+
+    private func getPushableBlockFactory(from entity: Entity,
+                                      block: Block) -> EntityFactory {
+        PushableBlockFactory(from: block, to: entity)
     }
 }
 
