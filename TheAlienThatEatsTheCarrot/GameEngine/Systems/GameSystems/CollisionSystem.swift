@@ -19,7 +19,9 @@ final class CollisionSystem: System {
 
     func update(deltaTime: CGFloat) {
         // Strategy used from https://gamedev.stackexchange.com/questions/16813/handling-collisions-with-ground
-        let toIgnore = getPhysicsComponentsToDisableGravity()
+        // If a physics body is standing on the ground (block) with negligible y speed, we disable gravity and
+        // skip collision resolution with that ground
+        let toIgnore = getToIgnoresAndHandleGroundedPhysicsBodies()
         let allPhysicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
         physicsWorld.resolveCollisions(for: allPhysicsBodies, deltaTime: deltaTime, toIgnore: toIgnore)
     }
@@ -28,29 +30,29 @@ final class CollisionSystem: System {
         nexus.removeComponents(of: CollisionComponent.self)
     }
 
-    private func getPhysicsComponentsToDisableGravity() -> Set<[PhysicsBody]> {
+    private func getToIgnoresAndHandleGroundedPhysicsBodies() -> Set<[PhysicsBody]> {
         var toIgnore: Set<[PhysicsBody]> = Set()
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
         let groundPhysicsComponents = physicsComponents.filter {
             nexus.containsComponent(for: $0.entity, of: BlockComponent.self)
         }
-        let notGroundPhysicsComponents = physicsComponents.filter {
-            !nexus.containsComponent(for: $0.entity, of: BlockComponent.self)
+        let dynamicComponents = physicsComponents.filter {
+            $0.physicsBody.isDynamic
         }
-        for notGroundPhysicsComponent in notGroundPhysicsComponents {
+        for dynamicComponent in dynamicComponents {
             var isCollidingWithGround = false
             for groundPhysicsComponent in groundPhysicsComponents {
-                if notGroundPhysicsComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
-                    && notGroundPhysicsComponent.physicsBody.hasNegligibleYVelocity() {
-                    disableGravity(for: notGroundPhysicsComponent)
+                if dynamicComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
+                    && dynamicComponent.physicsBody.hasNegligibleYVelocity() {
+                    disableGravity(for: dynamicComponent)
                     isCollidingWithGround = true
-                    toIgnore.insert([notGroundPhysicsComponent.physicsBody, groundPhysicsComponent.physicsBody])
-                } else if !notGroundPhysicsComponent.physicsBody.hasNegligibleYVelocity() {
-                    restoreGravity(for: notGroundPhysicsComponent)
+                    toIgnore.insert([dynamicComponent.physicsBody, groundPhysicsComponent.physicsBody])
+                } else if !dynamicComponent.physicsBody.hasNegligibleYVelocity() {
+                    restoreGravity(for: dynamicComponent)
                 }
             }
             if !isCollidingWithGround {
-                restoreGravity(for: notGroundPhysicsComponent)
+                restoreGravity(for: dynamicComponent)
             }
         }
         return toIgnore

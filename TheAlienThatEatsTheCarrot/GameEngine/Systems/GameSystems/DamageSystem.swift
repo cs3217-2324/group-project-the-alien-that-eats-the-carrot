@@ -48,6 +48,11 @@ class DamageSystem: System, AttackableDelegate {
             print("Player died!")
         }
     }
+
+    func addComponent<T: Component>(_ component: T, to entity: Entity) {
+        nexus.addComponent(component, to: entity)
+    }
+
     func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T: Component {
         nexus.getComponent(of: type, for: entity)
     }

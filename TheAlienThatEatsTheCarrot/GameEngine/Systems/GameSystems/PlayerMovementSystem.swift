@@ -67,7 +67,7 @@ class PlayerMovementSystem: System {
     private func applyPhysicsBasedOnControlAction(for player: PlayerComponent) {
         switch player.action {
         case .idle:
-            doNothing()
+            applyFrictionalForce(for: player)
         case .jump:
             jumpIfPlayerHasJumpsAvailable(for: player)
         case .left:
@@ -93,8 +93,11 @@ class PlayerMovementSystem: System {
         camera.updateCameraBoundsFromCenter(center: renderableComponent.position)
     }
 
-    private func doNothing() {
-        // do nothing
+    private func applyFrictionalForce(for player: PlayerComponent) {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity) else {
+            return
+        }
+        physicsComponent.physicsBody.applyFrictionalForceInX(magnitude: ControlAction.DEFAULT_DECELERATION_FORCE_MAGNITUDE)
     }
 
     private func jumpIfPlayerHasJumpsAvailable(for player: PlayerComponent) {
@@ -112,13 +115,9 @@ class PlayerMovementSystem: System {
     }
 
     private func addHorizontalForce(for player: PlayerComponent, force: CGVector) {
-        guard
-            let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity),
-            let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
+        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity) else {
             return
         }
-        if jumpStateComponent.isGrounded {
-            physicsComponent.physicsBody.applyForce(force)
-        }
+        physicsComponent.physicsBody.applyForce(force)
     }
 }

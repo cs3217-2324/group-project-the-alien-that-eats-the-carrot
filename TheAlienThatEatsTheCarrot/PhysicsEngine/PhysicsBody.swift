@@ -97,7 +97,7 @@ extension PhysicsBody {
             return false
         }
         let collisionAngle = collisionPoints.normal.angle
-        var angleInDegrees = (collisionAngle * 180 / Double.pi).truncatingRemainder(dividingBy: 360)
+        let angleInDegrees = (collisionAngle * 180 / Double.pi).truncatingRemainder(dividingBy: 360)
         switch direction {
         case .up:
             return (-135...(-45)).contains(angleInDegrees)
@@ -107,8 +107,19 @@ extension PhysicsBody {
             return (135...180).contains(angleInDegrees) || (-180...(-135)).contains(angleInDegrees)
         case .right:
             return (-45...45).contains(angleInDegrees)
-        default:
-            return false
         }
+    }
+}
+
+extension PhysicsBody {
+    func applyFrictionalForceInX(magnitude: CGFloat) {
+        var frictionalForceX = -velocity.dx.sign * magnitude
+        if velocity.dx.sign == frictionalForceX.sign {
+            let potentialVelocity = velocity.dx + frictionalForceX
+            if potentialVelocity.sign != velocity.dx.sign {
+                frictionalForceX = -velocity.dx
+            }
+        }
+        applyForce(CGVector(dx: frictionalForceX, dy: 0))
     }
 }

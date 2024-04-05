@@ -8,7 +8,7 @@
 import CoreGraphics
 
 final class PhysicsSystem: System {
-    static let GRAVITY_FORCE = CGVector(dx: 0, dy: 1000.0)
+    static let GRAVITY_FORCE = CGVector(dx: 0, dy: 1_000.0)
     let nexus: Nexus
     let physicsWorld: PhysicsWorld
 
@@ -44,13 +44,10 @@ final class PhysicsSystem: System {
     }
 
     private func applyGravityTo(_ entity: Entity) {
-        if !nexus.containsAnyComponent(of: [PlayerComponent.self, EnemyComponent.self], in: entity) {
-            return
-        }
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
             return
         }
-        if physicsComponent.disableGravity {
+        if physicsComponent.disableGravity || !physicsComponent.physicsBody.isDynamic {
             return
         }
         physicsComponent.physicsBody.applyForce(PhysicsSystem.GRAVITY_FORCE)
