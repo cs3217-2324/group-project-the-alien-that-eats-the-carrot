@@ -17,6 +17,10 @@ extension CGPoint {
         lhs = CGPoint(x: lhs.x + rhs.dx, y: lhs.y + rhs.dy)
     }
 
+    static func -= (lhs: inout CGPoint, rhs: CGVector) {
+        lhs = CGPoint(x: lhs.x - rhs.dx, y: lhs.y - rhs.dy)
+    }
+
     static func - (lhs: CGPoint, rhs: CGVector) -> CGPoint {
         CGPoint(x: lhs.x - rhs.dx, y: lhs.y - rhs.dy)
     }
