@@ -77,7 +77,7 @@ extension Nexus {
         case .pushable:
             fatalError("TODO: implement")
         case .spike:
-            fatalError("TODO: implement")
+            return getSpikeBlockFactory(from: entity, block: block)
         case .powerup:
             fatalError("TODO: implement")
         }
@@ -140,6 +140,11 @@ extension Nexus {
     private func getGroundBlockFactory(from entity: Entity,
                                        block: Block) -> EntityFactory {
         GroundBlockFactory(from: block, to: entity)
+    }
+
+    private func getSpikeBlockFactory(from entity: Entity,
+                                      block: Block) -> EntityFactory {
+        SpikeBlockFactory(from: block, to: entity)
     }
 }
 
