@@ -9,17 +9,18 @@ import Foundation
 
 class MeleeAttackStyle: AttackStyle {
     static let DEFAULT_COOLDOWN_DURATION = 0.3
+    static let DEFAULT_KNOCKBACK_STRENGTH = 10000.0
     let acceptableAttackDirections: [Direction]
-    var knockbackForce: CGFloat
+    var knockbackStrength: CGFloat
     var isCoolingDown: Bool = false
     var coolDownDuration: CGFloat
     private var meleeFinishCooldownObserver: NSObjectProtocol?
 
     init(acceptableAttackDirections: [Direction] = [.left, .right],
-         knockbackForce: CGFloat = 1000.0,
+         knockbackStrength: CGFloat = MeleeAttackStyle.DEFAULT_KNOCKBACK_STRENGTH,
          cooldownDuration: CGFloat = MeleeAttackStyle.DEFAULT_COOLDOWN_DURATION) {
         self.acceptableAttackDirections = acceptableAttackDirections
-        self.knockbackForce = knockbackForce
+        self.knockbackStrength = knockbackStrength
         self.coolDownDuration = cooldownDuration
         subscribeToEvents()
     }
@@ -35,14 +36,12 @@ class MeleeAttackStyle: AttackStyle {
         if attacker != attackee
             && canAttack(attackee, with: targetables, using: delegate)
             && !isCoolingDown {
-            
-            for direction in acceptableAttackDirections {
-                if isAttacker(attacker, attacking: attackee, from: direction, delegate: delegate) {
-                    dealDamage(damage, to: attackee, delegate: delegate)
-                    applyKnockback(from: attacker, to: attackee, direction: direction, delegate: delegate)
-                    setMeleeCooldown(for: attacker, delegate: delegate)
-                    break
-                }
+            for direction in acceptableAttackDirections
+            where isAttacker(attacker, attacking: attackee, from: direction, delegate: delegate) {
+                dealDamage(damage, to: attackee, delegate: delegate)
+                applyKnockback(from: attacker, to: attackee, direction: direction, delegate: delegate)
+                setMeleeCooldown(for: attacker, delegate: delegate)
+                break
             }
         }
     }
@@ -66,7 +65,7 @@ class MeleeAttackStyle: AttackStyle {
             return
         }
         let forceDirection = CGVector(dx: cos(direction.vectorAngle), dy: sin(direction.vectorAngle))
-        let force = forceDirection * knockbackForce
+        let force = forceDirection * knockbackStrength
         attackeePhysicsComponent.physicsBody.applyForce(force)
     }
 
