@@ -59,7 +59,7 @@ final class PhysicsWorld {
     }
 
     private func toBeIgnored(_ bodyA: PhysicsBody, _ bodyB: PhysicsBody, toIgnore: Set<[PhysicsBody]>) -> Bool {
-        return toIgnore.contains([bodyA, bodyB]) || toIgnore.contains([bodyB, bodyA])
+        toIgnore.contains([bodyA, bodyB]) || toIgnore.contains([bodyB, bodyA])
     }
 
     private func publishCollisions(_ currentCollisions: Set<Collision>) {

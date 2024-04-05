@@ -9,10 +9,10 @@ import Foundation
 
 class MeleeAttackStyle: AttackStyle {
     static let DEFAULT_COOLDOWN_DURATION = 0.3
-    static let DEFAULT_KNOCKBACK_STRENGTH = 10000.0
+    static let DEFAULT_KNOCKBACK_STRENGTH = 10_000.0
     let acceptableAttackDirections: [Direction]
     var knockbackStrength: CGFloat
-    var isCoolingDown: Bool = false
+    var isCoolingDown = false
     var coolDownDuration: CGFloat
     private var meleeFinishCooldownObserver: NSObjectProtocol?
 

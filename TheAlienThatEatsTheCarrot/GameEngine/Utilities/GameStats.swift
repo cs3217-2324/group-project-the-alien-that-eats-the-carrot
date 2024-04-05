@@ -12,11 +12,4 @@ struct GameStats {
     let carrots: [Int]
     let scores: [CGFloat]
     let lives: [Int]
-
-    init(coins: [Int], carrots: [Int], scores: [CGFloat], lives: [Int]) {
-        self.coins = coins
-        self.carrots = carrots
-        self.scores = scores
-        self.lives = lives
-    }
 }
