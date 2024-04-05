@@ -93,15 +93,15 @@ extension Direction {
     var vectorAngle: CGFloat {
         switch self {
         case .left:
-            0
+            return 0
         case .right:
-            CGFloat.pi
+            return CGFloat.pi
         case .up:
-            CGFloat.pi / 2
+            return CGFloat.pi / 2
         case .down:
-            3 * CGFloat.pi / 2
+            return 3 * CGFloat.pi / 2
         default:
-            0
+            return 0
         }
     }
 }
