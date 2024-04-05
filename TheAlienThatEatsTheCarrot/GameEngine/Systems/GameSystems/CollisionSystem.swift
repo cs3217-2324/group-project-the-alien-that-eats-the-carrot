@@ -36,23 +36,23 @@ final class CollisionSystem: System {
         let groundPhysicsComponents = physicsComponents.filter {
             nexus.containsComponent(for: $0.entity, of: BlockComponent.self)
         }
-        let notGroundPhysicsComponents = physicsComponents.filter {
-            !nexus.containsComponent(for: $0.entity, of: BlockComponent.self)
+        let dynamicComponents = physicsComponents.filter {
+            $0.physicsBody.isDynamic
         }
-        for notGroundPhysicsComponent in notGroundPhysicsComponents {
+        for dynamicComponent in dynamicComponents {
             var isCollidingWithGround = false
             for groundPhysicsComponent in groundPhysicsComponents {
-                if notGroundPhysicsComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
-                    && notGroundPhysicsComponent.physicsBody.hasNegligibleYVelocity() {
-                    disableGravity(for: notGroundPhysicsComponent)
+                if dynamicComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
+                    && dynamicComponent.physicsBody.hasNegligibleYVelocity() {
+                    disableGravity(for: dynamicComponent)
                     isCollidingWithGround = true
-                    toIgnore.insert([notGroundPhysicsComponent.physicsBody, groundPhysicsComponent.physicsBody])
-                } else if !notGroundPhysicsComponent.physicsBody.hasNegligibleYVelocity() {
-                    restoreGravity(for: notGroundPhysicsComponent)
+                    toIgnore.insert([dynamicComponent.physicsBody, groundPhysicsComponent.physicsBody])
+                } else if !dynamicComponent.physicsBody.hasNegligibleYVelocity() {
+                    restoreGravity(for: dynamicComponent)
                 }
             }
             if !isCollidingWithGround {
-                restoreGravity(for: notGroundPhysicsComponent)
+                restoreGravity(for: dynamicComponent)
             }
         }
         return toIgnore
