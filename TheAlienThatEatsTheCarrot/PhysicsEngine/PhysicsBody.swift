@@ -112,3 +112,16 @@ extension PhysicsBody {
         }
     }
 }
+
+extension PhysicsBody {
+    func applyFrictionalForceInX(magnitude: CGFloat) {
+        var frictionalForceX = -velocity.dx.sign * magnitude
+        if velocity.dx.sign == frictionalForceX.sign {
+            let potentialVelocity = velocity.dx + frictionalForceX
+            if potentialVelocity.sign != velocity.dx.sign {
+                frictionalForceX = -velocity.dx
+            }
+        }
+        applyForce(CGVector(dx: frictionalForceX, dy: 0))
+    }
+}
