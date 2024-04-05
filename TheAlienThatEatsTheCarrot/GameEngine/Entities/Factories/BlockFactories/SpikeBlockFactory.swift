@@ -12,6 +12,7 @@ class SpikeBlockFactory: BlockFactory {
     static let COOLDOWN = 0.5
     static let KNOCKBACK_STRENGTH = 1_000.0
     static let BLOCK_TO_HEIGHT_RATIO = 8.0
+    static let FRICTIONAL_STRENGTH = 300.0
 
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width,
@@ -33,6 +34,7 @@ class SpikeBlockFactory: BlockFactory {
                                                       targetables: [PlayerComponent.self],
                                                       damage: SpikeBlockFactory.DAMAGE,
                                                       attackStyle: attackStyle)
-        return [blockComponent, renderableComponent, physicsComponent, attackableComponent]
+        let frictionalComponent = FrictionalComponent(entity: entity, frictionalStrength: SpikeBlockFactory.FRICTIONAL_STRENGTH)
+        return [blockComponent, renderableComponent, physicsComponent, attackableComponent, frictionalComponent]
     }
 }

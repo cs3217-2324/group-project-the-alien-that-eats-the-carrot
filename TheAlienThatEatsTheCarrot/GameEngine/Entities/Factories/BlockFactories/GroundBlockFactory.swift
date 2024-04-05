@@ -8,6 +8,8 @@
 import Foundation
 
 class GroundBlockFactory: BlockFactory {
+    static let FRICTIONAL_STRENGTH = 100.0
+
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)
@@ -15,6 +17,8 @@ class GroundBlockFactory: BlockFactory {
                                                       position: boardObject.position,
                                                       objectType: .block(.ground),
                                                       size: size)
-        return [blockComponent, renderableComponent]
+        let frictionalComponent = FrictionalComponent(entity: entity,
+                                                      frictionalStrength: GroundBlockFactory.FRICTIONAL_STRENGTH)
+        return [blockComponent, renderableComponent, frictionalComponent]
     }
 }

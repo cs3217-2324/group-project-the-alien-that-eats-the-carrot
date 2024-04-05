@@ -22,6 +22,7 @@ class PushableBlockFactory: BlockFactory {
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let movementPattern = MoveWhenPushedPattern(canBePushedFrom: [.left, .right])
         let movableComponent = MovableComponent(entity: entity, pattern: movementPattern)
-        return [blockComponent, renderableComponent, physicsComponent, movableComponent]
+        let frictionalComponent = FrictionalComponent(entity: entity)
+        return [blockComponent, renderableComponent, physicsComponent, movableComponent, frictionalComponent]
     }
 }

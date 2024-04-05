@@ -20,6 +20,7 @@ class NormalBlockFactory: BlockFactory {
                                       collisionBitmask: Constants.blockCollisionBitmask,
                                       isDynamic: false)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
-        return [blockComponent, renderableComponent, physicsComponent]
+        let frictionalComponent = FrictionalComponent(entity: entity)
+        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent]
     }
 }
