@@ -52,30 +52,36 @@ final class CollisionSystem: System {
             var isCollidingWithGround = false
             for groundPhysicsComponent in groundPhysicsComponents {
                 if dynamicComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
-                    && dynamicComponent.physicsBody.hasNegligibleYVelocity() {
+                    && dynamicComponent.physicsBody.hasNegligibleYVelocity()
+                    && !dynamicComponent.disableGravity {
                     disableGravity(for: dynamicComponent)
+                    resetJumpState(for: dynamicComponent.entity)
                     isCollidingWithGround = true
                     toIgnore.insert([dynamicComponent.physicsBody, groundPhysicsComponent.physicsBody])
                 } else if !dynamicComponent.physicsBody.hasNegligibleYVelocity() {
-                    restoreGravity(for: dynamicComponent)
+                    restoreGravityAndUpdateJumpState(for: dynamicComponent)
                 }
             }
             if !isCollidingWithGround {
-                restoreGravity(for: dynamicComponent)
+                restoreGravityAndUpdateJumpState(for: dynamicComponent)
             }
         }
         return toIgnore
     }
 
     private func disableGravity(for physicsComponent: PhysicsComponent) {
-        if let jumpComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) {
-            jumpComponent.setIsGrounded()
-        }
         physicsComponent.physicsBody.velocity.dy = 0
         physicsComponent.disableGravity = true
     }
 
-    private func restoreGravity(for physicsComponent: PhysicsComponent) {
+    private func resetJumpState(for entity: Entity) {
+        guard let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: entity) else {
+            return
+        }
+        jumpStateComponent.setIsGrounded()
+    }
+
+    private func restoreGravityAndUpdateJumpState(for physicsComponent: PhysicsComponent) {
         if let jumpComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) {
             jumpComponent.isGrounded = false
         }
