@@ -15,7 +15,7 @@ class StationaryEnemyFactory: EnemyFactory {
         let renderableComponent = RenderableComponent(entity: entity,
                                                       position: boardObject.position,
                                                       objectType: .enemy(.normal),
-                                                      size: size, mass: EnemyFactory.MASS)
+                                                      size: size)
         let movableComponent = MovableComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity)
         let scoreComponent = ScoreComponent(entity: entity, score: StationaryEnemyFactory.SCORE)
