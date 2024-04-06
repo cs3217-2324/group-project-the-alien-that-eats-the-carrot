@@ -92,7 +92,7 @@ class GameEngine {
     private func getGameSettings(gameMode: GameMode) -> GameSettings {
         switch gameMode {
         case .normal:
-            NormalGameSettings()
+            return NormalGameSettings()
         }
     }
 }
