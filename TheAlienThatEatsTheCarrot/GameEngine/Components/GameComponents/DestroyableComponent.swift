@@ -32,7 +32,7 @@ class DestroyableComponent: Component {
     }
 
     func takeDamage(_ damage: CGFloat) {
-        if isDestroyed {
+        if isDestroyed || isInvinsible {
             return
         }
         health -= damage

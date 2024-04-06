@@ -21,6 +21,7 @@ class NormalBlockFactory: BlockFactory {
                                       isDynamic: false)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let frictionalComponent = FrictionalComponent(entity: entity)
-        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent]
+        let destroyableComponent = DestroyableComponent(entity: entity, maxHealth: 10.0, maxLives: 1, isInvinsible: true)
+        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, destroyableComponent]
     }
 }

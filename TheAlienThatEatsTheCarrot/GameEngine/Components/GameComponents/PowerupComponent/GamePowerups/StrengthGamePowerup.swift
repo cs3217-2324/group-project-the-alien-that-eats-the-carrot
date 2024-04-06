@@ -13,6 +13,7 @@ class StrengthGamePowerup: GamePowerup {
 
     let factor: CGFloat
     let duration: CGFloat
+    let destroyables: [ObjectType] = [.block(.normal)]
     var defaultDamage: CGFloat = .zero
 
     var restoreAction: (() -> Void)?
@@ -28,6 +29,7 @@ class StrengthGamePowerup: GamePowerup {
         }
         defaultDamage = attackableComponent.damage
         attackableComponent.damage *= factor
+        changeBlockInvinsibility(to: false, delegate: delegate)
         let eventWhenPowerupElapse = PowerupElapseEvent(powerup: self)
         let timerComponent = TimerComponent(entity: entity, duration: duration, event: eventWhenPowerupElapse)
         delegate.addComponent(timerComponent, to: entity)
@@ -38,10 +40,27 @@ class StrengthGamePowerup: GamePowerup {
                 return
             }
             attackableComponent.damage = strongSelf.defaultDamage
+            strongSelf.changeBlockInvinsibility(to: true, delegate: delegate)
         }
     }
 
     func restoreDefault() {
         self.restoreAction?()
+    }
+
+    private func changeBlockInvinsibility(to isInvinsible: Bool, delegate: PowerupActionDelegate) {
+        let blockComponents = delegate.getComponents(of: BlockComponent.self)
+        for blockComponent in blockComponents {
+            guard
+                let objectType = delegate.getComponent(of: RenderableComponent.self,
+                                                       for: blockComponent.entity)?.objectType,
+                let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: blockComponent.entity)
+            else {
+                return
+            }
+            if destroyables.contains(objectType) {
+                destroyableComponent.isInvinsible = isInvinsible
+            }
+        }
     }
 }

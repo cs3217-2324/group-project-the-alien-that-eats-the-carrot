@@ -58,6 +58,10 @@ extension PlayerPowerupSystem: PowerupActionDelegate {
         nexus.getComponent(of: type, for: entity)
     }
 
+    func getComponents<T: Component>(of type: T.Type) -> [T] {
+        nexus.getComponents(of: type)
+    }
+
     func addComponent<T: Component>(_ component: T, to entity: Entity) {
         nexus.addComponent(component, to: entity)
     }
