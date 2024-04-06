@@ -79,7 +79,7 @@ class GameEngine {
     }
 
     private func initGameEntities(from boardObjects: [any BoardObject]) {
-        nexus.addCharacterForPlayerA()
+        nexus.addCharacter()
         for boardObject in boardObjects {
             nexus.addEntity(from: boardObject)
         }

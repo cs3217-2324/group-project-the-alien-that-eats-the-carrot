@@ -8,9 +8,9 @@
 import Foundation
 
 extension Nexus {
-    func addCharacterForPlayerA() {
+    func addCharacter() {
         let entity = Entity()
-        let normalCharacterFactory = NormalCharacterFactory(entity: entity)
+        let normalCharacterFactory = getNormalCharacterFactory(from: entity)
         let components = normalCharacterFactory.createComponents()
         addComponents(components, to: entity)
     }
@@ -191,5 +191,12 @@ extension Nexus {
     private func getHeartCollectableFactory(from entity: Entity,
                                             collectable: Collectable) -> EntityFactory {
         HeartCollectableFactory(boardObject: collectable, entity: entity)
+    }
+}
+
+// MARK: Character factories
+extension Nexus {
+    private func getNormalCharacterFactory(from entity: Entity) -> EntityFactory {
+        NormalCharacterFactory(entity: entity)
     }
 }
