@@ -112,6 +112,13 @@
 		0AC8613B2BBFC3D60060EF90 /* MoveWhenPushedPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8613A2BBFC3D60060EF90 /* MoveWhenPushedPattern.swift */; };
 		0AC8613D2BC0736A0060EF90 /* FrictionalSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8613C2BC0736A0060EF90 /* FrictionalSystem.swift */; };
 		0AC8613F2BC073FD0060EF90 /* FrictionalComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8613E2BC073FD0060EF90 /* FrictionalComponent.swift */; };
+		0AC861412BC0FF420060EF90 /* PowerupBlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861402BC0FF420060EF90 /* PowerupBlockFactory.swift */; };
+		0AC861432BC101990060EF90 /* CollisionEffectComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861422BC101990060EF90 /* CollisionEffectComponent.swift */; };
+		0AC861472BC102D60060EF90 /* CollisionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861462BC102D60060EF90 /* CollisionEffect.swift */; };
+		0AC861492BC103E70060EF90 /* CollisionEffectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861482BC103E70060EF90 /* CollisionEffectDelegate.swift */; };
+		0AC8614B2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8614A2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift */; };
+		0AC8614D2BC10EA40060EF90 /* CreatePowerupEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8614C2BC10EA40060EF90 /* CreatePowerupEvent.swift */; };
+		0AC8614F2BC110180060EF90 /* CreateNewEntitiesSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8614E2BC110180060EF90 /* CreateNewEntitiesSystem.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -237,6 +244,13 @@
 		0AC8613A2BBFC3D60060EF90 /* MoveWhenPushedPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveWhenPushedPattern.swift; sourceTree = "<group>"; };
 		0AC8613C2BC0736A0060EF90 /* FrictionalSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrictionalSystem.swift; sourceTree = "<group>"; };
 		0AC8613E2BC073FD0060EF90 /* FrictionalComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrictionalComponent.swift; sourceTree = "<group>"; };
+		0AC861402BC0FF420060EF90 /* PowerupBlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupBlockFactory.swift; sourceTree = "<group>"; };
+		0AC861422BC101990060EF90 /* CollisionEffectComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionEffectComponent.swift; sourceTree = "<group>"; };
+		0AC861462BC102D60060EF90 /* CollisionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionEffect.swift; sourceTree = "<group>"; };
+		0AC861482BC103E70060EF90 /* CollisionEffectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionEffectDelegate.swift; sourceTree = "<group>"; };
+		0AC8614A2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnPowerupCollisionEffect.swift; sourceTree = "<group>"; };
+		0AC8614C2BC10EA40060EF90 /* CreatePowerupEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePowerupEvent.swift; sourceTree = "<group>"; };
+		0AC8614E2BC110180060EF90 /* CreateNewEntitiesSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewEntitiesSystem.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -371,6 +385,7 @@
 				0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */,
 				0AC861342BBF26720060EF90 /* MeleeFinishCooldownEvent.swift */,
 				0AC8611D2BB93B2A0060EF90 /* AddScoreEvent.swift */,
+				0AC8614C2BC10EA40060EF90 /* CreatePowerupEvent.swift */,
 			);
 			path = GameEvents;
 			sourceTree = "<group>";
@@ -392,6 +407,7 @@
 				0AC860BE2BB67FB30060EF90 /* GroundBlockFactory.swift */,
 				0AC861362BBFB4DB0060EF90 /* SpikeBlockFactory.swift */,
 				0AC861382BBFBE0A0060EF90 /* PushableBlockFactory.swift */,
+				0AC861402BC0FF420060EF90 /* PowerupBlockFactory.swift */,
 			);
 			path = BlockFactories;
 			sourceTree = "<group>";
@@ -443,6 +459,7 @@
 				0AC860F32BB7C58F0060EF90 /* CollectableActionDelegate.swift */,
 				0AC860E52BB71F550060EF90 /* MovableDelegate.swift */,
 				0AC861112BB869080060EF90 /* AttackableDelegate.swift */,
+				0AC861482BC103E70060EF90 /* CollisionEffectDelegate.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -512,6 +529,22 @@
 				0AC861282BBBEF260060EF90 /* NormalCharacterFactory.swift */,
 			);
 			path = CharacterFactories;
+			sourceTree = "<group>";
+		};
+		0AC861442BC102AA0060EF90 /* CollisionEffectComponent */ = {
+			isa = PBXGroup;
+			children = (
+				0AC861452BC102C10060EF90 /* CollisionEffects */,
+			);
+			path = CollisionEffectComponent;
+			sourceTree = "<group>";
+		};
+		0AC861452BC102C10060EF90 /* CollisionEffects */ = {
+			isa = PBXGroup;
+			children = (
+				0AC8614A2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift */,
+			);
+			path = CollisionEffects;
 			sourceTree = "<group>";
 		};
 		3F6874A92BAFFD13009C526D /* GamePlay */ = {
@@ -691,6 +724,9 @@
 		9F8C58052BAAD71B002E75FB /* GameComponents */ = {
 			isa = PBXGroup;
 			children = (
+				0AC861442BC102AA0060EF90 /* CollisionEffectComponent */,
+				0AC861422BC101990060EF90 /* CollisionEffectComponent.swift */,
+				0AC861462BC102D60060EF90 /* CollisionEffect.swift */,
 				0AC8610D2BB868A70060EF90 /* AttackableComponent */,
 				0AC860DF2BB71C580060EF90 /* MovableComponent */,
 				0AC860C82BB682F80060EF90 /* PowerupComponent */,
@@ -737,6 +773,7 @@
 				9F9D15F82BBC2A82005D1985 /* CollisionSystem.swift */,
 				0AC8613C2BC0736A0060EF90 /* FrictionalSystem.swift */,
 				9F9D15FA2BBC2A98005D1985 /* PhysicsSystem.swift */,
+				0AC8614E2BC110180060EF90 /* CreateNewEntitiesSystem.swift */,
 			);
 			path = GameSystems;
 			sourceTree = "<group>";
@@ -954,6 +991,7 @@
 				3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */,
 				0AC861002BB7E9620060EF90 /* DoubleJumpPowerupFactory.swift in Sources */,
 				0AC861392BBFBE0A0060EF90 /* PushableBlockFactory.swift in Sources */,
+				0AC861412BC0FF420060EF90 /* PowerupBlockFactory.swift in Sources */,
 				0AC860E22BB71CA60060EF90 /* LeftRightPattern.swift in Sources */,
 				3FE4570D2BADAB8E00D8D5A9 /* StartScreenViewController.swift in Sources */,
 				0AC860F22BB7C5110060EF90 /* GameCollectable.swift in Sources */,
@@ -979,6 +1017,7 @@
 				9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
 				0AC860D82BB6B0750060EF90 /* PowerupElapseEvent.swift in Sources */,
+				0AC8614B2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift in Sources */,
 				3F6874AF2BAFFDA4009C526D /* ComponentSelectDelegate.swift in Sources */,
 				0AC860C32BB6808C0060EF90 /* StationaryEnemyFactory.swift in Sources */,
 				0AC860FA2BB7C8A00060EF90 /* CoinCollectableFactory.swift in Sources */,
@@ -1002,6 +1041,7 @@
 				0AC8612F2BBC25150060EF90 /* FastEnemyFactory.swift in Sources */,
 				3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */,
 				0A76A4842BAC78720067BD6E /* Collectable.swift in Sources */,
+				0AC8614D2BC10EA40060EF90 /* CreatePowerupEvent.swift in Sources */,
 				0AC860BD2BB67F900060EF90 /* NormalBlockFactory.swift in Sources */,
 				0A76A4AB2BAD294D0067BD6E /* EnemyComponent.swift in Sources */,
 				0A76A4992BAC78960067BD6E /* RenderableComponent.swift in Sources */,
@@ -1028,6 +1068,8 @@
 				9F8C58C52BAEBAA3002E75FB /* Level.swift in Sources */,
 				0A76A4952BAC78840067BD6E /* AppDelegate.swift in Sources */,
 				0AC860C12BB67FCE0060EF90 /* NormalEnemyFactory.swift in Sources */,
+				0AC861432BC101990060EF90 /* CollisionEffectComponent.swift in Sources */,
+				0AC861492BC103E70060EF90 /* CollisionEffectDelegate.swift in Sources */,
 				0AC860FC2BB7C8B50060EF90 /* CollectableFactory.swift in Sources */,
 				0AC8612B2BBC04E40060EF90 /* GameStats.swift in Sources */,
 				0AC860DE2BB715AF0060EF90 /* InvinsiblePowerupFactory.swift in Sources */,
@@ -1078,8 +1120,10 @@
 				0A76A4BA2BAD61120067BD6E /* CameraComponent.swift in Sources */,
 				0A76A49E2BAC78B40067BD6E /* Collider.swift in Sources */,
 				0AC8611A2BB92D5D0060EF90 /* ScoreSystem.swift in Sources */,
+				0AC861472BC102D60060EF90 /* CollisionEffect.swift in Sources */,
 				0AC860FE2BB7C9890060EF90 /* CarrotCollectableFactory.swift in Sources */,
 				3F68076D2BADBCD200EB7682 /* LevelView.swift in Sources */,
+				0AC8614F2BC110180060EF90 /* CreateNewEntitiesSystem.swift in Sources */,
 				0AC860DA2BB6D7F90060EF90 /* TimerSystem.swift in Sources */,
 				3FCD005B2BB005340016389F /* CollectiblesViewController.swift in Sources */,
 				0AC861352BBF26720060EF90 /* MeleeFinishCooldownEvent.swift in Sources */,
