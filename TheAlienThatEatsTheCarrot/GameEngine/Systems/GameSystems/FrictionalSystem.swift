@@ -16,28 +16,27 @@ class FrictionalSystem: System {
 
     func update(deltaTime: CGFloat) {
         let blockComponents = nexus.getComponents(of: BlockComponent.self)
-        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+        let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
         for blockComponent in blockComponents {
-            for playerComponent in playerComponents {
+            for physicsComponent in physicsComponents {
                 guard
                     let blockPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: blockComponent.entity),
-                    let playerPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: playerComponent.entity),
                     let frictionalComponent = nexus.getComponent(of: FrictionalComponent.self, for: blockComponent.entity)
                 else {
                     continue
                 }
-                applyFrictionalForce(for: playerPhysicsComponent.physicsBody,
+                applyFrictionalForce(for: physicsComponent.physicsBody,
                                      on: blockPhysicsComponent.physicsBody,
                                      with: frictionalComponent.frictionalStrength)
             }
         }
     }
 
-    private func applyFrictionalForce(for playerPhysicsBody: PhysicsBody,
+    private func applyFrictionalForce(for physicsBody: PhysicsBody,
                                       on blockPhysicsBody: PhysicsBody,
                                       with frictionalStrength: CGFloat) {
-        if playerPhysicsBody.isCollidingWith(blockPhysicsBody, on: .up) {
-            playerPhysicsBody.applyFrictionalForceInX(magnitude: frictionalStrength)
+        if physicsBody.isCollidingWith(blockPhysicsBody, on: .up) && physicsBody.isDynamic {
+            physicsBody.applyFrictionalForceInX(magnitude: frictionalStrength)
         }
     }
 }
