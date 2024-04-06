@@ -10,16 +10,20 @@ import Foundation
 class StrengthGamePowerup: GamePowerup {
     static let DEFAULT_FACTOR = 3.0
     static let DEFAULT_DURATION = 10.0
+    static let DEFAULT_DESTROYABLES: [ObjectType] = [.block(.normal)]
 
     let factor: CGFloat
     let duration: CGFloat
-    let destroyables: [ObjectType] = [.block(.normal)]
+    let destroyables: [ObjectType]
     var defaultDamage: CGFloat = .zero
 
     var restoreAction: (() -> Void)?
 
-    init(factor: CGFloat = StrengthGamePowerup.DEFAULT_FACTOR, duration: CGFloat = StrengthGamePowerup.DEFAULT_DURATION) {
+    init(factor: CGFloat = StrengthGamePowerup.DEFAULT_FACTOR,
+         destroyables: [ObjectType] = StrengthGamePowerup.DEFAULT_DESTROYABLES,
+         duration: CGFloat = StrengthGamePowerup.DEFAULT_DURATION) {
         self.factor = factor
+        self.destroyables = destroyables
         self.duration = duration
     }
 
