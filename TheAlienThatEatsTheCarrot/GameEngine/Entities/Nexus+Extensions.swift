@@ -8,9 +8,16 @@
 import Foundation
 
 extension Nexus {
-    func addCharacter() {
+    func addGameSettings(for gameSettings: GameSettings) {
+        addCharacter(from: gameSettings)
         let entity = Entity()
-        let normalCharacterFactory = getNormalCharacterFactory(from: entity)
+        let gameSettingsComponent = GameSettingsComponent(entity: entity, spawnPoint: gameSettings.spawnPoint)
+        addComponent(gameSettingsComponent, to: entity)
+    }
+
+    func addCharacter(from gameSettings: GameSettings) {
+        let entity = Entity()
+        let normalCharacterFactory = getNormalCharacterFactory(from: entity, gameSettings: gameSettings)
         let components = normalCharacterFactory.createComponents()
         addComponents(components, to: entity)
     }
@@ -196,7 +203,19 @@ extension Nexus {
 
 // MARK: Character factories
 extension Nexus {
-    private func getNormalCharacterFactory(from entity: Entity) -> EntityFactory {
-        NormalCharacterFactory(entity: entity)
+    private func getNormalCharacterFactory(from entity: Entity, gameSettings: GameSettings) -> EntityFactory {
+        NormalCharacterFactory(entity: entity, position: gameSettings.spawnPoint)
+    }
+}
+
+// Utilities
+extension Nexus {
+    func updatePosition(for entity: Entity, to position: CGPoint) {
+        guard let physicsComponent = self.getComponent(of: PhysicsComponent.self, for: entity),
+              let renderableComponent = self.getComponent(of: RenderableComponent.self, for: entity) else {
+            return
+        }
+        physicsComponent.physicsBody.position = position
+        renderableComponent.position = position
     }
 }

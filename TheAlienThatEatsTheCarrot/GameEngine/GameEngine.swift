@@ -13,6 +13,8 @@ class GameEngine {
     var systems: [System]
     let physicsWorld = PhysicsWorld()
 
+    let gameMode: GameMode = .normal
+
     init(level: Level) {
         self.systems = []
         initGameSystems()
@@ -80,9 +82,17 @@ class GameEngine {
     }
 
     private func initGameEntities(from boardObjects: [any BoardObject]) {
-        nexus.addCharacter()
+        let gameSettings = getGameSettings(gameMode: .normal)
+        nexus.addGameSettings(for: gameSettings)
         for boardObject in boardObjects {
             nexus.addEntity(from: boardObject)
+        }
+    }
+
+    private func getGameSettings(gameMode: GameMode) -> GameSettings {
+        switch gameMode {
+        case .normal:
+            NormalGameSettings()
         }
     }
 }
