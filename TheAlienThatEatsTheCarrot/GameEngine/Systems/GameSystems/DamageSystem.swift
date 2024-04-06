@@ -10,6 +10,7 @@ import Foundation
 class DamageSystem: System {
     var nexus: Nexus
     private var destroyObserver: NSObjectProtocol?
+    private var liveDecreaseObserver: NSObjectProtocol?
 
     init(nexus: Nexus) {
         self.nexus = nexus
@@ -17,20 +18,31 @@ class DamageSystem: System {
     }
 
     deinit {
-        if let observer = destroyObserver {
-            EventManager.shared.unsubscribe(from: observer)
+        if let observer1 = destroyObserver {
+            EventManager.shared.unsubscribe(from: observer1)
+        }
+        if let observer2 = liveDecreaseObserver {
+            EventManager.shared.unsubscribe(from: observer2)
         }
     }
 
     func subscribeToEvents() {
-        destroyObserver = EventManager.shared.subscribe(to: DestroyEvent.self, using: onEventOccur)
+        destroyObserver = EventManager.shared.subscribe(to: DestroyEvent.self, using: onDestroyEventOccur)
+        liveDecreaseObserver = EventManager.shared.subscribe(to: LiveDecreaseEvent.self, using: onLiveDecreaseEventOccur)
     }
 
-    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
+    private lazy var onDestroyEventOccur = { [weak self] (event: Event) -> Void in
         guard let destroyEvent = event as? DestroyEvent else {
             return
         }
-        self?.handleDestroyEventFor(destroyEvent.entity)
+        self?.handleDestroyEvent(for: destroyEvent.entity)
+    }
+
+    private lazy var onLiveDecreaseEventOccur = { [weak self] (event: Event) -> Void in
+        guard let liveDecreaseEvent = event as? LiveDecreaseEvent else {
+            return
+        }
+        self?.handleRespawnIfNecessary(for: liveDecreaseEvent.entity)
     }
 
     func update(deltaTime: CGFloat) {
@@ -43,10 +55,23 @@ class DamageSystem: System {
         }
     }
 
-    private func handleDestroyEventFor(_ entity: Entity) {
+    private func handleDestroyEvent(for entity: Entity) {
         if nexus.containsAnyComponent(of: [PlayerComponent.self], in: entity) {
             print("Player died!")
         }
+    }
+
+    private func handleRespawnIfNecessary(for entity: Entity) {
+        guard
+            let respawnableComponent = nexus.getComponent(of: RespawnableComponent.self, for: entity),
+            let destroyableComponent = nexus.getComponent(of: DestroyableComponent.self, for: entity)
+        else {
+            return
+        }
+        if destroyableComponent.isDestroyed {
+            return
+        }
+        nexus.updatePosition(for: respawnableComponent.entity, to: respawnableComponent.spawnPoint)
     }
 }
 
