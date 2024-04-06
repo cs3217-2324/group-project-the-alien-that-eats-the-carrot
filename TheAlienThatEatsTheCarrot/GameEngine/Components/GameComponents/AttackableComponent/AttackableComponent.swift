@@ -8,7 +8,7 @@
 import Foundation
 
 class AttackableComponent: Component {
-    static let DEFAULT_DAMAGE = 10.0
+    static let DEFAULT_DAMAGE = 50.0
     var entity: Entity
     var damage: CGFloat
     var attackStyles: [any AttackStyle]

@@ -39,6 +39,7 @@ class DestroyableComponent: Component {
         if health <= 0 {
             lives -= 1
             health = maxHealth
+            EventManager.shared.postEvent(LiveDecreaseEvent(entity: entity))
         }
         if lives <= 0 {
             isDestroyed = true

@@ -11,11 +11,6 @@ struct CreatePowerupEvent: Event {
     static var name: Notification.Name = .createNewEntity
     let powerupType: PowerupType
     let position: CGPoint
-
-    init(powerupType: PowerupType, position: CGPoint) {
-        self.powerupType = powerupType
-        self.position = position
-    }
 }
 
 extension Notification.Name {
