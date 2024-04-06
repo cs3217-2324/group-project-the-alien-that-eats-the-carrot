@@ -25,7 +25,7 @@ class CollisionEffectComponent: Component {
 
     func handleEffectIfCollides(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         guard
-            collidee != collidee,
+            collidee != collider,
             delegate.containsAnyComponent(of: acceptableComponentsColliders, in: collider),
             let collideePhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collidee),
             let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider)
