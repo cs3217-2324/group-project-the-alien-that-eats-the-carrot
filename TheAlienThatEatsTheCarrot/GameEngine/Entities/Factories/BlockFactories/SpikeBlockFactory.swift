@@ -27,13 +27,13 @@ class SpikeBlockFactory: BlockFactory {
                                       collisionBitmask: Constants.blockCollisionBitmask,
                                       isDynamic: false)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
-        let attackStyle = MeleeAttackStyle(acceptableAttackDirections: [.up, .left, .down],
-                                           knockbackStrength: SpikeBlockFactory.KNOCKBACK_STRENGTH,
-                                           cooldownDuration: SpikeBlockFactory.COOLDOWN)
+        let attackStyles = [MeleeAttackStyle(acceptableAttackDirections: [.up, .left, .down],
+                                             targetables: [PlayerComponent.self],
+                                             knockbackStrength: SpikeBlockFactory.KNOCKBACK_STRENGTH,
+                                             cooldownDuration: SpikeBlockFactory.COOLDOWN)]
         let attackableComponent = AttackableComponent(entity: entity,
-                                                      targetables: [PlayerComponent.self],
                                                       damage: SpikeBlockFactory.DAMAGE,
-                                                      attackStyle: attackStyle)
+                                                      attackStyles: attackStyles)
         let frictionalComponent = FrictionalComponent(entity: entity, frictionalStrength: SpikeBlockFactory.FRICTIONAL_STRENGTH)
         return [blockComponent, renderableComponent, physicsComponent, attackableComponent, frictionalComponent]
     }

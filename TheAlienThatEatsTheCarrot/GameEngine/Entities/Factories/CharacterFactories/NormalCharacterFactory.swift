@@ -23,9 +23,10 @@ class NormalCharacterFactory: CharacterFactory {
         let jumpStateComponent = JumpStateComponent(entity: entity)
         let inventoryComponent = InventoryComponent(entity: entity)
         let cameraComponent = CameraComponent(entity: entity)
+        let attackStyles: [any AttackStyle] = [JumpAttackStyle(targetables: [EnemyComponent.self]),
+                                               HeadAttackStyle(targetables: [BlockComponent.self])]
         let attackableComponent = AttackableComponent(entity: entity,
-                                                      targetables: [EnemyComponent.self, BlockComponent.self],
-                                                      attackStyle: JumpAttackStyle())
+                                                      attackStyles: attackStyles)
         let destroyableComponent = DestroyableComponent(entity: entity, lives: 3, maxLives: 3)
         return [renderableComponent, playerComponent, physicsComponent, jumpStateComponent,
                 inventoryComponent, cameraComponent, attackableComponent, destroyableComponent]

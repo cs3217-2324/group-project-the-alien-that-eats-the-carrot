@@ -9,8 +9,14 @@ import Foundation
 
 /// Attack by jumping on the attackee, like Super Mario Bros
 class JumpAttackStyle: AttackStyle {
+    var targetables: [Component.Type]
+
+    init(targetables: [Component.Type]) {
+        self.targetables = targetables
+    }
+
     func attack(damage: CGFloat, attacker: Entity, attackee: Entity,
-                targetables: [Component.Type], delegate: AttackableDelegate) {
+                delegate: AttackableDelegate) {
         // TODO: Either use renderable component or physics component
         guard let attackerPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attacker),
               let attackeePhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attackee) else {

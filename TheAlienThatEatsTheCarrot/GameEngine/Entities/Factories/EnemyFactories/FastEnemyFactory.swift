@@ -17,7 +17,9 @@ class FastEnemyFactory: EnemyFactory {
                                                       objectType: .enemy(.fast),
                                                       size: size)
         let movableComponent = MovableComponent(entity: entity, pattern: RandomPattern())
-        let attackableComponent = AttackableComponent(entity: entity, targetables: [PlayerComponent.self], attackStyle: MeleeAttackStyle())
+        let attackStyles = [MeleeAttackStyle(targetables: [PlayerComponent.self])]
+        let attackableComponent = AttackableComponent(entity: entity,
+                                                      attackStyles: attackStyles)
         let physicsBody = PhysicsBody(shape: .rectangle,
                                       position: boardObject.position,
                                       size: size,
