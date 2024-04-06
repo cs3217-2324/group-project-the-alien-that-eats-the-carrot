@@ -18,6 +18,7 @@ final class CollisionSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
+        handleCollisionEffects()
         // Strategy used from https://gamedev.stackexchange.com/questions/16813/handling-collisions-with-ground
         // If a physics body is standing on the ground (block) with negligible y speed, we disable gravity and
         // skip collision resolution with that ground
@@ -26,8 +27,16 @@ final class CollisionSystem: System {
         physicsWorld.resolveCollisions(for: allPhysicsBodies, deltaTime: deltaTime, toIgnore: toIgnore)
     }
 
-    func lateUpdate(deltaTime: CGFloat) {
-        nexus.removeComponents(of: CollisionComponent.self)
+    func handleCollisionEffects() {
+        let collisionEffectComponents = nexus.getComponents(of: CollisionEffectComponent.self)
+        let dynamicPhysicsComponents = nexus.getComponents(of: PhysicsComponent.self).filter { $0.physicsBody.isDynamic }
+        for collisionEffectComponent in collisionEffectComponents {
+            for dynamicPhysicsComponent in dynamicPhysicsComponents {
+                collisionEffectComponent.handleEffectIfCollides(with: collisionEffectComponent.entity,
+                                                                by: dynamicPhysicsComponent.entity,
+                                                                delegate: self)
+            }
+        }
     }
 
     private func getToIgnoresAndHandleGroundedPhysicsBodies() -> Set<[PhysicsBody]> {
@@ -96,6 +105,16 @@ extension CollisionSystem: PhysicsCollisionDelegate {
         let physicsComponent = physicsComponents.first(where: { $0.physicsBody === physicsBody })
 
         return physicsComponent?.entity
+    }
+}
+
+extension CollisionSystem: CollisionEffectDelegate {
+    func getComponent<T: Component>(of type: T.Type, for entity: Entity) -> T? {
+        nexus.getComponent(of: type, for: entity)
+    }
+
+    func containsAnyComponent(of types: [Component.Type], in entity: Entity) -> Bool {
+        nexus.containsAnyComponent(of: types, in: entity)
     }
 }
 
