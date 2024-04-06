@@ -535,6 +535,8 @@
 			isa = PBXGroup;
 			children = (
 				0AC861452BC102C10060EF90 /* CollisionEffects */,
+				0AC861422BC101990060EF90 /* CollisionEffectComponent.swift */,
+				0AC861462BC102D60060EF90 /* CollisionEffect.swift */,
 			);
 			path = CollisionEffectComponent;
 			sourceTree = "<group>";
@@ -725,8 +727,6 @@
 			isa = PBXGroup;
 			children = (
 				0AC861442BC102AA0060EF90 /* CollisionEffectComponent */,
-				0AC861422BC101990060EF90 /* CollisionEffectComponent.swift */,
-				0AC861462BC102D60060EF90 /* CollisionEffect.swift */,
 				0AC8610D2BB868A70060EF90 /* AttackableComponent */,
 				0AC860DF2BB71C580060EF90 /* MovableComponent */,
 				0AC860C82BB682F80060EF90 /* PowerupComponent */,
