@@ -148,7 +148,12 @@ extension Nexus {
     }
 
     private func getPushableBlockFactory(from entity: Entity,
-                                      block: Block) -> EntityFactory {
+                                         block: Block) -> EntityFactory {
+        PushableBlockFactory(from: block, to: entity)
+    }
+
+    private func getPowerupBlockFactory(from entity: Entity,
+                                        block: Block) -> EntityFactory {
         PushableBlockFactory(from: block, to: entity)
     }
 }
