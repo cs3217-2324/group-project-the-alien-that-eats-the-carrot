@@ -60,13 +60,14 @@ class GameEngine {
         systems.forEach { $0.update(deltaTime: deltaTime) }
     }
 
-    // Note that PhysicsSystem needs the be at the start, CollisionSystem at the end
+    // Note that PhysicsSystem < CollisionSystem, CollisionSystem at the end
     // This is so that PhysicsSystem can update the positions, and if collision occur
     // The other systems can handle the side effects (eg. deal damage, add score etc.)
     // Before the collision is resolved by the CollisionSystem
+    // PlayerMovementSystem < PhysicsSystem to prevent jump state bug
     private func initGameSystems() {
-        self.systems = [PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
-                        PlayerMovementSystem(nexus: nexus),
+        self.systems = [PlayerMovementSystem(nexus: nexus),
+                        PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
                         MovementSystem(nexus: nexus),
                         PlayerPowerupSystem(nexus: nexus),
                         CollectableSystem(nexus: nexus),
