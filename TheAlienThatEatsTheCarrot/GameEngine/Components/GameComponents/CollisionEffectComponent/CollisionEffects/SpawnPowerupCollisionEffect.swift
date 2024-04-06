@@ -38,11 +38,11 @@ class SpawnPowerupCollisionEffect: CollisionEffect {
 
         switch spawnDirection {
         case .up:
-            offsetVector = CGVector(dx: 0, dy: blockSize.height / 2 + positionOffset)
+            offsetVector = CGVector(dx: 0, dy: -blockSize.height / 2 - positionOffset)
         case .down:
-            offsetVector = CGVector(dx: 0, dy: -(blockSize.height / 2 + positionOffset))
+            offsetVector = CGVector(dx: 0, dy: (blockSize.height / 2 + positionOffset))
         case .left:
-            offsetVector = CGVector(dx: -(blockSize.width / 2 + positionOffset), dy: 0)
+            offsetVector = CGVector(dx: -(blockSize.width / 2 - positionOffset), dy: 0)
         case .right:
             offsetVector = CGVector(dx: blockSize.width / 2 + positionOffset, dy: 0)
         }
