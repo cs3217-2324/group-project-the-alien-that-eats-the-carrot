@@ -167,12 +167,12 @@ extension Nexus {
 
     private func getInvinsiblePowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        StrengthPowerupFactory(boardObject: powerup, entity: entity)
+        InvinsiblePowerupFactory(boardObject: powerup, entity: entity)
     }
 
     private func getDoubleJumpPowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        StrengthPowerupFactory(boardObject: powerup, entity: entity)
+        DoubleJumpPowerupFactory(boardObject: powerup, entity: entity)
     }
 }
 
@@ -185,7 +185,7 @@ extension Nexus {
 
     private func getCarrotCollectableFactory(from entity: Entity,
                                              collectable: Collectable) -> EntityFactory {
-        DoubleJumpPowerupFactory(boardObject: collectable, entity: entity)
+        CarrotCollectableFactory(boardObject: collectable, entity: entity)
     }
 
     private func getHeartCollectableFactory(from entity: Entity,
