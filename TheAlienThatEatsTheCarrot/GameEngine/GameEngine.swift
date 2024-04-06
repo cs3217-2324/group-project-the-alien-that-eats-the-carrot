@@ -73,6 +73,7 @@ class GameEngine {
                         TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),
                         DamageSystem(nexus: nexus),
+                        FrictionalSystem(nexus: nexus),
                         CollisionSystem(nexus: nexus, physicsWorld: physicsWorld)]
     }
 

@@ -67,7 +67,7 @@ class PlayerMovementSystem: System {
     private func applyPhysicsBasedOnControlAction(for player: PlayerComponent) {
         switch player.action {
         case .idle:
-            applyFrictionalForce(for: player)
+            doNothing()
         case .jump:
             jumpIfPlayerHasJumpsAvailable(for: player)
         case .left:
@@ -93,11 +93,8 @@ class PlayerMovementSystem: System {
         camera.updateCameraBoundsFromCenter(center: renderableComponent.position)
     }
 
-    private func applyFrictionalForce(for player: PlayerComponent) {
-        guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity) else {
-            return
-        }
-        physicsComponent.physicsBody.applyFrictionalForceInX(magnitude: ControlAction.DEFAULT_DECELERATION_FORCE_MAGNITUDE)
+    private func doNothing() {
+        // Do nothing
     }
 
     private func jumpIfPlayerHasJumpsAvailable(for player: PlayerComponent) {

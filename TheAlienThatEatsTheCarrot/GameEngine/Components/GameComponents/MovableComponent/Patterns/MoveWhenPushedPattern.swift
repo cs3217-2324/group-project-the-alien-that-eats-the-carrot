@@ -8,7 +8,7 @@
 import Foundation
 
 class MoveWhenPushedPattern: MovementPattern {
-    static let DEFAULT_PUSH_FORCE_MAGNITUDE = 5_000.0
+    static let DEFAULT_PUSH_FORCE_MAGNITUDE = 2_000.0
     var canBePushedFrom: [Direction]
     var pushForceMagnitude: CGFloat
 
