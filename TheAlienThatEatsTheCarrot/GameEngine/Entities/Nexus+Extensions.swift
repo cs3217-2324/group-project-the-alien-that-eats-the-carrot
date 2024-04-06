@@ -8,9 +8,16 @@
 import Foundation
 
 extension Nexus {
-    func addCharacterForPlayerA() {
+    func addGameSettings(for gameSettings: GameSettings) {
+        addCharacter(from: gameSettings)
         let entity = Entity()
-        let normalCharacterFactory = NormalCharacterFactory(entity: entity)
+        let gameSettingsComponent = GameSettingsComponent(entity: entity, spawnPoint: gameSettings.spawnPoint)
+        addComponent(gameSettingsComponent, to: entity)
+    }
+
+    func addCharacter(from gameSettings: GameSettings) {
+        let entity = Entity()
+        let normalCharacterFactory = getNormalCharacterFactory(from: entity, gameSettings: gameSettings)
         let components = normalCharacterFactory.createComponents()
         addComponents(components, to: entity)
     }
@@ -148,7 +155,12 @@ extension Nexus {
     }
 
     private func getPushableBlockFactory(from entity: Entity,
-                                      block: Block) -> EntityFactory {
+                                         block: Block) -> EntityFactory {
+        PushableBlockFactory(from: block, to: entity)
+    }
+
+    private func getPowerupBlockFactory(from entity: Entity,
+                                        block: Block) -> EntityFactory {
         PushableBlockFactory(from: block, to: entity)
     }
 }
@@ -162,12 +174,12 @@ extension Nexus {
 
     private func getInvinsiblePowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        StrengthPowerupFactory(boardObject: powerup, entity: entity)
+        InvinsiblePowerupFactory(boardObject: powerup, entity: entity)
     }
 
     private func getDoubleJumpPowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        StrengthPowerupFactory(boardObject: powerup, entity: entity)
+        DoubleJumpPowerupFactory(boardObject: powerup, entity: entity)
     }
 }
 
@@ -180,11 +192,30 @@ extension Nexus {
 
     private func getCarrotCollectableFactory(from entity: Entity,
                                              collectable: Collectable) -> EntityFactory {
-        DoubleJumpPowerupFactory(boardObject: collectable, entity: entity)
+        CarrotCollectableFactory(boardObject: collectable, entity: entity)
     }
 
     private func getHeartCollectableFactory(from entity: Entity,
                                             collectable: Collectable) -> EntityFactory {
         HeartCollectableFactory(boardObject: collectable, entity: entity)
+    }
+}
+
+// MARK: Character factories
+extension Nexus {
+    private func getNormalCharacterFactory(from entity: Entity, gameSettings: GameSettings) -> EntityFactory {
+        NormalCharacterFactory(entity: entity, position: gameSettings.spawnPoint)
+    }
+}
+
+// Utilities
+extension Nexus {
+    func updatePosition(for entity: Entity, to position: CGPoint) {
+        guard let physicsComponent = self.getComponent(of: PhysicsComponent.self, for: entity),
+              let renderableComponent = self.getComponent(of: RenderableComponent.self, for: entity) else {
+            return
+        }
+        physicsComponent.physicsBody.position = position
+        renderableComponent.position = position
     }
 }

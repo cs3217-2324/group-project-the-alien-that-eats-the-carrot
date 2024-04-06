@@ -17,13 +17,15 @@ class NormalEnemyFactory: EnemyFactory {
                                                       objectType: .enemy(.normal),
                                                       size: size)
         let movableComponent = MovableComponent(entity: entity, pattern: LeftRightPattern())
-        let attackableComponent = AttackableComponent(entity: entity, targetables: [PlayerComponent.self], attackStyle: MeleeAttackStyle())
+        let attackStyles = [MeleeAttackStyle(targetables: [PlayerComponent.self])]
+        let attackableComponent = AttackableComponent(entity: entity,
+                                                      attackStyles: attackStyles)
         let physicsBody = PhysicsBody(shape: .rectangle,
                                       position: boardObject.position,
                                       size: size,
                                       categoryBitmask: Constants.enemyCategoryBitmask,
                                       collisionBitmask: Constants.enemyCollisionBitmask,
-                                      isDynamic: true)
+                                      isDynamic: true, mass: EnemyFactory.MASS)
         physicsBody.velocity = CGVector(dx: 50.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)

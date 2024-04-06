@@ -1,14 +1,14 @@
 //
-//  JumpAttackStyle.swift
+//  HeadAttackStyle.swift
 //  TheAlienThatEatsTheCarrot
 //
-//  Created by Justin Cheah Yun Fei on 31/3/24.
+//  Created by Justin Cheah Yun Fei on 6/4/24.
 //
 
 import Foundation
 
-/// Attack by jumping on the attackee, like Super Mario Bros
-class JumpAttackStyle: AttackStyle {
+/// Attack by hitting with from the bottom (like how Mario break blocks from bottom)
+class HeadAttackStyle: AttackStyle {
     var targetables: [Component.Type]
 
     init(targetables: [Component.Type]) {
@@ -31,6 +31,6 @@ class JumpAttackStyle: AttackStyle {
     }
 
     private func isAttackerJumpingOnAttackee(attacker: PhysicsBody, attackee: PhysicsBody) -> Bool {
-        attacker.isCollidingWith(attackee, on: .up) && !attacker.hasNegligibleYVelocity()
+        attacker.isCollidingWith(attackee, on: .down)
     }
 }

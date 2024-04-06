@@ -11,15 +11,18 @@ class MeleeAttackStyle: AttackStyle {
     static let DEFAULT_COOLDOWN_DURATION = 0.3
     static let DEFAULT_KNOCKBACK_STRENGTH = 10_000.0
     let acceptableAttackDirections: [Direction]
+    var targetables: [Component.Type]
     var knockbackStrength: CGFloat
     var isCoolingDown = false
     var coolDownDuration: CGFloat
     private var meleeFinishCooldownObserver: NSObjectProtocol?
 
     init(acceptableAttackDirections: [Direction] = [.left, .right],
+         targetables: [Component.Type],
          knockbackStrength: CGFloat = MeleeAttackStyle.DEFAULT_KNOCKBACK_STRENGTH,
          cooldownDuration: CGFloat = MeleeAttackStyle.DEFAULT_COOLDOWN_DURATION) {
         self.acceptableAttackDirections = acceptableAttackDirections
+        self.targetables = targetables
         self.knockbackStrength = knockbackStrength
         self.coolDownDuration = cooldownDuration
         subscribeToEvents()
@@ -32,7 +35,7 @@ class MeleeAttackStyle: AttackStyle {
     }
 
     func attack(damage: CGFloat, attacker: Entity, attackee: Entity,
-                targetables: [Component.Type], delegate: AttackableDelegate) {
+                delegate: AttackableDelegate) {
         if attacker != attackee
             && canAttack(attackee, with: targetables, using: delegate)
             && !isCoolingDown {

@@ -1,13 +1,13 @@
 //
-//  NormalBlockFactory.swift
+//  PowerupBlockFactory.swift
 //  TheAlienThatEatsTheCarrot
 //
-//  Created by Justin Cheah Yun Fei on 29/3/24.
+//  Created by Justin Cheah Yun Fei on 6/4/24.
 //
 
 import Foundation
 
-class NormalBlockFactory: BlockFactory {
+class PowerupBlockFactory: BlockFactory {
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)
@@ -21,7 +21,11 @@ class NormalBlockFactory: BlockFactory {
                                       isDynamic: false)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let frictionalComponent = FrictionalComponent(entity: entity)
-        let destroyableComponent = DestroyableComponent(entity: entity, maxHealth: 10.0, maxLives: 1, isInvinsible: true)
-        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, destroyableComponent]
+        let collisionEffect = SpawnPowerupCollisionEffect(powerupType: .strength, spawnDirection: .up)
+        let collisionEffectComponent = CollisionEffectComponent(entity: entity,
+                                                                acceptableComponentsColliders: [PlayerComponent.self],
+                                                                acceptableDirectionsToCollideFrom: [.down],
+                                                                collisionEffect: collisionEffect)
+        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, collisionEffectComponent]
     }
 }

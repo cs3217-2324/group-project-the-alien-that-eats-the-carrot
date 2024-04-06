@@ -108,7 +108,7 @@ final class PhysicsWorld {
             let bodyA = collision.bodyA
             let bodyB = collision.bodyB
 
-            // only handle dynamic-static collision
+            // only handle dynamic-static, dynamic-dynamic collision
             if bodyA.isDynamic && !bodyB.isDynamic {
                 resolveCollision(dynamicBody: bodyA,
                                  staticBody: bodyB,
@@ -121,6 +121,12 @@ final class PhysicsWorld {
                                  normal: -collisionPoints.normal,
                                  depth: collisionPoints.depth,
                                  deltaTime: deltaTime)
+            } else if bodyB.isDynamic && bodyA.isDynamic {
+                resolveDynamicCollision(bodyA: bodyA,
+                                        bodyB: bodyB,
+                                        normal: collisionPoints.normal,
+                                        depth: collisionPoints.depth,
+                                        deltaTime: deltaTime)
             }
         }
     }
@@ -145,5 +151,26 @@ final class PhysicsWorld {
             dx: -velocity.dx * cos(2 * angle) - velocity.dy * sin(2 * angle),
             dy: -velocity.dx * sin(2 * angle) + velocity.dy * cos(2 * angle)
         ) * dynamicBody.restitution
+    }
+    
+    private func resolveDynamicCollision(bodyA: PhysicsBody, bodyB: PhysicsBody, normal: CGVector, depth: CGFloat, deltaTime: CGFloat) {
+        guard bodyA.isDynamic && bodyB.isDynamic else {
+            return
+        }
+
+        let relativeVelocity = bodyA.velocity - bodyB.velocity
+        let velocityAlongNormal = relativeVelocity.dot(normal.unitVector)
+
+        if velocityAlongNormal > 0 {
+            return
+        }
+
+        let e = min(bodyA.restitution, bodyB.restitution)
+
+        let impulseScalar = -(1 + e) * velocityAlongNormal / (1 / bodyA.mass + 1 / bodyB.mass)
+
+        let impulse = normal.unitVector * impulseScalar
+        bodyA.velocity += impulse / bodyA.mass
+        bodyB.velocity -= impulse / bodyB.mass
     }
 }

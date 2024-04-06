@@ -18,6 +18,7 @@ final class CollisionSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
+        handleCollisionEffects()
         // Strategy used from https://gamedev.stackexchange.com/questions/16813/handling-collisions-with-ground
         // If a physics body is standing on the ground (block) with negligible y speed, we disable gravity and
         // skip collision resolution with that ground
@@ -26,8 +27,16 @@ final class CollisionSystem: System {
         physicsWorld.resolveCollisions(for: allPhysicsBodies, deltaTime: deltaTime, toIgnore: toIgnore)
     }
 
-    func lateUpdate(deltaTime: CGFloat) {
-        nexus.removeComponents(of: CollisionComponent.self)
+    func handleCollisionEffects() {
+        let collisionEffectComponents = nexus.getComponents(of: CollisionEffectComponent.self)
+        let dynamicPhysicsComponents = nexus.getComponents(of: PhysicsComponent.self).filter { $0.physicsBody.isDynamic }
+        for collisionEffectComponent in collisionEffectComponents {
+            for dynamicPhysicsComponent in dynamicPhysicsComponents {
+                collisionEffectComponent.handleEffectIfCollides(with: collisionEffectComponent.entity,
+                                                                by: dynamicPhysicsComponent.entity,
+                                                                delegate: self)
+            }
+        }
     }
 
     private func getToIgnoresAndHandleGroundedPhysicsBodies() -> Set<[PhysicsBody]> {
@@ -45,28 +54,33 @@ final class CollisionSystem: System {
                 if dynamicComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
                     && dynamicComponent.physicsBody.hasNegligibleYVelocity() {
                     disableGravity(for: dynamicComponent)
+                    resetJumpState(for: dynamicComponent)
                     isCollidingWithGround = true
                     toIgnore.insert([dynamicComponent.physicsBody, groundPhysicsComponent.physicsBody])
                 } else if !dynamicComponent.physicsBody.hasNegligibleYVelocity() {
-                    restoreGravity(for: dynamicComponent)
+                    restoreGravityAndUpdateJumpState(for: dynamicComponent)
                 }
             }
             if !isCollidingWithGround {
-                restoreGravity(for: dynamicComponent)
+                restoreGravityAndUpdateJumpState(for: dynamicComponent)
             }
         }
         return toIgnore
     }
 
     private func disableGravity(for physicsComponent: PhysicsComponent) {
-        if let jumpComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) {
-            jumpComponent.setIsGrounded()
-        }
         physicsComponent.physicsBody.velocity.dy = 0
         physicsComponent.disableGravity = true
     }
 
-    private func restoreGravity(for physicsComponent: PhysicsComponent) {
+    private func resetJumpState(for physicsComponent: PhysicsComponent) {
+        guard let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) else {
+            return
+        }
+        jumpStateComponent.setIsGrounded()
+    }
+
+    private func restoreGravityAndUpdateJumpState(for physicsComponent: PhysicsComponent) {
         if let jumpComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) {
             jumpComponent.isGrounded = false
         }
@@ -96,6 +110,16 @@ extension CollisionSystem: PhysicsCollisionDelegate {
         let physicsComponent = physicsComponents.first(where: { $0.physicsBody === physicsBody })
 
         return physicsComponent?.entity
+    }
+}
+
+extension CollisionSystem: CollisionEffectDelegate {
+    func getComponent<T: Component>(of type: T.Type, for entity: Entity) -> T? {
+        nexus.getComponent(of: type, for: entity)
+    }
+
+    func containsAnyComponent(of types: [Component.Type], in entity: Entity) -> Bool {
+        nexus.containsAnyComponent(of: types, in: entity)
     }
 }
 

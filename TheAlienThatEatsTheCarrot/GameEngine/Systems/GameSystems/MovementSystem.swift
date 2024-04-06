@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MovementSystem: System, MovableDelegate {
+class MovementSystem: System {
     var nexus: Nexus
     private var gameStartObserver: NSObjectProtocol?
 
@@ -36,7 +36,9 @@ class MovementSystem: System, MovableDelegate {
             movable.moveBasedOnPattern(deltaTime: deltaTime, delegate: self)
         }
     }
+}
 
+extension MovementSystem: MovableDelegate {
     func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T: Component {
         nexus.getComponent(of: type, for: entity)
     }

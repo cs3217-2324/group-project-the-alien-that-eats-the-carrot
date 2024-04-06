@@ -8,8 +8,9 @@
 import Foundation
 
 protocol AttackStyle {
+    var targetables: [Component.Type] { get set }
     func attack(damage: CGFloat, attacker: Entity, attackee: Entity,
-                targetables: [Component.Type], delegate: AttackableDelegate)
+                delegate: AttackableDelegate)
 
     func canAttack(_ attackee: Entity, with targetables: [Component.Type], using delegate: AttackableDelegate) -> Bool
     func dealDamage(_ damage: CGFloat, to entity: Entity, delegate: AttackableDelegate)

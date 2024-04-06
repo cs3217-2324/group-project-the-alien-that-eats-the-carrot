@@ -8,7 +8,7 @@
 import Foundation
 
 /// This system is responsible for checking if the powerups are being consumed
-class PlayerPowerupSystem: System, PowerupActionDelegate {
+class PlayerPowerupSystem: System {
     var nexus: Nexus
     private var powerupElapseOserver: NSObjectProtocol?
 
@@ -51,9 +51,15 @@ class PlayerPowerupSystem: System, PowerupActionDelegate {
             }
         }
     }
+}
 
+extension PlayerPowerupSystem: PowerupActionDelegate {
     func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T: Component {
         nexus.getComponent(of: type, for: entity)
+    }
+
+    func getComponents<T: Component>(of type: T.Type) -> [T] {
+        nexus.getComponents(of: type)
     }
 
     func addComponent<T: Component>(_ component: T, to entity: Entity) {
