@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CollectableSystem: System, CollectableActionDelegate {
+class CollectableSystem: System {
     var nexus: Nexus
 
     init(nexus: Nexus) {
@@ -31,7 +31,9 @@ class CollectableSystem: System, CollectableActionDelegate {
             }
         }
     }
+}
 
+extension CollectableSystem: CollectableActionDelegate {
     func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T: Component {
         nexus.getComponent(of: type, for: entity)
     }

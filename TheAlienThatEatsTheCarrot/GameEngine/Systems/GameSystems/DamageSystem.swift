@@ -7,7 +7,7 @@
 
 import Foundation
 
-class DamageSystem: System, AttackableDelegate {
+class DamageSystem: System {
     var nexus: Nexus
     private var destroyObserver: NSObjectProtocol?
 
@@ -48,7 +48,9 @@ class DamageSystem: System, AttackableDelegate {
             print("Player died!")
         }
     }
+}
 
+extension DamageSystem: AttackableDelegate {
     func addComponent<T: Component>(_ component: T, to entity: Entity) {
         nexus.addComponent(component, to: entity)
     }
