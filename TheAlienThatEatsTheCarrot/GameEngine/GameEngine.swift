@@ -71,7 +71,7 @@ class GameEngine {
         self.systems = [PlayerMovementSystem(nexus: nexus),
                         PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
                         MovementSystem(nexus: nexus),
-                        PlayerPowerupSystem(nexus: nexus),
+                        PowerupSystem(nexus: nexus),
                         CollectableSystem(nexus: nexus),
                         TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),

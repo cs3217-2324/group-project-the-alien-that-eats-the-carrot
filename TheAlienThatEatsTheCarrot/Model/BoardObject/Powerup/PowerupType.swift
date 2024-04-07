@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum PowerupType: String {
+public enum PowerupType: String, CaseIterable {
     case invinsible, strength, attack, doubleJump
 
     static let typeToAssetNameMap = [invinsible: "powerup-invincibility",

@@ -10,7 +10,9 @@ import Foundation
 class DoubleJumpPowerupFactory: PowerupFactory {
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
-        let powerupComponent = PowerupComponent(entity: entity, powerup: DoubleJumpGamePowerup())
+        let powerupComponent = PowerupComponent(entity: entity,
+                                                powerup: DoubleJumpGamePowerup(),
+                                                powerupType: .doubleJump)
         let renderableComponent = RenderableComponent(entity: entity,
                                                       position: boardObject.position,
                                                       objectType: .powerup(.doubleJump),

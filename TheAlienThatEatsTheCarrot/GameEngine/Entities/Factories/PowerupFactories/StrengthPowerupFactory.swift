@@ -10,7 +10,9 @@ import Foundation
 class StrengthPowerupFactory: PowerupFactory {
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
-        let powerupComponent = PowerupComponent(entity: entity, powerup: StrengthGamePowerup())
+        let powerupComponent = PowerupComponent(entity: entity,
+                                                powerup: StrengthGamePowerup(),
+                                                powerupType: .strength)
         let renderableComponent = RenderableComponent(entity: entity,
                                                       position: boardObject.position,
                                                       objectType: .powerup(.strength),

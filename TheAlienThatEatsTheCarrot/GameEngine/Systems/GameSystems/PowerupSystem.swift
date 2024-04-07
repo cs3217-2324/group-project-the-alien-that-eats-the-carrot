@@ -1,5 +1,5 @@
 //
-//  PlayerPowerupSystem.swift
+//  PowerupSystem.swift
 //  TheAlienThatEatsTheCarrot
 //
 //  Created by Justin Cheah Yun Fei on 29/3/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// This system is responsible for checking if the powerups are being consumed
-class PlayerPowerupSystem: System {
+class PowerupSystem: System {
     var nexus: Nexus
     private var powerupElapseOserver: NSObjectProtocol?
 
@@ -36,16 +36,17 @@ class PlayerPowerupSystem: System {
 
     func update(deltaTime: CGFloat) {
         let powerupComponents = nexus.getComponents(of: PowerupComponent.self)
-        let playerComponents = nexus.getComponents(of: PlayerComponent.self)
+        let canUsePowerupComponents = nexus.getComponents(of: CanUsePowerupComponent.self)
         for powerupComponent in powerupComponents {
-            for playerComponent in playerComponents {
+            for canUsePowerupComponent in canUsePowerupComponents {
                 guard
                     let powerupRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: powerupComponent.entity),
-                    let playerRenderableComponent = nexus.getComponent(of: RenderableComponent.self, for: playerComponent.entity) else {
+                    let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: canUsePowerupComponent.entity) else {
                     continue
                 }
-                if playerRenderableComponent.overlapsWith(powerupRenderableComponent) {
-                    powerupComponent.activatePowerupForEntity(playerComponent.entity, delegate: self)
+                if renderableComponent.overlapsWith(powerupRenderableComponent)
+                    && canUsePowerupComponent.canUse(powerupComponent.powerupType) {
+                    powerupComponent.activatePowerupForEntity(canUsePowerupComponent.entity, delegate: self)
                     nexus.removeComponent(powerupRenderableComponent, from: powerupComponent.entity)
                 }
             }
@@ -53,7 +54,7 @@ class PlayerPowerupSystem: System {
     }
 }
 
-extension PlayerPowerupSystem: PowerupActionDelegate {
+extension PowerupSystem: PowerupActionDelegate {
     func getComponent<T>(of type: T.Type, for entity: Entity) -> T? where T: Component {
         nexus.getComponent(of: type, for: entity)
     }
