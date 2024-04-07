@@ -10,27 +10,32 @@ import Foundation
 class MoveWhenPushedPattern: MovementPattern {
     static let DEFAULT_PUSH_FORCE_MAGNITUDE = 2_000.0
     var canBePushedFrom: [Direction]
+    var canBePushedBy: [Component.Type]
     var pushForceMagnitude: CGFloat
 
     init(canBePushedFrom: [Direction],
+         canBePushedBy: [Component.Type],
          pushForceMagnitude: CGFloat = MoveWhenPushedPattern.DEFAULT_PUSH_FORCE_MAGNITUDE) {
         self.canBePushedFrom = canBePushedFrom
+        self.canBePushedBy = canBePushedBy
         self.pushForceMagnitude = pushForceMagnitude
     }
 
     func move(deltaTime: CGFloat, entity: Entity, delegate: MovableDelegate) {
-        guard let physicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: entity) else {
+        guard let pusheePhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: entity) else {
             return
         }
-        let playerComponents = delegate.getComponents(of: PlayerComponent.self)
-        for playerComponent in playerComponents {
-            guard let playerPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: playerComponent.entity) else {
-                continue
+        let pusherPhysicsComponents = delegate.getComponents(of: PhysicsComponent.self)
+        for pusherPhysicsComponent in pusherPhysicsComponents {
+            guard
+                delegate.containsAnyComponent(of: canBePushedBy, in: pusherPhysicsComponent.entity)
+            else {
+                return
             }
             for direction in canBePushedFrom
-            where playerPhysicsComponent.physicsBody.isCollidingWith(physicsComponent.physicsBody, on: direction) {
+            where pusherPhysicsComponent.physicsBody.isCollidingWith(pusheePhysicsComponent.physicsBody, on: direction) {
                 let forceVector = forceForDirection(direction)
-                physicsComponent.physicsBody.applyForce(forceVector)
+                pusheePhysicsComponent.physicsBody.applyForce(forceVector)
             }
         }
     }

@@ -20,7 +20,8 @@ class PushableBlockFactory: BlockFactory {
                                       collisionBitmask: Constants.blockCollisionBitmask,
                                       isDynamic: true)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
-        let movementPattern = MoveWhenPushedPattern(canBePushedFrom: [.left, .right])
+        let movementPattern = MoveWhenPushedPattern(canBePushedFrom: [.left, .right],
+                                                    canBePushedBy: [PlayerComponent.self])
         let movableComponent = MovableComponent(entity: entity, pattern: movementPattern)
         let frictionalComponent = FrictionalComponent(entity: entity)
         return [blockComponent, renderableComponent, physicsComponent, movableComponent, frictionalComponent]

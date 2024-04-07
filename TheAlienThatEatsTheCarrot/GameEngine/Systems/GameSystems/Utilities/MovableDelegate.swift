@@ -11,4 +11,5 @@ protocol MovableDelegate {
     func getComponent<T: Component>(of type: T.Type, for entity: Entity) -> T?
 
     func getComponents<T: Component>(of type: T.Type) -> [T]
+    func containsAnyComponent(of types: [Component.Type], in entity: Entity) -> Bool
 }
