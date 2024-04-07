@@ -28,7 +28,7 @@ class SpikeBlockFactory: BlockFactory {
                                       isDynamic: false)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let attackStyles = [MeleeAttackStyle(acceptableAttackDirections: [.up, .left, .down],
-                                             targetables: [PlayerComponent.self],
+                                             targetables: [PlayerComponent.self, EnemyComponent.self],
                                              knockbackStrength: SpikeBlockFactory.KNOCKBACK_STRENGTH,
                                              cooldownDuration: SpikeBlockFactory.COOLDOWN)]
         let attackableComponent = AttackableComponent(entity: entity,

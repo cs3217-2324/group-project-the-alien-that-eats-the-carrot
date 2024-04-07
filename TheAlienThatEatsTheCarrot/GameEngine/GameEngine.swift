@@ -28,34 +28,12 @@ class GameEngine {
         updateSystems(deltaTime: deltaTime)
     }
 
-    func updatePlayersMovement(player: PlayerRole, action: ControlAction) {
-        switch player {
-        case .one:
-            guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
-                return
-            }
-            updateAction(action, of: playerEntity)
-        case .two:
-            guard let playerEntity = nexus.getEntity(with: PlayerComponent.self) else {
-                return
-            }
-            updateAction(action, of: playerEntity)
-        }
-    }
-
     func getRenderableComponents() -> [RenderableComponent] {
         nexus.getComponents(of: RenderableComponent.self)
     }
 
     func getGameStats() -> GameStats {
         createGameStatsFromECS()
-    }
-
-    private func updateAction(_ action: ControlAction, of player: Entity) {
-        guard let playerComponent = nexus.getComponent(of: PlayerComponent.self, for: player) else {
-            return
-        }
-        playerComponent.action = action
     }
 
     private func updateSystems(deltaTime: CGFloat) {
@@ -71,7 +49,7 @@ class GameEngine {
         self.systems = [PlayerMovementSystem(nexus: nexus),
                         PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
                         MovementSystem(nexus: nexus),
-                        PlayerPowerupSystem(nexus: nexus),
+                        PowerupSystem(nexus: nexus),
                         CollectableSystem(nexus: nexus),
                         TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),

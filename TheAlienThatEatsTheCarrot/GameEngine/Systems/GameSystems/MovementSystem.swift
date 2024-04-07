@@ -46,4 +46,8 @@ extension MovementSystem: MovableDelegate {
     func getComponents<T>(of type: T.Type) -> [T] where T : Component {
         nexus.getComponents(of: type)
     }
+
+    func containsAnyComponent(of types: [Component.Type], in entity: Entity) -> Bool {
+        nexus.containsAnyComponent(of: types, in: entity)
+    }
 }
