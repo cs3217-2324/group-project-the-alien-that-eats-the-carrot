@@ -51,6 +51,8 @@ extension Nexus {
             factory = getPowerupFactory(type: powerupType, from: entity, powerup: powerup)
         case .character(let characterType):
             factory = getCharacterFactory(type: characterType, from: entity)
+        case .projectile(let projectileType):
+            fatalError("Board object does not have projectile")
         }
         let components = factory.createComponents()
         addComponents(components, to: entity)
@@ -208,7 +210,14 @@ extension Nexus {
     }
 }
 
-// Utilities
+// MARK: Projectile factories
+extension Nexus {
+    func getPelletProjectileFactory(from entity: Entity, physicsBody: PhysicsBody) -> EntityFactory {
+        PelletProjectileFactory(entity: entity, physicsBody: physicsBody)
+    }
+}
+
+// MARK: Utilities
 extension Nexus {
     func updatePosition(for entity: Entity, to position: CGPoint) {
         guard let physicsComponent = self.getComponent(of: PhysicsComponent.self, for: entity),
