@@ -12,6 +12,9 @@ class PelletProjectileFactory: ProjectileFactory {
         let position = physicsBody.position
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let renderableComponent = RenderableComponent(entity: entity, position: position, objectType: .projectile(.pellet))
-        return [physicsComponent, renderableComponent]
+        let meleeAttackStyle = MeleeAttackStyle(acceptableAttackDirections: [.up, .down, .left, .right],
+                                                targetables: targetables, knockbackStrength: 0)
+        let attackableComponent = AttackableComponent(entity: entity, attackStyles: [meleeAttackStyle])
+        return [physicsComponent, renderableComponent, attackableComponent]
     }
 }

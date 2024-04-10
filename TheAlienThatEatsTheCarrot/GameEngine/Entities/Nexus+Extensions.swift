@@ -212,8 +212,8 @@ extension Nexus {
 
 // MARK: Projectile factories
 extension Nexus {
-    func getPelletProjectileFactory(from entity: Entity, physicsBody: PhysicsBody) -> EntityFactory {
-        PelletProjectileFactory(entity: entity, physicsBody: physicsBody)
+    func getPelletProjectileFactory(from entity: Entity, physicsBody: PhysicsBody, targetables: [Component.Type]) -> EntityFactory {
+        PelletProjectileFactory(entity: entity, physicsBody: physicsBody, targetables: targetables)
     }
 }
 

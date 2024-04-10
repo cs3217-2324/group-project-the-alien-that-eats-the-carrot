@@ -10,10 +10,12 @@ import Foundation
 class ProjectileFactory: EntityFactory {
     var entity: Entity
     let physicsBody: PhysicsBody
+    var targetables: [Component.Type]
 
-    init(entity: Entity, physicsBody: PhysicsBody) {
+    init(entity: Entity, physicsBody: PhysicsBody, targetables: [Component.Type]) {
         self.entity = entity
         self.physicsBody = physicsBody
+        self.targetables = targetables
     }
 
     func createComponents() -> [Component] {
