@@ -15,7 +15,6 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
     var directions: [Direction]
     var speed: CGFloat
     var isCoolingDown = false
-    private var finishCooldownObserver: NSObjectProtocol?
 
     init(targetables: [Component.Type],
          directions: [Direction],

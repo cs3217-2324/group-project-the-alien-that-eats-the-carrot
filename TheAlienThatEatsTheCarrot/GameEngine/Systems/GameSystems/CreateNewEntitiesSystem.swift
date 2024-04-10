@@ -58,7 +58,6 @@ class CreateNewEntitiesSystem: System {
     }
 
     private func handleRemoveEntityEvent(_ event: RemoveEntityEvent) {
-        print("Removed entity")
         nexus.removeEntity(event.entity)
     }
 
