@@ -16,6 +16,17 @@ class DoubleJumpPowerupFactory: PowerupFactory {
                                                       position: boardObject.position,
                                                       objectType: .powerup(.doubleJump),
                                                       size: size)
-        return [powerupComponent, renderableComponent]
+        let physicsBody = PhysicsBody(shape: .rectangle, position: boardObject.position, size: size,
+                                      categoryBitmask: Constants.powerupCategoryBitmask,
+                                      collisionBitmask: Constants.powerupCollisionBitmask,
+                                      isDynamic: false)
+        let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody, disableGravity: true)
+        let doubleJumpPowerupEffect = DoubleJumpPowerupEffect()
+        let collisionEffectComponent = CollisionEffectComponent(entity: entity,
+                                                                acceptableComponentsColliders: [PlayerComponent.self],
+                                                                acceptableDirectionsToCollideFrom: [.up, .down, .left, .right],
+                                                                collisionEffect: doubleJumpPowerupEffect)
+
+        return [powerupComponent, renderableComponent, physicsComponent, collisionEffectComponent]
     }
 }
