@@ -24,12 +24,21 @@ class RenderableComponent: Component {
 
 extension RenderableComponent {
     func overlapsWith(_ other: RenderableComponent) -> Bool {
-        let myOrigin = CGPoint(x: position.x - size.width / 2, y: position.y - size.height / 2)
-        let otherOrigin = CGPoint(x: other.position.x - other.size.width / 2, y: other.position.y - other.size.height / 2)
-
-        let myRect = CGRect(origin: myOrigin, size: size)
-        let otherRect = CGRect(origin: otherOrigin, size: other.size)
+        let myRect = getRect(position: position, size: size)
+        let otherRect = getRect(position: other.position, size: other.size)
 
         return myRect.intersects(otherRect)
+    }
+
+    func getRect(position: CGPoint, size: CGSize) -> CGRect {
+        let myOrigin = CGPoint(x: position.x - size.width / 2, y: position.y - size.height / 2)
+
+        return CGRect(origin: myOrigin, size: size)
+    }
+
+    func getRect() -> CGRect {
+        let myOrigin = CGPoint(x: position.x - size.width / 2, y: position.y - size.height / 2)
+
+        return CGRect(origin: myOrigin, size: size)
     }
 }

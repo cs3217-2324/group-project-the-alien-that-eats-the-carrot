@@ -58,6 +58,14 @@ extension Nexus {
         addComponents(components, to: entity)
     }
 
+    /// For game
+    func addGameEntity(with bounds: CGRect) {
+        let entity = Entity()
+        let factory = GameEntityFactory(entity: entity, bounds: bounds)
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
+    }
+
     /// Factory for projectile
     func addProjectile(type: ProjectileType, velocity: CGVector, position: CGPoint,
                        size: CGSize, targetables: [Component.Type],

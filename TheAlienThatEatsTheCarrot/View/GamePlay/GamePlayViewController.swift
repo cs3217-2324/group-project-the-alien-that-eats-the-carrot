@@ -42,7 +42,7 @@ class GamePlayViewController: UIViewController {
         }
         do {
             let level = try levelDataManager.fetchLevel(levelName: levelNameToLoad)
-            gameEngine = GameEngine(level: level)
+            gameEngine = GameEngine(level: level, bounds: boardAreaView.bounds)
             subscribeToEvents()
         } catch {
             print("Error loading level \(levelNameToLoad): \(error)")

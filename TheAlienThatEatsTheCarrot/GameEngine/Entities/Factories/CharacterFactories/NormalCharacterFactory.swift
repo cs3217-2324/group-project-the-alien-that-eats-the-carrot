@@ -19,7 +19,6 @@ class NormalCharacterFactory: CharacterFactory {
                                       isDynamic: true)
         let renderableComponent = RenderableComponent(entity: entity, position: position, objectType: .character(.normal))
         let playerComponent = PlayerComponent(entity: entity)
-        let canUsePowerupComponent = CanUsePowerupComponent(entity: entity)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let jumpStateComponent = JumpStateComponent(entity: entity)
         let inventoryComponent = InventoryComponent(entity: entity)
@@ -34,7 +33,7 @@ class NormalCharacterFactory: CharacterFactory {
                                                         maxLives: NormalCharacterFactory.DEFAULT_LIVES,
                                                         onLiveDecrease: playerDiedEvent)
         let respawnableComponent = RespawnableComponent(entity: entity, spawnPoint: position)
-        return [renderableComponent, playerComponent, canUsePowerupComponent, physicsComponent,
+        return [renderableComponent, playerComponent, physicsComponent,
                 jumpStateComponent, inventoryComponent, cameraComponent, attackableComponent,
                 destroyableComponent, respawnableComponent]
     }

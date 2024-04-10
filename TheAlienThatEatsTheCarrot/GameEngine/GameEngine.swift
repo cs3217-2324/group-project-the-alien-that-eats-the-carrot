@@ -14,9 +14,11 @@ class GameEngine {
     let physicsWorld = PhysicsWorld()
 
     let gameMode: GameMode = .normal
-
-    init(level: Level) {
+    let gameBounds: CGRect
+    
+    init(level: Level, bounds: CGRect) {
         self.systems = []
+        self.gameBounds = bounds
         initGameSystems()
         initGameEntities(from: level.boardObjects.allObjects)
 
@@ -49,7 +51,6 @@ class GameEngine {
         self.systems = [PlayerMovementSystem(nexus: nexus),
                         PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
                         MovementSystem(nexus: nexus),
-                        //CollectableSystem(nexus: nexus),
                         TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),
                         DamageSystem(nexus: nexus),
@@ -61,6 +62,7 @@ class GameEngine {
     private func initGameEntities(from boardObjects: [any BoardObject]) {
         let gameSettings = getGameSettings(gameMode: .normal)
         nexus.addGameSettings(for: gameSettings)
+        nexus.addGameEntity(with: gameBounds)
         for boardObject in boardObjects {
             nexus.addEntity(from: boardObject)
         }
