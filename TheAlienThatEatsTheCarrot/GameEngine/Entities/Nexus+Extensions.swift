@@ -57,6 +57,18 @@ extension Nexus {
         let components = factory.createComponents()
         addComponents(components, to: entity)
     }
+
+    /// Factory for projectile
+    func addProjectile(type: ProjectileType, velocity: CGVector, position: CGPoint, size: CGSize, targetables: [Component.Type]) {
+        let entity = Entity()
+        var factory: EntityFactory
+        switch type {
+        case .pellet:
+            factory = getPelletProjectileFactory(from: entity, velocity: velocity, position: position, targetables: targetables)
+        }
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
+    }
 }
 
 extension Nexus {
@@ -212,8 +224,11 @@ extension Nexus {
 
 // MARK: Projectile factories
 extension Nexus {
-    func getPelletProjectileFactory(from entity: Entity, physicsBody: PhysicsBody, targetables: [Component.Type]) -> EntityFactory {
-        PelletProjectileFactory(entity: entity, physicsBody: physicsBody, targetables: targetables)
+    func getPelletProjectileFactory(from entity: Entity, velocity: CGVector,
+                                    position: CGPoint,
+                                    size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
+                                    targetables: [Component.Type]) -> EntityFactory {
+        PelletProjectileFactory(entity: entity, velocity: velocity, position: position, size: size, targetables: targetables)
     }
 }
 
