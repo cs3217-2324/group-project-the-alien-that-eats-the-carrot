@@ -9,13 +9,16 @@ import Foundation
 
 /// Attack by hitting with from the bottom (like how Mario break blocks from bottom)
 class HeadAttackStyle: AttackStyle {
+    static let DEFAULT_HEAD_ATTACK_DAMAGE: CGFloat = .zero
     var targetables: [Component.Type]
+    var damage: CGFloat
 
-    init(targetables: [Component.Type]) {
+    init(targetables: [Component.Type], damage: CGFloat = HeadAttackStyle.DEFAULT_HEAD_ATTACK_DAMAGE) {
         self.targetables = targetables
+        self.damage = damage
     }
 
-    func attack(damage: CGFloat, attacker: Entity, attackee: Entity,
+    func attack(attacker: Entity, attackee: Entity,
                 delegate: AttackableDelegate) {
         // TODO: Either use renderable component or physics component
         guard let attackerPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attacker),
@@ -26,6 +29,7 @@ class HeadAttackStyle: AttackStyle {
             && canAttack(attackee, with: targetables, using: delegate)
             && self.isAttackerJumpingOnAttackee(attacker: attackerPhysicsComponent.physicsBody,
                                                 attackee: attackeePhysicsComponent.physicsBody) {
+            print("dealing damage")
             dealDamage(damage, to: attackee, delegate: delegate)
         }
     }

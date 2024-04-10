@@ -8,6 +8,7 @@
 import Foundation
 
 class NormalCharacterFactory: CharacterFactory {
+    static let DEFAULT_LIVES = 3
     override func createComponents() -> [Component] {
         let size = CGSize(width: 80.0, height: 100.0)
         let physicsBody = PhysicsBody(shape: .rectangle,
@@ -27,7 +28,9 @@ class NormalCharacterFactory: CharacterFactory {
                                                HeadAttackStyle(targetables: [BlockComponent.self])]
         let attackableComponent = AttackableComponent(entity: entity,
                                                       attackStyles: attackStyles)
-        let destroyableComponent = DestroyableComponent(entity: entity, lives: 3, maxLives: 3)
+        let destroyableComponent = DestroyableComponent(entity: entity,
+                                                        lives: NormalCharacterFactory.DEFAULT_LIVES,
+                                                        maxLives: NormalCharacterFactory.DEFAULT_LIVES)
         let respawnableComponent = RespawnableComponent(entity: entity, spawnPoint: position)
         return [renderableComponent, playerComponent, canUsePowerupComponent, physicsComponent,
                 jumpStateComponent, inventoryComponent, cameraComponent, attackableComponent,

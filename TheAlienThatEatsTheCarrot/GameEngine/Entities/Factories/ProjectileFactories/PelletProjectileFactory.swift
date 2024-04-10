@@ -15,8 +15,9 @@ class PelletProjectileFactory: ProjectileFactory {
                                       isDynamic: true, velocity: velocity)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let renderableComponent = RenderableComponent(entity: entity, position: position, objectType: .projectile(.pellet))
-        let meleeAttackStyle = MeleeAttackStyle(acceptableAttackDirections: [.up, .down, .left, .right],
-                                                targetables: targetables, knockbackStrength: 0)
+        let meleeAttackStyle = MeleeAttackStyle(targetables: targetables,
+                                                acceptableAttackDirections: [.up, .down, .left, .right],
+                                                knockbackStrength: 0)
         let attackableComponent = AttackableComponent(entity: entity, attackStyles: [meleeAttackStyle])
         // projectile to be removed either its lifespan has expired or it collides with something
         let removeEntityEvent = RemoveEntityEvent(entity: entity)
