@@ -17,17 +17,20 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
     var damage: CGFloat
     var speed: CGFloat
     var isCoolingDown = false
+    var dissapearWhenCollideWith: [Component.Type]
 
     init(targetables: [Component.Type],
          directions: [Direction],
          damage: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_DAMAGE,
          cooldownDuration: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_COOLDOWN_DURATION,
-         speed: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_PELLET_SPEED) {
+         speed: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_PELLET_SPEED,
+         dissapearWhenCollideWith: [Component.Type]) {
         self.targetables = targetables
         self.coolDownDuration = cooldownDuration
         self.directions = directions
         self.damage = damage
         self.speed = speed
+        self.dissapearWhenCollideWith = dissapearWhenCollideWith
     }
 
     func attack(attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
@@ -42,7 +45,8 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
             let createPelletEvent = CreateProjectileEvent(projectileType: .pellet,
                                                           position: shooterPhysicsBody.physicsBody.position,
                                                           velocity: pelletVelocity,
-                                                          targetables: targetables)
+                                                          targetables: targetables,
+                                                          dissapearWhenCollideWith: dissapearWhenCollideWith)
             EventManager.shared.postEvent(createPelletEvent)
         }
         setCoolDown(for: attacker, delegate: delegate)
@@ -57,7 +61,7 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
         case .left:
             return CGVector(dx: -speed, dy: 0)
         case .right:
-            return CGVector(dx: 0, dy: speed)
+            return CGVector(dx: speed, dy: 0)
         }
     }
 }
