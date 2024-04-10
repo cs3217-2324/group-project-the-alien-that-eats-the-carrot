@@ -7,7 +7,7 @@
 
 import Foundation
 
-class MeleeAttackStyle: AttackStyle {
+class MeleeAttackStyle: AttackStyle, HasCoolDown {
     static let DEFAULT_COOLDOWN_DURATION = 0.3
     static let DEFAULT_KNOCKBACK_STRENGTH = 10_000.0
     let acceptableAttackDirections: [Direction]
@@ -15,7 +15,6 @@ class MeleeAttackStyle: AttackStyle {
     var knockbackStrength: CGFloat
     var isCoolingDown = false
     var coolDownDuration: CGFloat
-    private var meleeFinishCooldownObserver: NSObjectProtocol?
 
     init(acceptableAttackDirections: [Direction] = [.left, .right],
          targetables: [Component.Type],
@@ -25,13 +24,6 @@ class MeleeAttackStyle: AttackStyle {
         self.targetables = targetables
         self.knockbackStrength = knockbackStrength
         self.coolDownDuration = cooldownDuration
-        subscribeToEvents()
-    }
-
-    deinit {
-        if let observer = meleeFinishCooldownObserver {
-            EventManager.shared.unsubscribe(from: observer)
-        }
     }
 
     func attack(damage: CGFloat, attacker: Entity, attackee: Entity,
@@ -74,22 +66,10 @@ class MeleeAttackStyle: AttackStyle {
 
     private func setMeleeCooldown(for entity: Entity, delegate: AttackableDelegate) {
         self.isCoolingDown = true
-        let meleeFinishCooldownEvent = MeleeFinishCooldownEvent(meleeAttackStyle: self)
-        let timerComponent = TimerComponent(entity: entity, duration: coolDownDuration, event: meleeFinishCooldownEvent)
+        let attackCooldownEvent = AttackCoolDownEvent(attackStyle: self)
+        let timerComponent = TimerComponent(entity: entity, duration: coolDownDuration, event: attackCooldownEvent)
         delegate.addComponent(timerComponent, to: entity)
     }
-
-    private func subscribeToEvents() {
-        meleeFinishCooldownObserver = EventManager.shared.subscribe(to: MeleeFinishCooldownEvent.self, using: onEventOccur)
-    }
-
-    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
-        guard let meleeFinishCooldownEvent = event as? MeleeFinishCooldownEvent else {
-            return
-        }
-        meleeFinishCooldownEvent.meleeAttackStyle.isCoolingDown = false
-    }
-
 }
 
 extension Direction {
@@ -103,8 +83,6 @@ extension Direction {
             return CGFloat.pi / 2
         case .down:
             return 3 * CGFloat.pi / 2
-        default:
-            return 0
         }
     }
 }

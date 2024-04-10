@@ -106,7 +106,7 @@
 		0AC8612B2BBC04E40060EF90 /* GameStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8612A2BBC04E40060EF90 /* GameStats.swift */; };
 		0AC8612D2BBC05D40060EF90 /* GameEngine+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8612C2BBC05D40060EF90 /* GameEngine+Extensions.swift */; };
 		0AC8612F2BBC25150060EF90 /* FastEnemyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8612E2BBC25150060EF90 /* FastEnemyFactory.swift */; };
-		0AC861352BBF26720060EF90 /* MeleeFinishCooldownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861342BBF26720060EF90 /* MeleeFinishCooldownEvent.swift */; };
+		0AC861352BBF26720060EF90 /* AttackCoolDownEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861342BBF26720060EF90 /* AttackCoolDownEvent.swift */; };
 		0AC861372BBFB4DB0060EF90 /* SpikeBlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861362BBFB4DB0060EF90 /* SpikeBlockFactory.swift */; };
 		0AC861392BBFBE0A0060EF90 /* PushableBlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861382BBFBE0A0060EF90 /* PushableBlockFactory.swift */; };
 		0AC8613B2BBFC3D60060EF90 /* MoveWhenPushedPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8613A2BBFC3D60060EF90 /* MoveWhenPushedPattern.swift */; };
@@ -134,6 +134,7 @@
 		0AC8617E2BC65A0B0060EF90 /* CreateProjectileEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8617D2BC65A0B0060EF90 /* CreateProjectileEvent.swift */; };
 		0AC861802BC65B8F0060EF90 /* RemoveEntityEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8617F2BC65B8E0060EF90 /* RemoveEntityEvent.swift */; };
 		0AC861822BC662150060EF90 /* PostEventEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861812BC662140060EF90 /* PostEventEffect.swift */; };
+		0AC861842BC66D680060EF90 /* HasCoolDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861832BC66D680060EF90 /* HasCoolDown.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -253,7 +254,7 @@
 		0AC8612A2BBC04E40060EF90 /* GameStats.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStats.swift; sourceTree = "<group>"; };
 		0AC8612C2BBC05D40060EF90 /* GameEngine+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GameEngine+Extensions.swift"; sourceTree = "<group>"; };
 		0AC8612E2BBC25150060EF90 /* FastEnemyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastEnemyFactory.swift; sourceTree = "<group>"; };
-		0AC861342BBF26720060EF90 /* MeleeFinishCooldownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeleeFinishCooldownEvent.swift; sourceTree = "<group>"; };
+		0AC861342BBF26720060EF90 /* AttackCoolDownEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackCoolDownEvent.swift; sourceTree = "<group>"; };
 		0AC861362BBFB4DB0060EF90 /* SpikeBlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeBlockFactory.swift; sourceTree = "<group>"; };
 		0AC861382BBFBE0A0060EF90 /* PushableBlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushableBlockFactory.swift; sourceTree = "<group>"; };
 		0AC8613A2BBFC3D60060EF90 /* MoveWhenPushedPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoveWhenPushedPattern.swift; sourceTree = "<group>"; };
@@ -281,6 +282,7 @@
 		0AC8617D2BC65A0B0060EF90 /* CreateProjectileEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectileEvent.swift; sourceTree = "<group>"; };
 		0AC8617F2BC65B8E0060EF90 /* RemoveEntityEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEntityEvent.swift; sourceTree = "<group>"; };
 		0AC861812BC662140060EF90 /* PostEventEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostEventEffect.swift; sourceTree = "<group>"; };
+		0AC861832BC66D680060EF90 /* HasCoolDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasCoolDown.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -415,7 +417,7 @@
 				0AC860B62BB3D3550060EF90 /* PlayerControlActionEvent.swift */,
 				0AC860D72BB6B0750060EF90 /* PowerupElapseEvent.swift */,
 				0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */,
-				0AC861342BBF26720060EF90 /* MeleeFinishCooldownEvent.swift */,
+				0AC861342BBF26720060EF90 /* AttackCoolDownEvent.swift */,
 				0AC8611D2BB93B2A0060EF90 /* AddScoreEvent.swift */,
 				0AC8614C2BC10EA40060EF90 /* CreatePowerupEvent.swift */,
 				0AC8617D2BC65A0B0060EF90 /* CreateProjectileEvent.swift */,
@@ -545,6 +547,7 @@
 				0AC8610E2BB868BD0060EF90 /* AttackStyles */,
 				0AC860D02BB694E60060EF90 /* AttackableComponent.swift */,
 				0AC8610F2BB868D70060EF90 /* AttackStyle.swift */,
+				0AC861832BC66D680060EF90 /* HasCoolDown.swift */,
 			);
 			path = AttackableComponent;
 			sourceTree = "<group>";
@@ -1118,6 +1121,7 @@
 				0A76A4722BAC78490067BD6E /* Component.swift in Sources */,
 				0A76A4912BAC787D0067BD6E /* Block.swift in Sources */,
 				0AC8616E2BC5C02D0060EF90 /* ProjectileFactory.swift in Sources */,
+				0AC861842BC66D680060EF90 /* HasCoolDown.swift in Sources */,
 				0AC861662BC1764D0060EF90 /* LiveDecreaseEvent.swift in Sources */,
 				3FAE0EE92BB427EA002521D9 /* RectangularImageView.swift in Sources */,
 				0AC861702BC5C09B0060EF90 /* PelletProjectileFactory.swift in Sources */,
@@ -1202,7 +1206,7 @@
 				0AC8614F2BC110180060EF90 /* CreateNewEntitiesSystem.swift in Sources */,
 				0AC860DA2BB6D7F90060EF90 /* TimerSystem.swift in Sources */,
 				3FCD005B2BB005340016389F /* CollectiblesViewController.swift in Sources */,
-				0AC861352BBF26720060EF90 /* MeleeFinishCooldownEvent.swift in Sources */,
+				0AC861352BBF26720060EF90 /* AttackCoolDownEvent.swift in Sources */,
 				9F9D15F52BBC29CF005D1985 /* CollisionComponent.swift in Sources */,
 				0AC860B22BB3A5360060EF90 /* GameStartEvent.swift in Sources */,
 				0AC860EC2BB7C2810060EF90 /* InventoryComponent.swift in Sources */,
