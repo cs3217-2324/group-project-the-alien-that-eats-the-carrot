@@ -129,7 +129,6 @@
 		0AC8616B2BC5BE870060EF90 /* ProjectileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8616A2BC5BE870060EF90 /* ProjectileType.swift */; };
 		0AC8616E2BC5C02D0060EF90 /* ProjectileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8616D2BC5C02D0060EF90 /* ProjectileFactory.swift */; };
 		0AC861702BC5C09B0060EF90 /* PelletProjectileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8616F2BC5C09B0060EF90 /* PelletProjectileFactory.swift */; };
-		0AC861722BC64C070060EF90 /* ProjectileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861712BC64C070060EF90 /* ProjectileSystem.swift */; };
 		0AC8617C2BC655E80060EF90 /* PeriodicallyShootPelletAttackStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8617B2BC655E80060EF90 /* PeriodicallyShootPelletAttackStyle.swift */; };
 		0AC8617E2BC65A0B0060EF90 /* CreateProjectileEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8617D2BC65A0B0060EF90 /* CreateProjectileEvent.swift */; };
 		0AC861802BC65B8F0060EF90 /* RemoveEntityEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8617F2BC65B8E0060EF90 /* RemoveEntityEvent.swift */; };
@@ -277,7 +276,6 @@
 		0AC8616A2BC5BE870060EF90 /* ProjectileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileType.swift; sourceTree = "<group>"; };
 		0AC8616D2BC5C02D0060EF90 /* ProjectileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileFactory.swift; sourceTree = "<group>"; };
 		0AC8616F2BC5C09B0060EF90 /* PelletProjectileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PelletProjectileFactory.swift; sourceTree = "<group>"; };
-		0AC861712BC64C070060EF90 /* ProjectileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileSystem.swift; sourceTree = "<group>"; };
 		0AC8617B2BC655E80060EF90 /* PeriodicallyShootPelletAttackStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeriodicallyShootPelletAttackStyle.swift; sourceTree = "<group>"; };
 		0AC8617D2BC65A0B0060EF90 /* CreateProjectileEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateProjectileEvent.swift; sourceTree = "<group>"; };
 		0AC8617F2BC65B8E0060EF90 /* RemoveEntityEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveEntityEvent.swift; sourceTree = "<group>"; };
@@ -836,7 +834,6 @@
 				0AC8613C2BC0736A0060EF90 /* FrictionalSystem.swift */,
 				9F9D15FA2BBC2A98005D1985 /* PhysicsSystem.swift */,
 				0AC8614E2BC110180060EF90 /* CreateNewEntitiesSystem.swift */,
-				0AC861712BC64C070060EF90 /* ProjectileSystem.swift */,
 			);
 			path = GameSystems;
 			sourceTree = "<group>";
@@ -1201,7 +1198,6 @@
 				0AC8611A2BB92D5D0060EF90 /* ScoreSystem.swift in Sources */,
 				0AC861472BC102D60060EF90 /* CollisionEffect.swift in Sources */,
 				0AC860FE2BB7C9890060EF90 /* CarrotCollectableFactory.swift in Sources */,
-				0AC861722BC64C070060EF90 /* ProjectileSystem.swift in Sources */,
 				3F68076D2BADBCD200EB7682 /* LevelView.swift in Sources */,
 				0AC8614F2BC110180060EF90 /* CreateNewEntitiesSystem.swift in Sources */,
 				0AC860DA2BB6D7F90060EF90 /* TimerSystem.swift in Sources */,
