@@ -65,8 +65,6 @@
 		0AC860C52BB681350060EF90 /* PowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860C42BB681350060EF90 /* PowerupFactory.swift */; };
 		0AC860C72BB681FE0060EF90 /* StrengthPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860C62BB681FE0060EF90 /* StrengthPowerupFactory.swift */; };
 		0AC860CB2BB683640060EF90 /* GamePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860CA2BB683640060EF90 /* GamePowerup.swift */; };
-		0AC860CD2BB6863C0060EF90 /* PowerupSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860CC2BB6863C0060EF90 /* PowerupSystem.swift */; };
-		0AC860CF2BB68ABF0060EF90 /* StrengthGamePowerup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860CE2BB68ABF0060EF90 /* StrengthGamePowerup.swift */; };
 		0AC860D12BB694E60060EF90 /* AttackableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D02BB694E60060EF90 /* AttackableComponent.swift */; };
 		0AC860D42BB6A2060060EF90 /* PowerupActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D32BB6A2060060EF90 /* PowerupActionDelegate.swift */; };
 		0AC860D62BB6B0290060EF90 /* TimerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D52BB6B0290060EF90 /* TimerComponent.swift */; };
@@ -215,8 +213,6 @@
 		0AC860C42BB681350060EF90 /* PowerupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupFactory.swift; sourceTree = "<group>"; };
 		0AC860C62BB681FE0060EF90 /* StrengthPowerupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthPowerupFactory.swift; sourceTree = "<group>"; };
 		0AC860CA2BB683640060EF90 /* GamePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePowerup.swift; sourceTree = "<group>"; };
-		0AC860CC2BB6863C0060EF90 /* PowerupSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupSystem.swift; sourceTree = "<group>"; };
-		0AC860CE2BB68ABF0060EF90 /* StrengthGamePowerup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthGamePowerup.swift; sourceTree = "<group>"; };
 		0AC860D02BB694E60060EF90 /* AttackableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackableComponent.swift; sourceTree = "<group>"; };
 		0AC860D32BB6A2060060EF90 /* PowerupActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupActionDelegate.swift; sourceTree = "<group>"; };
 		0AC860D52BB6B0290060EF90 /* TimerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerComponent.swift; sourceTree = "<group>"; };
@@ -487,7 +483,6 @@
 		0AC860C92BB683180060EF90 /* GamePowerups */ = {
 			isa = PBXGroup;
 			children = (
-				0AC860CE2BB68ABF0060EF90 /* StrengthGamePowerup.swift */,
 				0AC860DB2BB7144C0060EF90 /* InvinsibleGamePowerup.swift */,
 				0AC861012BB7E99D0060EF90 /* DoubleJumpGamePowerup.swift */,
 			);
@@ -841,7 +836,6 @@
 				0AC860D22BB6A1EE0060EF90 /* Utilities */,
 				9F8C580D2BAAD71B002E75FB /* MovementSystem.swift */,
 				0A76A4CD2BAEC4D00067BD6E /* PlayerMovementSystem.swift */,
-				0AC860CC2BB6863C0060EF90 /* PowerupSystem.swift */,
 				0AC860ED2BB7C3150060EF90 /* CollectableSystem.swift */,
 				0A76A4C32BAE81BD0067BD6E /* CameraSystem.swift */,
 				0AC860D92BB6D7F90060EF90 /* TimerSystem.swift */,
@@ -1114,7 +1108,6 @@
 				0AC861292BBBEF260060EF90 /* NormalCharacterFactory.swift in Sources */,
 				0AC8611E2BB93B2A0060EF90 /* AddScoreEvent.swift in Sources */,
 				0AC8613F2BC073FD0060EF90 /* FrictionalComponent.swift in Sources */,
-				0AC860CD2BB6863C0060EF90 /* PowerupSystem.swift in Sources */,
 				0AC860F62BB7C6950060EF90 /* CoinGameCollectable.swift in Sources */,
 				0AC860B72BB3D3550060EF90 /* PlayerControlActionEvent.swift in Sources */,
 				0A76A4D02BAF0C410067BD6E /* PlayerRole.swift in Sources */,
@@ -1170,7 +1163,6 @@
 				0A76A47C2BAC78680067BD6E /* Character.swift in Sources */,
 				0AC8612D2BBC05D40060EF90 /* GameEngine+Extensions.swift in Sources */,
 				0AC860E42BB71CE20060EF90 /* MovementPattern.swift in Sources */,
-				0AC860CF2BB68ABF0060EF90 /* StrengthGamePowerup.swift in Sources */,
 				0AC861022BB7E99D0060EF90 /* DoubleJumpGamePowerup.swift in Sources */,
 				9F8C58B32BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift in Sources */,
 				0AC8610A2BB864930060EF90 /* HeartCollectableFactory.swift in Sources */,

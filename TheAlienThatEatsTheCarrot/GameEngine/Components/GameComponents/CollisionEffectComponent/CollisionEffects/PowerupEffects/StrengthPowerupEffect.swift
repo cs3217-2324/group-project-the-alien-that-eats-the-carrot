@@ -14,8 +14,8 @@ class StrengthPowerupEffect: ActivatePowerupEffect {
     var duration: CGFloat
     var factor: CGFloat
 
-    init(duration: CGFloat = StrengthGamePowerup.DEFAULT_DURATION,
-         factor: CGFloat = StrengthGamePowerup.DEFAULT_FACTOR) {
+    init(duration: CGFloat = StrengthPowerupEffect.DEFAULT_DURATION,
+         factor: CGFloat = StrengthPowerupEffect.DEFAULT_FACTOR) {
         self.duration = duration
         self.factor = factor
     }
