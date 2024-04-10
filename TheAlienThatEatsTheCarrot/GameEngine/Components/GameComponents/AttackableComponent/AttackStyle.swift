@@ -28,7 +28,7 @@ extension AttackStyle {
         guard let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: entity) else {
             return
         }
-        destroyableComponent.takeDamage(damage)
+        destroyableComponent.takeDamage(damage, delegate: delegate)
         if destroyableComponent.isDestroyed {
             removeRelevantComponentsForDestroyedEntity(destroyableComponent.entity, delegate: delegate)
         }

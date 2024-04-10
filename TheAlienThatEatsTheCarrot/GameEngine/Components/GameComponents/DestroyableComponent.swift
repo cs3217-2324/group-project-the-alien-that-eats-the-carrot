@@ -31,11 +31,12 @@ class DestroyableComponent: Component {
         self.isInvinsible = isInvinsible
     }
 
-    func takeDamage(_ damage: CGFloat) {
+    func takeDamage(_ damage: CGFloat, delegate: AttackableDelegate) {
         if isDestroyed || isInvinsible {
             return
         }
         health -= damage
+        postDamageEvent(damage, delegate: delegate)
         if health <= 0 {
             lives -= 1
             health = maxHealth
@@ -52,5 +53,14 @@ class DestroyableComponent: Component {
             return
         }
         lives += 1
+    }
+
+    private func postDamageEvent(_ damage: CGFloat, delegate: AttackableDelegate) {
+        guard let renderableComponent = delegate.getComponent(of: RenderableComponent.self, for: entity) else {
+            return
+        }
+        print("Posting damage event")
+        let damageEvent = DamageEvent(position: renderableComponent.position, damage: damage)
+        EventManager.shared.postEvent(damageEvent)
     }
 }
