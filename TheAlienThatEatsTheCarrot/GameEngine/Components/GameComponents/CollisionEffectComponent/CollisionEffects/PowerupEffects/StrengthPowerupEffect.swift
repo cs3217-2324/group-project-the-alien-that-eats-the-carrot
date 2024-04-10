@@ -22,6 +22,7 @@ class StrengthPowerupEffect: ActivatePowerupEffect {
 
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         allowPlayerToDestroyBlocks(player: collider, delegate: delegate)
+        EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 
     private func allowPlayerToDestroyBlocks(player: Entity, delegate: CollisionEffectDelegate) {

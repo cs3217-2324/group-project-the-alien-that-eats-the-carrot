@@ -40,5 +40,6 @@ extension AttackStyle {
         }
         let removeEntityEvent = RemoveEntityEvent(entity: entity)
         let timerComponent = TimerComponent(entity: entity, duration: 0.1, event: removeEntityEvent)
+        delegate.addComponent(timerComponent, to: entity)
     }
 }
