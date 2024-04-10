@@ -46,4 +46,11 @@ class DestroyableComponent: Component {
             EventManager.shared.postEvent(DestroyEvent(entity: entity))
         }
     }
+
+    func incrementLifeIfPossible() {
+        if lives >= maxLives {
+            return
+        }
+        lives += 1
+    }
 }
