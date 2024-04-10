@@ -9,14 +9,8 @@ import Foundation
 
 class CollectableComponent: Component {
     var entity: Entity
-    var collectable: GameCollectable
 
-    init(entity: Entity, collectable: GameCollectable) {
+    init(entity: Entity) {
         self.entity = entity
-        self.collectable = collectable
-    }
-
-    func collectCollectableForEntity(_ entity: Entity, delegate: CollectableActionDelegate) {
-        collectable.effectToEntity(entity, delegate: delegate)
     }
 }
