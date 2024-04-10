@@ -14,6 +14,7 @@ struct CreateProjectileEvent: Event {
     let velocity: CGVector
     let size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE
     let targetables: [Component.Type]
+    let dissapearWhenCollideWith: [Component.Type]
 }
 
 extension Notification.Name {

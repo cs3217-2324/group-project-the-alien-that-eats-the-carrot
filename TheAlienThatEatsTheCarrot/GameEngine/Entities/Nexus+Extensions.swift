@@ -59,12 +59,16 @@ extension Nexus {
     }
 
     /// Factory for projectile
-    func addProjectile(type: ProjectileType, velocity: CGVector, position: CGPoint, size: CGSize, targetables: [Component.Type]) {
+    func addProjectile(type: ProjectileType, velocity: CGVector, position: CGPoint,
+                       size: CGSize, targetables: [Component.Type],
+                       dissapearWhenCollideWith: [Component.Type]) {
         let entity = Entity()
         var factory: EntityFactory
         switch type {
         case .pellet:
-            factory = getPelletProjectileFactory(from: entity, velocity: velocity, position: position, targetables: targetables)
+            factory = getPelletProjectileFactory(from: entity, velocity: velocity, position: position,
+                                                 targetables: targetables,
+                                                 dissapearWhenCollideWith: dissapearWhenCollideWith)
         }
         let components = factory.createComponents()
         addComponents(components, to: entity)
@@ -120,7 +124,7 @@ extension Nexus {
                                    powerup: Powerup) -> EntityFactory {
         switch type {
         case .attack:
-            fatalError("TODO: implement")
+            return getAttackPowerupFactory(from: entity, powerup: powerup)
         case .doubleJump:
             return getDoubleJumpPowerupFactory(from: entity, powerup: powerup)
         case .invinsible:
@@ -202,7 +206,7 @@ extension Nexus {
 
     private func getAttackPowerupFactory(from entity: Entity,
                                          powerup: Powerup) -> EntityFactory {
-        DoubleJumpPowerupFactory(boardObject: powerup, entity: entity)
+        AttackPowerupFactory(boardObject: powerup, entity: entity)
     }
 }
 
@@ -236,8 +240,11 @@ extension Nexus {
     func getPelletProjectileFactory(from entity: Entity, velocity: CGVector,
                                     position: CGPoint,
                                     size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
-                                    targetables: [Component.Type]) -> EntityFactory {
-        PelletProjectileFactory(entity: entity, velocity: velocity, position: position, size: size, targetables: targetables)
+                                    targetables: [Component.Type],
+                                    dissapearWhenCollideWith: [Component.Type]) -> EntityFactory {
+        PelletProjectileFactory(entity: entity, velocity: velocity, position: position,
+                                size: size, targetables: targetables,
+                                dissapearWhenCollideWith: dissapearWhenCollideWith)
     }
 }
 

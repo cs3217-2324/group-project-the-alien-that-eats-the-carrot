@@ -23,7 +23,6 @@ class PelletProjectileFactory: ProjectileFactory {
         let removeEntityEvent = RemoveEntityEvent(entity: entity)
         let timerComponent = TimerComponent(entity: entity, duration: lifespan, event: removeEntityEvent)
         let collisionEffect = PostEventEffect(eventToPost: removeEntityEvent)
-        let dissapearWhenCollideWith: [Component.Type] = [PlayerComponent.self, BlockComponent.self]
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,
                                                                 acceptableComponentsColliders: dissapearWhenCollideWith,
                                                                 acceptableDirectionsToCollideFrom: [.up, .down, .left, .right],

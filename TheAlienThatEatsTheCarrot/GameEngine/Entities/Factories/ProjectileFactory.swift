@@ -15,19 +15,22 @@ class ProjectileFactory: EntityFactory {
     let size: CGSize
     let lifespan: CGFloat
     var targetables: [Component.Type]
+    var dissapearWhenCollideWith: [Component.Type]
 
     init(entity: Entity,
          velocity: CGVector,
          position: CGPoint,
          size: CGSize,
          lifespan: CGFloat = ProjectileFactory.DEFAULT_LIFESPAN,
-         targetables: [Component.Type]) {
+         targetables: [Component.Type],
+         dissapearWhenCollideWith: [Component.Type]) {
         self.entity = entity
         self.velocity = velocity
         self.position = position
         self.size = size
         self.lifespan = lifespan
         self.targetables = targetables
+        self.dissapearWhenCollideWith = dissapearWhenCollideWith
     }
 
     func createComponents() -> [Component] {
