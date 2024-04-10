@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+protocol ActivatePowerupEffect: CollisionEffect {
+    var duration: CGFloat { get }
+
+    func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate)
+}
