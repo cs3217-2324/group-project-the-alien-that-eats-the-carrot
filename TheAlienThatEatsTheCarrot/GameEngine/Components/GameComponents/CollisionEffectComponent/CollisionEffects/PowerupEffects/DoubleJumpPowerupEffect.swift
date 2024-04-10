@@ -20,6 +20,6 @@ class DoubleJumpPowerupEffect: ActivatePowerupEffect {
             return
         }
         jumpStateComponent.maxJump *= 2
-        EventManager.shared.postEvent(DestroyEvent(entity: collidee))
+        EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 }
