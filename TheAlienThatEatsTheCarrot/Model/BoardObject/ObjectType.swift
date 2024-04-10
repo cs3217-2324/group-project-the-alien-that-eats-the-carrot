@@ -13,6 +13,7 @@ public enum ObjectType: Equatable, Hashable {
     case collectable(CollectableType)
     case powerup(PowerupType)
     case character(CharacterType)
+    case projectile(ProjectileType)
 
     // TODO: delete
     var assetName: String? {
@@ -27,6 +28,8 @@ public enum ObjectType: Equatable, Hashable {
             return powerupType.assetName
         case .character(let characterType):
             return characterType.assetName
+        case .projectile(let projectileType):
+            return projectileType.assetName
         }
     }
 
@@ -42,6 +45,8 @@ public enum ObjectType: Equatable, Hashable {
             return powerupType.size
         case .character(let characterType):
             return characterType.size
+        case .projectile(let projectileType):
+            return projectileType.size
         }
     }
 
@@ -58,6 +63,8 @@ public enum ObjectType: Equatable, Hashable {
             return createPowerup(from: powerupType, position: position)
         case .character(let characterType):
             return createCharacter(from: characterType, position: position)
+        case .projectile(let projectileType):
+            fatalError("Projectile has no board object")
         }
     }
 
@@ -80,5 +87,4 @@ public enum ObjectType: Equatable, Hashable {
     static func createCharacter(from characterType: CharacterType, position: CGPoint) -> Character {
         Character(characterType: characterType, position: position)
     }
-
 }

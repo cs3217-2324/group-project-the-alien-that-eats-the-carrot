@@ -51,6 +51,20 @@ extension Nexus {
             factory = getPowerupFactory(type: powerupType, from: entity, powerup: powerup)
         case .character(let characterType):
             factory = getCharacterFactory(type: characterType, from: entity)
+        case .projectile(let projectileType):
+            fatalError("Board object does not have projectile")
+        }
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
+    }
+
+    /// Factory for projectile
+    func addProjectile(type: ProjectileType, velocity: CGVector, position: CGPoint, size: CGSize, targetables: [Component.Type]) {
+        let entity = Entity()
+        var factory: EntityFactory
+        switch type {
+        case .pellet:
+            factory = getPelletProjectileFactory(from: entity, velocity: velocity, position: position, targetables: targetables)
         }
         let components = factory.createComponents()
         addComponents(components, to: entity)
@@ -66,7 +80,7 @@ extension Nexus {
         case .fast:
             return getFastEnemyFactory(from: entity, enemy: enemy)
         case .stationary:
-            fatalError("TODO: implement")
+            return getStationaryEnemyFactory(from: entity, enemy: enemy)
         case .turret:
             fatalError("TODO: implement")
         }
@@ -134,6 +148,10 @@ extension Nexus {
     private func getFastEnemyFactory(from entity: Entity,
                                      enemy: Enemy) -> EntityFactory {
         FastEnemyFactory(from: enemy, to: entity)
+    }
+
+    private func getStationaryEnemyFactory(from entity: Entity, enemy: Enemy) -> EntityFactory {
+        StationaryEnemyFactory(from: enemy, to: entity)
     }
 }
 
@@ -208,7 +226,17 @@ extension Nexus {
     }
 }
 
-// Utilities
+// MARK: Projectile factories
+extension Nexus {
+    func getPelletProjectileFactory(from entity: Entity, velocity: CGVector,
+                                    position: CGPoint,
+                                    size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
+                                    targetables: [Component.Type]) -> EntityFactory {
+        PelletProjectileFactory(entity: entity, velocity: velocity, position: position, size: size, targetables: targetables)
+    }
+}
+
+// MARK: Utilities
 extension Nexus {
     func updatePosition(for entity: Entity, to position: CGPoint) {
         guard let physicsComponent = self.getComponent(of: PhysicsComponent.self, for: entity),

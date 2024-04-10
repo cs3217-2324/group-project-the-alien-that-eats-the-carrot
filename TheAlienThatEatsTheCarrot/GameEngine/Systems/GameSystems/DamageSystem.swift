@@ -11,6 +11,7 @@ class DamageSystem: System {
     var nexus: Nexus
     private var destroyObserver: NSObjectProtocol?
     private var liveDecreaseObserver: NSObjectProtocol?
+    private var attackCooldownObserver: NSObjectProtocol?
 
     init(nexus: Nexus) {
         self.nexus = nexus
@@ -24,25 +25,25 @@ class DamageSystem: System {
         if let observer2 = liveDecreaseObserver {
             EventManager.shared.unsubscribe(from: observer2)
         }
+        if let observer3 = attackCooldownObserver {
+            EventManager.shared.unsubscribe(from: observer3)
+        }
     }
 
     func subscribeToEvents() {
-        destroyObserver = EventManager.shared.subscribe(to: DestroyEvent.self, using: onDestroyEventOccur)
-        liveDecreaseObserver = EventManager.shared.subscribe(to: LiveDecreaseEvent.self, using: onLiveDecreaseEventOccur)
+        destroyObserver = EventManager.shared.subscribe(to: DestroyEvent.self, using: onEventOccur)
+        liveDecreaseObserver = EventManager.shared.subscribe(to: LiveDecreaseEvent.self, using: onEventOccur)
+        attackCooldownObserver = EventManager.shared.subscribe(to: AttackCoolDownEvent.self, using: onEventOccur)
     }
 
-    private lazy var onDestroyEventOccur = { [weak self] (event: Event) -> Void in
-        guard let destroyEvent = event as? DestroyEvent else {
-            return
+    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
+        if let destroyEvent = event as? DestroyEvent {
+            self?.handleDestroyEvent(for: destroyEvent.entity)
+        } else if let liveDecreaseEvent = event as? LiveDecreaseEvent {
+            self?.handleRespawnIfNecessary(for: liveDecreaseEvent.entity)
+        } else if let attackCooldownEvent = event as? AttackCoolDownEvent {
+            self?.handleAttackCooldownEvent(for: attackCooldownEvent)
         }
-        self?.handleDestroyEvent(for: destroyEvent.entity)
-    }
-
-    private lazy var onLiveDecreaseEventOccur = { [weak self] (event: Event) -> Void in
-        guard let liveDecreaseEvent = event as? LiveDecreaseEvent else {
-            return
-        }
-        self?.handleRespawnIfNecessary(for: liveDecreaseEvent.entity)
     }
 
     func update(deltaTime: CGFloat) {
@@ -72,6 +73,10 @@ class DamageSystem: System {
             return
         }
         nexus.updatePosition(for: respawnableComponent.entity, to: respawnableComponent.spawnPoint)
+    }
+
+    private func handleAttackCooldownEvent(for event: AttackCoolDownEvent) {
+        event.attackStyle.isCoolingDown = false
     }
 }
 
