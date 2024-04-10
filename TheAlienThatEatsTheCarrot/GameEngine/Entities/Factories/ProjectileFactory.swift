@@ -8,13 +8,25 @@
 import Foundation
 
 class ProjectileFactory: EntityFactory {
+    static let DEFAULT_LIFESPAN = 3.0
     var entity: Entity
-    let physicsBody: PhysicsBody
+    let velocity: CGVector
+    let position: CGPoint
+    let size: CGSize
+    let lifespan: CGFloat
     var targetables: [Component.Type]
 
-    init(entity: Entity, physicsBody: PhysicsBody, targetables: [Component.Type]) {
+    init(entity: Entity,
+         velocity: CGVector,
+         position: CGPoint,
+         size: CGSize,
+         lifespan: CGFloat = ProjectileFactory.DEFAULT_LIFESPAN,
+         targetables: [Component.Type]) {
         self.entity = entity
-        self.physicsBody = physicsBody
+        self.velocity = velocity
+        self.position = position
+        self.size = size
+        self.lifespan = lifespan
         self.targetables = targetables
     }
 
