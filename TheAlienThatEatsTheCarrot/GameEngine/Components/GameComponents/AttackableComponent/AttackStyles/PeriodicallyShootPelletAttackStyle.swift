@@ -7,19 +7,22 @@
 
 import Foundation
 
-class PeriodicallyShootPelletAttackStyle: AttackStyle {
-    static let DEFAULT_PELLET_SPEED = 50.0
+class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
+    static let DEFAULT_PELLET_SPEED = 1_000.0
+    static let DEFAULT_COOLDOWN_DURATION = 1.0
     var targetables: [Component.Type]
-    var interval: CGFloat
+    var coolDownDuration: CGFloat
     var directions: [Direction]
     var speed: CGFloat
+    var isCoolingDown = false
+    private var finishCooldownObserver: NSObjectProtocol?
 
     init(targetables: [Component.Type],
-         interval: CGFloat,
          directions: [Direction],
+         cooldownDuration: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_COOLDOWN_DURATION,
          speed: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_PELLET_SPEED) {
         self.targetables = targetables
-        self.interval = interval
+        self.coolDownDuration = cooldownDuration
         self.directions = directions
         self.speed = speed
     }
@@ -27,6 +30,7 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle {
     func attack(damage: CGFloat, attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
         guard attacker != attackee,
               canAttack(attackee, with: targetables, using: delegate),
+              !isCoolingDown,
               let shooterPhysicsBody = delegate.getComponent(of: PhysicsComponent.self, for: attacker) else {
             return
         }
@@ -38,6 +42,14 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle {
                                                           targetables: targetables)
             EventManager.shared.postEvent(createPelletEvent)
         }
+        setMeleeCooldown(for: attacker, delegate: delegate)
+    }
+
+    private func setMeleeCooldown(for entity: Entity, delegate: AttackableDelegate) {
+        self.isCoolingDown = true
+        let attackCooldownEvent = AttackCoolDownEvent(attackStyle: self)
+        let timerComponent = TimerComponent(entity: entity, duration: coolDownDuration, event: attackCooldownEvent)
+        delegate.addComponent(timerComponent, to: entity)
     }
 
     private func getVelocity(direction: Direction, speed: CGFloat) -> CGVector {
