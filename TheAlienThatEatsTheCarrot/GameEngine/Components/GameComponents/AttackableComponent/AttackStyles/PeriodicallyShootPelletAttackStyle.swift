@@ -34,7 +34,8 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle {
             let pelletVelocity = getVelocity(direction: direction, speed: speed)
             let createPelletEvent = CreateProjectileEvent(projectileType: .pellet,
                                                           position: shooterPhysicsBody.physicsBody.position,
-                                                          velocity: pelletVelocity)
+                                                          velocity: pelletVelocity,
+                                                          targetables: targetables)
             EventManager.shared.postEvent(createPelletEvent)
         }
     }
