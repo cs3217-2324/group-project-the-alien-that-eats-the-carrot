@@ -115,7 +115,6 @@
 		0AC861622BC172250060EF90 /* GameSettingsComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861612BC172250060EF90 /* GameSettingsComponent.swift */; };
 		0AC861642BC1736D0060EF90 /* RespawnableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861632BC1736D0060EF90 /* RespawnableComponent.swift */; };
 		0AC861662BC1764D0060EF90 /* LiveDecreaseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861652BC1764D0060EF90 /* LiveDecreaseEvent.swift */; };
-		0AC861682BC2446A0060EF90 /* CanUsePowerupComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861672BC2446A0060EF90 /* CanUsePowerupComponent.swift */; };
 		0AC8616B2BC5BE870060EF90 /* ProjectileType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8616A2BC5BE870060EF90 /* ProjectileType.swift */; };
 		0AC8616E2BC5C02D0060EF90 /* ProjectileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8616D2BC5C02D0060EF90 /* ProjectileFactory.swift */; };
 		0AC861702BC5C09B0060EF90 /* PelletProjectileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8616F2BC5C09B0060EF90 /* PelletProjectileFactory.swift */; };
@@ -135,6 +134,9 @@
 		0AC861982BC6F4720060EF90 /* DamageEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861972BC6F4720060EF90 /* DamageEvent.swift */; };
 		0AC8619C2BC6FC210060EF90 /* PlayerDiedEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8619B2BC6FC210060EF90 /* PlayerDiedEvent.swift */; };
 		0AC8619E2BC7044D0060EF90 /* AttackPowerupEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8619D2BC7044C0060EF90 /* AttackPowerupEffect.swift */; };
+		0AC861A22BC7161C0060EF90 /* GameEntityFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861A12BC7161C0060EF90 /* GameEntityFactory.swift */; };
+		0AC861A42BC716730060EF90 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861A32BC716730060EF90 /* GameComponent.swift */; };
+		0AC861A62BC716C90060EF90 /* AttackIfOutOfBoundsAttackStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC861A52BC716C80060EF90 /* AttackIfOutOfBoundsAttackStyle.swift */; };
 		3F462ED52BAFDA350049F71A /* LevelDesignerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */; };
 		3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */; };
 		3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */; };
@@ -263,7 +265,6 @@
 		0AC861612BC172250060EF90 /* GameSettingsComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSettingsComponent.swift; sourceTree = "<group>"; };
 		0AC861632BC1736D0060EF90 /* RespawnableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RespawnableComponent.swift; sourceTree = "<group>"; };
 		0AC861652BC1764D0060EF90 /* LiveDecreaseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveDecreaseEvent.swift; sourceTree = "<group>"; };
-		0AC861672BC2446A0060EF90 /* CanUsePowerupComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanUsePowerupComponent.swift; sourceTree = "<group>"; };
 		0AC8616A2BC5BE870060EF90 /* ProjectileType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileType.swift; sourceTree = "<group>"; };
 		0AC8616D2BC5C02D0060EF90 /* ProjectileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectileFactory.swift; sourceTree = "<group>"; };
 		0AC8616F2BC5C09B0060EF90 /* PelletProjectileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PelletProjectileFactory.swift; sourceTree = "<group>"; };
@@ -283,6 +284,9 @@
 		0AC861972BC6F4720060EF90 /* DamageEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DamageEvent.swift; sourceTree = "<group>"; };
 		0AC8619B2BC6FC210060EF90 /* PlayerDiedEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerDiedEvent.swift; sourceTree = "<group>"; };
 		0AC8619D2BC7044C0060EF90 /* AttackPowerupEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackPowerupEffect.swift; sourceTree = "<group>"; };
+		0AC861A12BC7161C0060EF90 /* GameEntityFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEntityFactory.swift; sourceTree = "<group>"; };
+		0AC861A32BC716730060EF90 /* GameComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponent.swift; sourceTree = "<group>"; };
+		0AC861A52BC716C80060EF90 /* AttackIfOutOfBoundsAttackStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackIfOutOfBoundsAttackStyle.swift; sourceTree = "<group>"; };
 		3F462ED42BAFDA350049F71A /* LevelDesignerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesignerViewController.swift; sourceTree = "<group>"; };
 		3F68076A2BADB18C00EB7682 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		3F68076C2BADBCD200EB7682 /* LevelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelView.swift; sourceTree = "<group>"; };
@@ -395,6 +399,7 @@
 				0AC860C42BB681350060EF90 /* PowerupFactory.swift */,
 				0AC860FB2BB7C8B50060EF90 /* CollectableFactory.swift */,
 				0AC861252BBBEEE00060EF90 /* CharacterFactory.swift */,
+				0AC861A12BC7161C0060EF90 /* GameEntityFactory.swift */,
 				0A76A4A12BAD222A0067BD6E /* EntityFactory.swift */,
 			);
 			path = Factories;
@@ -522,6 +527,7 @@
 				0AC861172BB916780060EF90 /* JumpAttackStyle.swift */,
 				0AC861562BC1478A0060EF90 /* HeadAttackStyle.swift */,
 				0AC8617B2BC655E80060EF90 /* PeriodicallyShootPelletAttackStyle.swift */,
+				0AC861A52BC716C80060EF90 /* AttackIfOutOfBoundsAttackStyle.swift */,
 			);
 			path = AttackStyles;
 			sourceTree = "<group>";
@@ -793,7 +799,7 @@
 				9F9D15F42BBC29CF005D1985 /* CollisionComponent.swift */,
 				0AC861612BC172250060EF90 /* GameSettingsComponent.swift */,
 				0AC861632BC1736D0060EF90 /* RespawnableComponent.swift */,
-				0AC861672BC2446A0060EF90 /* CanUsePowerupComponent.swift */,
+				0AC861A32BC716730060EF90 /* GameComponent.swift */,
 			);
 			path = GameComponents;
 			sourceTree = "<group>";
@@ -1084,6 +1090,7 @@
 				0AC861292BBBEF260060EF90 /* NormalCharacterFactory.swift in Sources */,
 				0AC8611E2BB93B2A0060EF90 /* AddScoreEvent.swift in Sources */,
 				0AC8613F2BC073FD0060EF90 /* FrictionalComponent.swift in Sources */,
+				0AC861A22BC7161C0060EF90 /* GameEntityFactory.swift in Sources */,
 				0AC860B72BB3D3550060EF90 /* PlayerControlActionEvent.swift in Sources */,
 				0A76A4D02BAF0C410067BD6E /* PlayerRole.swift in Sources */,
 				0A76A49D2BAC78B40067BD6E /* CollisionPoints.swift in Sources */,
@@ -1095,9 +1102,9 @@
 				0AC860BD2BB67F900060EF90 /* NormalBlockFactory.swift in Sources */,
 				0A76A4AB2BAD294D0067BD6E /* EnemyComponent.swift in Sources */,
 				0A76A4992BAC78960067BD6E /* RenderableComponent.swift in Sources */,
-				0AC861682BC2446A0060EF90 /* CanUsePowerupComponent.swift in Sources */,
 				9F8C58A52BAE79A2002E75FB /* CoreDataManager.swift in Sources */,
 				0A76A49B2BAC78B40067BD6E /* CircleCollider.swift in Sources */,
+				0AC861A62BC716C90060EF90 /* AttackIfOutOfBoundsAttackStyle.swift in Sources */,
 				0AC860D62BB6B0290060EF90 /* TimerComponent.swift in Sources */,
 				9F8C58B92BAEACB4002E75FB /* PowerupType+extensions.swift in Sources */,
 				9F8C58AD2BAEA2E5002E75FB /* BlockType.swift in Sources */,
@@ -1190,6 +1197,7 @@
 				3FCD005B2BB005340016389F /* CollectiblesViewController.swift in Sources */,
 				0AC861352BBF26720060EF90 /* AttackCoolDownEvent.swift in Sources */,
 				9F9D15F52BBC29CF005D1985 /* CollisionComponent.swift in Sources */,
+				0AC861A42BC716730060EF90 /* GameComponent.swift in Sources */,
 				0AC860B22BB3A5360060EF90 /* GameStartEvent.swift in Sources */,
 				0AC860EC2BB7C2810060EF90 /* InventoryComponent.swift in Sources */,
 				9F9D15FB2BBC2A98005D1985 /* PhysicsSystem.swift in Sources */,

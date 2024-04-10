@@ -29,7 +29,6 @@ class HeadAttackStyle: AttackStyle {
             && canAttack(attackee, with: targetables, using: delegate)
             && self.isAttackerJumpingOnAttackee(attacker: attackerPhysicsComponent.physicsBody,
                                                 attackee: attackeePhysicsComponent.physicsBody) {
-            print("dealing damage")
             dealDamage(damage, to: attackee, delegate: delegate)
         }
     }
