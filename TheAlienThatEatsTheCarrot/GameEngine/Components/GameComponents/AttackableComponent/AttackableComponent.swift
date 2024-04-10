@@ -31,4 +31,8 @@ class AttackableComponent: Component {
         }
         return nil
     }
+
+    func addAttackStyle<T: AttackStyle>(_ attackStyle: T) {
+        attackStyles.append(attackStyle)
+    }
 }
