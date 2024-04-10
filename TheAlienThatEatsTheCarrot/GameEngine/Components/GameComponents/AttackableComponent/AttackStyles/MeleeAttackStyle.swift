@@ -35,7 +35,7 @@ class MeleeAttackStyle: AttackStyle, HasCoolDown {
             where isAttacker(attacker, attacking: attackee, from: direction, delegate: delegate) {
                 dealDamage(damage, to: attackee, delegate: delegate)
                 applyKnockback(from: attacker, to: attackee, direction: direction, delegate: delegate)
-                setMeleeCooldown(for: attacker, delegate: delegate)
+                setCoolDown(for: attacker, delegate: delegate)
                 break
             }
         }
@@ -62,13 +62,6 @@ class MeleeAttackStyle: AttackStyle, HasCoolDown {
         let forceDirection = CGVector(dx: cos(direction.vectorAngle), dy: sin(direction.vectorAngle))
         let force = forceDirection * knockbackStrength
         attackeePhysicsComponent.physicsBody.applyForce(force)
-    }
-
-    private func setMeleeCooldown(for entity: Entity, delegate: AttackableDelegate) {
-        self.isCoolingDown = true
-        let attackCooldownEvent = AttackCoolDownEvent(attackStyle: self)
-        let timerComponent = TimerComponent(entity: entity, duration: coolDownDuration, event: attackCooldownEvent)
-        delegate.addComponent(timerComponent, to: entity)
     }
 }
 

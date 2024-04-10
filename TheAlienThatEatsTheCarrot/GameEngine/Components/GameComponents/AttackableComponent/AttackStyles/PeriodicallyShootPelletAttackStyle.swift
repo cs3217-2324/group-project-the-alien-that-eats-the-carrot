@@ -41,14 +41,7 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
                                                           targetables: targetables)
             EventManager.shared.postEvent(createPelletEvent)
         }
-        setMeleeCooldown(for: attacker, delegate: delegate)
-    }
-
-    private func setMeleeCooldown(for entity: Entity, delegate: AttackableDelegate) {
-        self.isCoolingDown = true
-        let attackCooldownEvent = AttackCoolDownEvent(attackStyle: self)
-        let timerComponent = TimerComponent(entity: entity, duration: coolDownDuration, event: attackCooldownEvent)
-        delegate.addComponent(timerComponent, to: entity)
+        setCoolDown(for: attacker, delegate: delegate)
     }
 
     private func getVelocity(direction: Direction, speed: CGFloat) -> CGVector {
