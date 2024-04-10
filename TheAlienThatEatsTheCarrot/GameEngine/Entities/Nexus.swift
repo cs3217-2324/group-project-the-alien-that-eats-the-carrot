@@ -33,6 +33,19 @@ final class Nexus {
         return componentIdToEntities[componentId]?.compactMap { $0 }.first
     }
 
+    func removeEntity(_ entity: Entity) {
+        guard let entityComponents = entities[entity] else { return }
+
+        for (componentId, _) in entityComponents {
+            componentIdToEntities[componentId]?.remove(entity)
+            if componentIdToEntities[componentId]?.isEmpty ?? false {
+                componentIdToEntities[componentId] = nil
+            }
+        }
+
+        entities[entity] = nil
+    }
+
     // MARK: Components
     func containsComponent<T: Component>(for entity: Entity, of type: T.Type) -> Bool {
         let componentId = type.typeId
