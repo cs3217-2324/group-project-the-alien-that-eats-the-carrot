@@ -550,6 +550,9 @@
 				0AC8614A2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift */,
 				0AC861812BC662140060EF90 /* PostEventEffect.swift */,
 				0AC861872BC6C2080060EF90 /* ActivatePowerupEffect.swift */,
+				0AC861912BC6E1930060EF90 /* AddCoinEffect.swift */,
+				0AC861932BC6E3C60060EF90 /* AddCarrotEffect.swift */,
+				0AC861952BC6E5000060EF90 /* AddLifeEffect.swift */,
 			);
 			path = CollisionEffects;
 			sourceTree = "<group>";
@@ -576,9 +579,6 @@
 				0AC8618A2BC6C5690060EF90 /* StrengthPowerupEffect.swift */,
 				0AC8618C2BC6DCC90060EF90 /* InvinciblePowerupEffect.swift */,
 				0AC8618E2BC6DEDA0060EF90 /* DoubleJumpPowerupEffect.swift */,
-				0AC861912BC6E1930060EF90 /* AddCoinEffect.swift */,
-				0AC861932BC6E3C60060EF90 /* AddCarrotEffect.swift */,
-				0AC861952BC6E5000060EF90 /* AddLifeEffect.swift */,
 			);
 			path = PowerupEffects;
 			sourceTree = "<group>";
