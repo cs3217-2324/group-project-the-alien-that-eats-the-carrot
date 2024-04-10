@@ -12,7 +12,7 @@ class PelletProjectileFactory: ProjectileFactory {
         let physicsBody = PhysicsBody(shape: .circle, position: position, size: size,
                                       categoryBitmask: Constants.projectileCategoryBitmask,
                                       collisionBitmask: Constants.projectileCollisionBitmask,
-                                      isDynamic: true)
+                                      isDynamic: true, velocity: velocity)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let renderableComponent = RenderableComponent(entity: entity, position: position, objectType: .projectile(.pellet))
         let meleeAttackStyle = MeleeAttackStyle(acceptableAttackDirections: [.up, .down, .left, .right],
@@ -22,8 +22,9 @@ class PelletProjectileFactory: ProjectileFactory {
         let removeEntityEvent = RemoveEntityEvent(entity: entity)
         let timerComponent = TimerComponent(entity: entity, duration: lifespan, event: removeEntityEvent)
         let collisionEffect = PostEventEffect(eventToPost: removeEntityEvent)
+        let dissapearWhenCollideWith: [Component.Type] = [PlayerComponent.self, BlockComponent.self]
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,
-                                                                acceptableComponentsColliders: targetables,
+                                                                acceptableComponentsColliders: dissapearWhenCollideWith,
                                                                 acceptableDirectionsToCollideFrom: [.up, .down, .left, .right],
                                                                 collisionEffect: collisionEffect)
         return [physicsComponent, renderableComponent, attackableComponent,

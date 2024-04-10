@@ -80,7 +80,7 @@ extension Nexus {
         case .fast:
             return getFastEnemyFactory(from: entity, enemy: enemy)
         case .stationary:
-            fatalError("TODO: implement")
+            return getStationaryEnemyFactory(from: entity, enemy: enemy)
         case .turret:
             fatalError("TODO: implement")
         }
@@ -148,6 +148,10 @@ extension Nexus {
     private func getFastEnemyFactory(from entity: Entity,
                                      enemy: Enemy) -> EntityFactory {
         FastEnemyFactory(from: enemy, to: entity)
+    }
+
+    private func getStationaryEnemyFactory(from entity: Entity, enemy: Enemy) -> EntityFactory {
+        StationaryEnemyFactory(from: enemy, to: entity)
     }
 }
 

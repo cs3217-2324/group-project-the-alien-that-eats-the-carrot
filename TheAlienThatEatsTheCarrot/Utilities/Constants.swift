@@ -25,5 +25,5 @@ struct Constants {
     static let blockCollisionBitmask: UInt32 = characterCategoryBitmask | blockCategoryBitmask | enemyCategoryBitmask
     static let powerupCollisionBitmask: UInt32 = 0
     static let collectibleCollisionBitmask: UInt32 = 0
-    static let projectileCollisionBitmask: UInt32 = characterCategoryBitmask | enemyCategoryBitmask | blockCategoryBitmask
+    static let projectileCollisionBitmask: UInt32 = characterCategoryBitmask | blockCategoryBitmask
 }
