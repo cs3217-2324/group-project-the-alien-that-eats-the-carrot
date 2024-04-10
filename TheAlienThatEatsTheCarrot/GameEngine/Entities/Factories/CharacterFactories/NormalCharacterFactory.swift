@@ -28,9 +28,11 @@ class NormalCharacterFactory: CharacterFactory {
                                                HeadAttackStyle(targetables: [BlockComponent.self])]
         let attackableComponent = AttackableComponent(entity: entity,
                                                       attackStyles: attackStyles)
+        let playerDiedEvent = PlayerDiedEvent()
         let destroyableComponent = DestroyableComponent(entity: entity,
                                                         lives: NormalCharacterFactory.DEFAULT_LIVES,
-                                                        maxLives: NormalCharacterFactory.DEFAULT_LIVES)
+                                                        maxLives: NormalCharacterFactory.DEFAULT_LIVES,
+                                                        onLiveDecrease: playerDiedEvent)
         let respawnableComponent = RespawnableComponent(entity: entity, spawnPoint: position)
         return [renderableComponent, playerComponent, canUsePowerupComponent, physicsComponent,
                 jumpStateComponent, inventoryComponent, cameraComponent, attackableComponent,

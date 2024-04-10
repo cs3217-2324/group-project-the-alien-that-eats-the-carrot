@@ -192,11 +192,16 @@ extension Nexus {
 
     private func getInvinsiblePowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        InvinsiblePowerupFactory(boardObject: powerup, entity: entity)
+        InvinciblePowerupFactory(boardObject: powerup, entity: entity)
     }
 
     private func getDoubleJumpPowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
+        DoubleJumpPowerupFactory(boardObject: powerup, entity: entity)
+    }
+
+    private func getAttackPowerupFactory(from entity: Entity,
+                                         powerup: Powerup) -> EntityFactory {
         DoubleJumpPowerupFactory(boardObject: powerup, entity: entity)
     }
 }

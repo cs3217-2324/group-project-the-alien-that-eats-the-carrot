@@ -33,6 +33,7 @@ class GamePlayViewController: UIViewController {
 
     // MARK: observers
     private var damageObserver: NSObjectProtocol?
+    private var playerDiedObserver: NSObjectProtocol?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -83,9 +84,7 @@ class GamePlayViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopGameLoop()
-        if let observer = damageObserver {
-            EventManager.shared.unsubscribe(from: observer)
-        }
+        unsubscribeToEvents()
     }
 
     private func presentAlert(message: String) {
@@ -173,11 +172,23 @@ class GamePlayViewController: UIViewController {
 
     private func subscribeToEvents() {
         damageObserver = EventManager.shared.subscribe(to: DamageEvent.self, using: onEventOccur)
+        playerDiedObserver = EventManager.shared.subscribe(to: PlayerDiedEvent.self, using: onEventOccur)
+    }
+
+    private func unsubscribeToEvents() {
+        if let observer1 = damageObserver {
+            EventManager.shared.unsubscribe(from: observer1)
+        }
+        if let observer2 = playerDiedObserver {
+            EventManager.shared.unsubscribe(from: observer2)
+        }
     }
 
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
         if let damageEvent = event as? DamageEvent {
             self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
+        } else if let playerDiedEvent = event as? PlayerDiedEvent {
+            self?.showPlayerDied()
         }
     }
 }
@@ -195,6 +206,27 @@ extension GamePlayViewController {
             damageLabel.center.y -= 50
         }) { _ in
             damageLabel.removeFromSuperview()
+        }
+    }
+
+    func showPlayerDied() {
+        let diedLabel = UILabel()
+        diedLabel.text = "YOU DIED"
+        diedLabel.textColor = .red
+        diedLabel.font = UIFont.boldSystemFont(ofSize: 80)
+        diedLabel.sizeToFit()
+        diedLabel.center = boardAreaView.center
+        diedLabel.alpha = 0
+        view.addSubview(diedLabel)
+
+        UIView.animate(withDuration: 0.5, animations: {
+            diedLabel.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration: 1.0, delay: 2.0, options: [], animations: {
+                diedLabel.alpha = 0
+            }) { _ in
+                diedLabel.removeFromSuperview()
+            }
         }
     }
 }
