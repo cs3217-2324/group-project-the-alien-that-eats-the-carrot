@@ -21,7 +21,7 @@ class StationaryEnemyFactory: EnemyFactory {
                                       size: size, categoryBitmask: Constants.enemyCategoryBitmask,
                                       collisionBitmask: Constants.enemyCollisionBitmask, isDynamic: true)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
-        let destroyableComponent = DestroyableComponent(entity: entity)
+        let destroyableComponent = DestroyableComponent(entity: entity, onDestroyed: EnemyKilledEvent(entity: entity))
         let scoreComponent = ScoreComponent(entity: entity, score: StationaryEnemyFactory.SCORE)
         let dissapearWhenCollideWith: [Component.Type] = [PlayerComponent.self, BlockComponent.self]
         let attackStyle = PeriodicallyShootPelletAttackStyle(targetables: [PlayerComponent.self],

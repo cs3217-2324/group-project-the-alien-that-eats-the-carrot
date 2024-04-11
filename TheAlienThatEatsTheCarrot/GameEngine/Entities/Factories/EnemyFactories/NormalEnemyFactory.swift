@@ -29,7 +29,7 @@ class NormalEnemyFactory: EnemyFactory {
         physicsBody.velocity = CGVector(dx: 50.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
-        let destroyableComponent = DestroyableComponent(entity: entity)
+        let destroyableComponent = DestroyableComponent(entity: entity, onDestroyed: EnemyKilledEvent(entity: entity))
         let scoreComponent = ScoreComponent(entity: entity, score: NormalEnemyFactory.SCORE)
         return [enemyComponent, renderableComponent, movableComponent, attackableComponent,
                 physicsComponent, destroyableComponent, scoreComponent]
