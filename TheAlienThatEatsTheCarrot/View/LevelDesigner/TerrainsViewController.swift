@@ -31,8 +31,8 @@ class TerrainsViewController: UIViewController {
         delegate?.buttonTapped(type: .block(.pushable))
     }
 
-    @IBAction private func platformOnewayButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .block(.normal))
+    @IBAction private func rollerButtonTapped(_ sender: UIButton) {
+        delegate?.buttonTapped(type: .block(.roller))
     }
 
     @IBAction private func platformSolidButtonTapped(_ sender: UIButton) {
