@@ -111,7 +111,15 @@ extension Nexus {
             return getPushableBlockFactory(from: entity, block: block)
         case .spike:
             return getSpikeBlockFactory(from: entity, block: block)
+        case .mushroom:
+            fatalError("TODO: implement")
         case .doubleJumpPowerup:
+            fatalError("TODO: implement")
+        case .strengthPowerup:
+            fatalError("TODO: implement")
+        case .attackPowerup:
+            fatalError("TODO: implement")
+        case .invinciblePowerup:
             fatalError("TODO: implement")
         }
     }
