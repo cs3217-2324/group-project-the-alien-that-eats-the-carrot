@@ -37,7 +37,6 @@ class MeleeAttackStyle: AttackStyle, HasCoolDown {
             && !isCoolingDown {
             for direction in acceptableAttackDirections
             where isAttacker(attacker, attacking: attackee, from: direction, delegate: delegate) {
-                print("inside")
                 dealDamage(damage, to: attackee, delegate: delegate)
                 applyKnockback(from: attacker, to: attackee, direction: direction, delegate: delegate)
                 setCoolDown(for: attacker, delegate: delegate)
@@ -61,7 +60,6 @@ class MeleeAttackStyle: AttackStyle, HasCoolDown {
 
     private func applyKnockback(from attacker: Entity, to attackee: Entity,
                                 direction: Direction, delegate: AttackableDelegate) {
-        print("applying knockback")
         guard let attackeePhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attackee) else {
             return
         }
