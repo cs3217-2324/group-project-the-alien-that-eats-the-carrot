@@ -24,19 +24,19 @@ class TerrainsViewController: UIViewController {
     }
 
     @IBAction private func blockUnreakableButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .block(.breakable))
+        delegate?.buttonTapped(type: .block(.gravity))
     }
 
     @IBAction private func blockPushableButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .block(.pushable))
     }
 
-    @IBAction private func platformOnewayButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .block(.normal))
+    @IBAction private func rollerButtonTapped(_ sender: UIButton) {
+        delegate?.buttonTapped(type: .block(.roller))
     }
 
-    @IBAction private func platformSolidButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .block(.normal))
+    @IBAction private func temporaryButtonTapped(_ sender: UIButton) {
+        delegate?.buttonTapped(type: .block(.temporary))
     }
 
     @IBAction private func mushroomButtonTapped(_ sender: UIButton) {
