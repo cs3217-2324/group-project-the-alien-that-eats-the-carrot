@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad12_9" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -146,6 +146,7 @@
                                                     <constraint firstAttribute="width" secondItem="v2E-Cp-RB8" secondAttribute="height" multiplier="378:527" id="9TC-4v-cB7"/>
                                                     <constraint firstAttribute="bottom" secondItem="2cf-sq-Eix" secondAttribute="bottom" id="AgK-fi-gm6"/>
                                                     <constraint firstAttribute="height" constant="527" id="X2e-n9-9U0"/>
+                                                    <constraint firstAttribute="width" secondItem="v2E-Cp-RB8" secondAttribute="height" multiplier="378:527" id="cwU-Fq-XVH"/>
                                                     <constraint firstAttribute="trailing" secondItem="2cf-sq-Eix" secondAttribute="trailing" id="eCp-Zv-wxB"/>
                                                     <constraint firstItem="2cf-sq-Eix" firstAttribute="top" secondItem="v2E-Cp-RB8" secondAttribute="top" id="g1q-aJ-lFl"/>
                                                     <constraint firstItem="2cf-sq-Eix" firstAttribute="leading" secondItem="v2E-Cp-RB8" secondAttribute="leading" id="x9F-5K-EH2"/>
@@ -164,8 +165,10 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="vFd-A3-yH1" secondAttribute="height" multiplier="378:527" id="2VN-ei-6cg"/>
                                                     <constraint firstAttribute="trailing" secondItem="xej-u5-H1y" secondAttribute="trailing" id="7S9-Ib-uuh"/>
                                                     <constraint firstAttribute="height" constant="527" id="JuK-i0-Qz8"/>
+                                                    <constraint firstAttribute="width" secondItem="vFd-A3-yH1" secondAttribute="height" multiplier="378:527" id="NYY-FQ-Z4s"/>
                                                     <constraint firstAttribute="bottom" secondItem="xej-u5-H1y" secondAttribute="bottom" id="O6Y-1A-WZM"/>
                                                     <constraint firstItem="xej-u5-H1y" firstAttribute="leading" secondItem="vFd-A3-yH1" secondAttribute="leading" id="ptR-Qx-klR"/>
                                                     <constraint firstItem="xej-u5-H1y" firstAttribute="top" secondItem="vFd-A3-yH1" secondAttribute="top" id="wuw-6W-Rw7"/>
@@ -186,7 +189,9 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="5Kt-jk-qkL" secondAttribute="height" multiplier="378:527" id="9xu-nv-Xtx"/>
+                                                    <constraint firstAttribute="width" secondItem="5Kt-jk-qkL" secondAttribute="height" multiplier="378:527" id="AAO-jU-Xr6"/>
                                                     <constraint firstAttribute="trailing" secondItem="zEQ-vy-m1R" secondAttribute="trailing" id="DF5-Mw-Vxn"/>
+                                                    <constraint firstAttribute="width" secondItem="5Kt-jk-qkL" secondAttribute="height" multiplier="378:527" id="Dli-I3-mNu"/>
                                                     <constraint firstItem="zEQ-vy-m1R" firstAttribute="leading" secondItem="5Kt-jk-qkL" secondAttribute="leading" id="XU4-EE-C9V"/>
                                                     <constraint firstAttribute="bottom" secondItem="zEQ-vy-m1R" secondAttribute="bottom" id="nuD-xn-csv"/>
                                                     <constraint firstItem="zEQ-vy-m1R" firstAttribute="top" secondItem="5Kt-jk-qkL" secondAttribute="top" id="s2B-78-XVL"/>
@@ -208,6 +213,8 @@
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="ZR4-j2-eoI" secondAttribute="bottom" id="6dX-k1-Duj"/>
                                                     <constraint firstItem="ZR4-j2-eoI" firstAttribute="top" secondItem="ScN-i4-g24" secondAttribute="top" id="CdY-XF-FTJ"/>
+                                                    <constraint firstAttribute="width" secondItem="ScN-i4-g24" secondAttribute="height" multiplier="378:527" id="Fed-5w-4uu"/>
+                                                    <constraint firstAttribute="width" secondItem="ScN-i4-g24" secondAttribute="height" multiplier="378:527" id="jV5-9g-r3U"/>
                                                     <constraint firstAttribute="width" secondItem="ScN-i4-g24" secondAttribute="height" multiplier="378:527" id="nhg-W9-tUh"/>
                                                     <constraint firstItem="ZR4-j2-eoI" firstAttribute="leading" secondItem="ScN-i4-g24" secondAttribute="leading" id="sE0-9D-Wgi"/>
                                                     <constraint firstAttribute="height" constant="527" id="z16-MW-QBr"/>
@@ -216,14 +223,7 @@
                                             </view>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="vFd-A3-yH1" firstAttribute="width" secondItem="vFd-A3-yH1" secondAttribute="height" multiplier="378:527" id="2VN-ei-6cg"/>
-                                            <constraint firstItem="5Kt-jk-qkL" firstAttribute="width" secondItem="5Kt-jk-qkL" secondAttribute="height" multiplier="378:527" id="AAO-jU-Xr6"/>
-                                            <constraint firstItem="5Kt-jk-qkL" firstAttribute="width" secondItem="5Kt-jk-qkL" secondAttribute="height" multiplier="378:527" id="Dli-I3-mNu"/>
-                                            <constraint firstItem="ScN-i4-g24" firstAttribute="width" secondItem="ScN-i4-g24" secondAttribute="height" multiplier="378:527" id="Fed-5w-4uu"/>
-                                            <constraint firstItem="vFd-A3-yH1" firstAttribute="width" secondItem="vFd-A3-yH1" secondAttribute="height" multiplier="378:527" id="NYY-FQ-Z4s"/>
                                             <constraint firstItem="v2E-Cp-RB8" firstAttribute="centerY" secondItem="30K-eN-b9S" secondAttribute="centerY" id="V0L-Ko-4Wo"/>
-                                            <constraint firstItem="v2E-Cp-RB8" firstAttribute="width" secondItem="v2E-Cp-RB8" secondAttribute="height" multiplier="378:527" id="cwU-Fq-XVH"/>
-                                            <constraint firstItem="ScN-i4-g24" firstAttribute="width" secondItem="ScN-i4-g24" secondAttribute="height" multiplier="378:527" id="jV5-9g-r3U"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
@@ -442,6 +442,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9Jz-jg-0fL" secondAttribute="height" multiplier="1:1" id="9yT-cc-Z9Q"/>
                                     <constraint firstAttribute="width" constant="152" id="JsP-3c-8Zb"/>
+                                    <constraint firstAttribute="width" secondItem="9Jz-jg-0fL" secondAttribute="height" multiplier="1:1" id="Tco-o2-ldV"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="icon-right"/>
@@ -463,6 +464,8 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="152" id="7ux-0p-ihH"/>
                                     <constraint firstAttribute="width" secondItem="Kuy-1j-vSH" secondAttribute="height" multiplier="1:1" id="NA1-HB-bX7"/>
+                                    <constraint firstAttribute="width" secondItem="Kuy-1j-vSH" secondAttribute="height" multiplier="1:1" id="hJL-K2-UwZ"/>
+                                    <constraint firstAttribute="width" secondItem="Kuy-1j-vSH" secondAttribute="height" multiplier="1:1" id="qqz-qo-r5D"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" image="icon-top"/>
@@ -493,11 +496,8 @@
                             <constraint firstItem="x7j-hl-HCX" firstAttribute="trailing" secondItem="cKF-8F-ESf" secondAttribute="trailing" id="Q7Y-M8-1Au"/>
                             <constraint firstAttribute="bottom" secondItem="6Pd-ri-dRU" secondAttribute="bottom" id="RPD-4T-Ffw"/>
                             <constraint firstItem="dNy-2I-pNf" firstAttribute="top" secondItem="44l-ro-zMB" secondAttribute="top" id="RuM-oL-TX9"/>
-                            <constraint firstItem="9Jz-jg-0fL" firstAttribute="width" secondItem="9Jz-jg-0fL" secondAttribute="height" multiplier="1:1" id="Tco-o2-ldV"/>
                             <constraint firstItem="Cht-yz-AKE" firstAttribute="top" secondItem="44l-ro-zMB" secondAttribute="top" id="YzG-IA-ISh"/>
                             <constraint firstItem="6Pd-ri-dRU" firstAttribute="top" secondItem="44l-ro-zMB" secondAttribute="top" id="h6B-Ug-DtB"/>
-                            <constraint firstItem="Kuy-1j-vSH" firstAttribute="width" secondItem="Kuy-1j-vSH" secondAttribute="height" multiplier="1:1" id="hJL-K2-UwZ"/>
-                            <constraint firstItem="Kuy-1j-vSH" firstAttribute="width" secondItem="Kuy-1j-vSH" secondAttribute="height" multiplier="1:1" id="qqz-qo-r5D"/>
                             <constraint firstItem="x7j-hl-HCX" firstAttribute="bottom" secondItem="9in-Sc-Qz9" secondAttribute="bottom" constant="31" id="uiY-VI-Fuf"/>
                             <constraint firstItem="x7j-hl-HCX" firstAttribute="bottom" secondItem="9Jz-jg-0fL" secondAttribute="bottom" constant="31" id="wjv-Mi-XvQ"/>
                             <constraint firstItem="cKF-8F-ESf" firstAttribute="top" secondItem="44l-ro-zMB" secondAttribute="top" id="xvy-sq-95M"/>
@@ -567,6 +567,7 @@
                                         <rect key="frame" x="230" y="0.0" width="108" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="DEu-F3-vmC"/>
+                                            <constraint firstAttribute="width" secondItem="yFz-OF-4Vy" secondAttribute="height" multiplier="1:1" id="L6h-ML-e1W"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
@@ -574,7 +575,6 @@
                                 <constraints>
                                     <constraint firstItem="tPy-zS-k3E" firstAttribute="centerY" secondItem="Zgn-zI-lGN" secondAttribute="centerY" id="1au-R2-ywl"/>
                                     <constraint firstItem="tPy-zS-k3E" firstAttribute="centerX" secondItem="Zgn-zI-lGN" secondAttribute="centerX" id="9qX-tL-bV7"/>
-                                    <constraint firstItem="yFz-OF-4Vy" firstAttribute="width" secondItem="yFz-OF-4Vy" secondAttribute="height" multiplier="1:1" id="L6h-ML-e1W"/>
                                     <constraint firstAttribute="height" constant="108" id="N8y-4F-Soa"/>
                                     <constraint firstItem="nEa-sP-C3N" firstAttribute="centerY" secondItem="Zgn-zI-lGN" secondAttribute="centerY" id="UdX-Bq-Tve"/>
                                     <constraint firstAttribute="width" constant="338" id="VYl-at-p3P"/>
@@ -962,6 +962,7 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HMg-Bs-6XP">
                                                 <rect key="frame" x="98" y="0.0" width="72.5" height="73"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="HMg-Bs-6XP" secondAttribute="height" multiplier="1:1" id="OeJ-RM-DqZ"/>
                                                     <constraint firstAttribute="width" secondItem="HMg-Bs-6XP" secondAttribute="height" multiplier="1:1" id="dZQ-kJ-Y0d"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -973,6 +974,7 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FZl-6t-N0H">
                                                 <rect key="frame" x="195.5" y="0.0" width="73" height="73"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="FZl-6t-N0H" secondAttribute="height" multiplier="1:1" id="W3V-YY-l8S"/>
                                                     <constraint firstAttribute="width" secondItem="FZl-6t-N0H" secondAttribute="height" multiplier="1:1" id="lLU-TB-QYW"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -985,6 +987,7 @@
                                                 <rect key="frame" x="293.5" y="0.0" width="72.5" height="73"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="k1x-oN-AQJ" secondAttribute="height" multiplier="1:1" id="Xfy-sa-lJj"/>
+                                                    <constraint firstAttribute="width" secondItem="k1x-oN-AQJ" secondAttribute="height" multiplier="1:1" id="wgj-By-Lpb"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="block-nonbreakable"/>
@@ -995,6 +998,8 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZOa-Qg-WLj">
                                                 <rect key="frame" x="391" y="0.0" width="73" height="73"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="ZOa-Qg-WLj" secondAttribute="height" multiplier="1:1" id="33Y-K7-EWZ"/>
+                                                    <constraint firstAttribute="width" secondItem="ZOa-Qg-WLj" secondAttribute="height" multiplier="1:1" id="dm9-XZ-kOM"/>
                                                     <constraint firstAttribute="width" secondItem="ZOa-Qg-WLj" secondAttribute="height" multiplier="1:1" id="wYd-vZ-trn"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1004,13 +1009,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="ZOa-Qg-WLj" firstAttribute="width" secondItem="ZOa-Qg-WLj" secondAttribute="height" multiplier="1:1" id="33Y-K7-EWZ"/>
-                                            <constraint firstItem="HMg-Bs-6XP" firstAttribute="width" secondItem="HMg-Bs-6XP" secondAttribute="height" multiplier="1:1" id="OeJ-RM-DqZ"/>
-                                            <constraint firstItem="FZl-6t-N0H" firstAttribute="width" secondItem="FZl-6t-N0H" secondAttribute="height" multiplier="1:1" id="W3V-YY-l8S"/>
-                                            <constraint firstItem="ZOa-Qg-WLj" firstAttribute="width" secondItem="ZOa-Qg-WLj" secondAttribute="height" multiplier="1:1" id="dm9-XZ-kOM"/>
-                                            <constraint firstItem="k1x-oN-AQJ" firstAttribute="width" secondItem="k1x-oN-AQJ" secondAttribute="height" multiplier="1:1" id="wgj-By-Lpb"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="UtR-rT-IS3">
                                         <rect key="frame" x="0.0" y="93" width="366" height="72.5"/>
@@ -1029,18 +1027,20 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFg-V5-T3e">
                                                 <rect key="frame" x="98" y="0.0" width="72.5" height="72.5"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="wFg-V5-T3e" secondAttribute="height" multiplier="1:1" id="5Vg-Px-VXE"/>
                                                     <constraint firstAttribute="width" secondItem="wFg-V5-T3e" secondAttribute="height" multiplier="1:1" id="irS-Ku-THd"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="platform-solid"/>
                                                 <connections>
-                                                    <action selector="platformSolidButtonTapped:" destination="aIf-QM-xmW" eventType="touchUpInside" id="UKP-ua-IQ3"/>
+                                                    <action selector="temporaryButtonTapped:" destination="aIf-QM-xmW" eventType="touchUpInside" id="UKP-ua-IQ3"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bme-qH-sAJ">
                                                 <rect key="frame" x="195.5" y="0.0" width="73" height="72.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Bme-qH-sAJ" secondAttribute="height" multiplier="1:1" id="Ijr-Kv-7l7"/>
+                                                    <constraint firstAttribute="width" secondItem="Bme-qH-sAJ" secondAttribute="height" multiplier="1:1" id="NiZ-5P-bxE"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="mushroom-1"/>
@@ -1051,7 +1051,9 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KH4-dQ-zek">
                                                 <rect key="frame" x="293.5" y="0.0" width="72.5" height="72.5"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="KH4-dQ-zek" secondAttribute="height" multiplier="1:1" id="dB2-JM-xxb"/>
                                                     <constraint firstAttribute="width" secondItem="KH4-dQ-zek" secondAttribute="height" multiplier="1:1" id="lVN-5V-RNS"/>
+                                                    <constraint firstAttribute="width" secondItem="KH4-dQ-zek" secondAttribute="height" multiplier="1:1" id="ppE-qW-1wJ"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="spike"/>
@@ -1060,12 +1062,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="wFg-V5-T3e" firstAttribute="width" secondItem="wFg-V5-T3e" secondAttribute="height" multiplier="1:1" id="5Vg-Px-VXE"/>
-                                            <constraint firstItem="Bme-qH-sAJ" firstAttribute="width" secondItem="Bme-qH-sAJ" secondAttribute="height" multiplier="1:1" id="NiZ-5P-bxE"/>
-                                            <constraint firstItem="KH4-dQ-zek" firstAttribute="width" secondItem="KH4-dQ-zek" secondAttribute="height" multiplier="1:1" id="dB2-JM-xxb"/>
-                                            <constraint firstItem="KH4-dQ-zek" firstAttribute="width" secondItem="KH4-dQ-zek" secondAttribute="height" multiplier="1:1" id="ppE-qW-1wJ"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -1113,6 +1109,7 @@
                                                 <rect key="frame" x="98" y="0.0" width="72.5" height="73"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="0ci-5N-f9h" secondAttribute="height" multiplier="1:1" id="X0z-R6-V6h"/>
+                                                    <constraint firstAttribute="width" secondItem="0ci-5N-f9h" secondAttribute="height" multiplier="1:1" id="bgP-WQ-zbd"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="stationary-1"/>
@@ -1121,9 +1118,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="0ci-5N-f9h" firstAttribute="width" secondItem="0ci-5N-f9h" secondAttribute="height" multiplier="1:1" id="bgP-WQ-zbd"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="zQ7-D3-LeG">
                                         <rect key="frame" x="0.0" y="93" width="73" height="72.5"/>
@@ -1203,6 +1197,7 @@
                                                 <rect key="frame" x="98" y="0.0" width="72.5" height="72.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Vxd-xA-Gz5" secondAttribute="height" multiplier="1:1" id="A5G-ui-Chh"/>
+                                                    <constraint firstAttribute="width" secondItem="Vxd-xA-Gz5" secondAttribute="height" multiplier="1:1" id="yV1-jd-9gE"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="powerup-doublejump"/>
@@ -1213,6 +1208,7 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VbB-lc-bQu">
                                                 <rect key="frame" x="195.5" y="0.0" width="73" height="72.5"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="VbB-lc-bQu" secondAttribute="height" multiplier="1:1" id="oLe-2A-gCZ"/>
                                                     <constraint firstAttribute="width" secondItem="VbB-lc-bQu" secondAttribute="height" multiplier="1:1" id="pJx-uO-Wia"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1225,6 +1221,7 @@
                                                 <rect key="frame" x="293.5" y="0.0" width="72.5" height="72.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="D1J-fv-5T8" secondAttribute="height" multiplier="1:1" id="Xnq-fH-Tam"/>
+                                                    <constraint firstAttribute="width" secondItem="D1J-fv-5T8" secondAttribute="height" multiplier="1:1" id="umk-4t-Vfa"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" image="powerup-strength"/>
@@ -1233,11 +1230,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="VbB-lc-bQu" firstAttribute="width" secondItem="VbB-lc-bQu" secondAttribute="height" multiplier="1:1" id="oLe-2A-gCZ"/>
-                                            <constraint firstItem="D1J-fv-5T8" firstAttribute="width" secondItem="D1J-fv-5T8" secondAttribute="height" multiplier="1:1" id="umk-4t-Vfa"/>
-                                            <constraint firstItem="Vxd-xA-Gz5" firstAttribute="width" secondItem="Vxd-xA-Gz5" secondAttribute="height" multiplier="1:1" id="yV1-jd-9gE"/>
-                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -1284,6 +1276,7 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mu3-ag-RfJ">
                                                 <rect key="frame" x="98" y="0.0" width="72.5" height="73"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="Mu3-ag-RfJ" secondAttribute="height" multiplier="1:1" id="ol9-78-9Vg"/>
                                                     <constraint firstAttribute="width" secondItem="Mu3-ag-RfJ" secondAttribute="height" multiplier="1:1" id="qDL-FG-iOM"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1295,6 +1288,8 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U0h-Vq-UBc">
                                                 <rect key="frame" x="195.5" y="0.0" width="73" height="73"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="U0h-Vq-UBc" secondAttribute="height" multiplier="1:1" id="Bh4-Pa-bb2"/>
+                                                    <constraint firstAttribute="width" secondItem="U0h-Vq-UBc" secondAttribute="height" multiplier="1:1" id="La1-dY-Ppy"/>
                                                     <constraint firstAttribute="width" secondItem="U0h-Vq-UBc" secondAttribute="height" multiplier="1:1" id="w6g-32-Rcm"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1306,6 +1301,8 @@
                                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l5v-hM-C29">
                                                 <rect key="frame" x="293.5" y="0.0" width="72.5" height="73"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="width" secondItem="l5v-hM-C29" secondAttribute="height" multiplier="1:1" id="66w-IR-pVJ"/>
+                                                    <constraint firstAttribute="width" secondItem="l5v-hM-C29" secondAttribute="height" multiplier="1:1" id="STR-SV-odp"/>
                                                     <constraint firstAttribute="width" secondItem="l5v-hM-C29" secondAttribute="height" multiplier="1:1" id="yhF-7f-79f"/>
                                                 </constraints>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1315,13 +1312,6 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <constraints>
-                                            <constraint firstItem="l5v-hM-C29" firstAttribute="width" secondItem="l5v-hM-C29" secondAttribute="height" multiplier="1:1" id="66w-IR-pVJ"/>
-                                            <constraint firstItem="U0h-Vq-UBc" firstAttribute="width" secondItem="U0h-Vq-UBc" secondAttribute="height" multiplier="1:1" id="Bh4-Pa-bb2"/>
-                                            <constraint firstItem="U0h-Vq-UBc" firstAttribute="width" secondItem="U0h-Vq-UBc" secondAttribute="height" multiplier="1:1" id="La1-dY-Ppy"/>
-                                            <constraint firstItem="l5v-hM-C29" firstAttribute="width" secondItem="l5v-hM-C29" secondAttribute="height" multiplier="1:1" id="STR-SV-odp"/>
-                                            <constraint firstItem="Mu3-ag-RfJ" firstAttribute="width" secondItem="Mu3-ag-RfJ" secondAttribute="height" multiplier="1:1" id="ol9-78-9Vg"/>
-                                        </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Ap0-xF-cxm">
                                         <rect key="frame" x="0.0" y="93" width="73" height="72.5"/>
@@ -1753,22 +1743,22 @@
         <image name="spike" width="105" height="105"/>
         <image name="stationary-1" width="105" height="105"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray4Color">
-            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.81960784310000001" green="0.81960784310000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
-            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
