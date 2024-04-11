@@ -114,13 +114,13 @@ extension Nexus {
         case .mushroom:
             return getMushroomBlockFactory(from: entity, block: block)
         case .doubleJumpPowerup:
-            fatalError("TODO: implement")
+            return getPowerupBlockFactory(from: entity, block: block, type: .doubleJump)
         case .strengthPowerup:
-            fatalError("TODO: implement")
+            return getPowerupBlockFactory(from: entity, block: block, type: .strength)
         case .attackPowerup:
-            fatalError("TODO: implement")
+            return getPowerupBlockFactory(from: entity, block: block, type: .attack)
         case .invinciblePowerup:
-            fatalError("TODO: implement")
+            return getPowerupBlockFactory(from: entity, block: block, type: .invinsible)
         }
     }
 
@@ -198,8 +198,17 @@ extension Nexus {
     }
 
     private func getPowerupBlockFactory(from entity: Entity,
-                                        block: Block) -> EntityFactory {
-        PushableBlockFactory(from: block, to: entity)
+                                        block: Block, type: PowerupType) -> EntityFactory {
+        switch type {
+        case .attack:
+            return AttackPowerupBlockFactory(from: block, to: entity)
+        case .doubleJump:
+            return DoubleJumpPowerupBlockFactory(from: block, to: entity)
+        case .strength:
+            return StrengthPowerupBlockFactory(from: block, to: entity)
+        case .invinsible:
+            return InvinciblePowerupBlockFactory(from: block, to: entity)
+        }
     }
 
     private func getMushroomBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
