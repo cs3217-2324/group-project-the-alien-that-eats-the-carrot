@@ -24,7 +24,7 @@ class TerrainsViewController: UIViewController {
     }
 
     @IBAction private func blockUnreakableButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .block(.breakable))
+        delegate?.buttonTapped(type: .block(.gravity))
     }
 
     @IBAction private func blockPushableButtonTapped(_ sender: UIButton) {
