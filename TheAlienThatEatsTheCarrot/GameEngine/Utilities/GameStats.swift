@@ -12,4 +12,10 @@ struct GameStats {
     let carrots: [Int]
     let scores: [CGFloat]
     let lives: [Int]
+
+    private(set) var enemiesKilled: Int = .zero {
+        didSet {
+            EventManager.shared.postEvent(EnemiesKilledStatUpdateEvent(gameStats: self))
+        }
+    }
 }
