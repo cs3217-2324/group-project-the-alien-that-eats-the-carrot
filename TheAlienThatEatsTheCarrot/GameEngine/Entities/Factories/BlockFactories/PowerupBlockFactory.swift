@@ -21,11 +21,6 @@ class PowerupBlockFactory: BlockFactory {
                                       isDynamic: false)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let frictionalComponent = FrictionalComponent(entity: entity)
-        let collisionEffect = SpawnPowerupCollisionEffect(powerupType: .strength, spawnDirection: .up)
-        let collisionEffectComponent = CollisionEffectComponent(entity: entity,
-                                                                acceptableComponentsColliders: [PlayerComponent.self],
-                                                                acceptableDirectionsToCollideFrom: [.down],
-                                                                collisionEffect: collisionEffect)
-        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, collisionEffectComponent]
+        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent]
     }
 }
