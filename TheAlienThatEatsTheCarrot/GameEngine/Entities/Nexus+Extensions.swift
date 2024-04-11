@@ -106,7 +106,7 @@ extension Nexus {
         case .ground:
             return getGroundBlockFactory(from: entity, block: block)
         case .breakable:
-            fatalError("TODO: implement")
+            return getGroundBlockFactory(from: entity, block: block)
         case .pushable:
             return getPushableBlockFactory(from: entity, block: block)
         case .spike:
@@ -117,6 +117,8 @@ extension Nexus {
             return getRollerBlockFactory(from: entity, block: block)
         case .temporary:
             return getTemporaryBlockFactory(from: entity, block: block)
+        case .gravity:
+            return getGravityBlockFactory(from: entity, block: block)
         case .doubleJumpPowerup:
             return getPowerupBlockFactory(from: entity, block: block, type: .doubleJump)
         case .strengthPowerup:
@@ -224,6 +226,14 @@ extension Nexus {
     }
 
     private func getTemporaryBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        TemporaryBlockFactory(from: block, to: entity)
+    }
+
+    private func getGravityBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        GravityBlockFactory(from: block, to: entity)
+    }
+
+    private func getBreakableBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
         TemporaryBlockFactory(from: block, to: entity)
     }
 }

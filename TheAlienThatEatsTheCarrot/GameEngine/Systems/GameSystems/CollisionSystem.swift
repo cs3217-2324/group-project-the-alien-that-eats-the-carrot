@@ -129,6 +129,10 @@ extension CollisionSystem: CollisionEffectDelegate {
     func containsAnyComponent(of types: [Component.Type], in entity: Entity) -> Bool {
         nexus.containsAnyComponent(of: types, in: entity)
     }
+
+    func removeComponents<T: Component>(of type: T.Type, for entity: Entity) {
+        nexus.removeComponents(of: type, for: entity)
+    }
 }
 
 extension PhysicsBody {
