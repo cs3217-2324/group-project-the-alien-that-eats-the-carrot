@@ -57,9 +57,7 @@ class DamageSystem: System {
     }
 
     private func handleDestroyEvent(for entity: Entity) {
-        if nexus.containsAnyComponent(of: [PlayerComponent.self], in: entity) {
-            print("Player died!")
-        }
+        // Do nohing for now
     }
 
     private func handleRespawnIfNecessary(for entity: Entity) {

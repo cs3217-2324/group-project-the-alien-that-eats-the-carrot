@@ -34,7 +34,7 @@ final class Block: BoardObject {
     }
 
     func isOverlapping(with boardObject: BoardObject) -> Bool {
-        if boardObject is Powerup && self.blockType == .powerup {
+        if boardObject is Powerup && self.blockType == .doubleJumpPowerup {
             return false
         }
 

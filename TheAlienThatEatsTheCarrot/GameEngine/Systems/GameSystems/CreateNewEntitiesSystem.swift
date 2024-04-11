@@ -54,7 +54,7 @@ class CreateNewEntitiesSystem: System {
     private func handleCreateProjectileEvent(_ event: CreateProjectileEvent) {
         nexus.addProjectile(type: event.projectileType, velocity: event.velocity,
                             position: event.position, size: event.size,
-                            targetables: event.targetables)
+                            targetables: event.targetables, dissapearWhenCollideWith: event.dissapearWhenCollideWith)
     }
 
     private func handleRemoveEntityEvent(_ event: RemoveEntityEvent) {

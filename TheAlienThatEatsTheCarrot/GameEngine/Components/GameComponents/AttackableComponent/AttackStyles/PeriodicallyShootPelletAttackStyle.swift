@@ -10,23 +10,30 @@ import Foundation
 class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
     static let DEFAULT_PELLET_SPEED = 1_000.0
     static let DEFAULT_COOLDOWN_DURATION = 1.0
+    static let DEFAULT_DAMAGE: CGFloat = .zero
     var targetables: [Component.Type]
     var coolDownDuration: CGFloat
     var directions: [Direction]
+    var damage: CGFloat
     var speed: CGFloat
     var isCoolingDown = false
+    var dissapearWhenCollideWith: [Component.Type]
 
     init(targetables: [Component.Type],
          directions: [Direction],
+         damage: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_DAMAGE,
          cooldownDuration: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_COOLDOWN_DURATION,
-         speed: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_PELLET_SPEED) {
+         speed: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_PELLET_SPEED,
+         dissapearWhenCollideWith: [Component.Type]) {
         self.targetables = targetables
         self.coolDownDuration = cooldownDuration
         self.directions = directions
+        self.damage = damage
         self.speed = speed
+        self.dissapearWhenCollideWith = dissapearWhenCollideWith
     }
 
-    func attack(damage: CGFloat, attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
+    func attack(attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
         guard attacker != attackee,
               canAttack(attackee, with: targetables, using: delegate),
               !isCoolingDown,
@@ -38,7 +45,8 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
             let createPelletEvent = CreateProjectileEvent(projectileType: .pellet,
                                                           position: shooterPhysicsBody.physicsBody.position,
                                                           velocity: pelletVelocity,
-                                                          targetables: targetables)
+                                                          targetables: targetables,
+                                                          dissapearWhenCollideWith: dissapearWhenCollideWith)
             EventManager.shared.postEvent(createPelletEvent)
         }
         setCoolDown(for: attacker, delegate: delegate)
@@ -53,7 +61,7 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
         case .left:
             return CGVector(dx: -speed, dy: 0)
         case .right:
-            return CGVector(dx: 0, dy: speed)
+            return CGVector(dx: speed, dy: 0)
         }
     }
 }

@@ -23,8 +23,10 @@ class StationaryEnemyFactory: EnemyFactory {
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity)
         let scoreComponent = ScoreComponent(entity: entity, score: StationaryEnemyFactory.SCORE)
+        let dissapearWhenCollideWith: [Component.Type] = [PlayerComponent.self, BlockComponent.self]
         let attackStyle = PeriodicallyShootPelletAttackStyle(targetables: [PlayerComponent.self],
-                                                             directions: StationaryEnemyFactory.DIRECTIONS)
+                                                             directions: StationaryEnemyFactory.DIRECTIONS,
+                                                             dissapearWhenCollideWith: dissapearWhenCollideWith)
         let attackableComponent = AttackableComponent(entity: entity, attackStyles: [attackStyle])
         return [enemyComponent, renderableComponent, physicsComponent,
                 destroyableComponent, scoreComponent, attackableComponent]

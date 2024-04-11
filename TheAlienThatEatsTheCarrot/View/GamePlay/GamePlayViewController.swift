@@ -31,6 +31,10 @@ class GamePlayViewController: UIViewController {
     private var isGameLoopRunning = false
     var count: Int = 0
 
+    // MARK: observers
+    private var damageObserver: NSObjectProtocol?
+    private var playerDiedObserver: NSObjectProtocol?
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let levelNameToLoad = levelName else {
@@ -38,7 +42,8 @@ class GamePlayViewController: UIViewController {
         }
         do {
             let level = try levelDataManager.fetchLevel(levelName: levelNameToLoad)
-            gameEngine = GameEngine(level: level)
+            gameEngine = GameEngine(level: level, bounds: boardAreaView.bounds)
+            subscribeToEvents()
         } catch {
             print("Error loading level \(levelNameToLoad): \(error)")
             presentAlert(message: "Failed to load level: \(error.localizedDescription)")
@@ -79,6 +84,7 @@ class GamePlayViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         stopGameLoop()
+        unsubscribeToEvents()
     }
 
     private func presentAlert(message: String) {
@@ -164,4 +170,63 @@ class GamePlayViewController: UIViewController {
         startGameLoop()
     }
 
+    private func subscribeToEvents() {
+        damageObserver = EventManager.shared.subscribe(to: DamageEvent.self, using: onEventOccur)
+        playerDiedObserver = EventManager.shared.subscribe(to: PlayerDiedEvent.self, using: onEventOccur)
+    }
+
+    private func unsubscribeToEvents() {
+        if let observer1 = damageObserver {
+            EventManager.shared.unsubscribe(from: observer1)
+        }
+        if let observer2 = playerDiedObserver {
+            EventManager.shared.unsubscribe(from: observer2)
+        }
+    }
+
+    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
+        if let damageEvent = event as? DamageEvent {
+            self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
+        } else if let playerDiedEvent = event as? PlayerDiedEvent {
+            self?.showPlayerDied()
+        }
+    }
+}
+
+extension GamePlayViewController {
+    func showDamage(at position: CGPoint, amount: CGFloat) {
+        let damageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        damageLabel.text = "-\(amount)"
+        damageLabel.textColor = .red
+        damageLabel.center = position
+        boardAreaView.addSubview(damageLabel)
+
+        UIView.animate(withDuration: 1.0, animations: {
+            damageLabel.alpha = 0
+            damageLabel.center.y -= 50
+        }) { _ in
+            damageLabel.removeFromSuperview()
+        }
+    }
+
+    func showPlayerDied() {
+        let diedLabel = UILabel()
+        diedLabel.text = "YOU DIED"
+        diedLabel.textColor = .red
+        diedLabel.font = UIFont.boldSystemFont(ofSize: 80)
+        diedLabel.sizeToFit()
+        diedLabel.center = boardAreaView.center
+        diedLabel.alpha = 0
+        view.addSubview(diedLabel)
+
+        UIView.animate(withDuration: 0.5, animations: {
+            diedLabel.alpha = 1
+        }) { _ in
+            UIView.animate(withDuration: 1.0, delay: 2.0, options: [], animations: {
+                diedLabel.alpha = 0
+            }) { _ in
+                diedLabel.removeFromSuperview()
+            }
+        }
+    }
 }

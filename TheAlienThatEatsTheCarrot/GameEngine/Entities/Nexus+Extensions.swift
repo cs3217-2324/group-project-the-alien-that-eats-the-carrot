@@ -58,13 +58,25 @@ extension Nexus {
         addComponents(components, to: entity)
     }
 
+    /// For game
+    func addGameEntity(with bounds: CGRect) {
+        let entity = Entity()
+        let factory = GameEntityFactory(entity: entity, bounds: bounds)
+        let components = factory.createComponents()
+        addComponents(components, to: entity)
+    }
+
     /// Factory for projectile
-    func addProjectile(type: ProjectileType, velocity: CGVector, position: CGPoint, size: CGSize, targetables: [Component.Type]) {
+    func addProjectile(type: ProjectileType, velocity: CGVector, position: CGPoint,
+                       size: CGSize, targetables: [Component.Type],
+                       dissapearWhenCollideWith: [Component.Type]) {
         let entity = Entity()
         var factory: EntityFactory
         switch type {
         case .pellet:
-            factory = getPelletProjectileFactory(from: entity, velocity: velocity, position: position, targetables: targetables)
+            factory = getPelletProjectileFactory(from: entity, velocity: velocity, position: position,
+                                                 targetables: targetables,
+                                                 dissapearWhenCollideWith: dissapearWhenCollideWith)
         }
         let components = factory.createComponents()
         addComponents(components, to: entity)
@@ -99,8 +111,16 @@ extension Nexus {
             return getPushableBlockFactory(from: entity, block: block)
         case .spike:
             return getSpikeBlockFactory(from: entity, block: block)
-        case .powerup:
-            fatalError("TODO: implement")
+        case .mushroom:
+            return getMushroomBlockFactory(from: entity, block: block)
+        case .doubleJumpPowerup:
+            return getPowerupBlockFactory(from: entity, block: block, type: .doubleJump)
+        case .strengthPowerup:
+            return getPowerupBlockFactory(from: entity, block: block, type: .strength)
+        case .attackPowerup:
+            return getPowerupBlockFactory(from: entity, block: block, type: .attack)
+        case .invinciblePowerup:
+            return getPowerupBlockFactory(from: entity, block: block, type: .invinsible)
         }
     }
 
@@ -120,7 +140,7 @@ extension Nexus {
                                    powerup: Powerup) -> EntityFactory {
         switch type {
         case .attack:
-            fatalError("TODO: implement")
+            return getAttackPowerupFactory(from: entity, powerup: powerup)
         case .doubleJump:
             return getDoubleJumpPowerupFactory(from: entity, powerup: powerup)
         case .invinsible:
@@ -178,8 +198,21 @@ extension Nexus {
     }
 
     private func getPowerupBlockFactory(from entity: Entity,
-                                        block: Block) -> EntityFactory {
-        PushableBlockFactory(from: block, to: entity)
+                                        block: Block, type: PowerupType) -> EntityFactory {
+        switch type {
+        case .attack:
+            return AttackPowerupBlockFactory(from: block, to: entity)
+        case .doubleJump:
+            return DoubleJumpPowerupBlockFactory(from: block, to: entity)
+        case .strength:
+            return StrengthPowerupBlockFactory(from: block, to: entity)
+        case .invinsible:
+            return InvinciblePowerupBlockFactory(from: block, to: entity)
+        }
+    }
+
+    private func getMushroomBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        MushroomBlockFactory(from: block, to: entity)
     }
 }
 
@@ -192,12 +225,17 @@ extension Nexus {
 
     private func getInvinsiblePowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
-        InvinsiblePowerupFactory(boardObject: powerup, entity: entity)
+        InvinciblePowerupFactory(boardObject: powerup, entity: entity)
     }
 
     private func getDoubleJumpPowerupFactory(from entity: Entity,
                                              powerup: Powerup) -> EntityFactory {
         DoubleJumpPowerupFactory(boardObject: powerup, entity: entity)
+    }
+
+    private func getAttackPowerupFactory(from entity: Entity,
+                                         powerup: Powerup) -> EntityFactory {
+        AttackPowerupFactory(boardObject: powerup, entity: entity)
     }
 }
 
@@ -231,8 +269,11 @@ extension Nexus {
     func getPelletProjectileFactory(from entity: Entity, velocity: CGVector,
                                     position: CGPoint,
                                     size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
-                                    targetables: [Component.Type]) -> EntityFactory {
-        PelletProjectileFactory(entity: entity, velocity: velocity, position: position, size: size, targetables: targetables)
+                                    targetables: [Component.Type],
+                                    dissapearWhenCollideWith: [Component.Type]) -> EntityFactory {
+        PelletProjectileFactory(entity: entity, velocity: velocity, position: position,
+                                size: size, targetables: targetables,
+                                dissapearWhenCollideWith: dissapearWhenCollideWith)
     }
 }
 

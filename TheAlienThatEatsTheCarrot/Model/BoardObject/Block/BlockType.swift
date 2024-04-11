@@ -8,20 +8,30 @@
 import Foundation
 
 public enum BlockType: String {
-    case normal, ground, spike, breakable, pushable, powerup
+    case normal, ground, spike, breakable, pushable, mushroom,
+         doubleJumpPowerup, strengthPowerup, attackPowerup, invinciblePowerup
 
     static let typeToAssetNameMap = [normal: "land-top",
                                      ground: "land-bottom",
                                      spike: "spike",
                                      breakable: "block-breakable",
                                      pushable: "block-pushable",
-                                     powerup: "powerup-unused"]
+                                     mushroom: "mushroom-1",
+                                     doubleJumpPowerup: "powerup-unused-blue",
+                                     strengthPowerup: "power-unused-yellow",
+                                     attackPowerup: "powerup-unused-red",
+                                     invinciblePowerup: "powerup-unused-green"]
     static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
                                 ground: CGSize(width: 50, height: 50),
                                 spike: CGSize(width: 50, height: 50),
                                 breakable: CGSize(width: 50, height: 50),
+                                mushroom: CGSize(width: 30, height: 30),
                                 pushable: CGSize(width: 50, height: 50),
-                                powerup: CGSize(width: 50, height: 50)]
+                                doubleJumpPowerup: CGSize(width: 50, height: 50),
+                                strengthPowerup: CGSize(width: 50, height: 50),
+                                attackPowerup: CGSize(width: 50, height: 50),
+                                invinciblePowerup: CGSize(width: 50, height: 50)
+    ]
 
     var assetName: String? {
         BlockType.typeToAssetNameMap[self]

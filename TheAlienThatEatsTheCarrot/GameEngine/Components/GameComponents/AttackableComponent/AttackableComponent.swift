@@ -8,22 +8,31 @@
 import Foundation
 
 class AttackableComponent: Component {
-    static let DEFAULT_DAMAGE = 50.0
     var entity: Entity
-    var damage: CGFloat
     var attackStyles: [any AttackStyle]
 
-    init(entity: Entity, damage: CGFloat = AttackableComponent.DEFAULT_DAMAGE,
+    init(entity: Entity,
          attackStyles: [any AttackStyle]) {
         self.entity = entity
-        self.damage = damage
         self.attackStyles = attackStyles
     }
 
     func attackIfPossible(attackee: Entity, delegate: AttackableDelegate) {
         for attackStyle in attackStyles {
-            attackStyle.attack(damage: damage, attacker: entity, attackee: attackee,
-                               delegate: delegate)
+            attackStyle.attack(attacker: entity, attackee: attackee, delegate: delegate)
         }
+    }
+
+    func getAttackStyle<T: AttackStyle>(with type: T.Type) -> T? {
+        for attackStyle in attackStyles {
+            if let specificAttackStyle = attackStyle as? T {
+                return specificAttackStyle
+            }
+        }
+        return nil
+    }
+
+    func addAttackStyle<T: AttackStyle>(_ attackStyle: T) {
+        attackStyles.append(attackStyle)
     }
 }
