@@ -111,7 +111,7 @@ extension Nexus {
             return getPushableBlockFactory(from: entity, block: block)
         case .spike:
             return getSpikeBlockFactory(from: entity, block: block)
-        case .powerup:
+        case .doubleJumpPowerup:
             fatalError("TODO: implement")
         }
     }
