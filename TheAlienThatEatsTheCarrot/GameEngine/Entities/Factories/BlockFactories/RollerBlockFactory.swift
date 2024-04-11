@@ -8,6 +8,7 @@
 import Foundation
 
 class RollerBlockFactory: BlockFactory {
+    static let FORCE_STRENGTH = 450.0
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)
@@ -23,7 +24,7 @@ class RollerBlockFactory: BlockFactory {
         let frictionalComponent = FrictionalComponent(entity: entity, frictionalStrength: 0)
         let destroyableComponent = DestroyableComponent(entity: entity, maxHealth: 10.0, maxLives: 1, isInvinsible: false)
         let movableComponent = MovableComponent(entity: entity, pattern: LeftRightPattern())
-        let movePhysicsBodyOnTopEffect = MoveDynamicPhysicsObjectOnTopEffect()
+        let movePhysicsBodyOnTopEffect = MoveDynamicPhysicsObjectOnTopEffect(forceStrength: RollerBlockFactory.FORCE_STRENGTH)
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,
                                                                 acceptableComponentsColliders: [PlayerComponent.self, EnemyComponent.self],
                                                                 acceptableDirectionsToCollideFrom: [.up], collisionEffect: movePhysicsBodyOnTopEffect)
