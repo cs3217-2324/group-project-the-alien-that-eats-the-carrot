@@ -65,7 +65,6 @@
 		0AC860C52BB681350060EF90 /* PowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860C42BB681350060EF90 /* PowerupFactory.swift */; };
 		0AC860C72BB681FE0060EF90 /* StrengthPowerupFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860C62BB681FE0060EF90 /* StrengthPowerupFactory.swift */; };
 		0AC860D12BB694E60060EF90 /* AttackableComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D02BB694E60060EF90 /* AttackableComponent.swift */; };
-		0AC860D42BB6A2060060EF90 /* PowerupActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D32BB6A2060060EF90 /* PowerupActionDelegate.swift */; };
 		0AC860D62BB6B0290060EF90 /* TimerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D52BB6B0290060EF90 /* TimerComponent.swift */; };
 		0AC860D82BB6B0750060EF90 /* PowerupElapseEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D72BB6B0750060EF90 /* PowerupElapseEvent.swift */; };
 		0AC860DA2BB6D7F90060EF90 /* TimerSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860D92BB6D7F90060EF90 /* TimerSystem.swift */; };
@@ -75,7 +74,6 @@
 		0AC860E62BB71F550060EF90 /* MovableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860E52BB71F550060EF90 /* MovableDelegate.swift */; };
 		0AC860E82BB7BC170060EF90 /* DestroyEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */; };
 		0AC860EC2BB7C2810060EF90 /* InventoryComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860EB2BB7C2810060EF90 /* InventoryComponent.swift */; };
-		0AC860F42BB7C58F0060EF90 /* CollectableActionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860F32BB7C58F0060EF90 /* CollectableActionDelegate.swift */; };
 		0AC860FA2BB7C8A00060EF90 /* CoinCollectableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860F92BB7C8A00060EF90 /* CoinCollectableFactory.swift */; };
 		0AC860FC2BB7C8B50060EF90 /* CollectableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860FB2BB7C8B50060EF90 /* CollectableFactory.swift */; };
 		0AC860FE2BB7C9890060EF90 /* CarrotCollectableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC860FD2BB7C9890060EF90 /* CarrotCollectableFactory.swift */; };
@@ -220,7 +218,6 @@
 		0AC860C42BB681350060EF90 /* PowerupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupFactory.swift; sourceTree = "<group>"; };
 		0AC860C62BB681FE0060EF90 /* StrengthPowerupFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrengthPowerupFactory.swift; sourceTree = "<group>"; };
 		0AC860D02BB694E60060EF90 /* AttackableComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttackableComponent.swift; sourceTree = "<group>"; };
-		0AC860D32BB6A2060060EF90 /* PowerupActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupActionDelegate.swift; sourceTree = "<group>"; };
 		0AC860D52BB6B0290060EF90 /* TimerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerComponent.swift; sourceTree = "<group>"; };
 		0AC860D72BB6B0750060EF90 /* PowerupElapseEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupElapseEvent.swift; sourceTree = "<group>"; };
 		0AC860D92BB6D7F90060EF90 /* TimerSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerSystem.swift; sourceTree = "<group>"; };
@@ -230,7 +227,6 @@
 		0AC860E52BB71F550060EF90 /* MovableDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovableDelegate.swift; sourceTree = "<group>"; };
 		0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestroyEvent.swift; sourceTree = "<group>"; };
 		0AC860EB2BB7C2810060EF90 /* InventoryComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryComponent.swift; sourceTree = "<group>"; };
-		0AC860F32BB7C58F0060EF90 /* CollectableActionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableActionDelegate.swift; sourceTree = "<group>"; };
 		0AC860F92BB7C8A00060EF90 /* CoinCollectableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinCollectableFactory.swift; sourceTree = "<group>"; };
 		0AC860FB2BB7C8B50060EF90 /* CollectableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectableFactory.swift; sourceTree = "<group>"; };
 		0AC860FD2BB7C9890060EF90 /* CarrotCollectableFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarrotCollectableFactory.swift; sourceTree = "<group>"; };
@@ -492,8 +488,6 @@
 		0AC860D22BB6A1EE0060EF90 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				0AC860D32BB6A2060060EF90 /* PowerupActionDelegate.swift */,
-				0AC860F32BB7C58F0060EF90 /* CollectableActionDelegate.swift */,
 				0AC860E52BB71F550060EF90 /* MovableDelegate.swift */,
 				0AC861112BB869080060EF90 /* AttackableDelegate.swift */,
 				0AC861482BC103E70060EF90 /* CollisionEffectDelegate.swift */,
@@ -1094,7 +1088,6 @@
 				9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */,
 				9F8C58C32BAEB5FD002E75FB /* Enemy+extensions.swift in Sources */,
 				9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */,
-				0AC860D42BB6A2060060EF90 /* PowerupActionDelegate.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
 				9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
@@ -1143,7 +1136,6 @@
 				0A76A4C42BAE81BD0067BD6E /* CameraSystem.swift in Sources */,
 				9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */,
 				9F8C58AB2BAEA141002E75FB /* PowerupType.swift in Sources */,
-				0AC860F42BB7C58F0060EF90 /* CollectableActionDelegate.swift in Sources */,
 				0A76A4A92BAD29310067BD6E /* BlockComponent.swift in Sources */,
 				0A76A4A52BAD22C50067BD6E /* EnemyFactory.swift in Sources */,
 				0A76A49A2BAC78960067BD6E /* DestroyableComponent.swift in Sources */,
