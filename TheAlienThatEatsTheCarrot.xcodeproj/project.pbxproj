@@ -570,9 +570,6 @@
 				0AC8614A2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift */,
 				0AC861812BC662140060EF90 /* PostEventEffect.swift */,
 				0AC861872BC6C2080060EF90 /* ActivatePowerupEffect.swift */,
-				0AC861912BC6E1930060EF90 /* AddCoinEffect.swift */,
-				0AC861932BC6E3C60060EF90 /* AddCarrotEffect.swift */,
-				0AC861952BC6E5000060EF90 /* AddLifeEffect.swift */,
 			);
 			path = CollisionEffects;
 			sourceTree = "<group>";
@@ -607,6 +604,9 @@
 		0AC861902BC6E13D0060EF90 /* CollectableEffects */ = {
 			isa = PBXGroup;
 			children = (
+				0AC861912BC6E1930060EF90 /* AddCoinEffect.swift */,
+				0AC861932BC6E3C60060EF90 /* AddCarrotEffect.swift */,
+				0AC861952BC6E5000060EF90 /* AddLifeEffect.swift */,
 			);
 			path = CollectableEffects;
 			sourceTree = "<group>";
