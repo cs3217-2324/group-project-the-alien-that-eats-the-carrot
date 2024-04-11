@@ -24,6 +24,6 @@ enum ControlAction {
 
     static let DEFAULT_LEFT_FORCE = CGVector(dx: -1_000.0, dy: 0)
     static let DEFAULT_RIGHT_FORCE = CGVector(dx: 1_000.0, dy: 0)
-    static let DEFAULT_JUMP_FORCE = CGVector(dx: 0, dy: -50_000.0)
+    static let DEFAULT_JUMP_FORCE = CGVector(dx: 0, dy: -30_000.0)
     static let DEFAULT_DECELERATION_FORCE_MAGNITUDE = 1_000.0
 }

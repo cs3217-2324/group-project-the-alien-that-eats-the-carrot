@@ -66,7 +66,6 @@ class DestroyableComponent: Component {
         guard let renderableComponent = delegate.getComponent(of: RenderableComponent.self, for: entity) else {
             return
         }
-        print("Posting damage event")
         let damageEvent = DamageEvent(position: renderableComponent.position, damage: damage)
         EventManager.shared.postEvent(damageEvent)
     }

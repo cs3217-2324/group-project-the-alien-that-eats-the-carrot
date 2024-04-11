@@ -40,7 +40,7 @@ class TerrainsViewController: UIViewController {
     }
 
     @IBAction private func mushroomButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .block(.normal))
+        delegate?.buttonTapped(type: .block(.mushroom))
     }
 
     @IBAction private func spikeButtonTapped(_ sender: UIButton) {
