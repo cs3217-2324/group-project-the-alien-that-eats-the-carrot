@@ -106,7 +106,7 @@ extension Nexus {
         case .ground:
             return getGroundBlockFactory(from: entity, block: block)
         case .breakable:
-            return getGroundBlockFactory(from: entity, block: block)
+            return getBreakableBlockFactory(from: entity, block: block)
         case .pushable:
             return getPushableBlockFactory(from: entity, block: block)
         case .spike:
@@ -234,7 +234,7 @@ extension Nexus {
     }
 
     private func getBreakableBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
-        TemporaryBlockFactory(from: block, to: entity)
+        BreakableBlockFactory(from: block, to: entity)
     }
 }
 
