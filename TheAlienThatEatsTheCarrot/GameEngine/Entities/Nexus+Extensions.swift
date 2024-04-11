@@ -115,6 +115,8 @@ extension Nexus {
             return getMushroomBlockFactory(from: entity, block: block)
         case .roller:
             return getRollerBlockFactory(from: entity, block: block)
+        case .temporary:
+            return getTemporaryBlockFactory(from: entity, block: block)
         case .doubleJumpPowerup:
             return getPowerupBlockFactory(from: entity, block: block, type: .doubleJump)
         case .strengthPowerup:
@@ -219,6 +221,10 @@ extension Nexus {
 
     private func getRollerBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
         RollerBlockFactory(from: block, to: entity)
+    }
+
+    private func getTemporaryBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        TemporaryBlockFactory(from: block, to: entity)
     }
 }
 
