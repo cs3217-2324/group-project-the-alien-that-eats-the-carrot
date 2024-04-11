@@ -22,7 +22,10 @@ class ApplyGravityToNearbyObjectsAttackStyle: AttackStyle {
     }
 
     func attack(attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
-        guard let attackerPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attacker),
+        guard
+            attacker != attackee,
+            canAttack(attackee, with: targetables, using: delegate),
+            let attackerPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attacker),
               let attackeePhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attackee) else {
             return
         }
