@@ -66,9 +66,9 @@ class AllTimeStats {
     func getHighScore(for gameMode: GameMode) -> String {
         switch gameMode {
         case .normal:
-            String(self.normalHighestScore)
+            return String(self.normalHighestScore)
         default:
-            ""
+            return ""
         }
     }
 }
