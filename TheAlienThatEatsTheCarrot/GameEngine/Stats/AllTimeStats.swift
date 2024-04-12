@@ -67,6 +67,8 @@ class AllTimeStats {
         switch gameMode {
         case .normal:
             String(self.normalHighestScore)
+        default:
+            ""
         }
     }
 }
