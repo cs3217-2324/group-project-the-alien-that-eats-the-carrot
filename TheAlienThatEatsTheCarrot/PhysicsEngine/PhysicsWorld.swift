@@ -139,11 +139,6 @@ final class PhysicsWorld {
         // Decouple physics bodies
         dynamicBody.position += normal
 
-        // Resolve velocity
-        guard dynamicBody.restitution != .zero else {
-            return
-        }
-
         let velocity = dynamicBody.velocity
         let angle = normal.angle
 

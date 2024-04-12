@@ -106,13 +106,19 @@ extension Nexus {
         case .ground:
             return getGroundBlockFactory(from: entity, block: block)
         case .breakable:
-            fatalError("TODO: implement")
+            return getBreakableBlockFactory(from: entity, block: block)
         case .pushable:
             return getPushableBlockFactory(from: entity, block: block)
         case .spike:
             return getSpikeBlockFactory(from: entity, block: block)
         case .mushroom:
             return getMushroomBlockFactory(from: entity, block: block)
+        case .roller:
+            return getRollerBlockFactory(from: entity, block: block)
+        case .temporary:
+            return getTemporaryBlockFactory(from: entity, block: block)
+        case .gravity:
+            return getGravityBlockFactory(from: entity, block: block)
         case .doubleJumpPowerup:
             return getPowerupBlockFactory(from: entity, block: block, type: .doubleJump)
         case .strengthPowerup:
@@ -214,6 +220,22 @@ extension Nexus {
     private func getMushroomBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
         MushroomBlockFactory(from: block, to: entity)
     }
+
+    private func getRollerBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        RollerBlockFactory(from: block, to: entity)
+    }
+
+    private func getTemporaryBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        TemporaryBlockFactory(from: block, to: entity)
+    }
+
+    private func getGravityBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        GravityBlockFactory(from: block, to: entity)
+    }
+
+    private func getBreakableBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        BreakableBlockFactory(from: block, to: entity)
+    }
 }
 
 // MARK: Powerups
@@ -285,6 +307,7 @@ extension Nexus {
             return
         }
         physicsComponent.physicsBody.position = position
+        physicsComponent.physicsBody.velocity = .zero
         renderableComponent.position = position
     }
 }
