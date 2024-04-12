@@ -12,5 +12,5 @@ protocol GameSettings {
 }
 
 class NormalGameSettings: GameSettings {
-    var spawnPoint: CGPoint = CGPoint(x: 200.0, y: 200.0)
+    var spawnPoint = CGPoint(x: 200.0, y: 200.0)
 }

@@ -22,7 +22,7 @@ final class PhysicsWorld {
     }
 
     func updatePhysicsBodies(_ physicsBodies: [PhysicsBody],
-                                     deltaTime: CGFloat) {
+                             deltaTime: CGFloat) {
         for physicsBody in physicsBodies {
             physicsBody.update(deltaTime: deltaTime)
         }
@@ -147,7 +147,7 @@ final class PhysicsWorld {
             dy: -velocity.dx * sin(2 * angle) + velocity.dy * cos(2 * angle)
         ) * dynamicBody.restitution
     }
-    
+
     private func resolveDynamicCollision(bodyA: PhysicsBody, bodyB: PhysicsBody, normal: CGVector, depth: CGFloat, deltaTime: CGFloat) {
         guard bodyA.isDynamic && bodyB.isDynamic else {
             return

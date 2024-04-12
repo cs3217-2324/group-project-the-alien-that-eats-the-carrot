@@ -34,7 +34,9 @@ final class Nexus {
     }
 
     func removeEntity(_ entity: Entity) {
-        guard let entityComponents = entities[entity] else { return }
+        guard let entityComponents = entities[entity] else {
+            return
+        }
 
         for (componentId, _) in entityComponents {
             componentIdToEntities[componentId]?.remove(entity)

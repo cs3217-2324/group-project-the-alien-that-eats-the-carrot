@@ -146,7 +146,7 @@ class GamePlayViewController: UIViewController {
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
-    @IBAction func jumpButtonTouchDown(_ sender: UIButton) {
+    @IBAction private func jumpButtonTouchDown(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
     }
 
@@ -155,7 +155,7 @@ class GamePlayViewController: UIViewController {
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .jump))
     }
 
-    @IBAction func jumpButtonTouchUpOutside(_ sender: UIButton) {
+    @IBAction private func jumpButtonTouchUpOutside(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
     }
 

@@ -39,7 +39,6 @@ class GameStats {
     }
 
     private func observePublishers() {
-        
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in

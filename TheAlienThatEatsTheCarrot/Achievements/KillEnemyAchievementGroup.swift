@@ -7,7 +7,7 @@
 
 import Foundation
 
-class KillEnemiesGroup: AchievementGroup {
+class KillEnemyAchievementGroup: AchievementGroup {
     weak var achievementManagerDelegate: AchievementManagerDelegate?
     var achievementTiers: [Achievement]
     private var enemiesKilledStatusUpdateObserver: NSObjectProtocol?
@@ -44,7 +44,7 @@ class KillEnemiesGroup: AchievementGroup {
     }
 }
 
-extension KillEnemiesGroup {
+extension KillEnemyAchievementGroup {
     class KillEnemies: Achievement {
         let criterion: Int
         var isCompleted = false

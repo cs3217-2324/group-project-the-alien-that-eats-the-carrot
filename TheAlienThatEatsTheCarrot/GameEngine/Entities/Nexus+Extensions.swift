@@ -290,8 +290,8 @@ extension Nexus {
 extension Nexus {
     func getPelletProjectileFactory(from entity: Entity, velocity: CGVector,
                                     position: CGPoint,
-                                    size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
                                     targetables: [Component.Type],
+                                    size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
                                     dissapearWhenCollideWith: [Component.Type]) -> EntityFactory {
         PelletProjectileFactory(entity: entity, velocity: velocity, position: position,
                                 size: size, targetables: targetables,

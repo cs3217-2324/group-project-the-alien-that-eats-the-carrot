@@ -17,7 +17,7 @@ extension CGFloat {
         let max = vec1 > vec2 ? vec1 : vec2
         return self < min ? min : (self > max ? max : self)
     }
-    
+
     var sign: CGFloat {
         if self > 0 {
             return 1.0
