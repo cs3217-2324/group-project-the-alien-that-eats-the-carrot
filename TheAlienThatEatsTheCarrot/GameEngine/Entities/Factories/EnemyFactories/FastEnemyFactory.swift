@@ -8,7 +8,7 @@
 import Foundation
 
 class FastEnemyFactory: EnemyFactory {
-    static let SCORE = 200.0
+    static let SCORE: Int = 200
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let enemyComponent = EnemyComponent(entity: entity)

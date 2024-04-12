@@ -8,7 +8,7 @@
 import Foundation
 
 class NormalEnemyFactory: EnemyFactory {
-    static let SCORE = 100.0
+    static let SCORE: Int = 100
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let enemyComponent = EnemyComponent(entity: entity)

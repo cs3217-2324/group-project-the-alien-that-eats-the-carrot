@@ -10,7 +10,11 @@ import Foundation
 class GameStats {
     var coins: Int
     var carrots: Int
-    var scores: CGFloat
+    var score: Int = .zero {
+        didSet {
+            EventManager.shared.postEvent(ScoreUpdateEvent(gameStats: self))
+        }
+    }
     var lives: [Int]
     weak var nexus: Nexus?
 
@@ -22,17 +26,18 @@ class GameStats {
     private var carrotCollectedObsever: NSObjectProtocol?
     private var coinCollectedObserver: NSObjectProtocol?
     private var enemiesKilledObserver: NSObjectProtocol?
+    private var addScoreObserver: NSObjectProtocol?
 
     init(nexus: Nexus,
          coins: Int = 0,
          carrots: Int = 0,
-         scores: CGFloat = 0,
+         score: Int = 0,
          lives: [Int] = [],
          enemiesKilled: Int = .zero) {
         self.nexus = nexus
         self.coins = coins
         self.carrots = carrots
-        self.scores = scores
+        self.score = score
         self.lives = lives
         self.enemiesKilled = enemiesKilled
         observePublishers()
@@ -42,6 +47,7 @@ class GameStats {
         carrotCollectedObsever = EventManager.shared.subscribe(to: CarrotCollectedEvent.self, using: onStatEventRef)
         coinCollectedObserver = EventManager.shared.subscribe(to: CoinCollectedEvent.self, using: onStatEventRef)
         enemiesKilledObserver = EventManager.shared.subscribe(to: EnemyKilledEvent.self, using: onStatEventRef)
+        addScoreObserver = EventManager.shared.subscribe(to: AddScoreEvent.self, using: onStatEventRef)
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
@@ -60,6 +66,11 @@ class GameStats {
             self.coins += 1
         case _ as EnemyKilledEvent:
             self.enemiesKilled += 1
+        case _ as AddScoreEvent:
+            guard let addScoreEvent = event as? AddScoreEvent else {
+                return
+            }
+            self.score += addScoreEvent.score
         default:
             return
         }
