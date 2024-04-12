@@ -15,10 +15,12 @@ class GameEngine {
 
     let gameMode: GameMode = .normal
     let gameBounds: CGRect
-    
+    let gameStats: GameStats
+
     init(level: Level, bounds: CGRect) {
         self.systems = []
         self.gameBounds = bounds
+        self.gameStats = GameStats(nexus: nexus)
         initGameSystems()
         initGameEntities(from: level.boardObjects.allObjects)
 
@@ -35,7 +37,7 @@ class GameEngine {
     }
 
     func getGameStats() -> GameStats {
-        createGameStatsFromECS()
+        self.gameStats.getLatestGameStats()!
     }
 
     private func updateSystems(deltaTime: CGFloat) {

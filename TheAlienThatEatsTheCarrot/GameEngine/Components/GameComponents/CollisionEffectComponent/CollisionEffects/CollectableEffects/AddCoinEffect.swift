@@ -9,10 +9,7 @@ import Foundation
 
 class AddCoinEffect: CollisionEffect {
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
-        guard let inventoryComponent = delegate.getComponent(of: InventoryComponent.self, for: collider) else {
-            return
-        }
-        inventoryComponent.incrementCoin()
+        EventManager.shared.postEvent(CoinCollectedEvent(entity: collidee))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 }

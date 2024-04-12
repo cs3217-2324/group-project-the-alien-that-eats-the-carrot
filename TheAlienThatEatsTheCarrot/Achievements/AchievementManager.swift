@@ -14,7 +14,7 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
     private let achievementGroups: [AchievementGroup]
 
     init() {
-        self.newAchievement = nil;
+        self.newAchievement = nil
         self.storage = UserDefaults.standard
         self.achievementGroups = [
             KillEnemiesGroup()

@@ -10,6 +10,7 @@ import Foundation
 class KillEnemiesGroup: AchievementGroup {
     weak var achievementManagerDelegate: AchievementManagerDelegate?
     var achievementTiers: [Achievement]
+    private var enemiesKilledStatusUpdateObserver: NSObjectProtocol?
 
     init() {
         self.achievementTiers = [
@@ -24,8 +25,14 @@ class KillEnemiesGroup: AchievementGroup {
         ]
     }
 
+    deinit {
+        if let observer1 = enemiesKilledStatusUpdateObserver {
+            EventManager.shared.unsubscribe(from: observer1)
+        }
+    }
+
     func subscribeToEvents() {
-        EventManager.shared.subscribe(to: EnemiesKilledStatUpdateEvent.self, using: onEnemiesKilledStatUpdated)
+        enemiesKilledStatusUpdateObserver = EventManager.shared.subscribe(to: EnemiesKilledStatUpdateEvent.self, using: onEnemiesKilledStatUpdated)
     }
 
     private lazy var onEnemiesKilledStatUpdated = { [weak self] (_ event: Event) -> Void in
