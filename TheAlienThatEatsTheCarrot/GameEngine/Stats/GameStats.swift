@@ -8,9 +8,9 @@
 import Foundation
 
 class GameStats {
-    let coins: [Int]
-    let carrots: [Int]
-    let scores: [CGFloat]
+    var coins: Int
+    var carrots: Int
+    var scores: CGFloat
     var lives: [Int]
     weak var nexus: Nexus?
 
@@ -19,15 +19,14 @@ class GameStats {
             EventManager.shared.postEvent(EnemiesKilledStatUpdateEvent(gameStats: self))
         }
     }
-    private var powerupUsedObserver: NSObjectProtocol?
+    private var carrotCollectedObsever: NSObjectProtocol?
+    private var coinCollectedObserver: NSObjectProtocol?
     private var enemiesKilledObserver: NSObjectProtocol?
-    private var blockBrokenObserver: NSObjectProtocol?
-    private var scoreChangeObserver: NSObjectProtocol?
 
     init(nexus: Nexus,
-         coins: [Int] = [],
-         carrots: [Int] = [],
-         scores: [CGFloat] = [],
+         coins: Int = 0,
+         carrots: Int = 0,
+         scores: CGFloat = 0,
          lives: [Int] = [],
          enemiesKilled: Int = .zero) {
         self.nexus = nexus
@@ -36,9 +35,13 @@ class GameStats {
         self.scores = scores
         self.lives = lives
         self.enemiesKilled = enemiesKilled
+        observePublishers()
     }
 
     private func observePublishers() {
+        carrotCollectedObsever = EventManager.shared.subscribe(to: CarrotCollectedEvent.self, using: onStatEventRef)
+        coinCollectedObserver = EventManager.shared.subscribe(to: CoinCollectedEvent.self, using: onStatEventRef)
+        enemiesKilledObserver = EventManager.shared.subscribe(to: EnemyKilledEvent.self, using: onStatEventRef)
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
@@ -51,6 +54,12 @@ class GameStats {
     ///   - event: event received
     private func onStatEvent(_ event: Event) {
         switch event {
+        case _ as CarrotCollectedEvent:
+            self.carrots += 1
+        case _ as CoinCollectedEvent:
+            self.coins += 1
+        case _ as EnemyKilledEvent:
+            self.enemiesKilled += 1
         default:
             return
         }

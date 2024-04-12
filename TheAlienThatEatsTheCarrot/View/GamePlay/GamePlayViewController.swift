@@ -80,9 +80,9 @@ class GamePlayViewController: UIViewController {
             addImage(id: ObjectIdentifier(component), objectType: component.objectType, center: component.position, width: component.size.width, height: component.size.height)
         }
 
-        updateCoinCount(counts: gameStats.coins)
-        updateCarrotCount(counts: gameStats.carrots)
-        updateLiveCount(counts: gameStats.lives)
+        updateCoinCount(gameStats.coins)
+        updateCarrotCount(gameStats.carrots)
+        updateLivesCount(gameStats.lives)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -123,24 +123,20 @@ class GamePlayViewController: UIViewController {
     }
 
     // MARK: - game state handling
-    private func updateCoinCount(counts: [Int]) {
-        if !counts.isEmpty {
-            coinCountText.text = String(counts[0])
-        }
+    private func updateCoinCount(_ count: Int) {
+        coinCountText.text = String(count)
     }
 
-    private func updateCarrotCount(counts: [Int]) {
+    private func updateCarrotCount(_ number: Int) {
         let fullCarrot = #imageLiteral(resourceName: "carrot-1")
         let emptyCarrot = #imageLiteral(resourceName: "carrot-2")
 
-        if !counts.isEmpty {
-            carrot1.image = counts[0] > 0 ? fullCarrot : emptyCarrot
-            carrot2.image = counts[0] > 1 ? fullCarrot : emptyCarrot
-            carrot3.image = counts[0] > 2 ? fullCarrot : emptyCarrot
-        }
+        carrot1.image = number > 0 ? fullCarrot : emptyCarrot
+        carrot2.image = number > 1 ? fullCarrot : emptyCarrot
+        carrot3.image = number > 2 ? fullCarrot : emptyCarrot
     }
 
-    private func updateLiveCount(counts: [Int]) {
+    private func updateLivesCount(_ counts: [Int]) {
         let fullLife = #imageLiteral(resourceName: "heart-full")
         let emptyLife = #imageLiteral(resourceName: "heart-empty")
 
