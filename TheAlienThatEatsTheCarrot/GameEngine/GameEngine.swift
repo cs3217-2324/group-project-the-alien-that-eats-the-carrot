@@ -15,7 +15,7 @@ class GameEngine {
 
     let gameMode: GameMode = .normal
     let gameBounds: CGRect
-    
+
     init(level: Level, bounds: CGRect) {
         self.systems = []
         self.gameBounds = bounds

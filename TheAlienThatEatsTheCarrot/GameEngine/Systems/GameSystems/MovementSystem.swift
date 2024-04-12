@@ -43,7 +43,7 @@ extension MovementSystem: MovableDelegate {
         nexus.getComponent(of: type, for: entity)
     }
 
-    func getComponents<T>(of type: T.Type) -> [T] where T : Component {
+    func getComponents<T>(of type: T.Type) -> [T] where T: Component {
         nexus.getComponents(of: type)
     }
 

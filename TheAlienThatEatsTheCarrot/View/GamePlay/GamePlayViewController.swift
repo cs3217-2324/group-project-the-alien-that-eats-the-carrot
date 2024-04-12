@@ -79,6 +79,10 @@ class GamePlayViewController: UIViewController {
         for component in renderableComponents {
             addImage(id: ObjectIdentifier(component), objectType: component.objectType, center: component.position, width: component.size.width, height: component.size.height)
         }
+
+        updateCoinCount(counts: gameStats.coins)
+        updateCarrotCount(counts: gameStats.carrots)
+        updateLiveCount(counts: gameStats.lives)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -118,6 +122,35 @@ class GamePlayViewController: UIViewController {
         imageViews.removeAll()
     }
 
+    // MARK: - game state handling
+    private func updateCoinCount(counts: [Int]) {
+        if !counts.isEmpty {
+            coinCountText.text = String(counts[0])
+        }
+    }
+
+    private func updateCarrotCount(counts: [Int]) {
+        let fullCarrot = #imageLiteral(resourceName: "carrot-1")
+        let emptyCarrot = #imageLiteral(resourceName: "carrot-2")
+
+        if !counts.isEmpty {
+            carrot1.image = counts[0] > 0 ? fullCarrot : emptyCarrot
+            carrot2.image = counts[0] > 1 ? fullCarrot : emptyCarrot
+            carrot3.image = counts[0] > 2 ? fullCarrot : emptyCarrot
+        }
+    }
+
+    private func updateLiveCount(counts: [Int]) {
+        let fullLife = #imageLiteral(resourceName: "heart-full")
+        let emptyLife = #imageLiteral(resourceName: "heart-empty")
+
+        if !counts.isEmpty {
+            life1.image = counts[0] > 0 ? fullLife : emptyLife
+            life2.image = counts[0] > 1 ? fullLife : emptyLife
+            life3.image = counts[0] > 2 ? fullLife : emptyLife
+        }
+    }
+
     // MARK: - character movement
     var isLeftButtonPressed = false
     var isRightButtonPressed = false
@@ -146,7 +179,7 @@ class GamePlayViewController: UIViewController {
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .idle))
     }
 
-    @IBAction func jumpButtonTouchDown(_ sender: UIButton) {
+    @IBAction private func jumpButtonTouchDown(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
     }
 
@@ -155,7 +188,7 @@ class GamePlayViewController: UIViewController {
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .jump))
     }
 
-    @IBAction func jumpButtonTouchUpOutside(_ sender: UIButton) {
+    @IBAction private func jumpButtonTouchUpOutside(_ sender: UIButton) {
         sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
     }
 
@@ -170,6 +203,7 @@ class GamePlayViewController: UIViewController {
         startGameLoop()
     }
 
+    // MARK: - events
     private func subscribeToEvents() {
         damageObserver = EventManager.shared.subscribe(to: DamageEvent.self, using: onEventOccur)
         playerDiedObserver = EventManager.shared.subscribe(to: PlayerDiedEvent.self, using: onEventOccur)
