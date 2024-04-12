@@ -1013,12 +1013,11 @@
 		9F9E7AF82BC7BE0600EF22D3 /* Achievements */ = {
 			isa = PBXGroup;
 			children = (
+				9F9E7B152BC953BD00EF22D3 /* AchievementGroup */,
 				9F9E7AF92BC7BE2100EF22D3 /* AchievementManagerDelegate.swift */,
 				9F9E7B012BC7C06500EF22D3 /* AchievementManager.swift */,
 				9F9E7AFB2BC7BE3700EF22D3 /* Achievement.swift */,
-				9F9E7B032BC7C13900EF22D3 /* AchievementGroup.swift */,
 				9F9E7B0C2BC9133000EF22D3 /* AchievementDisplay.swift */,
-				9F9E7B052BC7C16700EF22D3 /* KillEnemyAchievementGroup.swift */,
 			);
 			path = Achievements;
 			sourceTree = "<group>";
@@ -1038,6 +1037,15 @@
 				9F9E7B0F2BC9198900EF22D3 /* AllTimeStats.swift */,
 			);
 			path = Stats;
+			sourceTree = "<group>";
+		};
+		9F9E7B152BC953BD00EF22D3 /* AchievementGroup */ = {
+			isa = PBXGroup;
+			children = (
+				9F9E7B052BC7C16700EF22D3 /* KillEnemyAchievementGroup.swift */,
+				9F9E7B032BC7C13900EF22D3 /* AchievementGroup.swift */,
+			);
+			path = AchievementGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
