@@ -9,7 +9,6 @@ import Foundation
 
 class AddCarrotEffect: CollisionEffect {
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
-        print("hi")
         EventManager.shared.postEvent(CarrotCollectedEvent(entity: collidee))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }

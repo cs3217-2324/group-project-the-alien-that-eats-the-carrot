@@ -9,7 +9,6 @@ import Foundation
 
 class AddCoinEffect: CollisionEffect {
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
-        print("hi2")
         EventManager.shared.postEvent(CoinCollectedEvent(entity: collidee))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
