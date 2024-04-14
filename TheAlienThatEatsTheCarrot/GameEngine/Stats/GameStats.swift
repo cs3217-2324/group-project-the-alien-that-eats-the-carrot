@@ -43,6 +43,21 @@ class GameStats {
         observePublishers()
     }
 
+    deinit {
+        if let observer1 = carrotCollectedObsever {
+            EventManager.shared.unsubscribe(from: observer1)
+        }
+        if let observer2 = coinCollectedObserver {
+            EventManager.shared.unsubscribe(from: observer2)
+        }
+        if let observer3 = enemiesKilledObserver {
+            EventManager.shared.unsubscribe(from: observer3)
+        }
+        if let observer4 = addScoreObserver {
+            EventManager.shared.unsubscribe(from: observer4)
+        }
+    }
+
     private func observePublishers() {
         carrotCollectedObsever = EventManager.shared.subscribe(to: CarrotCollectedEvent.self, using: onStatEventRef)
         coinCollectedObserver = EventManager.shared.subscribe(to: CoinCollectedEvent.self, using: onStatEventRef)
