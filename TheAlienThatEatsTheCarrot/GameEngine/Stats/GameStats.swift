@@ -27,6 +27,7 @@ class GameStats {
     private var coinCollectedObserver: NSObjectProtocol?
     private var enemiesKilledObserver: NSObjectProtocol?
     private var addScoreObserver: NSObjectProtocol?
+    private var gameEndedObserver: NSObjectProtocol?
 
     init(nexus: Nexus,
          coins: Int = 0,
@@ -63,6 +64,7 @@ class GameStats {
         coinCollectedObserver = EventManager.shared.subscribe(to: CoinCollectedEvent.self, using: onStatEventRef)
         enemiesKilledObserver = EventManager.shared.subscribe(to: EnemyKilledEvent.self, using: onStatEventRef)
         addScoreObserver = EventManager.shared.subscribe(to: AddScoreEvent.self, using: onStatEventRef)
+        gameEndedObserver = EventManager.shared.subscribe(to: GameEndEvent.self, using: onStatEventRef)
     }
 
     private lazy var onStatEventRef = { [weak self] (event: Event) -> Void in
@@ -75,6 +77,8 @@ class GameStats {
     ///   - event: event received
     private func onStatEvent(_ event: Event) {
         switch event {
+        case _ as GameEndEvent:
+            AllTimeStats.shared.addStatsFromLatestGame(self, .normal)
         case _ as CarrotCollectedEvent:
             self.carrots += 1
         case _ as CoinCollectedEvent:

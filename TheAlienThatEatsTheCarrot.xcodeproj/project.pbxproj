@@ -210,6 +210,7 @@
 		9F9E7B192BC95B7400EF22D3 /* ScoreUpdateEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B182BC95B7400EF22D3 /* ScoreUpdateEvent.swift */; };
 		9F9E7B1B2BC95E9700EF22D3 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1A2BC95E9700EF22D3 /* UserDefaults+Extensions.swift */; };
 		9F9E7B1D2BC95EAB00EF22D3 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1C2BC95EAB00EF22D3 /* UserDefaultsKey.swift */; };
+		9F9E7B1F2BCBB28B00EF22D3 /* GameEndEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1E2BCBB28B00EF22D3 /* GameEndEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -419,6 +420,7 @@
 		9F9E7B182BC95B7400EF22D3 /* ScoreUpdateEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreUpdateEvent.swift; sourceTree = "<group>"; };
 		9F9E7B1A2BC95E9700EF22D3 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		9F9E7B1C2BC95EAB00EF22D3 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
+		9F9E7B1E2BCBB28B00EF22D3 /* GameEndEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -468,6 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				0AC860B12BB3A5360060EF90 /* GameStartEvent.swift */,
+				9F9E7B1E2BCBB28B00EF22D3 /* GameEndEvent.swift */,
 				0AC860B62BB3D3550060EF90 /* PlayerControlActionEvent.swift */,
 				0AC860D72BB6B0750060EF90 /* PowerupElapseEvent.swift */,
 				0AC860E72BB7BC170060EF90 /* DestroyEvent.swift */,
@@ -1155,6 +1158,7 @@
 			files = (
 				0A76A4712BAC78470067BD6E /* ComponentIdentifier.swift in Sources */,
 				0AC861822BC662150060EF90 /* PostEventEffect.swift in Sources */,
+				9F9E7B1F2BCBB28B00EF22D3 /* GameEndEvent.swift in Sources */,
 				0AC8617E2BC65A0B0060EF90 /* CreateProjectileEvent.swift in Sources */,
 				3F68076B2BADB18C00EB7682 /* LevelSelectViewController.swift in Sources */,
 				0AC861002BB7E9620060EF90 /* DoubleJumpPowerupFactory.swift in Sources */,
