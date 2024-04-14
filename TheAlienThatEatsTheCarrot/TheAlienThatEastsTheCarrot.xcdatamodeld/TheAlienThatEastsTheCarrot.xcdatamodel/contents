@@ -15,6 +15,7 @@
         <attribute name="y" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="blockData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="BlockData" inverseName="position" inverseEntity="BlockData"/>
         <relationship name="cGRectData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CGRectData" inverseName="position" inverseEntity="CGRectData"/>
+        <relationship name="characterData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CharacterData" inverseName="position" inverseEntity="CharacterData"/>
         <relationship name="collectableData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CollectableData" inverseName="position" inverseEntity="CollectableData"/>
         <relationship name="enemyData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EnemyData" inverseName="position" inverseEntity="EnemyData"/>
         <relationship name="powerupData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="PowerupData" inverseName="position" inverseEntity="PowerupData"/>
@@ -24,6 +25,15 @@
         <attribute name="width" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="areaData" inverseEntity="LevelData"/>
         <relationship name="position" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CGPointData" inverseName="cGRectData" inverseEntity="CGPointData"/>
+    </entity>
+    <entity name="CharacterData" representedClassName="CharacterData" syncable="YES" codeGenerationType="class">
+        <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="characterDatas" inverseEntity="LevelData"/>
+        <relationship name="position" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CGPointData" inverseName="characterData" inverseEntity="CGPointData"/>
+        <relationship name="type" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CharacterTypeData" inverseName="characterData" inverseEntity="CharacterTypeData"/>
+    </entity>
+    <entity name="CharacterTypeData" representedClassName="CharacterTypeData" syncable="YES" codeGenerationType="class">
+        <attribute name="typeName" optional="YES" attributeType="String"/>
+        <relationship name="characterData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CharacterData" inverseName="type" inverseEntity="CharacterData"/>
     </entity>
     <entity name="CollectableData" representedClassName=".CollectableData" syncable="YES" codeGenerationType="class">
         <relationship name="levelData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LevelData" inverseName="collectableDatas" inverseEntity="LevelData"/>
@@ -47,6 +57,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="areaData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CGRectData" inverseName="levelData" inverseEntity="CGRectData"/>
         <relationship name="blockDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockData" inverseName="levelData" inverseEntity="BlockData"/>
+        <relationship name="characterDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CharacterData" inverseName="levelData" inverseEntity="CharacterData"/>
         <relationship name="collectableDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CollectableData" inverseName="levelData" inverseEntity="CollectableData"/>
         <relationship name="enemyDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EnemyData" inverseName="levelData" inverseEntity="EnemyData"/>
         <relationship name="powerupDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PowerupData" inverseName="levelData" inverseEntity="PowerupData"/>
