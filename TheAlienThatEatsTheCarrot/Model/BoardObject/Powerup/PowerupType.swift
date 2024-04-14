@@ -14,10 +14,10 @@ public enum PowerupType: String, CaseIterable {
                                      strength: "powerup-strength",
                                      attack: "powerup-attack",
                                      doubleJump: "powerup-doublejump"]
-    static let typeToSizeMap = [invinsible: CGSize(width: 50, height: 50),
-                                strength: CGSize(width: 50, height: 50),
-                                attack: CGSize(width: 50, height: 50),
-                                doubleJump: CGSize(width: 50, height: 50)]
+    static let typeToSizeMap = [invinsible: CGSize(width: 5, height: 5),
+                                strength: CGSize(width: 5, height: 5),
+                                attack: CGSize(width: 5, height: 5),
+                                doubleJump: CGSize(width: 5, height: 5)]
 
     var assetName: String? {
         PowerupType.typeToAssetNameMap[self]

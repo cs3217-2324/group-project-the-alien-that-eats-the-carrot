@@ -13,9 +13,9 @@ public enum CollectableType: String, Equatable {
     static let typeToAssetNameMap = [coin: "coin-gold",
                                      carrot: "carrot-collect",
                                      heart: "heart-full"]
-    static let typeToSizeMap = [coin: CGSize(width: 50, height: 50),
-                                carrot: CGSize(width: 50, height: 50),
-                                heart: CGSize(width: 50, height: 50)]
+    static let typeToSizeMap = [coin: CGSize(width: 5, height: 5),
+                                carrot: CGSize(width: 5, height: 5),
+                                heart: CGSize(width: 5, height: 5)]
 
     var assetName: String? {
         CollectableType.typeToAssetNameMap[self]

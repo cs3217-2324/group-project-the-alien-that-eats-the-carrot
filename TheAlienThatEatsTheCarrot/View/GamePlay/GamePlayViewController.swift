@@ -22,6 +22,7 @@ class GamePlayViewController: UIViewController {
     var renderableComponents: [RenderableComponent] = []
     var gameStats: GameStats!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
+    private var unitSize: CGFloat = 1.0
 
     // MARK: - game loop
     var gameEngine: GameEngine!
@@ -48,6 +49,12 @@ class GamePlayViewController: UIViewController {
             print("Error loading level \(levelNameToLoad): \(error)")
             presentAlert(message: "Failed to load level: \(error.localizedDescription)")
         }
+
+        let frame = boardAreaView.frame
+        self.unitSize = (frame.maxY - frame.minY) / 50
+        print("game page unitSize \(unitSize)")
+        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX).")
+
         self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
             self?.updateUI()
         })
@@ -77,7 +84,7 @@ class GamePlayViewController: UIViewController {
         gameStats = gameEngine.getGameStats()
 
         for component in renderableComponents {
-            addImage(id: ObjectIdentifier(component), objectType: component.objectType, center: component.position, width: component.size.width, height: component.size.height)
+            addImage(component: component)
         }
 
         updateCoinCount(counts: gameStats.coins)
@@ -106,6 +113,12 @@ class GamePlayViewController: UIViewController {
         boardAreaView.addSubview(imageView.imageView)
     }
 
+    func addImage(component: RenderableComponent) {
+        let imageView = RectangularImageView(objectType: component.objectType, center: toBoardPosition(position: component.position), width: component.size.width * unitSize, height: component.size.height * unitSize)
+        imageViews[ObjectIdentifier(component)] = imageView
+        boardAreaView.addSubview(imageView.imageView)
+    }
+
     func removeImage(id: ObjectIdentifier) {
         guard let removedImageView = imageViews.removeValue(forKey: id) else {
             return
@@ -120,6 +133,14 @@ class GamePlayViewController: UIViewController {
             imageView.imageView = nil
         }
         imageViews.removeAll()
+    }
+
+    private func toUnitPosition(position: CGPoint) -> CGPoint {
+        CGPoint(x: position.x / unitSize, y: position.y / unitSize)
+    }
+
+    private func toBoardPosition(position: CGPoint) -> CGPoint {
+        CGPoint(x: position.x * unitSize, y: position.y * unitSize)
     }
 
     // MARK: - game state handling

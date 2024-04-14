@@ -24,19 +24,19 @@ public enum BlockType: String {
                                      strengthPowerup: "power-unused-yellow",
                                      attackPowerup: "powerup-unused-red",
                                      invinciblePowerup: "powerup-unused-green"]
-    static let typeToSizeMap = [normal: CGSize(width: 50, height: 50),
-                                ground: CGSize(width: 50, height: 50),
-                                spike: CGSize(width: 50, height: 50),
-                                breakable: CGSize(width: 50, height: 50),
-                                mushroom: CGSize(width: 30, height: 30),
-                                roller: CGSize(width: 50, height: 1),
-                                temporary: CGSize(width: 50, height: 50),
-                                gravity: CGSize(width: 50, height: 50),
-                                pushable: CGSize(width: 50, height: 50),
-                                doubleJumpPowerup: CGSize(width: 50, height: 50),
-                                strengthPowerup: CGSize(width: 50, height: 50),
-                                attackPowerup: CGSize(width: 50, height: 50),
-                                invinciblePowerup: CGSize(width: 50, height: 50)
+    static let typeToSizeMap = [normal: CGSize(width: 5, height: 5),
+                                ground: CGSize(width: 5, height: 5),
+                                spike: CGSize(width: 5, height: 5),
+                                breakable: CGSize(width: 5, height: 5),
+                                mushroom: CGSize(width: 3, height: 3),
+                                roller: CGSize(width: 5, height: 1),
+                                temporary: CGSize(width: 5, height: 5),
+                                gravity: CGSize(width: 5, height: 5),
+                                pushable: CGSize(width: 5, height: 5),
+                                doubleJumpPowerup: CGSize(width: 5, height: 5),
+                                strengthPowerup: CGSize(width: 5, height: 5),
+                                attackPowerup: CGSize(width: 5, height: 5),
+                                invinciblePowerup: CGSize(width: 5, height: 5)
     ]
 
     var assetName: String? {
