@@ -36,22 +36,25 @@ class GameEngine {
     }
 
     func pause() {
-        guard let gameStateComponent = getGameState() else {
-            return
-        }
-        gameStateComponent.gameState = .pause
+        setGameState(gameState: .pause)
     }
 
     func unpause() {
-        guard let gameStateComponent = getGameState() else {
-            return
-        }
-        gameStateComponent.gameState = .ongoing
+        setGameState(gameState: .ongoing)
     }
 
     func end() {
         self.gameLoop?.stop()
         self.systems = []
+        setGameState(gameState: .gameOver)
+    }
+
+    private func setGameState(gameState: GameState) {
+        guard let gameStateComponent = getGameState() else {
+            return
+        }
+        gameStateComponent.gameState = gameState
+
     }
 
     func update(deltaTime: CGFloat) {
