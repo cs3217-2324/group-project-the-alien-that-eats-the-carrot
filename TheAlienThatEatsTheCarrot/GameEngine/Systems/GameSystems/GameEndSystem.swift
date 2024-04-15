@@ -36,14 +36,9 @@ class GameEndSystem: System {
     }
 
     private func checkWinCondition() {
-        if checkExitBlockReached() || checkThreeCarrotsCollected() {
+        if checkThreeCarrotsCollected() {
             EventManager.shared.postEvent(GameEndEvent(isWin: true))
         }
-    }
-
-    private func checkExitBlockReached() -> Bool {
-        // TODO
-        false
     }
 
     private func checkThreeCarrotsCollected() -> Bool {
