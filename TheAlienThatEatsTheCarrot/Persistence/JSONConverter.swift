@@ -5,27 +5,27 @@
 ////  Created by zhing on 15/4/24.
 ////
 //
-//import Foundation
-//import CoreGraphics
+// import Foundation
+// import CoreGraphics
 //
-//struct LevelModel: Codable {
+// struct LevelModel: Codable {
 //    var name: String
 //    var area: CGRect
 //    var boardObjects: BoardObjectSetModel
 //    var bestScore: Int
 //    var bestTime: Int
 //    var bestCarrot: Int
-//}
+// }
 //
-//struct BoardObjectSetModel: Codable {
+// struct BoardObjectSetModel: Codable {
 //    var blocks: [BlockModel]
 //    var characters: [CharacterModel]
 //    var collectables: [CollectableModel]
 //    var enemies: [EnemyModel]
 //    var powerups: [PowerupModel]
-//}
+// }
 //
-//class BoardObjectModel: Codable {
+// class BoardObjectModel: Codable {
 //    var position: CGPoint
 //
 //    required init(from decoder: Decoder) throws {
@@ -36,9 +36,9 @@
 //    init(position: CGPoint) {
 //        self.position = position
 //    }
-//}
+// }
 //
-//class BlockModel: BoardObjectModel {
+// class BlockModel: BoardObjectModel {
 //    var blockType: String
 //    var containedPowerupType: String?
 //
@@ -59,9 +59,9 @@
 //        self.containedPowerupType = containedPowerupType
 //        super.init(position: position)
 //    }
-//}
+// }
 //
-//class CharacterModel: BoardObjectModel {
+// class CharacterModel: BoardObjectModel {
 //    var characterType: String
 //
 //    enum CodingKeys: String, CodingKey {
@@ -79,9 +79,9 @@
 //        self.characterType = characterType
 //        super.init(position: position)
 //    }
-//}
+// }
 //
-//class CollectableModel: BoardObjectModel {
+// class CollectableModel: BoardObjectModel {
 //    var collectableType: String
 //
 //    enum CodingKeys: String, CodingKey {
@@ -99,9 +99,9 @@
 //        self.collectableType = collectableType
 //        super.init(position: position)
 //    }
-//}
+// }
 //
-//class EnemyModel: BoardObjectModel {
+// class EnemyModel: BoardObjectModel {
 //    var enemyType: String
 //
 //    enum CodingKeys: String, CodingKey {
@@ -119,9 +119,9 @@
 //        self.enemyType = enemyType
 //        super.init(position: position)
 //    }
-//}
+// }
 //
-//class PowerupModel: BoardObjectModel {
+// class PowerupModel: BoardObjectModel {
 //    var powerupType: String
 //
 //    enum CodingKeys: String, CodingKey {
@@ -139,9 +139,9 @@
 //        self.powerupType = powerupType
 //        super.init(position: position)
 //    }
-//}
+// }
 //
-//extension Level {
+// extension Level {
 //    func toLevelModel() -> LevelModel {
 //        // Map blocks to BlockModel
 //        let blockModels = boardObjects.blocks.map { block in
@@ -176,10 +176,10 @@
 //
 //        return levelModel
 //    }
-//}
+// }
 //
 //
-//func main() {
+// func main() {
 //
 //    let levelModel = level.toLevelModel()
 //
@@ -194,7 +194,7 @@
 //    } catch {
 //        print("Error encoding level to JSON: \(error)")
 //    }
-//}
+// }
 
 import Foundation
 
@@ -267,27 +267,27 @@ extension Level {
 extension BoardObjectSet {
     func toJSONBoardObjectSet() -> JSONBoardObjectSet {
         let jsonBlocks = blocks.map { block in
-            return JSONBlock(position: [block.position.x, block.position.y],
+            JSONBlock(position: [block.position.x, block.position.y],
                              blockType: block.blockType.rawValue,
                              containedPowerupType: block.containedPowerupType?.rawValue)
         }
         let jsonCharacters = characters.map { character in
-            return JSONCharacter(position: [character.position.x, character.position.y],
+            JSONCharacter(position: [character.position.x, character.position.y],
                                   characterType: character.characterType.rawValue)
         }
         let jsonCollectables = collectables.map { collectable in
-            return JSONCollectable(position: [collectable.position.x, collectable.position.y],
+            JSONCollectable(position: [collectable.position.x, collectable.position.y],
                                     collectableType: collectable.collectableType.rawValue)
         }
         let jsonEnemies = enemies.map { enemy in
-            return JSONEnemy(position: [enemy.position.x, enemy.position.y],
+            JSONEnemy(position: [enemy.position.x, enemy.position.y],
                              enemyType: enemy.enemyType.rawValue)
         }
         let jsonPowerups = powerups.map { powerup in
-            return JSONPowerup(position: [powerup.position.x, powerup.position.y],
+            JSONPowerup(position: [powerup.position.x, powerup.position.y],
                                 powerupType: powerup.powerupType.rawValue)
         }
-        
+
         return JSONBoardObjectSet(blocks: jsonBlocks,
                                   characters: jsonCharacters,
                                   collectables: jsonCollectables,
@@ -303,17 +303,17 @@ extension Level {
             print("Failed to convert JSON string to data")
             return nil
         }
-        
+
         do {
             let decoder = JSONDecoder()
             let jsonLevel = try decoder.decode(JSONLevel.self, from: jsonData)
-            
+
             // Convert area from array to CGRect
             let area = CGRect(x: jsonLevel.area[0], y: jsonLevel.area[1], width: jsonLevel.area[2], height: jsonLevel.area[3])
-            
+
             // Convert JSONBoardObjectSet to BoardObjectSet
             let boardObjects = jsonLevel.boardObjects.toBoardObjectSet()
-            
+
             return Level(area: area, name: jsonLevel.name,
                          boardObjects: boardObjects,
                          bestScore: jsonLevel.bestScore,
@@ -330,26 +330,26 @@ extension Level {
 extension JSONBoardObjectSet {
     func toBoardObjectSet() -> BoardObjectSet {
         let blocks = Set(self.blocks.map { block in
-            return Block(blockType: BlockType(rawValue: block.blockType)!,
+            Block(blockType: BlockType(rawValue: block.blockType)!,
                          containedPowerupType: block.containedPowerupType != nil ? PowerupType(rawValue: block.containedPowerupType!) : nil,
                          position: CGPoint(x: block.position[0], y: block.position[1]))
         })
         let characters = Set(self.characters.map { character in
-            return Character(characterType: CharacterType(rawValue: character.characterType)!, position: CGPoint(x: character.position[0], y: character.position[1]))
+            Character(characterType: CharacterType(rawValue: character.characterType)!, position: CGPoint(x: character.position[0], y: character.position[1]))
         })
         let collectables = Set(self.collectables.map { collectable in
-            return Collectable(collectableType: CollectableType(rawValue: collectable.collectableType)!,
+            Collectable(collectableType: CollectableType(rawValue: collectable.collectableType)!,
                                position: CGPoint(x: collectable.position[0], y: collectable.position[1]))
         })
         let enemies = Set(self.enemies.map { enemy in
-            return Enemy(enemyType: EnemyType(rawValue: enemy.enemyType)!,
+            Enemy(enemyType: EnemyType(rawValue: enemy.enemyType)!,
                          position: CGPoint(x: enemy.position[0], y: enemy.position[1]))
         })
         let powerups = Set(self.powerups.map { powerup in
-            return Powerup(powerupType: PowerupType(rawValue: powerup.powerupType)!,
+            Powerup(powerupType: PowerupType(rawValue: powerup.powerupType)!,
                            position: CGPoint(x: powerup.position[0], y: powerup.position[1]))
         })
-        
+
         return BoardObjectSet(blocks: blocks,
                               characters: characters,
                               collectables: collectables,
@@ -365,11 +365,11 @@ func main() {
                       bestScore: 0,
                       bestTime: 0,
                       bestCarrot: 0)
-    
+
     if let jsonString = level.toJSONString() {
         print("JSON String:")
         print(jsonString)
-        
+
         if let decodedLevel = Level.fromJSONString(jsonString: jsonString) {
             print("Decoded Level:")
             print(decodedLevel)

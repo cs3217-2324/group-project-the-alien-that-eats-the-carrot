@@ -163,6 +163,7 @@
 		3F96D4EB2BCC7CC8002F4986 /* ExitBlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4EA2BCC7CC8002F4986 /* ExitBlockFactory.swift */; };
 		3F96D4ED2BCCC2C9002F4986 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4EC2BCCC2C9002F4986 /* JSONConverter.swift */; };
 		3F96D4F02BCD026C002F4986 /* defaultLevels.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F96D4EF2BCD026C002F4986 /* defaultLevels.json */; };
+		3F96D4F22BCD1FF8002F4986 /* emptyLevel.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F96D4F12BCD1FF8002F4986 /* emptyLevel.json */; };
 		3FAE0EE92BB427EA002521D9 /* RectangularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */; };
 		3FAE0EEC2BB42909002521D9 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */; };
 		3FCD00592BB0050D0016389F /* PowerupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD00582BB0050D0016389F /* PowerupsViewController.swift */; };
@@ -329,6 +330,7 @@
 		3F96D4EA2BCC7CC8002F4986 /* ExitBlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitBlockFactory.swift; sourceTree = "<group>"; };
 		3F96D4EC2BCCC2C9002F4986 /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		3F96D4EF2BCD026C002F4986 /* defaultLevels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = defaultLevels.json; sourceTree = "<group>"; };
+		3F96D4F12BCD1FF8002F4986 /* emptyLevel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emptyLevel.json; sourceTree = "<group>"; };
 		3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularImageView.swift; sourceTree = "<group>"; };
 		3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		3FCD00582BB0050D0016389F /* PowerupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupsViewController.swift; sourceTree = "<group>"; };
@@ -704,6 +706,7 @@
 			isa = PBXGroup;
 			children = (
 				3F96D4EF2BCD026C002F4986 /* defaultLevels.json */,
+				3F96D4F12BCD1FF8002F4986 /* emptyLevel.json */,
 			);
 			path = PreloadedLevels;
 			sourceTree = "<group>";
@@ -1075,6 +1078,7 @@
 				3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */,
 				3F96D4F02BCD026C002F4986 /* defaultLevels.json in Resources */,
 				0A76A4A02BAC7E270067BD6E /* Main.storyboard in Resources */,
+				3F96D4F22BCD1FF8002F4986 /* emptyLevel.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

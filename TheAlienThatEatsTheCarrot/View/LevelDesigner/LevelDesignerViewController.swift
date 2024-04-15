@@ -60,7 +60,7 @@ class LevelDesignerViewController: UIViewController {
         do {
             let jsonData = try Data(contentsOf: fileURL)
             let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] ?? []
-            
+
             var levels: [Level] = []
             for jsonDict in jsonArray {
                 let jsonString = String(data: try JSONSerialization.data(withJSONObject: jsonDict, options: []), encoding: .utf8)
@@ -72,7 +72,7 @@ class LevelDesignerViewController: UIViewController {
                     print("Error: Failed to create Level instance from JSON string")
                 }
             }
-            
+
             // Now you have a list of Level instances in the 'levels' array
             print("Levels loaded successfully: \(levels)")
         } catch {
@@ -227,20 +227,19 @@ class LevelDesignerViewController: UIViewController {
         }
         imageViews.removeAll()
     }
-    
+
     func printJSON(level: Level) {
         if let jsonString = level.toJSONString() {
             print("JSON String: ")
             print(jsonString)
         }
-        
+
     }
-    
-    
+
     @IBAction func playLevelButtonTapped(_ sender: UIButton) {
         printJSON(level: levelDesigner.level)
     }
-    
+
 }
 
 extension LevelDesignerViewController: ComponentSelectDelegate {
