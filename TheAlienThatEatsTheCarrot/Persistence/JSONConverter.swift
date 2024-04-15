@@ -326,6 +326,22 @@ extension Level {
     }
 }
 
+extension JSONLevel {
+    func toLevel() -> Level? {
+        // Convert area from array to CGRect
+        let area = CGRect(x: self.area[0], y: self.area[1], width: self.area[2], height: self.area[3])
+
+        // Convert JSONBoardObjectSet to BoardObjectSet
+        let boardObjects = self.boardObjects.toBoardObjectSet()
+
+        return Level(area: area, name: self.name,
+                     boardObjects: boardObjects,
+                     bestScore: self.bestScore,
+                     bestTime: self.bestTime,
+                     bestCarrot: self.bestCarrot)
+    }
+}
+
 // Extension to convert JSONBoardObjectSet to BoardObjectSet
 extension JSONBoardObjectSet {
     func toBoardObjectSet() -> BoardObjectSet {

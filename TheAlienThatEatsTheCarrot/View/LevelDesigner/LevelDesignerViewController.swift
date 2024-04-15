@@ -24,6 +24,7 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var boardAreaView: UIView!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
     var levelDesigner: LevelDesigner! // controller
+    var levelDataManager = LevelDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,46 +40,22 @@ class LevelDesignerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-//         initialise level desinger based on boardAreaView
+        // initialise level desinger based on boardAreaView
         let frame = boardAreaView.frame
         self.unitSize = (frame.maxY - frame.minY) / 50
 
-//        let origin = CGPoint(x: 0, y: 0)
-//        let size = CGSize(width: (frame.maxX - frame.minX) / unitSize, height: (frame.maxY - frame.minY) / unitSize)
-//        let area = CGRect(origin: origin, size: size)
-//        if levelDesigner == nil {
-//            self.levelDesigner = LevelDesigner(area: area, view: self)
-//        }
-//
-//        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area). unitSize \(unitSize)")
-//
-        guard let fileURL = Bundle.main.url(forResource: "defaultLevels", withExtension: "json") else {
-            print("Error: defaultLevels.json file not found")
-            return
-        }
-
-        do {
-            let jsonData = try Data(contentsOf: fileURL)
-            let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] ?? []
-
-            var levels: [Level] = []
-            for jsonDict in jsonArray {
-                let jsonString = String(data: try JSONSerialization.data(withJSONObject: jsonDict, options: []), encoding: .utf8)
-                if let level = jsonString.flatMap({ Level.fromJSONString(jsonString: $0) }) {
-                    levels.append(level)
-                    self.levelDesigner = LevelDesigner(level: level, view: self)
-                    print("loading>>>")
-                } else {
-                    print("Error: Failed to create Level instance from JSON string")
-                }
+        // load default empty level
+        if let level = levelDataManager.fetchEmptyLevel() {
+            self.levelDesigner = LevelDesigner(level: level, view: self)
+        } else {
+            let origin = CGPoint(x: 0, y: 0)
+            let size = CGSize(width: (frame.maxX - frame.minX) / unitSize, height: (frame.maxY - frame.minY) / unitSize)
+            let area = CGRect(origin: origin, size: size)
+            if levelDesigner == nil {
+                self.levelDesigner = LevelDesigner(area: area, view: self)
             }
-
-            // Now you have a list of Level instances in the 'levels' array
-            print("Levels loaded successfully: \(levels)")
-        } catch {
-            print("Error decoding defaultLevels.json: \(error)")
+            print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area). unitSize \(unitSize)")
         }
-
     }
 
     // MARK: - set up tab bars
@@ -200,7 +177,7 @@ class LevelDesignerViewController: UIViewController {
 
     // MARK: - image handling
     func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
-        print(">>view >> image added at \(toBoardPosition(position: center)) for \(objectType) w \(width * unitSize) h \(height * unitSize)")
+//        print(">>view >> image added at \(toBoardPosition(position: center)) for \(objectType) w \(width * unitSize) h \(height * unitSize)")
         let imageView = RectangularImageView(objectType: objectType, center: toBoardPosition(position: center), width: width * unitSize, height: height * unitSize)
         imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
@@ -236,7 +213,7 @@ class LevelDesignerViewController: UIViewController {
 
     }
 
-    @IBAction func playLevelButtonTapped(_ sender: UIButton) {
+    @IBAction private func playLevelButtonTapped(_ sender: UIButton) {
         printJSON(level: levelDesigner.level)
     }
 
