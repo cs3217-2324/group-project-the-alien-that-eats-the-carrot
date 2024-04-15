@@ -161,6 +161,8 @@
 		3F96D4E62BCC7960002F4986 /* CharacterType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4E52BCC7960002F4986 /* CharacterType+extensions.swift */; };
 		3F96D4E82BCC796D002F4986 /* Character+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4E72BCC796D002F4986 /* Character+extensions.swift */; };
 		3F96D4EB2BCC7CC8002F4986 /* ExitBlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4EA2BCC7CC8002F4986 /* ExitBlockFactory.swift */; };
+		3F96D4ED2BCCC2C9002F4986 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4EC2BCCC2C9002F4986 /* JSONConverter.swift */; };
+		3F96D4F02BCD026C002F4986 /* defaultLevels.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F96D4EF2BCD026C002F4986 /* defaultLevels.json */; };
 		3FAE0EE92BB427EA002521D9 /* RectangularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */; };
 		3FAE0EEC2BB42909002521D9 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */; };
 		3FCD00592BB0050D0016389F /* PowerupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD00582BB0050D0016389F /* PowerupsViewController.swift */; };
@@ -325,6 +327,8 @@
 		3F96D4E52BCC7960002F4986 /* CharacterType+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterType+extensions.swift"; sourceTree = "<group>"; };
 		3F96D4E72BCC796D002F4986 /* Character+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+extensions.swift"; sourceTree = "<group>"; };
 		3F96D4EA2BCC7CC8002F4986 /* ExitBlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitBlockFactory.swift; sourceTree = "<group>"; };
+		3F96D4EC2BCCC2C9002F4986 /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
+		3F96D4EF2BCD026C002F4986 /* defaultLevels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = defaultLevels.json; sourceTree = "<group>"; };
 		3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularImageView.swift; sourceTree = "<group>"; };
 		3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		3FCD00582BB0050D0016389F /* PowerupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupsViewController.swift; sourceTree = "<group>"; };
@@ -696,6 +700,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		3F96D4EE2BCD024F002F4986 /* PreloadedLevels */ = {
+			isa = PBXGroup;
+			children = (
+				3F96D4EF2BCD026C002F4986 /* defaultLevels.json */,
+			);
+			path = PreloadedLevels;
+			sourceTree = "<group>";
+		};
 		3FAE0EE72BB427D6002521D9 /* ImageViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -977,11 +989,13 @@
 		9F8C589F2BAE788D002E75FB /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
+				3F96D4EE2BCD024F002F4986 /* PreloadedLevels */,
 				9F874E4E2BB3C19F002EFA86 /* extensions */,
 				9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */,
 				9F8C58A22BAE78C9002E75FB /* FromDataAble.swift */,
 				9F8C58A42BAE79A2002E75FB /* CoreDataManager.swift */,
 				9F874E4C2BB3C130002EFA86 /* LevelDataManager.swift */,
+				3F96D4EC2BCCC2C9002F4986 /* JSONConverter.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -1059,6 +1073,7 @@
 			files = (
 				3F68076F2BAE779E00EB7682 /* LevelView.xib in Resources */,
 				3F6807692BADAF9D00EB7682 /* Assets.xcassets in Resources */,
+				3F96D4F02BCD026C002F4986 /* defaultLevels.json in Resources */,
 				0A76A4A02BAC7E270067BD6E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1123,6 +1138,7 @@
 				9F8C58D42BAED978002E75FB /* BoardObjectSet.swift in Sources */,
 				0A76A49F2BAC78B40067BD6E /* Collision.swift in Sources */,
 				9F8C58D22BAECC41002E75FB /* CGRect+extensions.swift in Sources */,
+				3F96D4ED2BCCC2C9002F4986 /* JSONConverter.swift in Sources */,
 				0A76A4752BAC78550067BD6E /* Entity.swift in Sources */,
 				0AC860D82BB6B0750060EF90 /* PowerupElapseEvent.swift in Sources */,
 				0AC8614B2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift in Sources */,

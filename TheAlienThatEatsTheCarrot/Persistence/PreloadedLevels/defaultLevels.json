@@ -1,0 +1,43 @@
+[
+    {
+      "bestCarrot" : 0,
+      "boardObjects" : {
+        "collectables" : [
+
+        ],
+        "blocks" : [
+          {
+            "position" : [
+              20,
+              26.902654867256636
+            ],
+            "blockType" : "exit"
+          }
+        ],
+        "enemies" : [
+
+        ],
+        "characters" : [
+          {
+            "position" : [
+              31.858407079646014,
+              32.787610619469028
+            ],
+            "characterType" : "normal"
+          }
+        ],
+        "powerups" : [
+
+        ]
+      },
+      "area" : [
+        0,
+        0,
+        120.88495575221238,
+        50
+      ],
+      "name" : "New Level",
+      "bestTime" : 0,
+      "bestScore" : 0
+    }
+]

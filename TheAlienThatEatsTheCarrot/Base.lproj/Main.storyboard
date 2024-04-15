@@ -758,6 +758,9 @@
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="PLAY LEVEL"/>
+                                        <connections>
+                                            <action selector="playLevelButtonTapped:" destination="Dzv-ak-6lJ" eventType="touchUpInside" id="Cja-CA-Hv5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>

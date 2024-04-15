@@ -18,6 +18,12 @@ class LevelDesigner {
         add(boardObject: Character(characterType: .normal, position: CGPoint(x: 20, y: 20)))
         add(boardObject: Block(blockType: .exit, containedPowerupType: nil, position: CGPoint(x: 50, y: 20)))
     }
+    
+    init(level: Level, view: LevelDesignerViewController) {
+        self.level = level
+        self.view = view
+        loadView(with: level.boardObjects)
+    }
 
     func handleTap(at location: CGPoint, objectType: ObjectType) {
         let boardObject = ObjectType.createObject(from: objectType, position: location)
@@ -111,6 +117,7 @@ class LevelDesigner {
 
     private func loadView(with boardObjects: BoardObjectSet) {
         for boardObject in boardObjects.allObjects {
+            print("loading object to view \(boardObject.type) \(boardObject.position)")
             let id = ObjectIdentifier(boardObject)
             view.addImage(id: id, objectType: boardObject.type, center: boardObject.position, width: boardObject.width, height: boardObject.height)
         }
