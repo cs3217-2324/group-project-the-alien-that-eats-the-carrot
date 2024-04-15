@@ -33,7 +33,7 @@ class GameStats {
          coins: Int = 0,
          carrots: Int = 0,
          score: Int = 0,
-         lives: [Int] = [],
+         lives: [Int] = [3],
          enemiesKilled: Int = .zero) {
         self.nexus = nexus
         self.coins = coins
