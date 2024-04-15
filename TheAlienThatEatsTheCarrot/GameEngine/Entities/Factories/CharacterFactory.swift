@@ -8,12 +8,12 @@
 import Foundation
 
 class CharacterFactory: EntityFactory {
-    var entity: Entity
-    var position: CGPoint
+    let boardObject: BoardObject
+    let entity: Entity
 
-    init(entity: Entity, position: CGPoint) {
+    init(boardObject: BoardObject, entity: Entity) {
+        self.boardObject = boardObject
         self.entity = entity
-        self.position = position
     }
 
     func createComponents() -> [Component] {
