@@ -10,7 +10,8 @@ import Foundation
 class NormalCharacterFactory: CharacterFactory {
     static let DEFAULT_LIVES = 3
     override func createComponents() -> [Component] {
-        let size = CGSize(width: 80.0, height: 100.0)
+        let position = boardObject.position
+        let size = CGSize(width: boardObject.width, height: boardObject.height)
         let physicsBody = PhysicsBody(shape: .rectangle,
                                       position: position,
                                       size: size,
