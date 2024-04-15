@@ -26,4 +26,3 @@ class ExitBlockFactory: BlockFactory {
         return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, destroyableComponent]
     }
 }
-

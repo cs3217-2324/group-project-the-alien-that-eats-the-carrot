@@ -54,6 +54,9 @@
         <relationship name="enemyData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EnemyData" inverseName="type" inverseEntity="EnemyData"/>
     </entity>
     <entity name="LevelData" representedClassName=".LevelData" syncable="YES" codeGenerationType="class">
+        <attribute name="bestCarrot" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bestScore" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="bestTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <relationship name="areaData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CGRectData" inverseName="levelData" inverseEntity="CGRectData"/>
         <relationship name="blockDatas" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="BlockData" inverseName="levelData" inverseEntity="BlockData"/>

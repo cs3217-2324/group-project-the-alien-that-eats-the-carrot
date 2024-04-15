@@ -33,6 +33,9 @@ extension Level: FromDataAble {
         }
 
         self.name = levelName
+        self.bestScore = Int(data.bestScore)
+        self.bestTime = Int(data.bestTime)
+        self.bestCarrot = Int(data.bestCarrot)
         self.area = try CGRect(data: areaData)
         self.boardObjects = BoardObjectSet()
         try self.boardObjects.loadBlocks(nsSet: blockDatas)
@@ -54,7 +57,7 @@ extension BoardObjectSet {
             add(boardObject: block)
         }
     }
-    
+
     mutating func loadCharacters(nsSet: NSSet) throws {
         let characterDatas = nsSet.compactMap({ $0 as? CharacterData })
         guard characterDatas.count == nsSet.count else {
@@ -104,6 +107,9 @@ extension Level: ToDataAble {
     func toData(context: NSManagedObjectContext) -> NSManagedObject {
         let levelData = LevelData(context: context)
         levelData.name = name
+        levelData.bestTime = Int64(bestTime)
+        levelData.bestScore = Int64(bestScore)
+        levelData.bestCarrot = Int16(bestCarrot)
         levelData.areaData = area.toData(context: context) as? CGRectData
 
         var blockDatas = Set<BlockData>()

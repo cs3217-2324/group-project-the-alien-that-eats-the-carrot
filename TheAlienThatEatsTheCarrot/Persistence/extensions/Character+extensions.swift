@@ -26,4 +26,3 @@ extension Character: ToDataAble {
         return characterData as NSManagedObject
     }
 }
-
