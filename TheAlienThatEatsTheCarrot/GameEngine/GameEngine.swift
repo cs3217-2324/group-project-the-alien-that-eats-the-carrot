@@ -16,16 +16,42 @@ class GameEngine {
     let gameMode: GameMode = .normal
     let gameBounds: CGRect
     let gameStats: GameStats
+    let gameDuration: CGFloat
+    weak var gameLoop: GameLoop?
 
-    init(level: Level, bounds: CGRect) {
+    init(level: Level,
+         bounds: CGRect,
+         gameDuration: CGFloat = GameConstants.DEFAULT_GAME_DURATION) {
         self.systems = []
         self.gameBounds = bounds
         self.gameStats = GameStats(nexus: nexus)
+        self.gameDuration = gameDuration
         initGameSystems()
         initGameEntities(from: level.boardObjects.allObjects)
+        createGameState()
+        createCountdown()
 
         EventManager.shared.postEvent(GameStartEvent())
         print("Game started")
+    }
+
+    func pause() {
+        guard let gameStateComponent = getGameState() else {
+            return
+        }
+        gameStateComponent.gameState = .pause
+    }
+
+    func unpause() {
+        guard let gameStateComponent = getGameState() else {
+            return
+        }
+        gameStateComponent.gameState = .ongoing
+    }
+
+    func end() {
+        self.gameLoop?.stop()
+        self.systems = []
     }
 
     func update(deltaTime: CGFloat) {
@@ -53,7 +79,7 @@ class GameEngine {
         self.systems = [PlayerMovementSystem(nexus: nexus),
                         PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
                         MovementSystem(nexus: nexus),
-                        TimerSystem(nexus: nexus),
+                        TimerSystem(nexus: nexus, gameEngine: self),
                         CameraSystem(nexus: nexus),
                         DamageSystem(nexus: nexus),
                         FrictionalSystem(nexus: nexus),
@@ -76,4 +102,21 @@ class GameEngine {
             return NormalGameSettings()
         }
     }
+
+    private func getGameState() -> GameStateComponent? {
+        nexus.getComponent(of: GameStateComponent.self)
+    }
+}
+
+extension GameEngine {
+    func createGameState() {
+        let entity = Entity()
+        nexus.addComponent(GameStateComponent(entity: entity), to: entity)
+    }
+
+    func createCountdown() {
+        let entity = Entity()
+        nexus.addComponent(TimerComponent(entity: entity, duration: self.gameDuration, event: GameEndEvent()), to: entity)
+    }
+
 }

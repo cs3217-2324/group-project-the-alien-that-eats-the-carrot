@@ -57,6 +57,9 @@ class GameStats {
         if let observer4 = addScoreObserver {
             EventManager.shared.unsubscribe(from: observer4)
         }
+        if let observer5 = gameEndedObserver {
+            EventManager.shared.unsubscribe(from: observer5)
+        }
     }
 
     private func observePublishers() {

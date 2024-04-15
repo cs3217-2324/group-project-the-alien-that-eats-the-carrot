@@ -64,6 +64,10 @@ final class Nexus {
         return components
     }
 
+    func getComponent<T: Component>(of type: T.Type) -> T? {
+        getComponents(of: type).first
+    }
+
     func getComponent<T: Component>(of type: T.Type, for entity: Entity) -> T? {
         let componentId = type.typeId
         return entities[entity]?[componentId]?.compactMap { $0 as? T }.first
