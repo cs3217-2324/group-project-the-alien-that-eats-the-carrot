@@ -25,7 +25,7 @@ class AttackIfOutOfBoundsAttackStyle: AttackStyle {
     func attack(attacker: Entity, attackee: Entity, delegate: AttackableDelegate) {
         guard
             let renderableComponent = delegate.getComponent(of: RenderableComponent.self, for: attackee),
-            let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: attackee) else {
+            delegate.getComponent(of: DestroyableComponent.self, for: attackee) != nil else {
             return
         }
         if attacker != attackee

@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol MovableDelegate {
+protocol MovableDelegate: AnyObject {
     func getComponent<T: Component>(of type: T.Type, for entity: Entity) -> T?
 
     func getComponents<T: Component>(of type: T.Type) -> [T]
