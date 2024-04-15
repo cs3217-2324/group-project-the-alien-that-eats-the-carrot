@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Character: BoardObject {
+final class Character: BoardObject {
     var position: CGPoint = .zero
     var width: CGFloat
     var height: CGFloat
@@ -49,5 +49,15 @@ class Character: BoardObject {
         let minY = position.y - height / 2
         let maxY = position.y + height / 2
         return point.x >= minX && point.x <= maxX && point.y >= minY && point.y <= maxY
+    }
+}
+
+extension Character: Hashable {
+    public static func == (lhs: Character, rhs: Character) -> Bool {
+        lhs === rhs
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(ObjectIdentifier(self))
     }
 }

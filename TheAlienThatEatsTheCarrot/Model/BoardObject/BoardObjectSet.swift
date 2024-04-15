@@ -9,18 +9,21 @@ import Foundation
 
 struct BoardObjectSet {
     var blocks: Set<Block>
+    var characters: Set<Character>
     var collectables: Set<Collectable>
     var enemies: Set<Enemy>
     var powerups: Set<Powerup>
     var allObjects: [any BoardObject] {
-        Array(blocks) + Array(collectables) + Array(enemies) + Array(powerups)
+        Array(blocks) + Array(characters) + Array(collectables) + Array(enemies) + Array(powerups)
     }
 
     init(blocks: Set<Block> = Set(),
+         characters: Set<Character> = Set(),
          collectables: Set<Collectable> = Set(),
          enemies: Set<Enemy> = Set(),
          powerups: Set<Powerup> = Set()) {
         self.blocks = blocks
+        self.characters = characters
         self.collectables = collectables
         self.enemies = enemies
         self.powerups = powerups
@@ -32,6 +35,9 @@ struct BoardObjectSet {
         }
         if let block = boardObject as? Block {
             blocks.insert(block)
+        }
+        if let character = boardObject as? Character {
+            characters.insert(character)
         }
         if let collectable = boardObject as? Collectable {
             collectables.insert(collectable)
@@ -55,6 +61,9 @@ struct BoardObjectSet {
         if let block = boardObject as? Block {
             blocks.remove(block)
         }
+        if let character = boardObject as? Character {
+            characters.remove(character)
+        }
         if let collectable = boardObject as? Collectable {
             collectables.remove(collectable)
         }
@@ -72,6 +81,9 @@ struct BoardObjectSet {
     func findBoardObject(at point: CGPoint) -> (any BoardObject)? {
         if let block = blocks.first(where: { $0.contains(point: point) }) {
             return block
+        }
+        if let character = characters.first(where: { $0.contains(point: point) }) {
+            return character
         }
         if let collectable = collectables.first(where: { $0.contains(point: point) }) {
             return collectable
@@ -115,6 +127,7 @@ struct BoardObjectSet {
 
     mutating func removeAll() {
         blocks.removeAll()
+        characters.removeAll()
         collectables.removeAll()
         enemies.removeAll()
         powerups.removeAll()

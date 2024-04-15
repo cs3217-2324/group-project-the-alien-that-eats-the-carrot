@@ -19,6 +19,7 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var powerupsContainerView: UIView!
     @IBOutlet private var collectiblesContainerView: UIView!
     private var componentSelected: ObjectType = .block(.normal)
+    private var unitSize: CGFloat = 1.0
 
     @IBOutlet private var boardAreaView: UIView!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
@@ -40,14 +41,16 @@ class LevelDesignerViewController: UIViewController {
 
         // initialise level desinger based on boardAreaView
         let frame = boardAreaView.frame
+        self.unitSize = (frame.maxY - frame.minY) / 50
+
         let origin = CGPoint(x: 0, y: 0)
-        let size = CGSize(width: frame.maxX - frame.minX, height: frame.maxY - frame.minY)
+        let size = CGSize(width: (frame.maxX - frame.minX) / 100, height: (frame.maxY - frame.minY) / 100)
         let area = CGRect(origin: origin, size: size)
         if levelDesigner == nil {
             self.levelDesigner = LevelDesigner(area: area, view: self)
         }
 
-        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area)")
+        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area). unitSize \(unitSize)")
     }
 
     // MARK: - set up tab bars
@@ -128,14 +131,15 @@ class LevelDesignerViewController: UIViewController {
 
     /// handle tap action in the board area
     @objc func handleBoardTap(_ gesture: UITapGestureRecognizer) {
-        let tapLocation = gesture.location(in: boardAreaView)
+        let tapLocation = toUnitPosition(position: gesture.location(in: boardAreaView))
+        print("tap at \(tapLocation)")
         levelDesigner.handleTap(at: tapLocation, objectType: componentSelected)
     }
 
     /// handle long press action in the board area
     @objc func handleBoardLongPress(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            let location = gesture.location(in: boardAreaView)
+            let location = toUnitPosition(position: gesture.location(in: boardAreaView))
             print("long press at \(location)")
             levelDesigner.handleLongPress(at: location)
         }
@@ -146,11 +150,11 @@ class LevelDesignerViewController: UIViewController {
         switch gesture.state {
         case .began:
             print("pan began")
-            let touchPoint = gesture.location(in: boardAreaView)
+            let touchPoint = toUnitPosition(position: gesture.location(in: boardAreaView))
             levelDesigner.handlePanStart(at: touchPoint)
         case .changed:
             print("pan change")
-            let touchPoint = gesture.location(in: boardAreaView)
+            let touchPoint = toUnitPosition(position: gesture.location(in: boardAreaView))
             levelDesigner.handlePanChange(at: touchPoint)
         default:
             print("pan end")
@@ -158,10 +162,18 @@ class LevelDesignerViewController: UIViewController {
         }
     }
 
+    private func toUnitPosition(position: CGPoint) -> CGPoint {
+        CGPoint(x: position.x / unitSize, y: position.y / unitSize)
+    }
+
+    private func toBoardPosition(position: CGPoint) -> CGPoint {
+        CGPoint(x: position.x * unitSize, y: position.y * unitSize)
+    }
+
     // MARK: - image handling
     func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
 //        print("image added at \(center) for \(id)")
-        let imageView = RectangularImageView(objectType: objectType, center: center, width: width, height: height)
+        let imageView = RectangularImageView(objectType: objectType, center: toBoardPosition(position: center), width: width * unitSize, height: height * unitSize)
         imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }

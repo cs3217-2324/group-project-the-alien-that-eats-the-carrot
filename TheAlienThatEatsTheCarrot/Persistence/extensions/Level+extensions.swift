@@ -19,6 +19,9 @@ extension Level: FromDataAble {
         guard let blockDatas = data.blockDatas else {
             throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: "block datas")
         }
+        guard let characterDatas = data.characterDatas else {
+            throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: "character datas")
+        }
         guard let collectableDatas = data.collectableDatas else {
             throw TheAlienThatEatsTheCarrotError.invalidObjectTypeDataError(typeName: "collectable datas")
         }
@@ -30,9 +33,13 @@ extension Level: FromDataAble {
         }
 
         self.name = levelName
+        self.bestScore = Int(data.bestScore)
+        self.bestTime = Int(data.bestTime)
+        self.bestCarrot = Int(data.bestCarrot)
         self.area = try CGRect(data: areaData)
         self.boardObjects = BoardObjectSet()
         try self.boardObjects.loadBlocks(nsSet: blockDatas)
+        try self.boardObjects.loadCharacters(nsSet: characterDatas)
         try self.boardObjects.loadCollectables(nsSet: collectableDatas)
         try self.boardObjects.loadEnemies(nsSet: enemyDatas)
         try self.boardObjects.loadPowerups(nsSet: powerupDatas)
@@ -48,6 +55,17 @@ extension BoardObjectSet {
         for blockData in blockDatas {
             let block = try Block(data: blockData)
             add(boardObject: block)
+        }
+    }
+
+    mutating func loadCharacters(nsSet: NSSet) throws {
+        let characterDatas = nsSet.compactMap({ $0 as? CharacterData })
+        guard characterDatas.count == nsSet.count else {
+            throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
+        }
+        for characterData in characterDatas {
+            let character = try Character(data: characterData)
+            add(boardObject: character)
         }
     }
 
@@ -89,9 +107,13 @@ extension Level: ToDataAble {
     func toData(context: NSManagedObjectContext) -> NSManagedObject {
         let levelData = LevelData(context: context)
         levelData.name = name
+        levelData.bestTime = Int64(bestTime)
+        levelData.bestScore = Int64(bestScore)
+        levelData.bestCarrot = Int16(bestCarrot)
         levelData.areaData = area.toData(context: context) as? CGRectData
 
         var blockDatas = Set<BlockData>()
+        var characterDatas = Set<CharacterData>()
         var collectableDatas = Set<CollectableData>()
         var enemyDatas = Set<EnemyData>()
         var powerupDatas = Set<PowerupData>()
@@ -99,6 +121,11 @@ extension Level: ToDataAble {
         for block in self.boardObjects.blocks {
             if let blockData = block.toData(context: context) as? BlockData {
                 blockDatas.insert(blockData)
+            }
+        }
+        for character in self.boardObjects.characters {
+            if let characterData = character.toData(context: context) as? CharacterData {
+                characterDatas.insert(characterData)
             }
         }
         for collectable in self.boardObjects.collectables {
@@ -118,6 +145,7 @@ extension Level: ToDataAble {
         }
 
         levelData.addToBlockDatas(NSSet(set: blockDatas))
+        levelData.addToCharacterDatas(NSSet(set: characterDatas))
         levelData.addToCollectableDatas(NSSet(set: collectableDatas))
         levelData.addToEnemyDatas(NSSet(set: enemyDatas))
         levelData.addToPowerupDatas(NSSet(set: powerupDatas))

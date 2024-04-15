@@ -158,6 +158,9 @@
 		3F6874AD2BAFFD52009C526D /* TerrainsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6874AC2BAFFD52009C526D /* TerrainsViewController.swift */; };
 		3F6874AF2BAFFDA4009C526D /* ComponentSelectDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6874AE2BAFFDA4009C526D /* ComponentSelectDelegate.swift */; };
 		3F6874B12BB0021B009C526D /* EnemiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F6874B02BB0021B009C526D /* EnemiesViewController.swift */; };
+		3F96D4E62BCC7960002F4986 /* CharacterType+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4E52BCC7960002F4986 /* CharacterType+extensions.swift */; };
+		3F96D4E82BCC796D002F4986 /* Character+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4E72BCC796D002F4986 /* Character+extensions.swift */; };
+		3F96D4EB2BCC7CC8002F4986 /* ExitBlockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4EA2BCC7CC8002F4986 /* ExitBlockFactory.swift */; };
 		3FAE0EE92BB427EA002521D9 /* RectangularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */; };
 		3FAE0EEC2BB42909002521D9 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */; };
 		3FCD00592BB0050D0016389F /* PowerupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD00582BB0050D0016389F /* PowerupsViewController.swift */; };
@@ -319,6 +322,9 @@
 		3F6874AE2BAFFDA4009C526D /* ComponentSelectDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentSelectDelegate.swift; sourceTree = "<group>"; };
 		3F6874B02BB0021B009C526D /* EnemiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemiesViewController.swift; sourceTree = "<group>"; };
 		3F91A1DE2B9EB7F0003D87A6 /* TheAlienThatEatsTheCarrot.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheAlienThatEatsTheCarrot.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F96D4E52BCC7960002F4986 /* CharacterType+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CharacterType+extensions.swift"; sourceTree = "<group>"; };
+		3F96D4E72BCC796D002F4986 /* Character+extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+extensions.swift"; sourceTree = "<group>"; };
+		3F96D4EA2BCC7CC8002F4986 /* ExitBlockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExitBlockFactory.swift; sourceTree = "<group>"; };
 		3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularImageView.swift; sourceTree = "<group>"; };
 		3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		3FCD00582BB0050D0016389F /* PowerupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupsViewController.swift; sourceTree = "<group>"; };
@@ -480,6 +486,7 @@
 				0AC861B62BC7BB3C0060EF90 /* TemporaryBlockFactory.swift */,
 				0AC861BA2BC7CDE10060EF90 /* GravityBlockFactory.swift */,
 				0AC861C02BC7EF8E0060EF90 /* BreakableBlockFactory.swift */,
+				3F96D4EA2BCC7CC8002F4986 /* ExitBlockFactory.swift */,
 			);
 			path = BlockFactories;
 			sourceTree = "<group>";
@@ -710,6 +717,8 @@
 			children = (
 				9F8C58BA2BAEAEDF002E75FB /* Block+extensions.swift */,
 				9F8C58B02BAEA8EC002E75FB /* BlockType+extensions.swift */,
+				3F96D4E72BCC796D002F4986 /* Character+extensions.swift */,
+				3F96D4E52BCC7960002F4986 /* CharacterType+extensions.swift */,
 				9F8C58BE2BAEB248002E75FB /* Collectable+extensions.swift */,
 				9F8C58B42BAEAB7A002E75FB /* CollectableType+extensions.swift */,
 				9F8C58C22BAEB5FD002E75FB /* Enemy+extensions.swift */,
@@ -1159,6 +1168,7 @@
 				3FAE0EE92BB427EA002521D9 /* RectangularImageView.swift in Sources */,
 				0AC861702BC5C09B0060EF90 /* PelletProjectileFactory.swift in Sources */,
 				0AC8611C2BB933CB0060EF90 /* ScoreComponent.swift in Sources */,
+				3F96D4E82BCC796D002F4986 /* Character+extensions.swift in Sources */,
 				0A76A4C42BAE81BD0067BD6E /* CameraSystem.swift in Sources */,
 				9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */,
 				9F8C58AB2BAEA141002E75FB /* PowerupType.swift in Sources */,
@@ -1187,6 +1197,7 @@
 				0AC860E42BB71CE20060EF90 /* MovementPattern.swift in Sources */,
 				9F8C58B32BAEA983002E75FB /* TheAlienThatEatsTheCarrotError.swift in Sources */,
 				0AC8610A2BB864930060EF90 /* HeartCollectableFactory.swift in Sources */,
+				3F96D4E62BCC7960002F4986 /* CharacterType+extensions.swift in Sources */,
 				0A76A46E2BAC783D0067BD6E /* Shape.swift in Sources */,
 				9F8C58B72BAEAC20002E75FB /* EnemyType+extensions.swift in Sources */,
 				9F8C58AF2BAEA45D002E75FB /* CharacterType.swift in Sources */,
@@ -1253,6 +1264,7 @@
 				9F9D15FB2BBC2A98005D1985 /* PhysicsSystem.swift in Sources */,
 				0AC861AD2BC7A8F90060EF90 /* InvinciblePowerupBlockFactory.swift in Sources */,
 				0A76A4A72BAD28EB0067BD6E /* BlockFactory.swift in Sources */,
+				3F96D4EB2BCC7CC8002F4986 /* ExitBlockFactory.swift in Sources */,
 				9F8C58A32BAE78C9002E75FB /* FromDataAble.swift in Sources */,
 				0AC860D12BB694E60060EF90 /* AttackableComponent.swift in Sources */,
 				0A76A47F2BAC786D0067BD6E /* Enemy.swift in Sources */,

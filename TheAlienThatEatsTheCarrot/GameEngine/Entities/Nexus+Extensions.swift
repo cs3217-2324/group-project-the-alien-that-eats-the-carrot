@@ -127,6 +127,8 @@ extension Nexus {
             return getPowerupBlockFactory(from: entity, block: block, type: .attack)
         case .invinciblePowerup:
             return getPowerupBlockFactory(from: entity, block: block, type: .invinsible)
+        case .exit:
+            return getExitBlockFactory(from: entity, block: block)
         }
     }
 
@@ -235,6 +237,10 @@ extension Nexus {
 
     private func getBreakableBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
         BreakableBlockFactory(from: block, to: entity)
+    }
+
+    private func getExitBlockFactory(from entity: Entity, block: Block) -> EntityFactory {
+        ExitBlockFactory(from: block, to: entity)
     }
 }
 
