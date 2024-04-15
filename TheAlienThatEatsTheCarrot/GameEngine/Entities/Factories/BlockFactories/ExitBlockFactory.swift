@@ -26,7 +26,7 @@ class ExitBlockFactory: BlockFactory {
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,
                                                                 acceptableComponentsColliders: [PlayerComponent.self],
                                                                 acceptableDirectionsToCollideFrom: [.up, .down, .left, .right],
-                                                                collisionEffect: CompleteGameEffect())
+                                                                collisionEffect: characterHitExitBlockEffect())
         return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, destroyableComponent, collisionEffectComponent]
     }
 }

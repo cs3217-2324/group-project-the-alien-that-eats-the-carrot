@@ -5,8 +5,8 @@
 //  Created by Sun Xinyu on 15/4/24.
 //
 
-class CompleteGameEffect: CollisionEffect {
+class characterHitExitBlockEffect: CollisionEffect {
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
-        EventManager.shared.postEvent(GameEndEvent(isWin: true))
+        EventManager.shared.postEvent(CharacterHitExitBlockEvent())
     }
 }

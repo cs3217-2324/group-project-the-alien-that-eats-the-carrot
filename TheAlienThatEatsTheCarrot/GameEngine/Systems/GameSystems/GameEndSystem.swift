@@ -11,6 +11,7 @@ class GameEndSystem: System {
     var nexus: Nexus
     weak var gameEngine: GameEngine?
     weak var gameEndObserver: NSObjectProtocol?
+    weak var characterHitExitBlockObserver: NSObjectProtocol?
 
     init(nexus: Nexus, gameEngine: GameEngine?) {
         self.nexus = nexus
@@ -20,6 +21,19 @@ class GameEndSystem: System {
 
     func subscribeToEvents() {
         gameEndObserver = EventManager.shared.subscribe(to: GameEndEvent.self, using: onGameEnd)
+        characterHitExitBlockObserver = EventManager.shared.subscribe(to: CharacterHitExitBlockEvent.self, using: onCharacterHitExitBlockObserver)
+    }
+
+    private lazy var onCharacterHitExitBlockObserver = { [weak self] (event: Event) -> Void in
+        guard let strongSelf = self,
+              let characterHitExitBlockEvent = event as? CharacterHitExitBlockEvent,
+              let gameMode = strongSelf.gameEngine?.gameMode else {
+            return
+        }
+        switch gameMode {
+        case .normal:
+            EventManager.shared.postEvent(GameEndEvent(isWin: true))
+        }
     }
 
     private lazy var onGameEnd = { [weak self] (event: Event) -> Void in
@@ -31,11 +45,17 @@ class GameEndSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
-        checkWinCondition()
-        checkLoseCondition()
+        guard let gameMode = self.gameEngine?.gameMode else {
+            return
+        }
+        switch gameMode {
+        case .normal:
+            checkNormalModeWinCondition()
+            checkNormalModeLoseCondition()
+        }
     }
 
-    private func checkWinCondition() {
+    private func checkNormalModeWinCondition() {
         if checkThreeCarrotsCollected() {
             EventManager.shared.postEvent(GameEndEvent(isWin: true))
         }
@@ -48,7 +68,7 @@ class GameEndSystem: System {
         return carrotsCollected == 3
     }
 
-    private func checkLoseCondition() {
+    private func checkNormalModeLoseCondition() {
         if !checkWhetherStillHaveLives(gameStat: self.gameEngine?.gameStats) {
             EventManager.shared.postEvent(GameEndEvent(isWin: false))
         }
