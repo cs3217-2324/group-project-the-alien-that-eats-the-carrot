@@ -119,11 +119,8 @@ extension GameEngine {
     }
 
     func createCountdown() {
-        switch self.gameMode {
-        case .normal:
-            let entity = Entity()
-            nexus.addComponent(TimerComponent(entity: entity, duration: self.gameDuration, event: GameEndEvent(isWin: false)), to: entity)
-        }
+        let entity = Entity()
+        nexus.addComponent(TimerComponent(entity: entity, duration: self.gameDuration, event: GameEndEvent(isWin: false)), to: entity)
     }
 
 }
