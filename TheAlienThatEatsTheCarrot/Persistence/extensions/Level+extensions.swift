@@ -145,6 +145,7 @@ extension Level: ToDataAble {
         }
 
         levelData.addToBlockDatas(NSSet(set: blockDatas))
+        levelData.addToCharacterDatas(NSSet(set: characterDatas))
         levelData.addToCollectableDatas(NSSet(set: collectableDatas))
         levelData.addToEnemyDatas(NSSet(set: enemyDatas))
         levelData.addToPowerupDatas(NSSet(set: powerupDatas))
