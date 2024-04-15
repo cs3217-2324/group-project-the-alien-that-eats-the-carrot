@@ -9,6 +9,7 @@ import Foundation
 
 struct GameEndEvent: Event {
     static var name: Notification.Name = .gameEnd
+    var isWin: Bool
 }
 
 extension Notification.Name {

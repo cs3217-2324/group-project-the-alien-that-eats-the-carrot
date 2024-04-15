@@ -79,12 +79,13 @@ class GameEngine {
         self.systems = [PlayerMovementSystem(nexus: nexus),
                         PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
                         MovementSystem(nexus: nexus),
-                        TimerSystem(nexus: nexus, gameEngine: self),
+                        TimerSystem(nexus: nexus),
                         CameraSystem(nexus: nexus),
                         DamageSystem(nexus: nexus),
                         FrictionalSystem(nexus: nexus),
                         CreateNewEntitiesSystem(nexus: nexus),
-                        CollisionSystem(nexus: nexus, physicsWorld: physicsWorld)]
+                        CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
+                        GameEndSystem(nexus: nexus, gameEngine: self)]
     }
 
     private func initGameEntities(from boardObjects: [any BoardObject]) {
@@ -116,7 +117,7 @@ extension GameEngine {
 
     func createCountdown() {
         let entity = Entity()
-        nexus.addComponent(TimerComponent(entity: entity, duration: self.gameDuration, event: GameEndEvent()), to: entity)
+        nexus.addComponent(TimerComponent(entity: entity, duration: self.gameDuration, event: GameEndEvent(isWin: false)), to: entity)
     }
 
 }

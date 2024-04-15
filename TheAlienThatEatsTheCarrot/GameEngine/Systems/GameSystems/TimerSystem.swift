@@ -10,23 +10,9 @@ import Foundation
 class TimerSystem: System {
     var nexus: Nexus
     private var gameEndObserver: NSObjectProtocol?
-    weak var gameEngine: GameEngine?
 
-    init(nexus: Nexus, gameEngine: GameEngine?) {
+    init(nexus: Nexus) {
         self.nexus = nexus
-        self.gameEngine = gameEngine
-    }
-
-    func subscribeToEvents() {
-        gameEndObserver = EventManager.shared.subscribe(to: GameEndEvent.self, using: onGameEnd)
-    }
-
-    private lazy var onGameEnd = { [weak self] (event: Event) -> Void in
-        guard let strongSelf = self,
-              let gameEndEvent = event as? GameEndEvent else {
-            return
-        }
-        strongSelf.gameEngine?.end()
     }
 
     func update(deltaTime: CGFloat) {
