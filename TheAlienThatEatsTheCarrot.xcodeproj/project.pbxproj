@@ -215,6 +215,7 @@
 		9F9E7B1D2BC95EAB00EF22D3 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1C2BC95EAB00EF22D3 /* UserDefaultsKey.swift */; };
 		9F9E7B1F2BCBB28B00EF22D3 /* GameEndEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1E2BCBB28B00EF22D3 /* GameEndEvent.swift */; };
 		9F9E7B232BCD3D1900EF22D3 /* GameEndSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B222BCD3D1900EF22D3 /* GameEndSystem.swift */; };
+		9F9E7B252BCD443400EF22D3 /* CompleteGameEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B242BCD443400EF22D3 /* CompleteGameEffect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -429,6 +430,7 @@
 		9F9E7B1C2BC95EAB00EF22D3 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		9F9E7B1E2BCBB28B00EF22D3 /* GameEndEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndEvent.swift; sourceTree = "<group>"; };
 		9F9E7B222BCD3D1900EF22D3 /* GameEndSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndSystem.swift; sourceTree = "<group>"; };
+		9F9E7B242BCD443400EF22D3 /* CompleteGameEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteGameEffect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -630,6 +632,7 @@
 				0AC861B42BC7B1DC0060EF90 /* MoveDynamicPhysicsObjectOnTopEffect.swift */,
 				0AC861B82BC7BBBE0060EF90 /* RemoveSelfInDurationEffect.swift */,
 				0AC861BE2BC7E17A0060EF90 /* RemoveComponentEffect.swift */,
+				9F9E7B242BCD443400EF22D3 /* CompleteGameEffect.swift */,
 			);
 			path = CollisionEffects;
 			sourceTree = "<group>";
@@ -1344,6 +1347,7 @@
 				0AC860FE2BB7C9890060EF90 /* CarrotCollectableFactory.swift in Sources */,
 				3F68076D2BADBCD200EB7682 /* LevelView.swift in Sources */,
 				0AC8614F2BC110180060EF90 /* CreateNewEntitiesSystem.swift in Sources */,
+				9F9E7B252BCD443400EF22D3 /* CompleteGameEffect.swift in Sources */,
 				0AC860DA2BB6D7F90060EF90 /* TimerSystem.swift in Sources */,
 				3FCD005B2BB005340016389F /* CollectiblesViewController.swift in Sources */,
 				0AC861352BBF26720060EF90 /* AttackCoolDownEvent.swift in Sources */,
