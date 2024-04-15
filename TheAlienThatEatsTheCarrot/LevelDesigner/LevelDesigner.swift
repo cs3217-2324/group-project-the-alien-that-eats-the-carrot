@@ -15,6 +15,8 @@ class LevelDesigner {
     init(area: CGRect, view: LevelDesignerViewController) {
         self.level = Level(area: area)
         self.view = view
+        add(boardObject: Character(characterType: .normal, position: CGPoint(x: 20, y: 20)))
+        add(boardObject: Block(blockType: .exit, containedPowerupType: nil, position: CGPoint(x: 50, y: 20)))
     }
 
     func handleTap(at location: CGPoint, objectType: ObjectType) {
