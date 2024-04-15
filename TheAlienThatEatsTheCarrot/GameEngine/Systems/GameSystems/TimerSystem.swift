@@ -9,15 +9,18 @@ import Foundation
 
 class TimerSystem: System {
     var nexus: Nexus
+    weak var gameEngine: GameEngine?
 
-    init(nexus: Nexus) {
+    init(nexus: Nexus, gameEngine: GameEngine?) {
         self.nexus = nexus
+        self.gameEngine = gameEngine
     }
 
     func update(deltaTime: CGFloat) {
         let timerComponents = nexus.getComponents(of: TimerComponent.self)
         for timerComponent in timerComponents {
-            if timerComponent.timeElapsed >= timerComponent.duration {
+            if gameEngine?.getGameState() == .ongoing
+                && timerComponent.timeElapsed >= timerComponent.duration {
                 EventManager.shared.postEvent(timerComponent.event)
                 nexus.removeComponent(timerComponent, from: timerComponent.entity)
             } else {

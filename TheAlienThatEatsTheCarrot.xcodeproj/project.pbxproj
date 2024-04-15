@@ -214,6 +214,7 @@
 		9F9E7B1B2BC95E9700EF22D3 /* UserDefaults+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1A2BC95E9700EF22D3 /* UserDefaults+Extensions.swift */; };
 		9F9E7B1D2BC95EAB00EF22D3 /* UserDefaultsKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1C2BC95EAB00EF22D3 /* UserDefaultsKey.swift */; };
 		9F9E7B1F2BCBB28B00EF22D3 /* GameEndEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B1E2BCBB28B00EF22D3 /* GameEndEvent.swift */; };
+		9F9E7B212BCBD3A800EF22D3 /* CountdownSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9E7B202BCBD3A800EF22D3 /* CountdownSystem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -427,6 +428,7 @@
 		9F9E7B1A2BC95E9700EF22D3 /* UserDefaults+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extensions.swift"; sourceTree = "<group>"; };
 		9F9E7B1C2BC95EAB00EF22D3 /* UserDefaultsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKey.swift; sourceTree = "<group>"; };
 		9F9E7B1E2BCBB28B00EF22D3 /* GameEndEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameEndEvent.swift; sourceTree = "<group>"; };
+		9F9E7B202BCBD3A800EF22D3 /* CountdownSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountdownSystem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -909,6 +911,7 @@
 				0AC8613C2BC0736A0060EF90 /* FrictionalSystem.swift */,
 				9F9D15FA2BBC2A98005D1985 /* PhysicsSystem.swift */,
 				0AC8614E2BC110180060EF90 /* CreateNewEntitiesSystem.swift */,
+				9F9E7B202BCBD3A800EF22D3 /* CountdownSystem.swift */,
 			);
 			path = GameSystems;
 			sourceTree = "<group>";
@@ -1322,6 +1325,7 @@
 				0AC861262BBBEEE10060EF90 /* CharacterFactory.swift in Sources */,
 				0A76A48C2BAC78780067BD6E /* Powerup.swift in Sources */,
 				9F9E7B1D2BC95EAB00EF22D3 /* UserDefaultsKey.swift in Sources */,
+				9F9E7B212BCBD3A800EF22D3 /* CountdownSystem.swift in Sources */,
 				9F9D15FD2BBC2ADB005D1985 /* PhysicsCollisionDelegate.swift in Sources */,
 				0AC861B52BC7B1DC0060EF90 /* MoveDynamicPhysicsObjectOnTopEffect.swift in Sources */,
 				0A76A49C2BAC78B40067BD6E /* RectangleCollider.swift in Sources */,
