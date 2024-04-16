@@ -17,7 +17,7 @@ public enum EnemyType: String {
                                      fast: "bird-1",
                                      stationary: "stationary-1",
                                      turret: "stationary-1"]
-    static let typeToSizeMap = [normal: CGSize(width: 5, height: 5),
+    static let typeToSizeMap = [normal: CGSize(width: 5, height: 2),
                                 fast: CGSize(width: 5, height: 5),
                                 stationary: CGSize(width: 5, height: 5),
                                 turret: CGSize(width: 5, height: 5)]
