@@ -25,8 +25,7 @@ class AttackPowerupFactory: PowerupFactory {
         let dissapearWhenCollideWith: [Component.Type] = [EnemyComponent.self, BlockComponent.self]
         let attackStyle = PeriodicallyShootPelletAttackStyle(targetables: [EnemyComponent.self],
                                                              directions: [.right],
-                                                             cooldownDuration: AttackPowerupFactory.COOLDOWN_DURATION,
-                                                             dissapearWhenCollideWith: dissapearWhenCollideWith)
+                                                             dissapearWhenCollideWith: dissapearWhenCollideWith, cooldownDuration: AttackPowerupFactory.COOLDOWN_DURATION)
         let attackPowerupEffect = AttackPowerupEffect(attackStyle: attackStyle)
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,
                                                                 acceptableComponentsColliders: [PlayerComponent.self],

@@ -9,17 +9,9 @@ import Foundation
 
 extension Nexus {
     func addGameSettings(for gameSettings: GameSettings) {
-        addCharacter(from: gameSettings)
         let entity = Entity()
         let gameSettingsComponent = GameSettingsComponent(entity: entity, spawnPoint: gameSettings.spawnPoint)
         addComponent(gameSettingsComponent, to: entity)
-    }
-
-    func addCharacter(from gameSettings: GameSettings) {
-        let entity = Entity()
-        let normalCharacterFactory = getNormalCharacterFactory(from: entity, gameSettings: gameSettings)
-        let components = normalCharacterFactory.createComponents()
-        addComponents(components, to: entity)
     }
 
     /// Factory to create entities
@@ -50,7 +42,10 @@ extension Nexus {
             }
             factory = getPowerupFactory(type: powerupType, from: entity, powerup: powerup)
         case .character(let characterType):
-            factory = getCharacterFactory(type: characterType, from: entity)
+            guard let character = boardObject as? Character else {
+                return
+            }
+            factory = getCharacterFactory(type: characterType, from: entity, character: character)
         case .projectile(let projectileType):
             fatalError("Board object does not have projectile")
         }
@@ -158,10 +153,10 @@ extension Nexus {
         }
     }
 
-    private func getCharacterFactory(type: CharacterType, from entity: Entity) -> EntityFactory {
+    private func getCharacterFactory(type: CharacterType, from entity: Entity, character: Character) -> EntityFactory {
         switch type {
         case .normal:
-            fatalError("TODO: implement")
+            return getNormalCharacterFactory(from: entity, character: character)
         }
     }
 }
@@ -287,8 +282,8 @@ extension Nexus {
 
 // MARK: Character factories
 extension Nexus {
-    private func getNormalCharacterFactory(from entity: Entity, gameSettings: GameSettings) -> EntityFactory {
-        NormalCharacterFactory(entity: entity, position: gameSettings.spawnPoint)
+    private func getNormalCharacterFactory(from entity: Entity, character: Character) -> EntityFactory {
+        NormalCharacterFactory(boardObject: character, entity: entity)
     }
 }
 
@@ -296,8 +291,8 @@ extension Nexus {
 extension Nexus {
     func getPelletProjectileFactory(from entity: Entity, velocity: CGVector,
                                     position: CGPoint,
-                                    size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
                                     targetables: [Component.Type],
+                                    size: CGSize = GameConstants.DEFAULT_PROJECTILE_SIZE,
                                     dissapearWhenCollideWith: [Component.Type]) -> EntityFactory {
         PelletProjectileFactory(entity: entity, velocity: velocity, position: position,
                                 size: size, targetables: targetables,

@@ -9,7 +9,7 @@ import Foundation
 
 struct AddScoreEvent: Event {
     static var name: Notification.Name = .addScore
-    let score: CGFloat
+    let score: Int
 }
 
 extension Notification.Name {

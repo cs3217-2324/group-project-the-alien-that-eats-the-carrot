@@ -22,7 +22,7 @@ final class PhysicsWorld {
     }
 
     func updatePhysicsBodies(_ physicsBodies: [PhysicsBody],
-                                     deltaTime: CGFloat) {
+                             deltaTime: CGFloat) {
         for physicsBody in physicsBodies {
             physicsBody.update(deltaTime: deltaTime)
         }

@@ -63,7 +63,7 @@ public enum ObjectType: Equatable, Hashable {
             return createPowerup(from: powerupType, position: position)
         case .character(let characterType):
             return createCharacter(from: characterType, position: position)
-        case .projectile(let projectileType):
+        case .projectile:
             fatalError("Projectile has no board object")
         }
     }
