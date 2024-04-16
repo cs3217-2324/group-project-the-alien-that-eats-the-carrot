@@ -20,8 +20,8 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var collectiblesContainerView: UIView!
     private var componentSelected: ObjectType = .block(.normal)
     private var unitSize: CGFloat = 1.0
-    private var boardBounds: (min: CGFloat, max: CGFloat)!
-    private var displayBounds: (min: CGFloat, max: CGFloat)!
+    private var boardBounds: (min: CGFloat, max: CGFloat)! // in absolute position
+    private var displayBounds: (min: CGFloat, max: CGFloat)! // in absolute position
 
     @IBOutlet private var boardAreaView: UIView!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
@@ -49,8 +49,8 @@ class LevelDesignerViewController: UIViewController {
         // load default empty level
         if let level = levelDataManager.fetchEmptyLevel() {
             self.levelDesigner = LevelDesigner(level: level, view: self)
-            boardBounds = (min: 0, max: level.area.size.width)
-            displayBounds = (min: 0, max: (frame.maxX - frame.minX) / unitSize)
+            boardBounds = (min: 0, max: level.area.size.width * unitSize)
+            displayBounds = (min: 0, max: frame.maxX - frame.minX)
             print("display \(displayBounds) board \(boardBounds)")
         } else {
             let origin = CGPoint(x: 0, y: 0)
@@ -59,8 +59,8 @@ class LevelDesignerViewController: UIViewController {
             if levelDesigner == nil {
                 self.levelDesigner = LevelDesigner(area: area, view: self)
             }
-            displayBounds = (min: 0, max: (frame.maxX - frame.minX) / unitSize)
-            displayBounds = (min: 0, max: (frame.maxX - frame.minX) / unitSize)
+            displayBounds = (min: 0, max: (frame.maxX - frame.minX))
+            displayBounds = (min: 0, max: (frame.maxX - frame.minX))
         }
     }
 
@@ -131,23 +131,23 @@ class LevelDesignerViewController: UIViewController {
     }
 
     // MARK: - user interactions
-    
+
     private func setUpGestures() {
         // tap to add game object
         let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBoardTap(_:)))
         boardAreaView.addGestureRecognizer(singleTapGesture)
-        
+
         // long press >0.8s to delete game object
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleBoardLongPress(_:)))
         longPressGesture.minimumPressDuration = 0.7 // Adjust the duration as needed
         boardAreaView.addGestureRecognizer(longPressGesture)
-        
+
         // long press and drag to move game object
         let panGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleBoardPan(_:)))
         panGesture.minimumPressDuration = 0.2
         boardAreaView.addGestureRecognizer(panGesture)
         panGesture.require(toFail: longPressGesture)
-        
+
         // pan to move screen
         let shortHoldPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handleShortHoldPan(_:)))
         boardAreaView.addGestureRecognizer(shortHoldPanGesture)
@@ -200,7 +200,7 @@ class LevelDesignerViewController: UIViewController {
             print("stort pan end")
         }
     }
-    
+
     private func toUnitPosition(position: CGPoint) -> CGPoint {
         CGPoint(x: position.x / unitSize, y: position.y / unitSize)
     }
@@ -225,11 +225,18 @@ class LevelDesignerViewController: UIViewController {
         removedImageView.imageView.removeFromSuperview()
         removedImageView.imageView = nil
     }
-    
+
     func moveAllImages(scale: CGFloat) {
-        displayBounds = (min: displayBounds.min + scale, max: displayBounds.max + scale)
+        var distance = scale
+        if displayBounds.min - scale < boardBounds.min {
+            distance = displayBounds.min - boardBounds.min
+        } else if displayBounds.max - scale > boardBounds.max {
+            distance = boardBounds.max - displayBounds.max
+        }
+
+        displayBounds = (min: displayBounds.min - distance, max: displayBounds.max - distance)
         for (_, imageView) in imageViews {
-            imageView.center.x += scale
+            imageView.center.x += distance
             imageView.imageView.center = imageView.center
         }
     }
