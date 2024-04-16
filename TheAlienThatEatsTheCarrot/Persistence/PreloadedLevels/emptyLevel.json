@@ -57,7 +57,6 @@
             {"position" : [87.5,42.5],"blockType" :"normal"},
             {"position" : [92.5,42.5],"blockType" :"normal"},
             {"position" : [97.5,42.5],"blockType" :"normal"},
-            
             {"position" : [102.5,42.5],"blockType" :"normal"},
             {"position" : [107.5,42.5],"blockType" :"normal"},
             {"position" : [112.5,42.5],"blockType" :"normal"},
@@ -71,7 +70,7 @@
             {"position" : [152.5,42.5],"blockType" :"normal"},
             {"position" : [157.5,42.5],"blockType" :"normal"},
             
-            {"position" : [110,37.5],"blockType" :"exit"},
+            {"position" : [132.5,37.5],"blockType" :"exit"},
         ],
         "enemies" : [],
         "characters" : [

@@ -125,13 +125,26 @@ class LevelDesignerViewController: UIViewController {
     }
 
     // MARK: - user interactions
+    
     private func setUpGestures() {
+        // tap to add game object
         let singleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleBoardTap(_:)))
         boardAreaView.addGestureRecognizer(singleTapGesture)
+        
+        // long press >0.8s to delete game object
         let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleBoardLongPress(_:)))
+        longPressGesture.minimumPressDuration = 0.7 // Adjust the duration as needed
         boardAreaView.addGestureRecognizer(longPressGesture)
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handleBoardPan(_:)))
+        
+        // long press and drag to move game object
+        let panGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleBoardPan(_:)))
+        panGesture.minimumPressDuration = 0.2
         boardAreaView.addGestureRecognizer(panGesture)
+        panGesture.require(toFail: longPressGesture)
+        
+        // pan to move screen
+        let shortHoldPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handleShortHoldPan(_:)))
+        boardAreaView.addGestureRecognizer(shortHoldPanGesture)
     }
 
     /// handle tap action in the board area
@@ -145,7 +158,7 @@ class LevelDesignerViewController: UIViewController {
     @objc func handleBoardLongPress(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             let location = toUnitPosition(position: gesture.location(in: boardAreaView))
-            print("long press at \(location)")
+            print("long press (delete) at \(location)")
             levelDesigner.handleLongPress(at: location)
         }
     }
@@ -154,19 +167,31 @@ class LevelDesignerViewController: UIViewController {
     @objc func handleBoardPan(_ gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began:
-            print("pan began")
+            print("long press pan began")
             let touchPoint = toUnitPosition(position: gesture.location(in: boardAreaView))
             levelDesigner.handlePanStart(at: touchPoint)
         case .changed:
-            print("pan change")
+            print("long press pan change")
             let touchPoint = toUnitPosition(position: gesture.location(in: boardAreaView))
             levelDesigner.handlePanChange(at: touchPoint)
         default:
-            print("pan end")
+            print("long press pan end")
             levelDesigner.handlePanEnd()
         }
     }
 
+    // move the screen
+    @objc func handleShortHoldPan(_ gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .began:
+            print("short pan began")
+        case .changed:
+            print("short pan change")
+        default:
+            print("stort pan end")
+        }
+    }
+    
     private func toUnitPosition(position: CGPoint) -> CGPoint {
         CGPoint(x: position.x / unitSize, y: position.y / unitSize)
     }
