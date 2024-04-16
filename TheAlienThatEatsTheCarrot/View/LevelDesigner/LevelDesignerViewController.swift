@@ -20,8 +20,8 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var collectiblesContainerView: UIView!
     private var componentSelected: ObjectType = .block(.normal)
     private var unitSize: CGFloat = 1.0
-    private var boardBounds: (min: CGFloat, max: CGFloat)! // in absolute position
-    private var displayBounds: (min: CGFloat, max: CGFloat)! // in absolute position
+    private var boardBounds: (min: CGFloat, max: CGFloat)! // in pixel units
+    private var displayBounds: (min: CGFloat, max: CGFloat)! // in pixel units
 
     @IBOutlet private var boardAreaView: UIView!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
@@ -42,26 +42,30 @@ class LevelDesignerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        // initialise level desinger based on boardAreaView
-        let frame = boardAreaView.frame
-        self.unitSize = (frame.maxY - frame.minY) / 50
-
         // load default empty level
         if let level = levelDataManager.fetchEmptyLevel() {
             self.levelDesigner = LevelDesigner(level: level, view: self)
-            boardBounds = (min: 0, max: level.area.size.width * unitSize)
-            displayBounds = (min: 0, max: frame.maxX - frame.minX)
-            print("display \(displayBounds) board \(boardBounds)")
+            loadDisplayBounds(area: level.area)
         } else {
+            let frame = boardAreaView.frame
+            self.unitSize = (frame.maxY - frame.minY) / 50
             let origin = CGPoint(x: 0, y: 0)
             let size = CGSize(width: (frame.maxX - frame.minX) / unitSize, height: (frame.maxY - frame.minY) / unitSize)
             let area = CGRect(origin: origin, size: size)
             if levelDesigner == nil {
                 self.levelDesigner = LevelDesigner(area: area, view: self)
             }
-            displayBounds = (min: 0, max: (frame.maxX - frame.minX))
+            boardBounds = (min: 0, max: (frame.maxX - frame.minX))
             displayBounds = (min: 0, max: (frame.maxX - frame.minX))
         }
+    }
+
+    func loadDisplayBounds(area: CGRect) {
+        let frame = boardAreaView.frame
+        self.unitSize = (frame.maxY - frame.minY) / 50
+        boardBounds = (min: 0, max: area.size.width * unitSize)
+        displayBounds = (min: 0, max: frame.maxX - frame.minX)
+        print("display \(displayBounds) board \(boardBounds)")
     }
 
     // MARK: - set up tab bars
@@ -155,16 +159,16 @@ class LevelDesignerViewController: UIViewController {
 
     /// handle tap action in the board area
     @objc func handleBoardTap(_ gesture: UITapGestureRecognizer) {
-        let tapLocation = toUnitPosition(position: gesture.location(in: boardAreaView))
-        print("tap at \(tapLocation)")
+        let tapLocation = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
+//        print("** tap at \(gesture.location(in: boardAreaView)) -> \(tapLocation)")
         levelDesigner.handleTap(at: tapLocation, objectType: componentSelected)
     }
 
     /// handle long press action in the board area
     @objc func handleBoardLongPress(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
-            let location = toUnitPosition(position: gesture.location(in: boardAreaView))
-            print("long press (delete) at \(location)")
+            let location = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
+//            print("** long press (delete) at \(gesture.location(in: boardAreaView)) -> \(location)")
             levelDesigner.handleLongPress(at: location)
         }
     }
@@ -173,46 +177,54 @@ class LevelDesignerViewController: UIViewController {
     @objc func handleBoardPan(_ gesture: UIPanGestureRecognizer) {
         switch gesture.state {
         case .began:
-            print("long press pan began")
-            let touchPoint = toUnitPosition(position: gesture.location(in: boardAreaView))
+            let touchPoint = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
+//            print("** long press pan began at \(gesture.location(in: boardAreaView)) ->  \(touchPoint)")
             levelDesigner.handlePanStart(at: touchPoint)
         case .changed:
-            print("long press pan change")
-            let touchPoint = toUnitPosition(position: gesture.location(in: boardAreaView))
+            let touchPoint = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
+//            print("** long press pan began at \(gesture.location(in: boardAreaView)) ->  \(touchPoint)")
             levelDesigner.handlePanChange(at: touchPoint)
         default:
-            print("long press pan end")
+//            print("** long press pan end")
             levelDesigner.handlePanEnd()
         }
     }
 
     // move the screen
     @objc func handleShortHoldPan(_ gesture: UIPanGestureRecognizer) {
-        switch gesture.state {
-        case .began:
-            print("short pan began")
-        case .changed:
+        if gesture.state == .changed {
             let translation = gesture.translation(in: boardAreaView)
             moveAllImages(scale: translation.x)
             gesture.setTranslation(.zero, in: boardAreaView)
-            print("short pan change \(translation.x)")
-        default:
-            print("stort pan end")
+            // print("** short pan change \(translation.x)")
         }
     }
 
-    private func toUnitPosition(position: CGPoint) -> CGPoint {
-        CGPoint(x: position.x / unitSize, y: position.y / unitSize)
+    // unit position: in units of unitSize eg range of 5
+    // pixel position: in pixel units eg range of 50
+    // absolute position: actual position in level
+    // relative position: display position on screen
+
+    // gameComponents are stored in absolute unit positions
+    // images are displayed at relative pixel positions
+    private func relativePixelToAbsoluteUnitPosition(point: CGPoint) -> CGPoint {
+        CGPoint(x: (point.x + displayBounds.min) / unitSize,
+                y: point.y / unitSize)
     }
 
-    private func toBoardPosition(position: CGPoint) -> CGPoint {
-        CGPoint(x: position.x * unitSize, y: position.y * unitSize)
+    private func absoluteUnitToRelativePixelPosition(point: CGPoint) -> CGPoint {
+        CGPoint(x: (point.x * unitSize) - displayBounds.min,
+                y: point.y * unitSize)
     }
 
     // MARK: - image handling
     func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
-//        print(">>view >> image added at \(toBoardPosition(position: center)) for \(objectType) w \(width * unitSize) h \(height * unitSize)")
-        let imageView = RectangularImageView(objectType: objectType, center: toBoardPosition(position: center), width: width * unitSize, height: height * unitSize)
+
+        var position = absoluteUnitToRelativePixelPosition(point: center)
+
+        print(">>view >> image added at \(position) for \(objectType) w \(width * unitSize) h \(height * unitSize)")
+
+        let imageView = RectangularImageView(objectType: objectType, center: position, width: width * unitSize, height: height * unitSize)
         imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }
@@ -241,6 +253,11 @@ class LevelDesignerViewController: UIViewController {
         }
     }
 
+    func expandLevel(scale: CGFloat) {
+        boardBounds.max += scale * unitSize
+//        print("new board bounds \(boardBounds)")
+    }
+
     // MARK: - other feature buttons
     @IBAction private func backButtonPressed(_ sender: UIButton) {
         dismiss(animated: true)
@@ -266,6 +283,9 @@ class LevelDesignerViewController: UIViewController {
         printJSON(level: levelDesigner.level)
     }
 
+    @IBAction func expandLevelButtonTapped(_ sender: UIButton) {
+        levelDesigner.expandLevel()
+    }
 }
 
 extension LevelDesignerViewController: ComponentSelectDelegate {
