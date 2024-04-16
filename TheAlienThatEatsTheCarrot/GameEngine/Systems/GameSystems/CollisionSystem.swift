@@ -23,7 +23,7 @@ final class CollisionSystem: System {
         // If a physics body is standing on the ground (block) with negligible y speed, we disable gravity and
         // skip collision resolution with that ground
         let toIgnore = getToIgnoresAndHandleGroundedPhysicsBodies()
-        let allPhysicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
+        let allPhysicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }.filter { !$0.skipResolve }
         physicsWorld.resolveCollisions(for: allPhysicsBodies, deltaTime: deltaTime, toIgnore: toIgnore)
     }
 
@@ -136,7 +136,7 @@ extension CollisionSystem: CollisionEffectDelegate {
 }
 
 extension PhysicsBody {
-    static let NEGLIGIBLE_SPEED_THRESHOLD = 30.0
+    static let NEGLIGIBLE_SPEED_THRESHOLD = 60.0
 
     func hasNegligibleYVelocity() -> Bool {
         velocity.dy.magnitude < PhysicsBody.NEGLIGIBLE_SPEED_THRESHOLD
