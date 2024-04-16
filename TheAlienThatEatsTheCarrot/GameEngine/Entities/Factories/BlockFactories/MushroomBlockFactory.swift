@@ -8,7 +8,7 @@
 import Foundation
 
 class MushroomBlockFactory: BlockFactory {
-    static let KNOCKBACK_STRENGTH = 20_000.0
+    static let KNOCKBACK_STRENGTH = 10_000.0
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)
