@@ -22,6 +22,7 @@ class GamePlayViewController: UIViewController {
     var renderableComponents: [RenderableComponent] = []
     var gameStats: GameStats!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
+    private var scale: CGFloat = 50.0
     private var unitSize: CGFloat = 1.0
 
     // MARK: - game loop
@@ -51,7 +52,7 @@ class GamePlayViewController: UIViewController {
         }
 
         let frame = boardAreaView.frame
-        self.unitSize = (frame.maxY - frame.minY) / 50
+        self.unitSize = (frame.maxY - frame.minY) / scale
         print("game page unitSize \(unitSize)")
         print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX).")
 
@@ -82,10 +83,10 @@ class GamePlayViewController: UIViewController {
         // if you want to remove image indiviudally call `removeImage(id: ObjectIdentifier(component))`
         renderableComponents = gameEngine.getRenderableComponents()
         gameStats = gameEngine.getGameStats()
-        let cameraOffset = gameEngine.getCameraOffsets().first
+        let playerPosition = gameEngine.getPlayerPositions().first
 
         for component in renderableComponents {
-            addImage(component: component, with: cameraOffset)
+            addImage(component: component, of: playerPosition)
         }
 
         updateCoinCount(gameStats.coins)
@@ -114,15 +115,10 @@ class GamePlayViewController: UIViewController {
         boardAreaView.addSubview(imageView.imageView)
     }
 
-    func addImage(component: RenderableComponent, with offset: CGPoint?) {
-        var xPosition = component.position.x + boardAreaView.frame.width / 50 / 2
-        var yPosition = component.position.y + boardAreaView.frame.height / 50 / 2 + 1_300/50
-        if let offset = offset {
-            xPosition -= offset.x
-            yPosition -= offset.y
-        }
+    func addImage(component: RenderableComponent, of position: CGPoint?) {
+        let positionWithOffsets = getPositionWithOffsets(for: component, of: position)
         let imageView = RectangularImageView(objectType: component.objectType,
-                                             center: toBoardPosition(position: CGPoint(x: xPosition, y: yPosition)),
+                                             center: toBoardPosition(position: CGPoint(x: positionWithOffsets.x, y: positionWithOffsets.y)),
                                              width: component.size.width * unitSize,
                                              height: component.size.height * unitSize)
         imageViews[ObjectIdentifier(component)] = imageView
@@ -151,6 +147,17 @@ class GamePlayViewController: UIViewController {
 
     private func toBoardPosition(position: CGPoint) -> CGPoint {
         CGPoint(x: position.x * unitSize, y: position.y * unitSize)
+    }
+
+    private func getPositionWithOffsets(for component: RenderableComponent, of position: CGPoint?) -> CGPoint {
+        let verticalCameraOffset = 1_300.0
+        var xPosition = component.position.x + boardAreaView.frame.width / scale / 2
+        var yPosition = component.position.y + boardAreaView.frame.height / scale / 2 + verticalCameraOffset / scale
+        if let playerPosition = position {
+            xPosition -= playerPosition.x
+            yPosition -= playerPosition.y
+        }
+        return CGPoint(x: xPosition, y: yPosition)
     }
 
     // MARK: - game state handling
