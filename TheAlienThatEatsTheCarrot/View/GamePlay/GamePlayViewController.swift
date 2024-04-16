@@ -36,6 +36,7 @@ class GamePlayViewController: UIViewController {
     // MARK: observers
     private var damageObserver: NSObjectProtocol?
     private var playerDiedObserver: NSObjectProtocol?
+    private var powerupActivateObserver: NSObjectProtocol?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -241,6 +242,7 @@ class GamePlayViewController: UIViewController {
     private func subscribeToEvents() {
         damageObserver = EventManager.shared.subscribe(to: DamageEvent.self, using: onEventOccur)
         playerDiedObserver = EventManager.shared.subscribe(to: PlayerDiedEvent.self, using: onEventOccur)
+        powerupActivateObserver = EventManager.shared.subscribe(to: PowerupActivateEvent.self, using: onEventOccur)
     }
 
     private func unsubscribeToEvents() {
@@ -250,6 +252,9 @@ class GamePlayViewController: UIViewController {
         if let observer2 = playerDiedObserver {
             EventManager.shared.unsubscribe(from: observer2)
         }
+        if let observer3 = powerupActivateObserver {
+            EventManager.shared.unsubscribe(from: observer3)
+        }
     }
 
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
@@ -257,6 +262,8 @@ class GamePlayViewController: UIViewController {
             self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
         } else if let playerDiedEvent = event as? PlayerDiedEvent {
             self?.showPlayerDied()
+        } else if let powerupActivateEvent = event as? PowerupActivateEvent {
+            self?.showPowerupActivated(for: powerupActivateEvent.name)
         }
     }
 }
@@ -270,7 +277,7 @@ extension GamePlayViewController {
         damageLabel.center = toBoardPosition(position: positionWithOffsets)
         boardAreaView.addSubview(damageLabel)
         damageLabel.layer.zPosition = 100
-
+        
         UIView.animate(withDuration: 1.0, animations: {
             damageLabel.alpha = 0
             damageLabel.center.y -= 50
@@ -278,7 +285,7 @@ extension GamePlayViewController {
             damageLabel.removeFromSuperview()
         }
     }
-
+    
     func showPlayerDied() {
         let diedLabel = UILabel()
         diedLabel.text = "YOU DIED"
@@ -288,7 +295,7 @@ extension GamePlayViewController {
         diedLabel.center = boardAreaView.center
         diedLabel.alpha = 0
         view.addSubview(diedLabel)
-
+        
         UIView.animate(withDuration: 0.5, animations: {
             diedLabel.alpha = 1
         }) { _ in
@@ -299,4 +306,28 @@ extension GamePlayViewController {
             }
         }
     }
+
+    func showPowerupActivated(for name: String) {
+        let powerupActivateLabel = UILabel()
+        powerupActivateLabel.text = "\(name) Activated!"
+        powerupActivateLabel.textColor = .green
+        powerupActivateLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        powerupActivateLabel.sizeToFit()
+        powerupActivateLabel.center = boardAreaView.center
+        powerupActivateLabel.alpha = 0
+        view.addSubview(powerupActivateLabel)
+
+        UIView.animate(withDuration: 0.5, animations: {
+            powerupActivateLabel.alpha = 1
+            powerupActivateLabel.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }) { _ in
+            UIView.animate(withDuration: 0.5, delay: 1.0, options: [], animations: {
+                powerupActivateLabel.alpha = 0
+                powerupActivateLabel.transform = CGAffineTransform.identity
+            }) { _ in
+                powerupActivateLabel.removeFromSuperview()
+            }
+        }
+    }
+
 }
