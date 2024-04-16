@@ -27,7 +27,7 @@ class CoinCollectableFactory: CollectableFactory {
         let physicsBody = PhysicsBody(shape: .rectangle, position: boardObject.position, size: size,
                                       categoryBitmask: Constants.collectableCategoryBitmask,
                                       collisionBitmask: Constants.collectibleCollisionBitmask,
-                                      isDynamic: false)
+                                      isDynamic: false, skipResolve: true)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody, disableGravity: true)
         let addCoinEffect = AddCoinEffect(value: value)
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,
