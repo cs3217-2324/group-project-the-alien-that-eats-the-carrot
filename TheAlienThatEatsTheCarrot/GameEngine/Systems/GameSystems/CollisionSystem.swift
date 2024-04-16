@@ -136,7 +136,7 @@ extension CollisionSystem: CollisionEffectDelegate {
 }
 
 extension PhysicsBody {
-    static let NEGLIGIBLE_SPEED_THRESHOLD = 60.0
+    static let NEGLIGIBLE_SPEED_THRESHOLD = 30.0
 
     func hasNegligibleYVelocity() -> Bool {
         velocity.dy.magnitude < PhysicsBody.NEGLIGIBLE_SPEED_THRESHOLD
