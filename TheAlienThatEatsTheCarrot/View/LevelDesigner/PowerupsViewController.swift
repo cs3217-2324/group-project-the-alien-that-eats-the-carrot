@@ -11,24 +11,20 @@ class PowerupsViewController: UIViewController {
 
     weak var delegate: ComponentSelectDelegate?
 
-    @IBAction private func powerUpUnusedButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .powerup(.attack))
-    }
-
     @IBAction private func powerupAttackButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .powerup(.attack))
+        delegate?.buttonTapped(type: .block(.attackPowerup))
     }
 
     @IBAction private func powerupDoubleJumpButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .powerup(.doubleJump))
+        delegate?.buttonTapped(type: .block(.doubleJumpPowerup))
     }
 
     @IBAction private func powerupInvincibilityButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .powerup(.invinsible))
+        delegate?.buttonTapped(type: .block(.invinciblePowerup))
     }
 
     @IBAction private func powerupStrengthButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .powerup(.strength))
+        delegate?.buttonTapped(type: .block(.strengthPowerup))
     }
 
 }

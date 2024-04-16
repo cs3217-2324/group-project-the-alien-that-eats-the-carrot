@@ -220,7 +220,7 @@ class LevelDesignerViewController: UIViewController {
     // MARK: - image handling
     func addImage(id: ObjectIdentifier, objectType: ObjectType, center: CGPoint, width: CGFloat, height: CGFloat) {
 
-        var position = absoluteUnitToRelativePixelPosition(point: center)
+        let position = absoluteUnitToRelativePixelPosition(point: center)
 
         print(">>view >> image added at \(position) for \(objectType) w \(width * unitSize) h \(height * unitSize)")
 
