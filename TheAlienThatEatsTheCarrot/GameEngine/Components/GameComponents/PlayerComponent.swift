@@ -22,8 +22,8 @@ class PlayerComponent: Component {
 enum ControlAction {
     case idle, jump, left, right
 
-    static let DEFAULT_LEFT_FORCE = CGVector(dx: -1_000.0, dy: 0)
-    static let DEFAULT_RIGHT_FORCE = CGVector(dx: 1_000.0, dy: 0)
-    static let DEFAULT_JUMP_FORCE = CGVector(dx: 0, dy: -30_000.0)
+    static let DEFAULT_LEFT_FORCE = CGVector(dx: -900.0, dy: 0)
+    static let DEFAULT_RIGHT_FORCE = CGVector(dx: 900.0, dy: 0)
+    static let DEFAULT_JUMP_FORCE = CGVector(dx: 0, dy: -5_000.0)
     static let DEFAULT_DECELERATION_FORCE_MAGNITUDE = 1_000.0
 }
