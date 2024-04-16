@@ -20,6 +20,7 @@ class InvinciblePowerupEffect: ActivatePowerupEffect {
             return
         }
         destroyableComponent.isInvinsible = true
+        EventManager.shared.postEvent(PowerupActivateEvent(type: .invinsible, name: "Invinsible 😇"))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 }

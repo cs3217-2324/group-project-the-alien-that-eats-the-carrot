@@ -22,6 +22,7 @@ class AttackPowerupEffect: ActivatePowerupEffect {
             return
         }
         attackableComponent.addAttackStyle(attackStyle)
+        EventManager.shared.postEvent(PowerupActivateEvent(type: .attack, name: "Attack 🔪"))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 }
