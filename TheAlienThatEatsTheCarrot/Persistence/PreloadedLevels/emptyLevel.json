@@ -74,7 +74,7 @@
         ],
         "enemies" : [],
         "characters" : [
-          {"position" : [11,37.5],"characterType" : "normal"}
+          {"position" : [11,37],"characterType" : "normal"}
         ],
         "powerups" : []
       },
