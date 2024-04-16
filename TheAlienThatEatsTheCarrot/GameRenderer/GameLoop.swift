@@ -16,6 +16,7 @@ class GameLoop {
     init(gameEngine: GameEngine, updateUI: (() -> Void)? = nil) {
         self.gameEngine = gameEngine
         self.updateUI = updateUI
+        gameEngine.gameLoop = self
     }
 
     func start() {

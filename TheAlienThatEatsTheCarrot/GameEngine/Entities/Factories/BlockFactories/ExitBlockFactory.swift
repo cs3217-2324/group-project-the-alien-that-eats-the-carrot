@@ -23,6 +23,10 @@ class ExitBlockFactory: BlockFactory {
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let frictionalComponent = FrictionalComponent(entity: entity)
         let destroyableComponent = DestroyableComponent(entity: entity, maxHealth: 10.0, maxLives: 1, isInvinsible: false)
-        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, destroyableComponent]
+        let collisionEffectComponent = CollisionEffectComponent(entity: entity,
+                                                                acceptableComponentsColliders: [PlayerComponent.self],
+                                                                acceptableDirectionsToCollideFrom: [.up, .down, .left, .right],
+                                                                collisionEffect: CompleteGameEffect())
+        return [blockComponent, renderableComponent, physicsComponent, frictionalComponent, destroyableComponent, collisionEffectComponent]
     }
 }

@@ -669,7 +669,7 @@
         <scene sceneID="Vng-gw-D9C">
             <objects>
                 <viewController id="Dzv-ak-6lJ" customClass="LevelDesignerViewController" customModule="TheAlienThatEatsTheCarrot" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="MsT-QB-XgO">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="MsT-QB-XgO">
                         <rect key="frame" x="0.0" y="0.0" width="1366" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -758,6 +758,9 @@
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="PLAY LEVEL"/>
+                                        <connections>
+                                            <action selector="playLevelButtonTapped:" destination="Dzv-ak-6lJ" eventType="touchUpInside" id="Cja-CA-Hv5"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -819,6 +822,18 @@
                                     <action selector="backButtonPressed:" destination="Dzv-ak-6lJ" eventType="touchUpInside" id="2Zx-sF-TeZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3f-QW-NJ8">
+                                <rect key="frame" x="1166.5" y="785.5" width="160.5" height="60"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ikH-hs-EyM"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="  EXPAND LEVEL  "/>
+                                <connections>
+                                    <action selector="expandLevelButtonTapped:" destination="Dzv-ak-6lJ" eventType="touchUpInside" id="NmG-z0-hOh"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qVT-pi-F2V"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -834,6 +849,7 @@
                             <constraint firstItem="dYj-K4-cJN" firstAttribute="top" secondItem="VdY-ei-Lm8" secondAttribute="bottom" id="Anu-jd-w4u"/>
                             <constraint firstItem="VdY-ei-Lm8" firstAttribute="top" secondItem="jDo-H9-Rqz" secondAttribute="bottom" id="BfJ-b7-74a"/>
                             <constraint firstItem="TQg-v9-75b" firstAttribute="leading" secondItem="VdY-ei-Lm8" secondAttribute="trailing" id="DWK-dV-3CN"/>
+                            <constraint firstItem="S3f-QW-NJ8" firstAttribute="centerY" secondItem="UQf-Us-Gkj" secondAttribute="centerY" id="HpV-VJ-Vav"/>
                             <constraint firstItem="UQf-Us-Gkj" firstAttribute="leading" secondItem="qVT-pi-F2V" secondAttribute="leading" constant="45" id="O7g-CO-31O"/>
                             <constraint firstItem="VdY-ei-Lm8" firstAttribute="leading" secondItem="qVT-pi-F2V" secondAttribute="leading" id="PzR-WL-8fT"/>
                             <constraint firstItem="dYj-K4-cJN" firstAttribute="trailing" secondItem="qVT-pi-F2V" secondAttribute="trailing" id="Rkx-l7-SKF"/>
@@ -846,11 +862,14 @@
                             <constraint firstItem="TQg-v9-75b" firstAttribute="leading" secondItem="PaZ-ds-Pa1" secondAttribute="trailing" id="h9H-Uk-eI3"/>
                             <constraint firstItem="dYj-K4-cJN" firstAttribute="top" secondItem="xOo-DE-7EM" secondAttribute="bottom" id="i2Q-EX-zaN"/>
                             <constraint firstItem="dYj-K4-cJN" firstAttribute="top" secondItem="Ffx-j4-Yp6" secondAttribute="bottom" id="iyu-qT-gzS"/>
+                            <constraint firstItem="S3f-QW-NJ8" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="UQf-Us-Gkj" secondAttribute="trailing" constant="8" symbolic="YES" id="qRU-fG-xHu"/>
                             <constraint firstItem="Ffx-j4-Yp6" firstAttribute="top" secondItem="jDo-H9-Rqz" secondAttribute="bottom" id="qqy-Gx-vBc"/>
                             <constraint firstItem="Ffx-j4-Yp6" firstAttribute="leading" secondItem="qVT-pi-F2V" secondAttribute="leading" id="rQJ-xV-hZC"/>
                             <constraint firstItem="dYj-K4-cJN" firstAttribute="top" secondItem="PaZ-ds-Pa1" secondAttribute="bottom" id="sQ0-Ef-00U"/>
                             <constraint firstItem="dYj-K4-cJN" firstAttribute="centerX" secondItem="MsT-QB-XgO" secondAttribute="centerX" id="upV-5a-phz"/>
+                            <constraint firstItem="qVT-pi-F2V" firstAttribute="trailing" secondItem="S3f-QW-NJ8" secondAttribute="trailing" constant="39" id="v4j-Ab-v2X"/>
                             <constraint firstItem="dYj-K4-cJN" firstAttribute="top" secondItem="TQg-v9-75b" secondAttribute="bottom" id="yFi-4D-QAu"/>
+                            <constraint firstItem="S3f-QW-NJ8" firstAttribute="top" secondItem="dYj-K4-cJN" secondAttribute="bottom" constant="76.5" id="zOL-tZ-iiJ"/>
                         </constraints>
                     </view>
                     <connections>

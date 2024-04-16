@@ -21,10 +21,10 @@ class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
 
     init(targetables: [Component.Type],
          directions: [Direction],
+         dissapearWhenCollideWith: [Component.Type],
          damage: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_DAMAGE,
          cooldownDuration: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_COOLDOWN_DURATION,
-         speed: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_PELLET_SPEED,
-         dissapearWhenCollideWith: [Component.Type]) {
+         speed: CGFloat = PeriodicallyShootPelletAttackStyle.DEFAULT_PELLET_SPEED) {
         self.targetables = targetables
         self.coolDownDuration = cooldownDuration
         self.directions = directions

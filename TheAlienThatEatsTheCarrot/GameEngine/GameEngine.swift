@@ -15,15 +15,46 @@ class GameEngine {
 
     let gameMode: GameMode = .normal
     let gameBounds: CGRect
+    let gameStats: GameStats
+    let gameDuration: CGFloat
+    weak var gameLoop: GameLoop?
 
-    init(level: Level, bounds: CGRect) {
+    init(level: Level,
+         bounds: CGRect,
+         gameDuration: CGFloat = GameConstants.DEFAULT_GAME_DURATION) {
         self.systems = []
         self.gameBounds = bounds
+        self.gameStats = GameStats(nexus: nexus)
+        self.gameDuration = gameDuration
         initGameSystems()
         initGameEntities(from: level.boardObjects.allObjects)
+        createGameState()
+        createCountdown()
 
         EventManager.shared.postEvent(GameStartEvent())
         print("Game started")
+    }
+
+    func pause() {
+        setGameState(gameState: .pause)
+    }
+
+    func unpause() {
+        setGameState(gameState: .ongoing)
+    }
+
+    func end() {
+        self.gameLoop?.stop()
+        self.systems = []
+        setGameState(gameState: .gameOver)
+    }
+
+    private func setGameState(gameState: GameState) {
+        guard let gameStateComponent = getGameState() else {
+            return
+        }
+        gameStateComponent.gameState = gameState
+
     }
 
     func update(deltaTime: CGFloat) {
@@ -35,7 +66,7 @@ class GameEngine {
     }
 
     func getGameStats() -> GameStats {
-        createGameStatsFromECS()
+        self.gameStats.getLatestGameStats()!
     }
 
     private func updateSystems(deltaTime: CGFloat) {
@@ -56,7 +87,8 @@ class GameEngine {
                         DamageSystem(nexus: nexus),
                         FrictionalSystem(nexus: nexus),
                         CreateNewEntitiesSystem(nexus: nexus),
-                        CollisionSystem(nexus: nexus, physicsWorld: physicsWorld)]
+                        CollisionSystem(nexus: nexus, physicsWorld: physicsWorld),
+                        GameEndSystem(nexus: nexus, gameEngine: self)]
     }
 
     private func initGameEntities(from boardObjects: [any BoardObject]) {
@@ -74,4 +106,21 @@ class GameEngine {
             return NormalGameSettings()
         }
     }
+
+    private func getGameState() -> GameStateComponent? {
+        nexus.getComponent(of: GameStateComponent.self)
+    }
+}
+
+extension GameEngine {
+    func createGameState() {
+        let entity = Entity()
+        nexus.addComponent(GameStateComponent(entity: entity), to: entity)
+    }
+
+    func createCountdown() {
+        let entity = Entity()
+        nexus.addComponent(TimerComponent(entity: entity, duration: self.gameDuration, event: GameEndEvent(isWin: false)), to: entity)
+    }
+
 }

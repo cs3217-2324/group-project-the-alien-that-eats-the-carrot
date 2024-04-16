@@ -9,9 +9,9 @@ import Foundation
 
 class ScoreComponent: Component {
     var entity: Entity
-    var score: CGFloat
+    var score: Int
 
-    init(entity: Entity, score: CGFloat) {
+    init(entity: Entity, score: Int) {
         self.entity = entity
         self.score = score
     }

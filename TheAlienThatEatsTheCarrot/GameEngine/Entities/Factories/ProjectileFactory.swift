@@ -21,9 +21,9 @@ class ProjectileFactory: EntityFactory {
          velocity: CGVector,
          position: CGPoint,
          size: CGSize,
-         lifespan: CGFloat = ProjectileFactory.DEFAULT_LIFESPAN,
          targetables: [Component.Type],
-         dissapearWhenCollideWith: [Component.Type]) {
+         dissapearWhenCollideWith: [Component.Type],
+         lifespan: CGFloat = ProjectileFactory.DEFAULT_LIFESPAN) {
         self.entity = entity
         self.velocity = velocity
         self.position = position

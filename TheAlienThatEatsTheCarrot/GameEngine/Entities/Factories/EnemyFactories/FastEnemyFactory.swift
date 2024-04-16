@@ -8,7 +8,7 @@
 import Foundation
 
 class FastEnemyFactory: EnemyFactory {
-    static let SCORE = 200.0
+    static let SCORE: Int = 200
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let enemyComponent = EnemyComponent(entity: entity)
@@ -29,7 +29,7 @@ class FastEnemyFactory: EnemyFactory {
         physicsBody.velocity = CGVector(dx: 200.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
-        let destroyableComponent = DestroyableComponent(entity: entity)
+        let destroyableComponent = DestroyableComponent(entity: entity, onDestroyed: EnemyKilledEvent(entity: entity))
         let scoreComponent = ScoreComponent(entity: entity, score: FastEnemyFactory.SCORE)
         return [enemyComponent, renderableComponent, movableComponent, attackableComponent,
                 physicsComponent, destroyableComponent, scoreComponent]

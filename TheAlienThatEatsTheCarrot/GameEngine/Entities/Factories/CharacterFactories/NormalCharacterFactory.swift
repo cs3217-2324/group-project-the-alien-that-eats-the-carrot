@@ -22,7 +22,6 @@ class NormalCharacterFactory: CharacterFactory {
         let playerComponent = PlayerComponent(entity: entity)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
         let jumpStateComponent = JumpStateComponent(entity: entity)
-        let inventoryComponent = InventoryComponent(entity: entity)
         let cameraComponent = CameraComponent(entity: entity)
         let attackStyles: [any AttackStyle] = [JumpAttackStyle(targetables: [EnemyComponent.self]),
                                                HeadAttackStyle(targetables: [BlockComponent.self])]
@@ -35,7 +34,7 @@ class NormalCharacterFactory: CharacterFactory {
                                                         onLiveDecrease: playerDiedEvent)
         let respawnableComponent = RespawnableComponent(entity: entity, spawnPoint: position)
         return [renderableComponent, playerComponent, physicsComponent,
-                jumpStateComponent, inventoryComponent, cameraComponent, attackableComponent,
+                jumpStateComponent, cameraComponent, attackableComponent,
                 destroyableComponent, respawnableComponent]
     }
 }

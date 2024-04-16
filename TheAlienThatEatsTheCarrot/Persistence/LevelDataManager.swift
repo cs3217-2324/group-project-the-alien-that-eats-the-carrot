@@ -85,4 +85,26 @@ struct LevelDataManager {
             return []
         }
     }
+
+    func fetchEmptyLevel() -> Level? {
+        guard let fileURL = Bundle.main.url(forResource: "emptyLevel", withExtension: "json") else {
+            print("Error: emptyLevel.json file not found")
+            return nil
+        }
+        do {
+            let jsonData = try Data(contentsOf: fileURL)
+            let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] ?? []
+            for jsonDict in jsonArray {
+                let jsonString = String(data: try JSONSerialization.data(withJSONObject: jsonDict, options: []), encoding: .utf8)
+                if let level = jsonString.flatMap({ Level.fromJSONString(jsonString: $0) }) {
+                    return level
+                } else {
+                    print("Error: Failed to create Level instance from JSON string")
+                }
+            }
+        } catch {
+            print("Error decoding defaultLevels.json: \(error)")
+        }
+        return nil
+    }
 }
