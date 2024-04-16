@@ -11,7 +11,7 @@ public enum ProjectileType: String {
     case pellet
 
     static let typeToAssetNameMap = [pellet: "projectile-pellet"]
-    static let typeToSizeMap = [pellet: CGSize(width: 1, height: 1)]
+    static let typeToSizeMap = [pellet: CGSize(width: 3, height: 3)]
 
     var assetName: String? {
         ProjectileType.typeToAssetNameMap[self]

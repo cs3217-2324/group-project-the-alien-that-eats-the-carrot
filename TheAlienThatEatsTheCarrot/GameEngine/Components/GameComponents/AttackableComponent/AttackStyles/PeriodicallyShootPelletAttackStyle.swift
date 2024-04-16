@@ -8,7 +8,7 @@
 import Foundation
 
 class PeriodicallyShootPelletAttackStyle: AttackStyle, HasCoolDown {
-    static let DEFAULT_PELLET_SPEED = 1_000.0
+    static let DEFAULT_PELLET_SPEED = 200.0
     static let DEFAULT_COOLDOWN_DURATION = 1.0
     static let DEFAULT_DAMAGE: CGFloat = .zero
     var targetables: [Component.Type]

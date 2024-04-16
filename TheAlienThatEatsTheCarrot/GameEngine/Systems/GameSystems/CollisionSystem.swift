@@ -29,11 +29,11 @@ final class CollisionSystem: System {
 
     func handleCollisionEffects() {
         let collisionEffectComponents = nexus.getComponents(of: CollisionEffectComponent.self)
-        let dynamicPhysicsComponents = nexus.getComponents(of: PhysicsComponent.self).filter { $0.physicsBody.isDynamic }
+        let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
         for collisionEffectComponent in collisionEffectComponents {
-            for dynamicPhysicsComponent in dynamicPhysicsComponents {
+            for physicsComponent in physicsComponents {
                 collisionEffectComponent.handleEffectIfCollides(with: collisionEffectComponent.entity,
-                                                                by: dynamicPhysicsComponent.entity,
+                                                                by: physicsComponent.entity,
                                                                 delegate: self)
             }
         }
