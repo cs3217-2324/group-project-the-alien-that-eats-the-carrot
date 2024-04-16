@@ -20,6 +20,8 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var collectiblesContainerView: UIView!
     private var componentSelected: ObjectType = .block(.normal)
     private var unitSize: CGFloat = 1.0
+    private var boardBounds: (min: CGFloat, max: CGFloat)!
+    private var displayBounds: (min: CGFloat, max: CGFloat)!
 
     @IBOutlet private var boardAreaView: UIView!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
@@ -47,6 +49,9 @@ class LevelDesignerViewController: UIViewController {
         // load default empty level
         if let level = levelDataManager.fetchEmptyLevel() {
             self.levelDesigner = LevelDesigner(level: level, view: self)
+            boardBounds = (min: 0, max: level.area.size.width)
+            displayBounds = (min: 0, max: (frame.maxX - frame.minX) / unitSize)
+            print("display \(displayBounds) board \(boardBounds)")
         } else {
             let origin = CGPoint(x: 0, y: 0)
             let size = CGSize(width: (frame.maxX - frame.minX) / unitSize, height: (frame.maxY - frame.minY) / unitSize)
@@ -54,7 +59,8 @@ class LevelDesignerViewController: UIViewController {
             if levelDesigner == nil {
                 self.levelDesigner = LevelDesigner(area: area, view: self)
             }
-            print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX). rect area = \(area). unitSize \(unitSize)")
+            displayBounds = (min: 0, max: (frame.maxX - frame.minX) / unitSize)
+            displayBounds = (min: 0, max: (frame.maxX - frame.minX) / unitSize)
         }
     }
 
@@ -186,7 +192,10 @@ class LevelDesignerViewController: UIViewController {
         case .began:
             print("short pan began")
         case .changed:
-            print("short pan change")
+            let translation = gesture.translation(in: boardAreaView)
+            moveAllImages(scale: translation.x)
+            gesture.setTranslation(.zero, in: boardAreaView)
+            print("short pan change \(translation.x)")
         default:
             print("stort pan end")
         }
@@ -215,6 +224,14 @@ class LevelDesignerViewController: UIViewController {
         }
         removedImageView.imageView.removeFromSuperview()
         removedImageView.imageView = nil
+    }
+    
+    func moveAllImages(scale: CGFloat) {
+        displayBounds = (min: displayBounds.min + scale, max: displayBounds.max + scale)
+        for (_, imageView) in imageViews {
+            imageView.center.x += scale
+            imageView.imageView.center = imageView.center
+        }
     }
 
     // MARK: - other feature buttons
