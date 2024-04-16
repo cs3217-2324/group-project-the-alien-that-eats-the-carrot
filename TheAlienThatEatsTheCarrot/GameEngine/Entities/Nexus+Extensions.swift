@@ -130,8 +130,12 @@ extension Nexus {
     private func getCollectableFactory(type: CollectableType, from entity: Entity,
                                        collectable: Collectable) -> EntityFactory {
         switch type {
-        case .coin:
-            return getCoinCollectableFactory(from: entity, collectable: collectable)
+        case .coinGold:
+            return getCoinGoldCollectableFactory(from: entity, collectable: collectable)
+        case .coinSilver:
+            return getCoinSilverCollectableFactory(from: entity, collectable: collectable)
+        case .coinBronze:
+            return getCoinBronzeCollectableFactory(from: entity, collectable: collectable)
         case .carrot:
             return getCarrotCollectableFactory(from: entity, collectable: collectable)
         case .heart:
@@ -264,9 +268,19 @@ extension Nexus {
 
 // MARK: Collectables
 extension Nexus {
-    private func getCoinCollectableFactory(from entity: Entity,
+    private func getCoinGoldCollectableFactory(from entity: Entity,
                                            collectable: Collectable) -> EntityFactory {
-        CoinCollectableFactory(boardObject: collectable, entity: entity)
+        CoinCollectableFactory(boardObject: collectable, entity: entity, type: .collectable(.coinGold), value: 5)
+    }
+
+    private func getCoinSilverCollectableFactory(from entity: Entity,
+                                           collectable: Collectable) -> EntityFactory {
+        CoinCollectableFactory(boardObject: collectable, entity: entity, type: .collectable(.coinSilver), value: 3)
+    }
+
+    private func getCoinBronzeCollectableFactory(from entity: Entity,
+                                           collectable: Collectable) -> EntityFactory {
+        CoinCollectableFactory(boardObject: collectable, entity: entity, type: .collectable(.coinBronze), value: 1)
     }
 
     private func getCarrotCollectableFactory(from entity: Entity,

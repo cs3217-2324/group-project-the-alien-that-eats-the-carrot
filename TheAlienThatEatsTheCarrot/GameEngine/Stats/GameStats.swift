@@ -85,7 +85,10 @@ class GameStats {
         case _ as CarrotCollectedEvent:
             self.carrots += 1
         case _ as CoinCollectedEvent:
-            self.coins += 1
+            guard let coinCollectedEvent = event as? CoinCollectedEvent else {
+                return
+            }
+            self.coins += coinCollectedEvent.value
         case _ as EnemyKilledEvent:
             self.enemiesKilled += 1
         case _ as AddScoreEvent:
