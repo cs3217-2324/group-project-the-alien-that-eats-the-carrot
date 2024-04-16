@@ -26,7 +26,7 @@ class FastEnemyFactory: EnemyFactory {
                                       categoryBitmask: Constants.enemyCategoryBitmask,
                                       collisionBitmask: Constants.enemyCollisionBitmask,
                                       isDynamic: false)
-        physicsBody.velocity = CGVector(dx: 200.0, dy: 0)
+        physicsBody.velocity = CGVector(dx: 40.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity, onDestroyed: EnemyKilledEvent(entity: entity))
