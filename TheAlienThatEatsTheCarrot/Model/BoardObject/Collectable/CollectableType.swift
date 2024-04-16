@@ -15,11 +15,11 @@ public enum CollectableType: String, Equatable {
                                    coinBronze: "coin-bronze",
                                        carrot: "carrot-collect",
                                         heart: "heart-full"]
-    static let typeToSizeMap = [coinGold: CGSize(width: 5, height: 5),
-                              coinSilver: CGSize(width: 5, height: 5),
-                              coinBronze: CGSize(width: 5, height: 5),
-                                  carrot: CGSize(width: 5, height: 5),
-                                   heart: CGSize(width: 5, height: 5)]
+    static let typeToSizeMap = [coinGold: CGSize(width: 2.5, height: 2.5),
+                              coinSilver: CGSize(width: 2.5, height: 2.5),
+                              coinBronze: CGSize(width: 2.5, height: 2.5),
+                                  carrot: CGSize(width: 4, height: 4),
+                                   heart: CGSize(width: 4, height: 4)]
 
     var assetName: String? {
         CollectableType.typeToAssetNameMap[self]

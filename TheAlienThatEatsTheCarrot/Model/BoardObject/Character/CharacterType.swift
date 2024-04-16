@@ -11,7 +11,7 @@ public enum CharacterType: String {
     case normal
 
     static let typeToAssetNameMap = [normal: "alien-1"]
-    static let typeToSizeMap = [normal: CGSize(width: 5, height: 5)]
+    static let typeToSizeMap = [normal: CGSize(width: 6, height: 6)]
 
     var assetName: String? {
         CharacterType.typeToAssetNameMap[self]
