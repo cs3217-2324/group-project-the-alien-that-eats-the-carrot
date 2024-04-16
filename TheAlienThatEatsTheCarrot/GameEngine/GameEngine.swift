@@ -65,6 +65,18 @@ class GameEngine {
         nexus.getComponents(of: RenderableComponent.self)
     }
 
+    func getCameraOffsets() -> [CGPoint] {
+        let playerEntities = nexus.getEntities(with: PlayerComponent.self)
+        var offsets: [CGPoint] = []
+        for playerEntity in playerEntities {
+            guard let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: playerEntity) else {
+                continue
+            }
+            offsets.append(CGPoint(x: renderableComponent.position.x, y: renderableComponent.position.y))
+        }
+        return offsets
+    }
+
     func getGameStats() -> GameStats {
         self.gameStats.getLatestGameStats()!
     }

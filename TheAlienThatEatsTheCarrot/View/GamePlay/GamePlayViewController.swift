@@ -82,9 +82,10 @@ class GamePlayViewController: UIViewController {
         // if you want to remove image indiviudally call `removeImage(id: ObjectIdentifier(component))`
         renderableComponents = gameEngine.getRenderableComponents()
         gameStats = gameEngine.getGameStats()
+        let cameraOffset = gameEngine.getCameraOffsets().first
 
         for component in renderableComponents {
-            addImage(component: component)
+            addImage(component: component, with: cameraOffset)
         }
 
         updateCoinCount(gameStats.coins)
@@ -113,8 +114,17 @@ class GamePlayViewController: UIViewController {
         boardAreaView.addSubview(imageView.imageView)
     }
 
-    func addImage(component: RenderableComponent) {
-        let imageView = RectangularImageView(objectType: component.objectType, center: toBoardPosition(position: component.position), width: component.size.width * unitSize, height: component.size.height * unitSize)
+    func addImage(component: RenderableComponent, with offset: CGPoint?) {
+        var xPosition = component.position.x + boardAreaView.frame.width / 50 / 2
+        var yPosition = component.position.y + boardAreaView.frame.height / 50 / 2 + 1_300/50
+        if let offset = offset {
+            xPosition -= offset.x
+            yPosition -= offset.y
+        }
+        let imageView = RectangularImageView(objectType: component.objectType,
+                                             center: toBoardPosition(position: CGPoint(x: xPosition, y: yPosition)),
+                                             width: component.size.width * unitSize,
+                                             height: component.size.height * unitSize)
         imageViews[ObjectIdentifier(component)] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }
