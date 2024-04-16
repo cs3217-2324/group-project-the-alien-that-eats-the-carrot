@@ -269,17 +269,17 @@ extension Nexus {
 // MARK: Collectables
 extension Nexus {
     private func getCoinGoldCollectableFactory(from entity: Entity,
-                                           collectable: Collectable) -> EntityFactory {
+                                               collectable: Collectable) -> EntityFactory {
         CoinCollectableFactory(boardObject: collectable, entity: entity, type: .collectable(.coinGold), value: 5)
     }
 
     private func getCoinSilverCollectableFactory(from entity: Entity,
-                                           collectable: Collectable) -> EntityFactory {
+                                                 collectable: Collectable) -> EntityFactory {
         CoinCollectableFactory(boardObject: collectable, entity: entity, type: .collectable(.coinSilver), value: 3)
     }
 
     private func getCoinBronzeCollectableFactory(from entity: Entity,
-                                           collectable: Collectable) -> EntityFactory {
+                                                 collectable: Collectable) -> EntityFactory {
         CoinCollectableFactory(boardObject: collectable, entity: entity, type: .collectable(.coinBronze), value: 1)
     }
 
