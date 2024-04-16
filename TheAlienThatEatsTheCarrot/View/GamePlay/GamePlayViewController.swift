@@ -83,10 +83,9 @@ class GamePlayViewController: UIViewController {
         // if you want to remove image indiviudally call `removeImage(id: ObjectIdentifier(component))`
         renderableComponents = gameEngine.getRenderableComponents()
         gameStats = gameEngine.getGameStats()
-        let playerPosition = gameEngine.getPlayerPositions().first
 
         for component in renderableComponents {
-            addImage(component: component, of: playerPosition)
+            addImage(component: component)
         }
 
         updateCoinCount(gameStats.coins)
@@ -115,10 +114,10 @@ class GamePlayViewController: UIViewController {
         boardAreaView.addSubview(imageView.imageView)
     }
 
-    func addImage(component: RenderableComponent, of position: CGPoint?) {
-        let positionWithOffsets = getPositionWithOffsets(for: component, of: position)
+    func addImage(component: RenderableComponent) {
+        let positionWithOffsets = getPositionWithOffsets(for: component.position)
         let imageView = RectangularImageView(objectType: component.objectType,
-                                             center: toBoardPosition(position: CGPoint(x: positionWithOffsets.x, y: positionWithOffsets.y)),
+                                             center: toBoardPosition(position: positionWithOffsets),
                                              width: component.size.width * unitSize,
                                              height: component.size.height * unitSize)
         imageViews[ObjectIdentifier(component)] = imageView
@@ -149,10 +148,11 @@ class GamePlayViewController: UIViewController {
         CGPoint(x: position.x * unitSize, y: position.y * unitSize)
     }
 
-    private func getPositionWithOffsets(for component: RenderableComponent, of position: CGPoint?) -> CGPoint {
+    private func getPositionWithOffsets(for originalPosition: CGPoint) -> CGPoint {
+        let position = gameEngine.getPlayerPositions().first
         let verticalCameraOffset = 1_300.0
-        var xPosition = component.position.x + boardAreaView.frame.width / scale / 2
-        var yPosition = component.position.y + boardAreaView.frame.height / scale / 2 + verticalCameraOffset / scale
+        var xPosition = originalPosition.x + boardAreaView.frame.width / scale / 2
+        var yPosition = originalPosition.y + boardAreaView.frame.height / scale / 2 + verticalCameraOffset / scale
         if let playerPosition = position {
             xPosition -= playerPosition.x
             yPosition -= playerPosition.y
@@ -263,11 +263,13 @@ class GamePlayViewController: UIViewController {
 
 extension GamePlayViewController {
     func showDamage(at position: CGPoint, amount: CGFloat) {
-        let damageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        let positionWithOffsets = getPositionWithOffsets(for: position)
+        let damageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 125, height: 50))
         damageLabel.text = "-\(amount)"
         damageLabel.textColor = .red
-        damageLabel.center = position
+        damageLabel.center = toBoardPosition(position: positionWithOffsets)
         boardAreaView.addSubview(damageLabel)
+        damageLabel.layer.zPosition = 100
 
         UIView.animate(withDuration: 1.0, animations: {
             damageLabel.alpha = 0
