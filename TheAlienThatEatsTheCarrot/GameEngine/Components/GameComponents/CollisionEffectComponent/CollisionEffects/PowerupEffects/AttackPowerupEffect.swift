@@ -18,11 +18,15 @@ class AttackPowerupEffect: ActivatePowerupEffect {
     }
 
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
-        guard let attackableComponent = delegate.getComponent(of: AttackableComponent.self, for: collider) else {
+        guard
+            let attackableComponent = delegate.getComponent(of: AttackableComponent.self, for: collider),
+            let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
             return
         }
         attackableComponent.addAttackStyle(attackStyle)
-        EventManager.shared.postEvent(PowerupActivateEvent(type: .attack, name: "Attack 🔪"))
+        EventManager.shared.postEvent(PowerupActivateEvent(type: .attack,
+                                                           name: "Attack 🔪",
+                                                           position: colliderPhysicsComponent.physicsBody.position))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 }

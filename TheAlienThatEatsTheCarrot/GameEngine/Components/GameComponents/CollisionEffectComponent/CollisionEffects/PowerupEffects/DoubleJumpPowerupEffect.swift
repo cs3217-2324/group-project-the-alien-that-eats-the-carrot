@@ -16,11 +16,15 @@ class DoubleJumpPowerupEffect: ActivatePowerupEffect {
     }
 
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
-        guard let jumpStateComponent = delegate.getComponent(of: JumpStateComponent.self, for: collider) else {
+        guard
+            let jumpStateComponent = delegate.getComponent(of: JumpStateComponent.self, for: collider),
+            let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
             return
         }
         jumpStateComponent.maxJump *= 2
-        EventManager.shared.postEvent(PowerupActivateEvent(type: .doubleJump, name: "Double Jump 🪽"))
+        EventManager.shared.postEvent(PowerupActivateEvent(type: .doubleJump,
+                                                           name: "Double Jump 🪽",
+                                                           position: colliderPhysicsComponent.physicsBody.position))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 }

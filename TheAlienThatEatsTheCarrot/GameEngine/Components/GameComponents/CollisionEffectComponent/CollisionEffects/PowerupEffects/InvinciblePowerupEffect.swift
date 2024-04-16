@@ -16,11 +16,15 @@ class InvinciblePowerupEffect: ActivatePowerupEffect {
     }
 
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
-        guard let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: collider) else {
+        guard
+            let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: collider),
+            let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
             return
         }
         destroyableComponent.isInvinsible = true
-        EventManager.shared.postEvent(PowerupActivateEvent(type: .invinsible, name: "Invinsible 😇"))
+        EventManager.shared.postEvent(PowerupActivateEvent(type: .invinsible,
+                                                           name: "Invinsible 😇",
+                                                           position: colliderPhysicsComponent.physicsBody.position))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 }

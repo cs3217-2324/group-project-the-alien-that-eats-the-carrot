@@ -11,6 +11,7 @@ struct PowerupActivateEvent: Event {
     static var name: Notification.Name = .powerupActivate
     let type: PowerupType
     let name: String
+    let position: CGPoint
 }
 
 extension Notification.Name {

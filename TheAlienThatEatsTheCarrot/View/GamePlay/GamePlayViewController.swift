@@ -263,7 +263,7 @@ class GamePlayViewController: UIViewController {
         } else if let playerDiedEvent = event as? PlayerDiedEvent {
             self?.showPlayerDied()
         } else if let powerupActivateEvent = event as? PowerupActivateEvent {
-            self?.showPowerupActivated(for: powerupActivateEvent.name)
+            self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position)
         }
     }
 }
@@ -277,7 +277,7 @@ extension GamePlayViewController {
         damageLabel.center = toBoardPosition(position: positionWithOffsets)
         boardAreaView.addSubview(damageLabel)
         damageLabel.layer.zPosition = 100
-        
+
         UIView.animate(withDuration: 1.0, animations: {
             damageLabel.alpha = 0
             damageLabel.center.y -= 50
@@ -285,7 +285,7 @@ extension GamePlayViewController {
             damageLabel.removeFromSuperview()
         }
     }
-    
+
     func showPlayerDied() {
         let diedLabel = UILabel()
         diedLabel.text = "YOU DIED"
@@ -295,7 +295,7 @@ extension GamePlayViewController {
         diedLabel.center = boardAreaView.center
         diedLabel.alpha = 0
         view.addSubview(diedLabel)
-        
+
         UIView.animate(withDuration: 0.5, animations: {
             diedLabel.alpha = 1
         }) { _ in
@@ -307,26 +307,35 @@ extension GamePlayViewController {
         }
     }
 
-    func showPowerupActivated(for name: String) {
-        let powerupActivateLabel = UILabel()
-        powerupActivateLabel.text = "\(name) Activated!"
-        powerupActivateLabel.textColor = .green
-        powerupActivateLabel.font = UIFont.boldSystemFont(ofSize: 40)
-        powerupActivateLabel.sizeToFit()
-        powerupActivateLabel.center = boardAreaView.center
-        powerupActivateLabel.alpha = 0
-        view.addSubview(powerupActivateLabel)
+    func showPowerupActivated(for name: String, at position: CGPoint) {
+        let powerupLabel = UILabel()
+        powerupLabel.text = "\(name) Activated!"
+        powerupLabel.textColor = .green
+        powerupLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        powerupLabel.sizeToFit()
+        powerupLabel.center = boardAreaView.center
+        powerupLabel.alpha = 0
+        view.addSubview(powerupLabel)
+
+        let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        circleView.center = toBoardPosition(position: getPositionWithOffsets(for: position))
+        circleView.layer.cornerRadius = 15
+        circleView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.6)
+        circleView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        boardAreaView.addSubview(circleView)
 
         UIView.animate(withDuration: 0.5, animations: {
-            powerupActivateLabel.alpha = 1
-            powerupActivateLabel.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            circleView.transform = CGAffineTransform(scaleX: 12, y: 12)
+            circleView.alpha = 0
+            powerupLabel.alpha = 1
         }) { _ in
-            UIView.animate(withDuration: 0.5, delay: 1.0, options: [], animations: {
-                powerupActivateLabel.alpha = 0
-                powerupActivateLabel.transform = CGAffineTransform.identity
-            }) { _ in
-                powerupActivateLabel.removeFromSuperview()
-            }
+            circleView.removeFromSuperview()
+        }
+
+        UIView.animate(withDuration: 0.5, delay: 1.0, options: [], animations: {
+            powerupLabel.alpha = 0
+        }) { _ in
+            powerupLabel.removeFromSuperview()
         }
     }
 

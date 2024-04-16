@@ -22,7 +22,12 @@ class StrengthPowerupEffect: ActivatePowerupEffect {
 
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         allowPlayerToDestroyBlocks(player: collider, delegate: delegate)
-        EventManager.shared.postEvent(PowerupActivateEvent(type: .strength, name: "Strength 💪"))
+        guard let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
+            return
+        }
+        EventManager.shared.postEvent(PowerupActivateEvent(type: .strength,
+                                                           name: "Strength 💪",
+                                                           position: colliderPhysicsComponent.physicsBody.position))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 
