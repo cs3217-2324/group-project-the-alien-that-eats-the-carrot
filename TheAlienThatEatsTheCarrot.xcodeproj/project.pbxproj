@@ -163,6 +163,8 @@
 		3F96D4ED2BCCC2C9002F4986 /* JSONConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4EC2BCCC2C9002F4986 /* JSONConverter.swift */; };
 		3F96D4F02BCD026C002F4986 /* defaultLevels.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F96D4EF2BCD026C002F4986 /* defaultLevels.json */; };
 		3F96D4F22BCD1FF8002F4986 /* emptyLevel.json in Resources */ = {isa = PBXBuildFile; fileRef = 3F96D4F12BCD1FF8002F4986 /* emptyLevel.json */; };
+		3F96D4F42BCF5A84002F4986 /* GameOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4F32BCF5A84002F4986 /* GameOverViewController.swift */; };
+		3F96D4F62BCF5A93002F4986 /* LevelClearedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F96D4F52BCF5A93002F4986 /* LevelClearedViewController.swift */; };
 		3FAE0EE92BB427EA002521D9 /* RectangularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */; };
 		3FAE0EEC2BB42909002521D9 /* LevelDesigner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */; };
 		3FCD00592BB0050D0016389F /* PowerupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD00582BB0050D0016389F /* PowerupsViewController.swift */; };
@@ -347,6 +349,8 @@
 		3F96D4EC2BCCC2C9002F4986 /* JSONConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONConverter.swift; sourceTree = "<group>"; };
 		3F96D4EF2BCD026C002F4986 /* defaultLevels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = defaultLevels.json; sourceTree = "<group>"; };
 		3F96D4F12BCD1FF8002F4986 /* emptyLevel.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = emptyLevel.json; sourceTree = "<group>"; };
+		3F96D4F32BCF5A84002F4986 /* GameOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverViewController.swift; sourceTree = "<group>"; };
+		3F96D4F52BCF5A93002F4986 /* LevelClearedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelClearedViewController.swift; sourceTree = "<group>"; };
 		3FAE0EE82BB427EA002521D9 /* RectangularImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangularImageView.swift; sourceTree = "<group>"; };
 		3FAE0EEB2BB42909002521D9 /* LevelDesigner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDesigner.swift; sourceTree = "<group>"; };
 		3FCD00582BB0050D0016389F /* PowerupsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PowerupsViewController.swift; sourceTree = "<group>"; };
@@ -699,6 +703,8 @@
 			children = (
 				3F6807702BAE916900EB7682 /* GamePlayViewController.swift */,
 				3F6807762BAEB40600EB7682 /* PauseScreenViewController.swift */,
+				3F96D4F32BCF5A84002F4986 /* GameOverViewController.swift */,
+				3F96D4F52BCF5A93002F4986 /* LevelClearedViewController.swift */,
 			);
 			path = GamePlay;
 			sourceTree = "<group>";
@@ -1233,9 +1239,11 @@
 				0AC860D82BB6B0750060EF90 /* PowerupElapseEvent.swift in Sources */,
 				0AC8614B2BC104C40060EF90 /* SpawnPowerupCollisionEffect.swift in Sources */,
 				3F6874AF2BAFFDA4009C526D /* ComponentSelectDelegate.swift in Sources */,
+				3F96D4F42BCF5A84002F4986 /* GameOverViewController.swift in Sources */,
 				0AC860C32BB6808C0060EF90 /* StationaryEnemyFactory.swift in Sources */,
 				0AC860FA2BB7C8A00060EF90 /* CoinCollectableFactory.swift in Sources */,
 				3F6807772BAEB40600EB7682 /* PauseScreenViewController.swift in Sources */,
+				3F96D4F62BCF5A93002F4986 /* LevelClearedViewController.swift in Sources */,
 				0A76A4742BAC78510067BD6E /* System.swift in Sources */,
 				0AC861162BB8FDDB0060EF90 /* RandomPattern.swift in Sources */,
 				3FCD005F2BB0184D0016389F /* SaveLevelViewController.swift in Sources */,

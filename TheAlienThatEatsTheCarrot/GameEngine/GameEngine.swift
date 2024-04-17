@@ -45,7 +45,6 @@ class GameEngine {
 
     func end() {
         self.gameLoop?.stop()
-        self.systems = []
         setGameState(gameState: .gameOver)
     }
 
@@ -58,7 +57,12 @@ class GameEngine {
     }
 
     func update(deltaTime: CGFloat) {
-        updateSystems(deltaTime: deltaTime)
+        guard let gameStateComponent = getGameState() else {
+            return
+        }
+        if gameStateComponent.gameState == .ongoing {
+            updateSystems(deltaTime: deltaTime)
+        }
     }
 
     func getRenderableComponents() -> [RenderableComponent] {

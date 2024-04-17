@@ -38,10 +38,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FK1-wd-dOD">
-                                <rect key="frame" x="477" y="528" width="226" height="55"/>
+                                <rect key="frame" x="575" y="528" width="30" height="55"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="MULTIPLAYER">
+                                <state key="normal" title=" ">
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
@@ -304,7 +304,6 @@
                                         <state key="normal" image="icon-pause"/>
                                         <connections>
                                             <action selector="pauseButtonTapped:" destination="W3e-M2-jBc" eventType="touchUpInside" id="wlw-Zx-gbR"/>
-                                            <segue destination="CUR-gR-mS1" kind="presentation" identifier="PauseScreenSegue" modalPresentationStyle="overFullScreen" id="IhK-cH-NEr"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -513,32 +512,34 @@
                         <outlet property="life1" destination="QKi-w7-EnA" id="lrQ-qk-fYT"/>
                         <outlet property="life2" destination="Ft0-4u-iDR" id="2kO-vs-ZFM"/>
                         <outlet property="life3" destination="adf-so-omS" id="NP1-U9-A4z"/>
-                        <segue destination="0UJ-t9-XCe" kind="presentation" modalPresentationStyle="fullScreen" id="5nN-Zb-JTO"/>
+                        <segue destination="0UJ-t9-XCe" kind="presentation" identifier="LevelClearedSegue" modalPresentationStyle="fullScreen" id="5nN-Zb-JTO"/>
+                        <segue destination="8v6-L2-dEW" kind="presentation" identifier="GameOverScreenSegue" modalPresentationStyle="overFullScreen" id="T6c-lq-g8q"/>
+                        <segue destination="CUR-gR-mS1" kind="presentation" identifier="PauseScreenSegue" modalPresentationStyle="overFullScreen" id="7mb-7a-iKf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1D-Fk-150" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732.71186440677968" y="748.53658536585363"/>
+            <point key="canvasLocation" x="733" y="795"/>
         </scene>
-        <!--View Controller-->
+        <!--Level Cleared View Controller-->
         <scene sceneID="iP0-TW-ClR">
             <objects>
-                <viewController id="0UJ-t9-XCe" customClass="ViewController" customModule="TheAlienThatEatsTheCarrot" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0UJ-t9-XCe" customClass="LevelClearedViewController" customModule="TheAlienThatEatsTheCarrot" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="BYM-Nd-CAC">
                         <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="n5Z-3w-Yz3">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgound-game-clear" translatesAutoresizingMaskIntoConstraints="NO" id="n5Z-3w-Yz3">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME: 2 : 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-xB-Va5">
-                                <rect key="frame" x="525.5" y="519" width="129" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME: 0 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-xB-Va5">
+                                <rect key="frame" x="524.5" y="540" width="131" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.090196078430000007" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL CLEARED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVn-R6-Xcy">
-                                <rect key="frame" x="382" y="66" width="416" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL CLEARED!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVn-R6-Xcy">
+                                <rect key="frame" x="374.5" y="60" width="431" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="JHl-WU-4fv"/>
                                 </constraints>
@@ -547,23 +548,23 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zgn-zI-lGN">
-                                <rect key="frame" x="421" y="160" width="338" height="108"/>
+                                <rect key="frame" x="421" y="149" width="338" height="108"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-1" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-sP-C3N">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-2" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-sP-C3N">
                                         <rect key="frame" x="0.0" y="0.0" width="108" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="0Mq-ty-LOF"/>
                                             <constraint firstAttribute="width" secondItem="nEa-sP-C3N" secondAttribute="height" multiplier="1:1" id="VEv-fp-MVI"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-1" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-zS-k3E">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-2" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-zS-k3E">
                                         <rect key="frame" x="115" y="0.0" width="108" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="1ZK-xu-9AX"/>
                                             <constraint firstAttribute="width" secondItem="tPy-zS-k3E" secondAttribute="height" multiplier="1:1" id="ed6-SP-eUE"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-1" translatesAutoresizingMaskIntoConstraints="NO" id="yFz-OF-4Vy">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-2" translatesAutoresizingMaskIntoConstraints="NO" id="yFz-OF-4Vy">
                                         <rect key="frame" x="230" y="0.0" width="108" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="DEu-F3-vmC"/>
@@ -583,14 +584,14 @@
                                     <constraint firstItem="yFz-OF-4Vy" firstAttribute="leading" secondItem="tPy-zS-k3E" secondAttribute="trailing" constant="7" id="yIS-s5-1zk"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE: 1234500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt8-Fo-uP4">
-                                <rect key="frame" x="493" y="481" width="194" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt8-Fo-uP4">
+                                <rect key="frame" x="536" y="502" width="108" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.25882352941176467" green="0.090196078431372548" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njB-M5-9vW">
-                                <rect key="frame" x="529" y="407" width="122" height="65"/>
+                                <rect key="frame" x="529" y="422" width="122" height="65"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin-display" translatesAutoresizingMaskIntoConstraints="NO" id="0nz-IP-Kyv">
                                         <rect key="frame" x="15" y="14" width="37" height="37"/>
@@ -598,8 +599,8 @@
                                             <constraint firstAttribute="width" secondItem="0nz-IP-Kyv" secondAttribute="height" multiplier="1:1" id="QKM-5S-qnc"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiw-hk-9Sz">
-                                        <rect key="frame" x="66" y="14" width="39.5" height="37"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiw-hk-9Sz">
+                                        <rect key="frame" x="66" y="14" width="20.5" height="37"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                         <color key="textColor" red="0.89019607840000003" green="0.71372549019999998" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -618,52 +619,67 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K5I-bT-xPQ">
-                                <rect key="frame" x="695" y="638.5" width="165" height="42"/>
+                                <rect key="frame" x="677.5" y="638.5" width="165" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="LEVEL SELECT"/>
+                                <connections>
+                                    <segue destination="WUz-Jq-JJy" kind="unwind" unwindAction="unwindToLevelSelect:" id="HvU-2o-Gxu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-6A-SWf">
-                                <rect key="frame" x="333" y="642" width="88" height="35"/>
+                                <rect key="frame" x="339.5" y="642" width="88" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="KgW-Bx-Fok"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="REPLAY"/>
+                                <connections>
+                                    <action selector="replayButtonTapped:" destination="0UJ-t9-XCe" eventType="touchUpInside" id="4Jj-nQ-al3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lsA-VF-vet"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
                             <constraint firstItem="njB-M5-9vW" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" id="1zi-FF-gs9"/>
-                            <constraint firstItem="K5I-bT-xPQ" firstAttribute="leading" secondItem="WB9-6A-SWf" secondAttribute="trailing" constant="274" id="5U8-Pn-j26"/>
+                            <constraint firstItem="K5I-bT-xPQ" firstAttribute="leading" secondItem="WB9-6A-SWf" secondAttribute="trailing" constant="250" id="5U8-Pn-j26"/>
                             <constraint firstItem="UVn-R6-Xcy" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" id="605-sZ-kQR"/>
                             <constraint firstItem="Zgn-zI-lGN" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" id="67d-ey-ebl"/>
                             <constraint firstItem="K5I-bT-xPQ" firstAttribute="centerY" secondItem="WB9-6A-SWf" secondAttribute="centerY" id="CCv-TQ-2GA"/>
                             <constraint firstItem="lsA-VF-vet" firstAttribute="bottom" secondItem="WB9-6A-SWf" secondAttribute="bottom" constant="123" id="FWb-Zw-LS7"/>
-                            <constraint firstItem="Zgn-zI-lGN" firstAttribute="top" secondItem="UVn-R6-Xcy" secondAttribute="bottom" constant="25" id="NII-7R-wUm"/>
+                            <constraint firstItem="Zgn-zI-lGN" firstAttribute="top" secondItem="UVn-R6-Xcy" secondAttribute="bottom" constant="20" id="NII-7R-wUm"/>
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="leading" secondItem="BYM-Nd-CAC" secondAttribute="leading" id="O7R-Vw-ZEx"/>
                             <constraint firstItem="Esb-xB-Va5" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" id="QQa-4f-3Cu"/>
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="top" secondItem="lsA-VF-vet" secondAttribute="top" id="TO1-Uy-mn5"/>
-                            <constraint firstItem="Zt8-Fo-uP4" firstAttribute="top" secondItem="njB-M5-9vW" secondAttribute="bottom" constant="9" id="Urw-dZ-Itx"/>
+                            <constraint firstItem="Zt8-Fo-uP4" firstAttribute="top" secondItem="njB-M5-9vW" secondAttribute="bottom" constant="15" id="Urw-dZ-Itx"/>
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="leading" secondItem="lsA-VF-vet" secondAttribute="leading" id="VVM-cV-KXa"/>
                             <constraint firstItem="WB9-6A-SWf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lsA-VF-vet" secondAttribute="leading" id="WVX-xy-O7b"/>
-                            <constraint firstItem="K5I-bT-xPQ" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" constant="187.5" id="Wpd-9W-bYN"/>
+                            <constraint firstItem="K5I-bT-xPQ" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" constant="170" id="Wpd-9W-bYN"/>
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="top" secondItem="BYM-Nd-CAC" secondAttribute="top" id="YY8-R9-RZC"/>
-                            <constraint firstItem="UVn-R6-Xcy" firstAttribute="top" secondItem="lsA-VF-vet" secondAttribute="top" constant="66" id="bcW-PF-ctV"/>
+                            <constraint firstItem="UVn-R6-Xcy" firstAttribute="top" secondItem="lsA-VF-vet" secondAttribute="top" constant="60" id="bcW-PF-ctV"/>
                             <constraint firstAttribute="bottom" secondItem="n5Z-3w-Yz3" secondAttribute="bottom" id="bqQ-Td-HPG"/>
                             <constraint firstItem="Esb-xB-Va5" firstAttribute="top" secondItem="Zt8-Fo-uP4" secondAttribute="bottom" constant="8" symbolic="YES" id="ley-FK-8UJ"/>
                             <constraint firstAttribute="bottom" secondItem="n5Z-3w-Yz3" secondAttribute="bottom" id="om2-tg-mzc"/>
-                            <constraint firstItem="lsA-VF-vet" firstAttribute="bottom" secondItem="Esb-xB-Va5" secondAttribute="bottom" constant="251" id="qJJ-QI-LTH"/>
+                            <constraint firstItem="lsA-VF-vet" firstAttribute="bottom" secondItem="Esb-xB-Va5" secondAttribute="bottom" constant="230" id="qJJ-QI-LTH"/>
                             <constraint firstItem="Zt8-Fo-uP4" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" id="sEr-Rh-0Ot"/>
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="trailing" secondItem="lsA-VF-vet" secondAttribute="trailing" id="u6B-e6-sD7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carrot1" destination="nEa-sP-C3N" id="Amh-3M-MVE"/>
+                        <outlet property="carrot2" destination="tPy-zS-k3E" id="4uR-dU-KLf"/>
+                        <outlet property="carrot3" destination="yFz-OF-4Vy" id="zqO-yK-RM3"/>
+                        <outlet property="coinCountText" destination="Xiw-hk-9Sz" id="nxJ-yi-VNg"/>
+                        <outlet property="scoreText" destination="Zt8-Fo-uP4" id="PW2-uS-bXx"/>
+                        <outlet property="timeText" destination="Esb-xB-Va5" id="8y8-Sd-d7E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xp-bM-NXc" sceneMemberID="firstResponder"/>
+                <exit id="WUz-Jq-JJy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1534.5762711864409" y="1033.9024390243903"/>
+            <point key="canvasLocation" x="1692" y="627"/>
         </scene>
         <!--Level Designer View Controller-->
         <scene sceneID="Vng-gw-D9C">
@@ -757,7 +773,7 @@
                                         <rect key="frame" x="0.0" y="157" width="230" height="78.5"/>
                                         <color key="backgroundColor" systemColor="systemGray5Color"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="PLAY LEVEL"/>
+                                        <buttonConfiguration key="configuration" style="plain" title=" "/>
                                         <connections>
                                             <action selector="playLevelButtonTapped:" destination="Dzv-ak-6lJ" eventType="touchUpInside" id="Cja-CA-Hv5"/>
                                         </connections>
@@ -951,7 +967,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="asD-dk-CAu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="qZL-sC-3kk" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1534.5762711864409" y="374.63414634146341"/>
+            <point key="canvasLocation" x="1692" y="-76"/>
         </scene>
         <!--Terrains View Controller-->
         <scene sceneID="5HH-yC-lYK">
@@ -1406,10 +1422,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtC-7g-YYY">
-                                <rect key="frame" x="670" y="510.5" width="97" height="42"/>
+                                <rect key="frame" x="686.5" y="510.5" width="64" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="CANCEL"/>
+                                <state key="normal" title="BACK"/>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="cKT-R1-bh7" eventType="touchUpInside" id="fbX-E5-rpd"/>
                                 </connections>
@@ -1455,10 +1471,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPP-Hr-O1e">
-                                <rect key="frame" x="661" y="459.5" width="97" height="42"/>
+                                <rect key="frame" x="661" y="459.5" width="64" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="CANCEL"/>
+                                <state key="normal" title="BACK"/>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="TPg-5N-R8u" eventType="touchUpInside" id="dtz-T4-faL"/>
                                 </connections>
@@ -1712,11 +1728,77 @@
             </objects>
             <point key="canvasLocation" x="1268" y="3871"/>
         </scene>
+        <!--Game Over View Controller-->
+        <scene sceneID="bAT-Ke-0xG">
+            <objects>
+                <viewController id="8v6-L2-dEW" customClass="GameOverViewController" customModule="TheAlienThatEatsTheCarrot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="BqW-GY-OSG">
+                        <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="board-horizontal" translatesAutoresizingMaskIntoConstraints="NO" id="qT5-ho-sKJ">
+                                <rect key="frame" x="283" y="192" width="614" height="436"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="614" id="Q4r-at-VF0"/>
+                                    <constraint firstAttribute="height" constant="436" id="cgW-vF-6c5"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Www-uB-EBz">
+                                <rect key="frame" x="452.5" y="318" width="275" height="69"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="69" id="Wou-OH-yBZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" red="1" green="0.38823529410000002" blue="0.1960784314" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RBQ-eL-7rb">
+                                <rect key="frame" x="394" y="462" width="88" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="2Vs-nP-ebi"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="REPLAY"/>
+                                <connections>
+                                    <action selector="replayButtonTapped:" destination="8v6-L2-dEW" eventType="touchUpInside" id="DUZ-nz-8XW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGC-EQ-hvV">
+                                <rect key="frame" x="627" y="458.5" width="165" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="LEVEL SELECT"/>
+                                <connections>
+                                    <segue destination="moY-0g-FFR" kind="unwind" unwindAction="unwindToLevelSelect:" id="DKn-zt-3XZ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E9d-eR-j7E"/>
+                        <color key="backgroundColor" white="0.50366733559999999" alpha="0.29581287760000002" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Www-uB-EBz" firstAttribute="centerX" secondItem="BqW-GY-OSG" secondAttribute="centerX" id="1xn-nu-rF4"/>
+                            <constraint firstItem="qT5-ho-sKJ" firstAttribute="centerY" secondItem="BqW-GY-OSG" secondAttribute="centerY" id="76h-fF-CYX"/>
+                            <constraint firstItem="eGC-EQ-hvV" firstAttribute="centerX" secondItem="BqW-GY-OSG" secondAttribute="centerX" constant="119.5" id="B8B-jF-OKa"/>
+                            <constraint firstItem="eGC-EQ-hvV" firstAttribute="centerY" secondItem="RBQ-eL-7rb" secondAttribute="centerY" id="E7Z-zi-QqH"/>
+                            <constraint firstItem="qT5-ho-sKJ" firstAttribute="centerX" secondItem="BqW-GY-OSG" secondAttribute="centerX" id="Ga5-qk-umb"/>
+                            <constraint firstItem="Www-uB-EBz" firstAttribute="centerY" secondItem="BqW-GY-OSG" secondAttribute="centerY" constant="-57.5" id="UlU-T7-ey2"/>
+                            <constraint firstItem="RBQ-eL-7rb" firstAttribute="centerY" secondItem="BqW-GY-OSG" secondAttribute="centerY" constant="69.5" id="vyT-QG-RMM"/>
+                            <constraint firstItem="RBQ-eL-7rb" firstAttribute="centerX" secondItem="BqW-GY-OSG" secondAttribute="centerX" constant="-152" id="wy2-x6-Yrc"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFd-cN-ufB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="moY-0g-FFR" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1692" y="1314"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="S9Z-Cp-U5i"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="backgound-game-clear" width="2600" height="1413"/>
         <image name="background" width="230" height="125"/>
         <image name="bird-button" width="105" height="105"/>
         <image name="block-breakable" width="105" height="105"/>
@@ -1724,7 +1806,6 @@
         <image name="block-pushable" width="105" height="105"/>
         <image name="board-horizontal" width="771" height="536"/>
         <image name="board-levelselect" width="720" height="1031"/>
-        <image name="carrot-1" width="105" height="105"/>
         <image name="carrot-2" width="105" height="105"/>
         <image name="carrot-collect" width="86" height="86"/>
         <image name="coin-bronze" width="57" height="57"/>

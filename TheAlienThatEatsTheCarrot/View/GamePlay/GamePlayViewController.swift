@@ -37,9 +37,11 @@ class GamePlayViewController: UIViewController {
     private var damageObserver: NSObjectProtocol?
     private var playerDiedObserver: NSObjectProtocol?
     private var powerupActivateObserver: NSObjectProtocol?
+    private var gameEndObserver: NSObjectProtocol?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("viewDidAppear is called")
         guard let levelNameToLoad = levelName else {
             return
         }
@@ -95,6 +97,7 @@ class GamePlayViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        print("viewWillDisappear is called")
         super.viewWillDisappear(animated)
         stopGameLoop()
         unsubscribeToEvents()
@@ -231,6 +234,8 @@ class GamePlayViewController: UIViewController {
     @IBAction private func pauseButtonTapped(_ sender: UIButton) {
         stopGameLoop()
         performSegue(withIdentifier: "PauseScreenSegue", sender: self)
+//        goToGameOverScreen()
+//        goToGameClearScreen()
     }
 
     @IBAction private func unwindFromPauseScreen(segue: UIStoryboardSegue) {
@@ -238,11 +243,39 @@ class GamePlayViewController: UIViewController {
         startGameLoop()
     }
 
+    // MARK: - game over
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GameOverScreenSegue" {
+            if let gameOverVC = segue.destination as? GameOverViewController {
+                gameOverVC.delegate = self
+            }
+        }
+        if segue.identifier == "LevelClearedSegue" {
+            if let levelClearedVC = segue.destination as? LevelClearedViewController {
+                levelClearedVC.delegate = self
+                gameStats = gameEngine.getGameStats()
+                levelClearedVC.gameStats = gameStats
+            }
+        }
+    }
+
+    private func goToGameOverScreen() {
+        stopGameLoop()
+        performSegue(withIdentifier: "GameOverScreenSegue", sender: self)
+    }
+
+    // MARK: - game clear
+    private func goToGameClearScreen() {
+        stopGameLoop()
+        performSegue(withIdentifier: "LevelClearedSegue", sender: self)
+    }
+
     // MARK: - events
     private func subscribeToEvents() {
         damageObserver = EventManager.shared.subscribe(to: DamageEvent.self, using: onEventOccur)
         playerDiedObserver = EventManager.shared.subscribe(to: PlayerDiedEvent.self, using: onEventOccur)
         powerupActivateObserver = EventManager.shared.subscribe(to: PowerupActivateEvent.self, using: onEventOccur)
+        gameEndObserver = EventManager.shared.subscribe(to: GameEndEvent.self, using: onEventOccur)
     }
 
     private func unsubscribeToEvents() {
@@ -255,15 +288,28 @@ class GamePlayViewController: UIViewController {
         if let observer3 = powerupActivateObserver {
             EventManager.shared.unsubscribe(from: observer3)
         }
+        if let observer4 = gameEndObserver {
+            EventManager.shared.unsubscribe(from: observer4)
+        }
     }
 
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
         if let damageEvent = event as? DamageEvent {
             self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
         } else if let playerDiedEvent = event as? PlayerDiedEvent {
-            self?.showPlayerDied()
+            self?.gameStats = self?.gameEngine.getGameStats()
+            print(self?.gameStats.lives[0] ?? "empty")
+            if self?.gameStats.lives[0] ?? 0 > 0 {
+                self?.showPlayerDied()
+            }
         } else if let powerupActivateEvent = event as? PowerupActivateEvent {
             self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position)
+        } else if let gameEndEvent = event as? GameEndEvent {
+            if gameEndEvent.isWin {
+                self?.goToGameClearScreen()
+            } else {
+                self?.goToGameOverScreen()
+            }
         }
     }
 }
@@ -339,4 +385,39 @@ extension GamePlayViewController {
         }
     }
 
+}
+
+extension GamePlayViewController: GameClearReplayDelegate {
+    func replayGameFromGameClear() {
+        // TODO: Implement your replay logic here
+        print("replay game")
+    }
+}
+
+extension GamePlayViewController: GameOverReplayDelegate {
+    func replayGameFromGameOver() {
+        // TODO: Implement your replay logic here
+        print("replay game")
+        guard let levelNameToLoad = levelName else {
+            return
+        }
+        do {
+            let level = try levelDataManager.fetchLevel(levelName: levelNameToLoad)
+            gameEngine = GameEngine(level: level, bounds: boardAreaView.bounds)
+            subscribeToEvents()
+        } catch {
+            print("Error loading level \(levelNameToLoad): \(error)")
+            presentAlert(message: "Failed to load level: \(error.localizedDescription)")
+        }
+
+        let frame = boardAreaView.frame
+        self.unitSize = (frame.maxY - frame.minY) / scale
+        print("game page unitSize \(unitSize)")
+        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX).")
+
+        self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
+            self?.updateUI()
+        })
+        startGameLoop()
+    }
 }
