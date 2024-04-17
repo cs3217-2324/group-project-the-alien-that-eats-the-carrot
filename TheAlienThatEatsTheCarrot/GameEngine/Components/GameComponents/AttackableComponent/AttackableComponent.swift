@@ -35,4 +35,8 @@ class AttackableComponent: Component {
     func addAttackStyle<T: AttackStyle>(_ attackStyle: T) {
         attackStyles.append(attackStyle)
     }
+
+    func removeAttackStyle(_ attackStyleToRemove: any AttackStyle) {
+        attackStyles = attackStyles.filter { $0 !== attackStyleToRemove }
+    }
 }

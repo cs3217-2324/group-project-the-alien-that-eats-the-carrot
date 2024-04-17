@@ -9,7 +9,7 @@ import Foundation
 
 public enum CollectableType: String, Equatable {
     case coinGold, coinSilver, coinBronze, carrot, heart
-    
+
     static let typeToAssetNameMap = [coinGold: "coin-gold",
                                    coinSilver: "coin-silver",
                                    coinBronze: "coin-bronze",
