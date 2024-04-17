@@ -9,9 +9,12 @@ import CoreData
 
 struct LevelDataManager {
     let context: NSManagedObjectContext
+    private var preloadedLevels: [Level] = []
 
     init(mainContext: NSManagedObjectContext = CoreDataManager.sharedManager.context) {
         self.context = mainContext
+        print("fetch levels")
+        fetchPreloadedLevels()
     }
 
     /// Fetches the saved `LevelData` matching the provided `levelName`. Throws errors
@@ -98,6 +101,33 @@ struct LevelDataManager {
                 let jsonString = String(data: try JSONSerialization.data(withJSONObject: jsonDict, options: []), encoding: .utf8)
                 if let level = jsonString.flatMap({ Level.fromJSONString(jsonString: $0) }) {
                     return level
+                } else {
+                    print("Error: Failed to create Level instance from JSON string")
+                }
+            }
+        } catch {
+            print("Error decoding defaultLevels.json: \(error)")
+        }
+        return nil
+    }
+    
+    mutating func fetchPreloadedLevels() -> Level? {
+        guard let fileURL = Bundle.main.url(forResource: "defaultLevels", withExtension: "json") else {
+            print("Error: emptyLevel.json file not found")
+            return nil
+        }
+        do {
+            let jsonData = try Data(contentsOf: fileURL)
+            let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] ?? []
+            for jsonDict in jsonArray {
+                let jsonString = String(data: try JSONSerialization.data(withJSONObject: jsonDict, options: []), encoding: .utf8)
+                if let level = jsonString.flatMap({ Level.fromJSONString(jsonString: $0) }) {
+                    if preloadedLevels.contains(where: { $0.name == level.name }) {
+                        // "Level with name '\(levelName)' already exists. Skipping preloaded level."
+                        continue
+                    }
+                    preloadedLevels.append(level)
+                    try saveLevelData(level: level, overwrite: true)
                 } else {
                     print("Error: Failed to create Level instance from JSON string")
                 }
