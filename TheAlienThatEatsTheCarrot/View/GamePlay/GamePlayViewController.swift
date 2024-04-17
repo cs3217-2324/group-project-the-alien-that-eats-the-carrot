@@ -214,6 +214,7 @@ class GamePlayViewController: UIViewController {
         stopGameLoop()
         performSegue(withIdentifier: "PauseScreenSegue", sender: self)
 //        goToGameOverScreen()
+//        goToGameClearScreen()
     }
 
     @IBAction private func unwindFromPauseScreen(segue: UIStoryboardSegue) {
@@ -228,6 +229,13 @@ class GamePlayViewController: UIViewController {
                 gameOverVC.delegate = self
             }
         }
+        if segue.identifier == "LevelClearedSegue" {
+            if let levelClearedVC = segue.destination as? LevelClearedViewController {
+                levelClearedVC.delegate = self
+                gameStats = gameEngine.getGameStats()
+                levelClearedVC.gameStats = gameStats
+            }
+        }
     }
 
     private func goToGameOverScreen() {
@@ -236,6 +244,10 @@ class GamePlayViewController: UIViewController {
     }
 
     // MARK: - game clear
+    private func goToGameClearScreen() {
+        stopGameLoop()
+        performSegue(withIdentifier: "LevelClearedSegue", sender: self)
+    }
 
     // MARK: - events
     private func subscribeToEvents() {

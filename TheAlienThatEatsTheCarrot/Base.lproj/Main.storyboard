@@ -532,14 +532,14 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgound-game-clear" translatesAutoresizingMaskIntoConstraints="NO" id="n5Z-3w-Yz3">
                                 <rect key="frame" x="0.0" y="0.0" width="1180" height="820"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME: 2 : 30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-xB-Va5">
-                                <rect key="frame" x="525.5" y="540" width="129" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIME: 0 : 00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Esb-xB-Va5">
+                                <rect key="frame" x="524.5" y="540" width="131" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.25882352939999997" green="0.090196078430000007" blue="0.039215686270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL CLEARED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVn-R6-Xcy">
-                                <rect key="frame" x="382" y="60" width="416" height="69"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LEVEL CLEARED!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVn-R6-Xcy">
+                                <rect key="frame" x="374.5" y="60" width="431" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="69" id="JHl-WU-4fv"/>
                                 </constraints>
@@ -550,21 +550,21 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zgn-zI-lGN">
                                 <rect key="frame" x="421" y="149" width="338" height="108"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-1" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-sP-C3N">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-2" translatesAutoresizingMaskIntoConstraints="NO" id="nEa-sP-C3N">
                                         <rect key="frame" x="0.0" y="0.0" width="108" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="0Mq-ty-LOF"/>
                                             <constraint firstAttribute="width" secondItem="nEa-sP-C3N" secondAttribute="height" multiplier="1:1" id="VEv-fp-MVI"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-1" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-zS-k3E">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-2" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-zS-k3E">
                                         <rect key="frame" x="115" y="0.0" width="108" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="1ZK-xu-9AX"/>
                                             <constraint firstAttribute="width" secondItem="tPy-zS-k3E" secondAttribute="height" multiplier="1:1" id="ed6-SP-eUE"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-1" translatesAutoresizingMaskIntoConstraints="NO" id="yFz-OF-4Vy">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="carrot-2" translatesAutoresizingMaskIntoConstraints="NO" id="yFz-OF-4Vy">
                                         <rect key="frame" x="230" y="0.0" width="108" height="108"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="108" id="DEu-F3-vmC"/>
@@ -584,14 +584,14 @@
                                     <constraint firstItem="yFz-OF-4Vy" firstAttribute="leading" secondItem="tPy-zS-k3E" secondAttribute="trailing" constant="7" id="yIS-s5-1zk"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE: 1234500" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt8-Fo-uP4">
-                                <rect key="frame" x="493" y="502" width="194" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SCORE: 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zt8-Fo-uP4">
+                                <rect key="frame" x="536" y="502" width="108" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <color key="textColor" red="0.25882352941176467" green="0.090196078431372548" blue="0.039215686274509803" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njB-M5-9vW">
-                                <rect key="frame" x="529" y="428" width="122" height="65"/>
+                                <rect key="frame" x="529" y="422" width="122" height="65"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin-display" translatesAutoresizingMaskIntoConstraints="NO" id="0nz-IP-Kyv">
                                         <rect key="frame" x="15" y="14" width="37" height="37"/>
@@ -599,8 +599,8 @@
                                             <constraint firstAttribute="width" secondItem="0nz-IP-Kyv" secondAttribute="height" multiplier="1:1" id="QKM-5S-qnc"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiw-hk-9Sz">
-                                        <rect key="frame" x="66" y="14" width="39.5" height="37"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xiw-hk-9Sz">
+                                        <rect key="frame" x="66" y="14" width="20.5" height="37"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="33"/>
                                         <color key="textColor" red="0.89019607840000003" green="0.71372549019999998" blue="0.01176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -623,6 +623,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="LEVEL SELECT"/>
+                                <connections>
+                                    <segue destination="WUz-Jq-JJy" kind="unwind" unwindAction="unwindToLevelSelect:" id="HvU-2o-Gxu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-6A-SWf">
                                 <rect key="frame" x="339.5" y="642" width="88" height="35"/>
@@ -632,6 +635,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="REPLAY"/>
+                                <connections>
+                                    <action selector="replayButtonTapped:" destination="0UJ-t9-XCe" eventType="touchUpInside" id="4Jj-nQ-al3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="lsA-VF-vet"/>
@@ -647,7 +653,7 @@
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="leading" secondItem="BYM-Nd-CAC" secondAttribute="leading" id="O7R-Vw-ZEx"/>
                             <constraint firstItem="Esb-xB-Va5" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" id="QQa-4f-3Cu"/>
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="top" secondItem="lsA-VF-vet" secondAttribute="top" id="TO1-Uy-mn5"/>
-                            <constraint firstItem="Zt8-Fo-uP4" firstAttribute="top" secondItem="njB-M5-9vW" secondAttribute="bottom" constant="9" id="Urw-dZ-Itx"/>
+                            <constraint firstItem="Zt8-Fo-uP4" firstAttribute="top" secondItem="njB-M5-9vW" secondAttribute="bottom" constant="15" id="Urw-dZ-Itx"/>
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="leading" secondItem="lsA-VF-vet" secondAttribute="leading" id="VVM-cV-KXa"/>
                             <constraint firstItem="WB9-6A-SWf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lsA-VF-vet" secondAttribute="leading" id="WVX-xy-O7b"/>
                             <constraint firstItem="K5I-bT-xPQ" firstAttribute="centerX" secondItem="BYM-Nd-CAC" secondAttribute="centerX" constant="170" id="Wpd-9W-bYN"/>
@@ -661,8 +667,17 @@
                             <constraint firstItem="n5Z-3w-Yz3" firstAttribute="trailing" secondItem="lsA-VF-vet" secondAttribute="trailing" id="u6B-e6-sD7"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carrot1" destination="nEa-sP-C3N" id="Amh-3M-MVE"/>
+                        <outlet property="carrot2" destination="tPy-zS-k3E" id="4uR-dU-KLf"/>
+                        <outlet property="carrot3" destination="yFz-OF-4Vy" id="zqO-yK-RM3"/>
+                        <outlet property="coinCountText" destination="Xiw-hk-9Sz" id="nxJ-yi-VNg"/>
+                        <outlet property="scoreText" destination="Zt8-Fo-uP4" id="PW2-uS-bXx"/>
+                        <outlet property="timeText" destination="Esb-xB-Va5" id="8y8-Sd-d7E"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xp-bM-NXc" sceneMemberID="firstResponder"/>
+                <exit id="WUz-Jq-JJy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1692" y="627"/>
         </scene>
@@ -1791,7 +1806,6 @@
         <image name="block-pushable" width="105" height="105"/>
         <image name="board-horizontal" width="771" height="536"/>
         <image name="board-levelselect" width="720" height="1031"/>
-        <image name="carrot-1" width="105" height="105"/>
         <image name="carrot-2" width="105" height="105"/>
         <image name="carrot-collect" width="86" height="86"/>
         <image name="coin-bronze" width="57" height="57"/>
