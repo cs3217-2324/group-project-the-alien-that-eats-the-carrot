@@ -28,6 +28,7 @@ class SpawnPowerupCollisionEffect: CollisionEffect {
         }
         let powerupPosition = calculatePowerupPosition(blockComponent: blockRenderableComponent)
         let createPowerupEvent = CreatePowerupEvent(powerupType: powerupType, position: powerupPosition)
+        delegate.removeComponents(of: CollisionEffectComponent.self, for: collidee)
         EventManager.shared.postEvent(createPowerupEvent)
     }
 
