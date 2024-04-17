@@ -35,6 +35,7 @@ class GamePlayViewController: UIViewController {
     // MARK: observers
     private var damageObserver: NSObjectProtocol?
     private var playerDiedObserver: NSObjectProtocol?
+    private var gameEndObserver: NSObjectProtocol?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -253,6 +254,7 @@ class GamePlayViewController: UIViewController {
     private func subscribeToEvents() {
         damageObserver = EventManager.shared.subscribe(to: DamageEvent.self, using: onEventOccur)
         playerDiedObserver = EventManager.shared.subscribe(to: PlayerDiedEvent.self, using: onEventOccur)
+        gameEndObserver = EventManager.shared.subscribe(to: GameEndEvent.self, using: onEventOccur)
     }
 
     private func unsubscribeToEvents() {
@@ -262,6 +264,9 @@ class GamePlayViewController: UIViewController {
         if let observer2 = playerDiedObserver {
             EventManager.shared.unsubscribe(from: observer2)
         }
+        if let observer3 = gameEndObserver {
+            EventManager.shared.unsubscribe(from: observer3)
+        }
     }
 
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
@@ -269,6 +274,8 @@ class GamePlayViewController: UIViewController {
             self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
         } else if let playerDiedEvent = event as? PlayerDiedEvent {
             self?.showPlayerDied()
+        } else if let gameEndEvent = event as? GameEndEvent {
+            self?.goToGameOverScreen()
         }
     }
 }
