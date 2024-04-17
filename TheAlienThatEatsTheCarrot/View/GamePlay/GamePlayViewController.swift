@@ -213,12 +213,29 @@ class GamePlayViewController: UIViewController {
     @IBAction private func pauseButtonTapped(_ sender: UIButton) {
         stopGameLoop()
         performSegue(withIdentifier: "PauseScreenSegue", sender: self)
+//        goToGameOverScreen()
     }
 
     @IBAction private func unwindFromPauseScreen(segue: UIStoryboardSegue) {
         // This method will be called when the PauseScreenViewController is dismissed
         startGameLoop()
     }
+
+    // MARK: - game over
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "GameOverScreenSegue" {
+            if let gameOverVC = segue.destination as? GameOverViewController {
+                gameOverVC.delegate = self
+            }
+        }
+    }
+
+    private func goToGameOverScreen() {
+        stopGameLoop()
+        performSegue(withIdentifier: "GameOverScreenSegue", sender: self)
+    }
+
+    // MARK: - game clear
 
     // MARK: - events
     private func subscribeToEvents() {
@@ -279,5 +296,12 @@ extension GamePlayViewController {
                 diedLabel.removeFromSuperview()
             }
         }
+    }
+}
+
+extension GamePlayViewController: GameOverDelegate {
+    func replayGame() {
+        // TODO: Implement your replay logic here
+        print("replay game")
     }
 }
