@@ -11,6 +11,9 @@ class AttackPowerupEffect: BasePowerupEffect {
     static let DEFAULT_DURATION = 10.0
     var attackStyle: AttackStyle
 
+    private var attackableComponentAffected: AttackableComponent?
+    private var attackStyleAdded: AttackStyle?
+
     init(attackStyle: AttackStyle, duration: CGFloat = AttackPowerupEffect.DEFAULT_DURATION) {
         self.attackStyle = attackStyle
         super.init(duration: duration)
@@ -23,6 +26,8 @@ class AttackPowerupEffect: BasePowerupEffect {
             return
         }
         attackableComponent.addAttackStyle(attackStyle)
+        attackableComponentAffected = attackableComponent
+        attackStyleAdded = attackStyle
         EventManager.shared.postEvent(PowerupActivateEvent(type: .attack,
                                                            name: "Attack 🔪",
                                                            position: colliderPhysicsComponent.physicsBody.position))
@@ -30,6 +35,9 @@ class AttackPowerupEffect: BasePowerupEffect {
     }
 
     override func restore() {
-        // TODO: implement
+        guard let attackStyleToRemove = attackStyleAdded else {
+            return
+        }
+        attackableComponentAffected?.removeAttackStyle(attackStyleToRemove)
     }
 }

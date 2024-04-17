@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AttackStyle {
+protocol AttackStyle: AnyObject {
     var targetables: [Component.Type] { get set }
     var damage: CGFloat { get set }
     func attack(attacker: Entity, attackee: Entity,
