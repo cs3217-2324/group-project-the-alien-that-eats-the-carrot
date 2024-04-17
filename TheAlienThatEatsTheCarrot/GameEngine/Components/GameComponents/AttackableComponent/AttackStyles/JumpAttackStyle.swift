@@ -33,6 +33,6 @@ class JumpAttackStyle: AttackStyle {
     }
 
     private func isAttackerJumpingOnAttackee(attacker: PhysicsBody, attackee: PhysicsBody) -> Bool {
-        attacker.isCollidingWith(attackee, on: .up) && !attacker.hasNegligibleYVelocity()
+        attacker.isCollidingWith(attackee, on: .up)
     }
 }

@@ -22,7 +22,7 @@ final class PhysicsSystem: System {
 
         entities.forEach { entity in
             updateRenderable(entity)
-            applyGravityTo(entity)
+            applyGravity(to: entity)
         }
 
         updatePhysicsBodies(deltaTime: deltaTime)
@@ -43,7 +43,7 @@ final class PhysicsSystem: System {
         renderableComponent.position = physicsComponent.physicsBody.position
     }
 
-    private func applyGravityTo(_ entity: Entity) {
+    private func applyGravity(to entity: Entity) {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: entity) else {
             return
         }

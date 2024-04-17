@@ -10,6 +10,7 @@ import Foundation
 class AttackIfOutOfBoundsAttackStyle: AttackStyle {
     static let DEFAULT_TARGETABLES: [Component.Type] = [PlayerComponent.self]
     static let VERY_LARGE_DAMAGE = 10_000.0
+    static let TOP_MARGIN = 200.0
     var targetables: [Component.Type]
 
     var damage: CGFloat
@@ -18,6 +19,8 @@ class AttackIfOutOfBoundsAttackStyle: AttackStyle {
     init(bounds: CGRect, targetables: [Component.Type] = AttackIfOutOfBoundsAttackStyle.DEFAULT_TARGETABLES,
          damage: CGFloat = AttackIfOutOfBoundsAttackStyle.VERY_LARGE_DAMAGE) {
         self.bounds = bounds
+        self.bounds.origin.y -= AttackIfOutOfBoundsAttackStyle.TOP_MARGIN
+        self.bounds.size.height += AttackIfOutOfBoundsAttackStyle.TOP_MARGIN
         self.targetables = targetables
         self.damage = damage
     }
