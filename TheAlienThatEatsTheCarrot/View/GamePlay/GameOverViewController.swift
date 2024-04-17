@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol GameOverDelegate: AnyObject {
-    func replayGame()
+protocol GameOverReplayDelegate: AnyObject {
+    func replayGameFromGameOver()
 }
 
 class GameOverViewController: UIViewController {
-    weak var delegate: GameOverDelegate?
+    weak var delegate: GameOverReplayDelegate?
 
    @IBAction private func replayButtonTapped(_ sender: UIButton) {
-       delegate?.replayGame()
+       delegate?.replayGameFromGameOver()
        dismiss(animated: true, completion: nil)
    }
 }

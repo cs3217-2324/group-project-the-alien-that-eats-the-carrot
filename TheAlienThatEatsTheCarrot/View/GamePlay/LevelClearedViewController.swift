@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol GameClearReplayDelegate: AnyObject {
+    func replayGameFromGameClear()
+}
+
 class LevelClearedViewController: UIViewController {
 
     @IBOutlet private var carrot1: UIImageView!
@@ -16,7 +20,7 @@ class LevelClearedViewController: UIViewController {
     @IBOutlet private var scoreText: UILabel!
     @IBOutlet private var timeText: UILabel!
     var gameStats: GameStats!
-    weak var delegate: GameOverDelegate?
+    weak var delegate: GameClearReplayDelegate?
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -56,7 +60,7 @@ class LevelClearedViewController: UIViewController {
     }
 
     @IBAction private func replayButtonTapped(_ sender: UIButton) {
-        delegate?.replayGame()
+        delegate?.replayGameFromGameClear()
         dismiss(animated: true, completion: nil)
     }
 }

@@ -41,6 +41,7 @@ class GamePlayViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("viewDidAppear is called")
         guard let levelNameToLoad = levelName else {
             return
         }
@@ -96,6 +97,7 @@ class GamePlayViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        print("viewWillDisappear is called")
         super.viewWillDisappear(animated)
         stopGameLoop()
         unsubscribeToEvents()
@@ -381,9 +383,37 @@ extension GamePlayViewController {
 
 }
 
-extension GamePlayViewController: GameOverDelegate {
-    func replayGame() {
+extension GamePlayViewController: GameClearReplayDelegate {
+    func replayGameFromGameClear() {
         // TODO: Implement your replay logic here
         print("replay game")
+    }
+}
+
+extension GamePlayViewController: GameOverReplayDelegate {
+    func replayGameFromGameOver() {
+        // TODO: Implement your replay logic here
+        print("replay game")
+        guard let levelNameToLoad = levelName else {
+            return
+        }
+        do {
+            let level = try levelDataManager.fetchLevel(levelName: levelNameToLoad)
+            gameEngine = GameEngine(level: level, bounds: boardAreaView.bounds)
+            subscribeToEvents()
+        } catch {
+            print("Error loading level \(levelNameToLoad): \(error)")
+            presentAlert(message: "Failed to load level: \(error.localizedDescription)")
+        }
+
+        let frame = boardAreaView.frame
+        self.unitSize = (frame.maxY - frame.minY) / scale
+        print("game page unitSize \(unitSize)")
+        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX).")
+
+        self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
+            self?.updateUI()
+        })
+        startGameLoop()
     }
 }
