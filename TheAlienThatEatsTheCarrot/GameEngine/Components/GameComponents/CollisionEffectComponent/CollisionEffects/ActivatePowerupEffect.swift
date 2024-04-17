@@ -22,6 +22,7 @@ class BasePowerupEffect: ActivatePowerupEffect {
 
     init(duration: CGFloat) {
         self.duration = duration
+        subscribeToEvents()
     }
 
     deinit {
@@ -36,6 +37,14 @@ class BasePowerupEffect: ActivatePowerupEffect {
 
     func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         // Do nothing
+    }
+
+    func addTimer(to collider: Entity, powerupEffect: ActivatePowerupEffect, delegate: CollisionEffectDelegate) {
+        let powerupElapseEvent = PowerupElapseEvent(powerup: powerupEffect)
+        let timerComponent = TimerComponent(entity: collider,
+                                            duration: duration,
+                                            event: powerupElapseEvent)
+        delegate.addComponent(timerComponent, to: collider)
     }
 
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in

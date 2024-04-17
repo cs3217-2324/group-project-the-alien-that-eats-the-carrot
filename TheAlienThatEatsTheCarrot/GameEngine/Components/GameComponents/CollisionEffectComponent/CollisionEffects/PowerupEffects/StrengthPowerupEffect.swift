@@ -27,9 +27,7 @@ class StrengthPowerupEffect: BasePowerupEffect {
         guard let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
             return
         }
-        let powerupElapseEvent = PowerupElapseEvent(powerup: self)
-        let timerComponent = TimerComponent(entity: collider, duration: StrengthPowerupEffect.DEFAULT_DURATION, event: powerupElapseEvent)
-        delegate.addComponent(timerComponent, to: collider)
+        super.addTimer(to: collider, powerupEffect: self, delegate: delegate)
         EventManager.shared.postEvent(PowerupActivateEvent(type: .strength,
                                                            name: "Strength 💪",
                                                            position: colliderPhysicsComponent.physicsBody.position))

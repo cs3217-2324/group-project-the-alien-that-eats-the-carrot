@@ -23,6 +23,7 @@ class DoubleJumpPowerupEffect: BasePowerupEffect {
             return
         }
         jumpStateComponent.maxJump *= 2
+        super.addTimer(to: collider, powerupEffect: self, delegate: delegate)
         EventManager.shared.postEvent(PowerupActivateEvent(type: .doubleJump,
                                                            name: "Double Jump 🪽",
                                                            position: colliderPhysicsComponent.physicsBody.position))

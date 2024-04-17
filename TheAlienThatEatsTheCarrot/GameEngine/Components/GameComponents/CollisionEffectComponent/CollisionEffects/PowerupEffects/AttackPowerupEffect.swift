@@ -8,7 +8,7 @@
 import Foundation
 
 class AttackPowerupEffect: BasePowerupEffect {
-    static let DEFAULT_DURATION = 10.0
+    static let DEFAULT_DURATION = 3.0
     var attackStyle: AttackStyle
 
     private var attackableComponentAffected: AttackableComponent?
@@ -28,6 +28,7 @@ class AttackPowerupEffect: BasePowerupEffect {
         attackableComponent.addAttackStyle(attackStyle)
         attackableComponentAffected = attackableComponent
         attackStyleAdded = attackStyle
+        super.addTimer(to: collider, powerupEffect: self, delegate: delegate)
         EventManager.shared.postEvent(PowerupActivateEvent(type: .attack,
                                                            name: "Attack 🔪",
                                                            position: colliderPhysicsComponent.physicsBody.position))

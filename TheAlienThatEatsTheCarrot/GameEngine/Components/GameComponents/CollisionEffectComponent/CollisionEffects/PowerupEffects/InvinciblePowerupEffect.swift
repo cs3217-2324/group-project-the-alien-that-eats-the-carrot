@@ -24,6 +24,7 @@ class InvinciblePowerupEffect: BasePowerupEffect {
         }
         destroyableComponent.isInvinsible = true
         destroyableComponentAffected = destroyableComponent
+        super.addTimer(to: collider, powerupEffect: self, delegate: delegate)
         EventManager.shared.postEvent(PowerupActivateEvent(type: .invinsible,
                                                            name: "Invinsible 😇",
                                                            position: colliderPhysicsComponent.physicsBody.position))
