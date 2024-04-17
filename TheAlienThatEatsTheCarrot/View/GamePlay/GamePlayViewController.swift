@@ -296,6 +296,14 @@ class GamePlayViewController: UIViewController {
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
         if let damageEvent = event as? DamageEvent {
             self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
+        } else if let playerDiedEvent = event as? PlayerDiedEvent {
+            self?.gameStats = self?.gameEngine.getGameStats()
+            print(self?.gameStats.lives[0] ?? "empty")
+            if self?.gameStats.lives[0] ?? 0 > 0 {
+                self?.showPlayerDied()
+            }
+        } else if let powerupActivateEvent = event as? PowerupActivateEvent {
+            self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position)
         } else if let gameEndEvent = event as? GameEndEvent {
             if gameEndEvent.isWin {
                 self?.goToGameClearScreen()
