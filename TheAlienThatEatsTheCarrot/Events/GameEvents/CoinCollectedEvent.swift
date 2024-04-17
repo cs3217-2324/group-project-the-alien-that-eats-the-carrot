@@ -10,6 +10,7 @@ import Foundation
 struct CoinCollectedEvent: Event {
     static var name: Notification.Name = .coinCollected
     var entity: Entity
+    var value: Int
 }
 
 extension Notification.Name {

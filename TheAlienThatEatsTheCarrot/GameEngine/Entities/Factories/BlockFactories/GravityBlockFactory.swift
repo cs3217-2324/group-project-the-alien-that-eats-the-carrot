@@ -8,8 +8,8 @@
 import Foundation
 
 class GravityBlockFactory: BlockFactory {
-    static let GRAVITY_STRENGTH = 10_000.0
-    static let GRAVITY_RADIUS = 200.0
+    static let GRAVITY_STRENGTH = 700.0
+    static let GRAVITY_RADIUS = 50.0
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)

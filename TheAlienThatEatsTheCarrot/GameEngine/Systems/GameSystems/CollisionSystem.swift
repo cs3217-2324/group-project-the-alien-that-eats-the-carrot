@@ -23,17 +23,17 @@ final class CollisionSystem: System {
         // If a physics body is standing on the ground (block) with negligible y speed, we disable gravity and
         // skip collision resolution with that ground
         let toIgnore = getToIgnoresAndHandleGroundedPhysicsBodies()
-        let allPhysicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
+        let allPhysicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }.filter { !$0.skipResolve }
         physicsWorld.resolveCollisions(for: allPhysicsBodies, deltaTime: deltaTime, toIgnore: toIgnore)
     }
 
     func handleCollisionEffects() {
         let collisionEffectComponents = nexus.getComponents(of: CollisionEffectComponent.self)
-        let dynamicPhysicsComponents = nexus.getComponents(of: PhysicsComponent.self).filter { $0.physicsBody.isDynamic }
+        let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
         for collisionEffectComponent in collisionEffectComponents {
-            for dynamicPhysicsComponent in dynamicPhysicsComponents {
+            for physicsComponent in physicsComponents {
                 collisionEffectComponent.handleEffectIfCollides(with: collisionEffectComponent.entity,
-                                                                by: dynamicPhysicsComponent.entity,
+                                                                by: physicsComponent.entity,
                                                                 delegate: self)
             }
         }

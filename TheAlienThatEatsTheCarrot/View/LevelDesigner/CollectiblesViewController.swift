@@ -16,15 +16,15 @@ class CollectiblesViewController: UIViewController {
     }
 
     @IBAction private func coinGoldButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .collectable(.coin))
+        delegate?.buttonTapped(type: .collectable(.coinGold))
     }
 
     @IBAction private func coinSilverButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .collectable(.coin))
+        delegate?.buttonTapped(type: .collectable(.coinSilver))
     }
 
     @IBAction private func coinBronzeButtonTapped(_ sender: UIButton) {
-        delegate?.buttonTapped(type: .collectable(.coin))
+        delegate?.buttonTapped(type: .collectable(.coinBronze))
     }
 
     @IBAction private func heartButtonTapped(_ sender: UIButton) {

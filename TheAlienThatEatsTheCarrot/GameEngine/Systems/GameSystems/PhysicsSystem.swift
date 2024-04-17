@@ -8,7 +8,7 @@
 import CoreGraphics
 
 final class PhysicsSystem: System {
-    static let GRAVITY_FORCE = CGVector(dx: 0, dy: 1_000.0)
+    static let GRAVITY_FORCE = CGVector(dx: 0, dy: 300.0)
     let nexus: Nexus
     let physicsWorld: PhysicsWorld
 

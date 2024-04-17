@@ -9,7 +9,7 @@ import Foundation
 
 class StationaryEnemyFactory: EnemyFactory {
     static let SCORE: Int = 200
-    static let DIRECTIONS: [Direction] = [.up, .left]
+    static let DIRECTIONS: [Direction] = [.up]
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let enemyComponent = EnemyComponent(entity: entity)

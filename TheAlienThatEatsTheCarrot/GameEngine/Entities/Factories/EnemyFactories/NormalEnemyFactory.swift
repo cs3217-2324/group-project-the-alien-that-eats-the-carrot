@@ -9,6 +9,7 @@ import Foundation
 
 class NormalEnemyFactory: EnemyFactory {
     static let SCORE: Int = 100
+
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let enemyComponent = EnemyComponent(entity: entity)
@@ -26,7 +27,6 @@ class NormalEnemyFactory: EnemyFactory {
                                       categoryBitmask: Constants.enemyCategoryBitmask,
                                       collisionBitmask: Constants.enemyCollisionBitmask,
                                       isDynamic: true, mass: EnemyFactory.MASS)
-        physicsBody.velocity = CGVector(dx: 50.0, dy: 0)
         let physicsComponent = PhysicsComponent(entity: entity,
                                                 physicsBody: physicsBody)
         let destroyableComponent = DestroyableComponent(entity: entity, onDestroyed: EnemyKilledEvent(entity: entity))

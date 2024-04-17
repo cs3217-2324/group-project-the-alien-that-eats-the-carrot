@@ -18,7 +18,7 @@ class CarrotCollectableFactory: CollectableFactory {
         let physicsBody = PhysicsBody(shape: .rectangle, position: boardObject.position, size: size,
                                       categoryBitmask: Constants.collectableCategoryBitmask,
                                       collisionBitmask: Constants.collectibleCollisionBitmask,
-                                      isDynamic: false)
+                                      isDynamic: false, skipResolve: true)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody, disableGravity: true)
         let addCarrotEffect = AddCarrotEffect()
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,

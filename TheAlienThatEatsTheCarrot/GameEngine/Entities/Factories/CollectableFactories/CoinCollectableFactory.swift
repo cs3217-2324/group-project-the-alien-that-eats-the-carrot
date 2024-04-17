@@ -8,19 +8,28 @@
 import Foundation
 
 class CoinCollectableFactory: CollectableFactory {
+    let type: ObjectType
+    let value: Int
+
+    init(boardObject: BoardObject, entity: Entity, type: ObjectType, value: Int) {
+        self.type = type
+        self.value = value
+        super.init(boardObject: boardObject, entity: entity)
+    }
+
     override func createComponents() -> [Component] {
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let collectableComponent = CollectableComponent(entity: entity)
         let renderableComponent = RenderableComponent(entity: entity,
                                                       position: boardObject.position,
-                                                      objectType: .collectable(.coin),
+                                                      objectType: type,
                                                       size: size)
         let physicsBody = PhysicsBody(shape: .rectangle, position: boardObject.position, size: size,
                                       categoryBitmask: Constants.collectableCategoryBitmask,
                                       collisionBitmask: Constants.collectibleCollisionBitmask,
-                                      isDynamic: false)
+                                      isDynamic: false, skipResolve: true)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody, disableGravity: true)
-        let addCoinEffect = AddCoinEffect()
+        let addCoinEffect = AddCoinEffect(value: value)
         let collisionEffectComponent = CollisionEffectComponent(entity: entity,
                                                                 acceptableComponentsColliders: [PlayerComponent.self],
                                                                 acceptableDirectionsToCollideFrom: [.up, .down, .left, .right],

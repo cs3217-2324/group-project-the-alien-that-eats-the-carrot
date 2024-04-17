@@ -22,6 +22,7 @@ class GamePlayViewController: UIViewController {
     var renderableComponents: [RenderableComponent] = []
     var gameStats: GameStats!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
+    private var scale: CGFloat = 50.0
     private var unitSize: CGFloat = 1.0
 
     // MARK: - game loop
@@ -35,6 +36,7 @@ class GamePlayViewController: UIViewController {
     // MARK: observers
     private var damageObserver: NSObjectProtocol?
     private var playerDiedObserver: NSObjectProtocol?
+    private var powerupActivateObserver: NSObjectProtocol?
     private var gameEndObserver: NSObjectProtocol?
 
     override func viewDidAppear(_ animated: Bool) {
@@ -52,7 +54,7 @@ class GamePlayViewController: UIViewController {
         }
 
         let frame = boardAreaView.frame
-        self.unitSize = (frame.maxY - frame.minY) / 50
+        self.unitSize = (frame.maxY - frame.minY) / scale
         print("game page unitSize \(unitSize)")
         print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX).")
 
@@ -115,7 +117,11 @@ class GamePlayViewController: UIViewController {
     }
 
     func addImage(component: RenderableComponent) {
-        let imageView = RectangularImageView(objectType: component.objectType, center: toBoardPosition(position: component.position), width: component.size.width * unitSize, height: component.size.height * unitSize)
+        let positionWithOffsets = getPositionWithOffsets(for: component.position)
+        let imageView = RectangularImageView(objectType: component.objectType,
+                                             center: toBoardPosition(position: positionWithOffsets),
+                                             width: component.size.width * unitSize,
+                                             height: component.size.height * unitSize)
         imageViews[ObjectIdentifier(component)] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }
@@ -142,6 +148,18 @@ class GamePlayViewController: UIViewController {
 
     private func toBoardPosition(position: CGPoint) -> CGPoint {
         CGPoint(x: position.x * unitSize, y: position.y * unitSize)
+    }
+
+    private func getPositionWithOffsets(for originalPosition: CGPoint) -> CGPoint {
+        let position = gameEngine.getPlayerPositions().first
+        let verticalCameraOffset = 1_300.0
+        var xPosition = originalPosition.x + boardAreaView.frame.width / scale / 2
+        var yPosition = originalPosition.y + boardAreaView.frame.height / scale / 2 + verticalCameraOffset / scale
+        if let playerPosition = position {
+            xPosition -= playerPosition.x
+            yPosition -= playerPosition.y
+        }
+        return CGPoint(x: xPosition, y: yPosition)
     }
 
     // MARK: - game state handling
@@ -254,6 +272,7 @@ class GamePlayViewController: UIViewController {
     private func subscribeToEvents() {
         damageObserver = EventManager.shared.subscribe(to: DamageEvent.self, using: onEventOccur)
         playerDiedObserver = EventManager.shared.subscribe(to: PlayerDiedEvent.self, using: onEventOccur)
+        powerupActivateObserver = EventManager.shared.subscribe(to: PowerupActivateEvent.self, using: onEventOccur)
         gameEndObserver = EventManager.shared.subscribe(to: GameEndEvent.self, using: onEventOccur)
     }
 
@@ -264,8 +283,11 @@ class GamePlayViewController: UIViewController {
         if let observer2 = playerDiedObserver {
             EventManager.shared.unsubscribe(from: observer2)
         }
-        if let observer3 = gameEndObserver {
+        if let observer3 = powerupActivateObserver {
             EventManager.shared.unsubscribe(from: observer3)
+        }
+        if let observer4 = gameEndObserver {
+            EventManager.shared.unsubscribe(from: observer4)
         }
     }
 
@@ -274,7 +296,8 @@ class GamePlayViewController: UIViewController {
             self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
         } else if let playerDiedEvent = event as? PlayerDiedEvent {
             self?.showPlayerDied()
-            self?.goToGameOverScreen()
+        } else if let powerupActivateEvent = event as? PowerupActivateEvent {
+            self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position)
         } else if let gameEndEvent = event as? GameEndEvent {
             self?.goToGameOverScreen()
         }
@@ -283,11 +306,13 @@ class GamePlayViewController: UIViewController {
 
 extension GamePlayViewController {
     func showDamage(at position: CGPoint, amount: CGFloat) {
-        let damageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        let positionWithOffsets = getPositionWithOffsets(for: position)
+        let damageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 125, height: 50))
         damageLabel.text = "-\(amount)"
         damageLabel.textColor = .red
-        damageLabel.center = position
+        damageLabel.center = toBoardPosition(position: positionWithOffsets)
         boardAreaView.addSubview(damageLabel)
+        damageLabel.layer.zPosition = 100
 
         UIView.animate(withDuration: 1.0, animations: {
             damageLabel.alpha = 0
@@ -317,6 +342,39 @@ extension GamePlayViewController {
             }
         }
     }
+
+    func showPowerupActivated(for name: String, at position: CGPoint) {
+        let powerupLabel = UILabel()
+        powerupLabel.text = "\(name) Activated!"
+        powerupLabel.textColor = .green
+        powerupLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        powerupLabel.sizeToFit()
+        powerupLabel.center = boardAreaView.center
+        powerupLabel.alpha = 0
+        view.addSubview(powerupLabel)
+
+        let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        circleView.center = toBoardPosition(position: getPositionWithOffsets(for: position))
+        circleView.layer.cornerRadius = 15
+        circleView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.6)
+        circleView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        boardAreaView.addSubview(circleView)
+
+        UIView.animate(withDuration: 0.5, animations: {
+            circleView.transform = CGAffineTransform(scaleX: 12, y: 12)
+            circleView.alpha = 0
+            powerupLabel.alpha = 1
+        }) { _ in
+            circleView.removeFromSuperview()
+        }
+
+        UIView.animate(withDuration: 0.5, delay: 1.0, options: [], animations: {
+            powerupLabel.alpha = 0
+        }) { _ in
+            powerupLabel.removeFromSuperview()
+        }
+    }
+
 }
 
 extension GamePlayViewController: GameOverDelegate {

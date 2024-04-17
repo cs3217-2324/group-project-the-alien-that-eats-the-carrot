@@ -18,6 +18,7 @@ final class PhysicsBody {
     var position: CGPoint
     var categoryBitmask: UInt32
     var collisionBitmask: UInt32
+    var skipResolve: Bool
 
     // MARK: Force related properties
     var isTrigger: Bool
@@ -46,7 +47,8 @@ final class PhysicsBody {
          velocity: CGVector = .zero,
          forces: [CGVector] = [],
          restitution: CGFloat = PhysicsConstants.restitution,
-         isTrigger: Bool = false) {
+         isTrigger: Bool = false,
+         skipResolve: Bool = false) {
         self.shape = shape
         self.position = position
         self.size = CGSize(width: max(size.width, PhysicsConstants.physicsBodyMinimumSize),
@@ -60,6 +62,7 @@ final class PhysicsBody {
         self.restitution = restitution
         self.isDynamic = isDynamic
         self.isTrigger = isTrigger
+        self.skipResolve = skipResolve
     }
 
     func applyForce(_ force: CGVector) {
