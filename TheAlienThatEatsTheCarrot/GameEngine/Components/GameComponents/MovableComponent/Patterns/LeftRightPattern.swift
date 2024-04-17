@@ -31,7 +31,7 @@ class LeftRightPattern: MovementPattern {
             return
         }
         let horizontalDistanceMoved = velocity.magnitude * deltaTime
-        physicsComponent.physicsBody.velocity = velocity
+        physicsComponent.physicsBody.velocity.dx = velocity.dx
         distanceMoved += horizontalDistanceMoved
     }
 

@@ -8,7 +8,7 @@
 import Foundation
 
 class EnemyFactory: EntityFactory {
-    static let MASS = 1_000.0
+    static let MASS = 1.0
     let boardObject: Enemy
     let entity: Entity
 
