@@ -7,15 +7,10 @@
 
 import Foundation
 
-class DoubleJumpPowerupEffect: ActivatePowerupEffect {
+class DoubleJumpPowerupEffect: BasePowerupEffect {
     static let DEFAULT_DURATION = 10.0
-    var duration: CGFloat
 
-    init(duration: CGFloat = DoubleJumpPowerupEffect.DEFAULT_DURATION) {
-        self.duration = duration
-    }
-
-    func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
+    override func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         guard
             let jumpStateComponent = delegate.getComponent(of: JumpStateComponent.self, for: collider),
             let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
@@ -28,7 +23,7 @@ class DoubleJumpPowerupEffect: ActivatePowerupEffect {
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 
-    func restore() {
+    override func restore() {
         // TODO: implement
     }
 }

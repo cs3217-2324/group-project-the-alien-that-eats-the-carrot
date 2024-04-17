@@ -7,17 +7,16 @@
 
 import Foundation
 
-class AttackPowerupEffect: ActivatePowerupEffect {
+class AttackPowerupEffect: BasePowerupEffect {
     static let DEFAULT_DURATION = 10.0
     var attackStyle: AttackStyle
-    var duration: CGFloat
 
     init(attackStyle: AttackStyle, duration: CGFloat = AttackPowerupEffect.DEFAULT_DURATION) {
         self.attackStyle = attackStyle
-        self.duration = duration
+        super.init(duration: duration)
     }
 
-    func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
+    override func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         guard
             let attackableComponent = delegate.getComponent(of: AttackableComponent.self, for: collider),
             let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
@@ -30,7 +29,7 @@ class AttackPowerupEffect: ActivatePowerupEffect {
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 
-    func restore() {
+    override func restore() {
         // TODO: implement
     }
 }

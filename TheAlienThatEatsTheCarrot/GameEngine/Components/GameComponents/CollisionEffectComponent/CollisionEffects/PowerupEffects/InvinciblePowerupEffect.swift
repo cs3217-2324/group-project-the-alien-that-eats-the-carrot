@@ -7,17 +7,12 @@
 
 import Foundation
 
-class InvinciblePowerupEffect: ActivatePowerupEffect {
+class InvinciblePowerupEffect: BasePowerupEffect {
     static let DEFAULT_DURATION = 7.0
-    var duration: CGFloat
 
     private var destroyableComponentAffected: DestroyableComponent?
 
-    init(duration: CGFloat = InvinciblePowerupEffect.DEFAULT_DURATION) {
-        self.duration = duration
-    }
-
-    func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
+    override func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         guard
             let destroyableComponent = delegate.getComponent(of: DestroyableComponent.self, for: collider),
             let colliderPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: collider) else {
@@ -31,7 +26,7 @@ class InvinciblePowerupEffect: ActivatePowerupEffect {
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
 
-    func restore() {
+    override func restore() {
         destroyableComponentAffected?.isInvinsible = false
     }
 }
