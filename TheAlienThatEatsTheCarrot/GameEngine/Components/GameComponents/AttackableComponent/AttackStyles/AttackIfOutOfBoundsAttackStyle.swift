@@ -20,7 +20,7 @@ class AttackIfOutOfBoundsAttackStyle: AttackStyle {
          damage: CGFloat = AttackIfOutOfBoundsAttackStyle.VERY_LARGE_DAMAGE) {
         self.bounds = bounds
         self.bounds.origin.y -= AttackIfOutOfBoundsAttackStyle.TOP_MARGIN
-        self.bounds.size.height += AttackIfOutOfBoundsAttackStyle.TOP_MARGIN
+        self.bounds.size.height -= AttackIfOutOfBoundsAttackStyle.TOP_MARGIN
         self.targetables = targetables
         self.damage = damage
     }
