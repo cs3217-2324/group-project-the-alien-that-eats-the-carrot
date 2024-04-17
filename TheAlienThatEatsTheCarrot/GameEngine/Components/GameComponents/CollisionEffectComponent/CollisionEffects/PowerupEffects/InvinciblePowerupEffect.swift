@@ -10,6 +10,10 @@ import Foundation
 class InvinciblePowerupEffect: BasePowerupEffect {
     static let DEFAULT_DURATION = 7.0
 
+    override init(duration: CGFloat = InvinciblePowerupEffect.DEFAULT_DURATION) {
+        super.init(duration: duration)
+    }
+
     private var destroyableComponentAffected: DestroyableComponent?
 
     override func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {

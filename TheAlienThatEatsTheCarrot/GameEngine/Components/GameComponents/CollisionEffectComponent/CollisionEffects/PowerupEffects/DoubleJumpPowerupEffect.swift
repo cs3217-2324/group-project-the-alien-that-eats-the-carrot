@@ -10,6 +10,10 @@ import Foundation
 class DoubleJumpPowerupEffect: BasePowerupEffect {
     static let DEFAULT_DURATION = 10.0
 
+    override init(duration: CGFloat = DoubleJumpPowerupEffect.DEFAULT_DURATION) {
+        super.init(duration: duration)
+    }
+
     private var jumpStateComponentAffected: JumpStateComponent?
 
     override func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
