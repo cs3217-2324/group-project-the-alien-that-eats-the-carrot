@@ -10,19 +10,19 @@ import Foundation
 class AttackableComponent: Component {
     var entity: Entity
     var attackStyles: [any AttackStyle]
-    
+
     init(entity: Entity,
          attackStyles: [any AttackStyle]) {
         self.entity = entity
         self.attackStyles = attackStyles
     }
-    
+
     func attackIfPossible(attackee: Entity, delegate: AttackableDelegate) {
         for attackStyle in attackStyles {
             attackStyle.attack(attacker: entity, attackee: attackee, delegate: delegate)
         }
     }
-    
+
     func getAttackStyle<T: AttackStyle>(with type: T.Type) -> T? {
         for attackStyle in attackStyles {
             if let specificAttackStyle = attackStyle as? T {
@@ -31,7 +31,7 @@ class AttackableComponent: Component {
         }
         return nil
     }
-    
+
     func addAttackStyle<T: AttackStyle>(_ attackStyle: T) {
         attackStyles.append(attackStyle)
     }
