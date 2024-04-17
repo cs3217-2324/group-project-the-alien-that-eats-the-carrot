@@ -274,6 +274,7 @@ class GamePlayViewController: UIViewController {
             self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
         } else if let playerDiedEvent = event as? PlayerDiedEvent {
             self?.showPlayerDied()
+            self?.goToGameOverScreen()
         } else if let gameEndEvent = event as? GameEndEvent {
             self?.goToGameOverScreen()
         }
