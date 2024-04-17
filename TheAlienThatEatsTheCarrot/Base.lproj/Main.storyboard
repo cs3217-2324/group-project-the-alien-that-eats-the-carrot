@@ -1422,10 +1422,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qtC-7g-YYY">
-                                <rect key="frame" x="670" y="510.5" width="97" height="42"/>
+                                <rect key="frame" x="686.5" y="510.5" width="64" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="CANCEL"/>
+                                <state key="normal" title="BACK"/>
                                 <connections>
                                     <action selector="cancelButtonTapped:" destination="cKT-R1-bh7" eventType="touchUpInside" id="fbX-E5-rpd"/>
                                 </connections>
@@ -1471,10 +1471,10 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oPP-Hr-O1e">
-                                <rect key="frame" x="661" y="459.5" width="97" height="42"/>
+                                <rect key="frame" x="661" y="459.5" width="64" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="CANCEL"/>
+                                <state key="normal" title="BACK"/>
                                 <connections>
                                     <action selector="cancelButtonPressed:" destination="TPg-5N-R8u" eventType="touchUpInside" id="dtz-T4-faL"/>
                                 </connections>
