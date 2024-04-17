@@ -8,7 +8,7 @@
 import Foundation
 
 class AttackPowerupEffect: BasePowerupEffect {
-    static let DEFAULT_DURATION = 3.0
+    static let DEFAULT_DURATION = 8.0
     var attackStyle: AttackStyle
 
     private var attackableComponentAffected: AttackableComponent?
