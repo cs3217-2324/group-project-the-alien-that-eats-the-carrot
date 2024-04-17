@@ -29,4 +29,8 @@ class AttackPowerupEffect: ActivatePowerupEffect {
                                                            position: colliderPhysicsComponent.physicsBody.position))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
     }
+
+    func restore() {
+        // TODO: implement
+    }
 }

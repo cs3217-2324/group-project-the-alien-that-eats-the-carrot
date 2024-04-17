@@ -11,6 +11,8 @@ class InvinciblePowerupEffect: ActivatePowerupEffect {
     static let DEFAULT_DURATION = 7.0
     var duration: CGFloat
 
+    private var destroyableComponentAffected: DestroyableComponent?
+
     init(duration: CGFloat = InvinciblePowerupEffect.DEFAULT_DURATION) {
         self.duration = duration
     }
@@ -22,9 +24,14 @@ class InvinciblePowerupEffect: ActivatePowerupEffect {
             return
         }
         destroyableComponent.isInvinsible = true
+        destroyableComponentAffected = destroyableComponent
         EventManager.shared.postEvent(PowerupActivateEvent(type: .invinsible,
                                                            name: "Invinsible 😇",
                                                            position: colliderPhysicsComponent.physicsBody.position))
         EventManager.shared.postEvent(RemoveEntityEvent(entity: collidee))
+    }
+
+    func restore() {
+        destroyableComponentAffected?.isInvinsible = false
     }
 }
