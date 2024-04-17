@@ -9,12 +9,12 @@ import Foundation
 
 class PelletProjectileFactory: ProjectileFactory {
     override func createComponents() -> [Component] {
-        let physicsBody = PhysicsBody(shape: .circle, position: position, size: size,
+        let physicsBody = PhysicsBody(shape: .rectangle, position: position, size: size,
                                       categoryBitmask: Constants.projectileCategoryBitmask,
                                       collisionBitmask: Constants.projectileCollisionBitmask,
-                                      isDynamic: true, velocity: velocity)
+                                      isDynamic: true, velocity: velocity, restitution: .zero)
         let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
-        let renderableComponent = RenderableComponent(entity: entity, position: position, objectType: .projectile(.pellet))
+        let renderableComponent = RenderableComponent(entity: entity, position: position, objectType: .projectile(.pellet), size: size)
         let meleeAttackStyle = MeleeAttackStyle(targetables: targetables,
                                                 acceptableAttackDirections: [.up, .down, .left, .right],
                                                 knockbackStrength: 0)

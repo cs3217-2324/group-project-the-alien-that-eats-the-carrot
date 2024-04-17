@@ -114,6 +114,8 @@ class PlayerMovementSystem: System {
         guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: player.entity) else {
             return
         }
-        physicsComponent.physicsBody.applyForce(force)
+        if physicsComponent.physicsBody.velocity.magnitude < ControlAction.SPEED_THRESHOLD {
+            physicsComponent.physicsBody.applyForce(force)
+        }
     }
 }

@@ -8,7 +8,7 @@
 import Foundation
 
 class SpawnPowerupCollisionEffect: CollisionEffect {
-    static let DEFAULT_POSITION_OFFSET = 30.0
+    static let DEFAULT_POSITION_OFFSET = 3.0
     static let DEFAULT_SPAWN_DIRECTION = Direction.up
     let powerupType: PowerupType
     let positionOffset: CGFloat

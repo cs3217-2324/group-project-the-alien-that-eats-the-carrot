@@ -19,8 +19,6 @@ class GroundBlockFactory: BlockFactory {
                                                       size: size)
         let frictionalComponent = FrictionalComponent(entity: entity,
                                                       frictionalStrength: GroundBlockFactory.FRICTIONAL_STRENGTH)
-        let physicsBody = PhysicsBody(shape: .rectangle, position: boardObject.position, size: size, categoryBitmask: Constants.blockCategoryBitmask, collisionBitmask: Constants.blockCollisionBitmask, isDynamic: false)
-        let physicsComponent = PhysicsComponent(entity: entity, physicsBody: physicsBody)
-        return [blockComponent, renderableComponent, frictionalComponent, physicsComponent]
+        return [blockComponent, renderableComponent, frictionalComponent]
     }
 }

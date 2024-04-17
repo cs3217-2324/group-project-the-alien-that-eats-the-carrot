@@ -8,14 +8,18 @@
 import Foundation
 
 public enum CollectableType: String, Equatable {
-    case coin, carrot, heart
-
-    static let typeToAssetNameMap = [coin: "coin-gold",
-                                     carrot: "carrot-collect",
-                                     heart: "heart-full"]
-    static let typeToSizeMap = [coin: CGSize(width: 2.5, height: 2.5),
-                                carrot: CGSize(width: 4, height: 4),
-                                heart: CGSize(width: 4, height: 4)]
+    case coinGold, coinSilver, coinBronze, carrot, heart
+    
+    static let typeToAssetNameMap = [coinGold: "coin-gold",
+                                   coinSilver: "coin-silver",
+                                   coinBronze: "coin-bronze",
+                                       carrot: "carrot-collect",
+                                        heart: "heart-full"]
+    static let typeToSizeMap = [coinGold: CGSize(width: 2.5, height: 2.5),
+                              coinSilver: CGSize(width: 2.5, height: 2.5),
+                              coinBronze: CGSize(width: 2.5, height: 2.5),
+                                  carrot: CGSize(width: 4, height: 4),
+                                   heart: CGSize(width: 4, height: 4)]
 
     var assetName: String? {
         CollectableType.typeToAssetNameMap[self]
