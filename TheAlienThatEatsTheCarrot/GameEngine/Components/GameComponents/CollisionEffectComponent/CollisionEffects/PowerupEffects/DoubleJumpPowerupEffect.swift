@@ -10,6 +10,8 @@ import Foundation
 class DoubleJumpPowerupEffect: BasePowerupEffect {
     static let DEFAULT_DURATION = 10.0
 
+    private var jumpStateComponentAffected: JumpStateComponent?
+
     override func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
         guard
             let jumpStateComponent = delegate.getComponent(of: JumpStateComponent.self, for: collider),
@@ -24,6 +26,6 @@ class DoubleJumpPowerupEffect: BasePowerupEffect {
     }
 
     override func restore() {
-        // TODO: implement
+        jumpStateComponentAffected?.maxJump /= 2
     }
 }
