@@ -299,7 +299,11 @@ class GamePlayViewController: UIViewController {
         } else if let powerupActivateEvent = event as? PowerupActivateEvent {
             self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position)
         } else if let gameEndEvent = event as? GameEndEvent {
-            self?.goToGameOverScreen()
+            if gameEndEvent.isWin {
+                self?.goToGameClearScreen()
+            } else {
+                self?.goToGameOverScreen()
+            }
         }
     }
 }
