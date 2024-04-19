@@ -173,6 +173,7 @@
 		3FCD005F2BB0184D0016389F /* SaveLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCD005E2BB0184D0016389F /* SaveLevelViewController.swift */; };
 		3FE4570D2BADAB8E00D8D5A9 /* StartScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */; };
 		3FFD2C8B2BD32B9700D8F4AC /* AchievementBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFD2C8A2BD32B9700D8F4AC /* AchievementBar.xib */; };
+		3FFD2C8D2BD33B0B00D8F4AC /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFD2C8C2BD33B0B00D8F4AC /* AchievementView.swift */; };
 		9F874E4D2BB3C130002EFA86 /* LevelDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F874E4C2BB3C130002EFA86 /* LevelDataManager.swift */; };
 		9F8C589E2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C589C2BAE74F1002E75FB /* TheAlienThatEastsTheCarrot.xcdatamodeld */; };
 		9F8C58A12BAE78AC002E75FB /* ToDataAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F8C58A02BAE78AC002E75FB /* ToDataAble.swift */; };
@@ -360,6 +361,7 @@
 		3FCD005E2BB0184D0016389F /* SaveLevelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveLevelViewController.swift; sourceTree = "<group>"; };
 		3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreenViewController.swift; sourceTree = "<group>"; };
 		3FFD2C8A2BD32B9700D8F4AC /* AchievementBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementBar.xib; sourceTree = "<group>"; };
+		3FFD2C8C2BD33B0B00D8F4AC /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		9F874E4C2BB3C130002EFA86 /* LevelDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelDataManager.swift; sourceTree = "<group>"; };
 		9F8C57EE2BAAD71B002E75FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9F8C57F02BAAD71B002E75FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -1030,6 +1032,7 @@
 		9F8C58372BAAD71B002E75FB /* View */ = {
 			isa = PBXGroup;
 			children = (
+				3FFD2C8C2BD33B0B00D8F4AC /* AchievementView.swift */,
 				3FAE0EE72BB427D6002521D9 /* ImageViews */,
 				3FE4570C2BADAB8E00D8D5A9 /* StartScreenViewController.swift */,
 				3F6874AB2BAFFD37009C526D /* LevelSelect */,
@@ -1279,6 +1282,7 @@
 				0AC861A62BC716C90060EF90 /* AttackIfOutOfBoundsAttackStyle.swift in Sources */,
 				0AC860D62BB6B0290060EF90 /* TimerComponent.swift in Sources */,
 				9F8C58B92BAEACB4002E75FB /* PowerupType+extensions.swift in Sources */,
+				3FFD2C8D2BD33B0B00D8F4AC /* AchievementView.swift in Sources */,
 				9F9E7B122BC921F300EF22D3 /* CarrotCollectedEvent.swift in Sources */,
 				9F8C58AD2BAEA2E5002E75FB /* BlockType.swift in Sources */,
 				0A76A4722BAC78490067BD6E /* Component.swift in Sources */,
