@@ -24,6 +24,7 @@ class GamePlayViewController: UIViewController {
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
     private var scale: CGFloat = 50.0
     private var unitSize: CGFloat = 1.0
+    private var level: Level!
 
     // MARK: - game loop
     var gameEngine: GameEngine!
@@ -47,6 +48,8 @@ class GamePlayViewController: UIViewController {
         }
         do {
             let level = try levelDataManager.fetchLevel(levelName: levelNameToLoad)
+            self.level = level
+            print("level loaded \(level.bestScore) \(level.bestCarrot)")
             gameEngine = GameEngine(level: level, bounds: boardAreaView.bounds)
             subscribeToEvents()
         } catch {
@@ -267,7 +270,22 @@ class GamePlayViewController: UIViewController {
     // MARK: - game clear
     private func goToGameClearScreen() {
         stopGameLoop()
+        updateGameStatusInPersistence()
         performSegue(withIdentifier: "LevelClearedSegue", sender: self)
+    }
+
+    private func updateGameStatusInPersistence() {
+        print("updating level status")
+        gameStats = gameEngine.getGameStats()
+        level.bestScore = max(level.bestScore, gameStats.score)
+        level.bestCarrot = max(level.bestCarrot, gameStats.carrots)
+//        level.bestTime = min(level.bestTime, gameStats.time)
+        do {
+            try levelDataManager.saveLevelData(level: level, overwrite: true)
+            print("level clear \(level.bestScore) \(level.bestCarrot)")
+        } catch {
+            print("Game status faile to save")
+        }
     }
 
     // MARK: - events

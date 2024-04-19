@@ -13,22 +13,22 @@ class LevelSelectViewController: UIViewController, LevelViewDelegate {
     @IBOutlet private var stackView: UIStackView!
 
     // Array containing level names
-    private var levelNames: [String]!
+    private var levelInfo: [Level]!
     private var storageManager = LevelDataManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        levelNames = storageManager.fetchLevelNames()
+        levelInfo = storageManager.fetchLevels()
         initializeLevelDesigner()
     }
 
     private func initializeLevelDesigner() {
         stackView.arrangedSubviews.forEach { $0.removeFromSuperview() }
 
-        for levelName in levelNames {
+        for level in levelInfo {
             if let levelView = Bundle.main.loadNibNamed("LevelView", owner: nil, options: nil)?.first as? LevelView {
                 // Customize the level view with level name and background image
-                levelView.configure(levelName: levelName)
+                levelView.configure(levelName: level.name, score: level.bestScore, carrot: level.bestCarrot, time: level.bestTime)
 
                 // Set the view controller as the delegate
                 levelView.delegate = self

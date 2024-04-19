@@ -22,7 +22,7 @@ struct LevelDataManager {
     ///   - Parameters:
     ///     - levelName: the name of the level to fetch.
     ///   - Returns : the fetched `LevelData`.
-    func fetchLevelData(levelName: String) throws -> LevelData {
+    private func fetchLevelData(levelName: String) throws -> LevelData {
         let levelDatas = try fetchAllLevelDataMatching(levelName: levelName)
         if levelDatas.isEmpty {
             throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
@@ -58,7 +58,7 @@ struct LevelDataManager {
         try context.save()
     }
 
-    func fetchAllLevelData() throws -> [LevelData] {
+    private func fetchAllLevelData() throws -> [LevelData] {
         let request = LevelData.fetchRequest()
         return try context.fetch(request)
     }
@@ -87,6 +87,24 @@ struct LevelDataManager {
             print("Error fetching level data: \(error)")
             return []
         }
+    }
+
+    func fetchLevels() -> [Level] {
+        var levels: [Level] = []
+        do {
+            let levelDatas = try fetchAllLevelData()
+            if levelDatas.isEmpty {
+                return levels
+            }
+            for levelData in levelDatas {
+                let level = try Level(data: levelData)
+                levels.append(level)
+            }
+        } catch {
+            print("Error fetching level data: \(error)")
+            return levels
+        }
+        return levels
     }
 
     func fetchEmptyLevel() -> Level? {
