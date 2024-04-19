@@ -310,10 +310,6 @@ class GamePlayViewController: UIViewController {
             } else {
                 self?.goToGameOverScreen()
             }
-        } else if let playerDiedEvent = event as? PlayerDiedEvent {
-            self?.showPlayerDied()
-        } else if let powerupActivateEvent = event as? PowerupActivateEvent {
-            self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position)
         }
     }
 }
