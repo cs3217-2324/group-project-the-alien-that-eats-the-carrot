@@ -121,7 +121,7 @@ class GamePlayViewController: UIViewController {
     func addImage(component: RenderableComponent) {
         let positionWithOffsets = getPositionWithOffsets(for: component.position)
         let imageView = RectangularImageView(objectType: component.objectType,
-                                             center: toBoardPosition(position: positionWithOffsets),
+                                             center: positionWithOffsets,
                                              width: component.size.width * unitSize,
                                              height: component.size.height * unitSize)
         imageViews[ObjectIdentifier(component)] = imageView
@@ -161,7 +161,7 @@ class GamePlayViewController: UIViewController {
             xPosition -= playerPosition.x
             yPosition -= playerPosition.y
         }
-        return CGPoint(x: xPosition, y: yPosition)
+        return toBoardPosition(position: CGPoint(x: xPosition, y: yPosition))
     }
 
     // MARK: - game state handling
@@ -320,7 +320,7 @@ extension GamePlayViewController {
         let damageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 125, height: 50))
         damageLabel.text = "-\(amount)"
         damageLabel.textColor = .red
-        damageLabel.center = toBoardPosition(position: positionWithOffsets)
+        damageLabel.center = positionWithOffsets
         boardAreaView.addSubview(damageLabel)
         damageLabel.layer.zPosition = 100
 
@@ -364,7 +364,7 @@ extension GamePlayViewController {
         view.addSubview(powerupLabel)
 
         let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        circleView.center = toBoardPosition(position: getPositionWithOffsets(for: position))
+        circleView.center = getPositionWithOffsets(for: position)
         circleView.layer.cornerRadius = 15
         circleView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.6)
         circleView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
