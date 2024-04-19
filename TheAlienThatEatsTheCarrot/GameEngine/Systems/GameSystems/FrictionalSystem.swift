@@ -15,6 +15,11 @@ class FrictionalSystem: System {
     }
 
     func update(deltaTime: CGFloat) {
+        applySurfaceFriction()
+        applyAirFriction()
+    }
+
+    private func applySurfaceFriction() {
         let blockComponents = nexus.getComponents(of: BlockComponent.self)
         let physicsComponents = nexus.getComponents(of: PhysicsComponent.self)
         for blockComponent in blockComponents {
@@ -29,6 +34,17 @@ class FrictionalSystem: System {
                                      on: blockPhysicsComponent.physicsBody,
                                      with: frictionalComponent.frictionalStrength)
             }
+        }
+    }
+
+    private func applyAirFriction() {
+        let AIR_FRICTION_STRENGTH = 500.0
+        let jumpStateComponents = nexus.getComponents(of: JumpStateComponent.self)
+        for jumpStateComponent in jumpStateComponents where !jumpStateComponent.isGrounded {
+            guard let physicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: jumpStateComponent.entity) else {
+                continue
+            }
+            physicsComponent.physicsBody.applyFrictionalForceInX(magnitude: AIR_FRICTION_STRENGTH)
         }
     }
 
