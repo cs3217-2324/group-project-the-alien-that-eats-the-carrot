@@ -110,7 +110,7 @@ struct LevelDataManager {
         }
         return nil
     }
-    
+
     mutating func fetchPreloadedLevels() -> Level? {
         guard let fileURL = Bundle.main.url(forResource: "defaultLevels", withExtension: "json") else {
             print("Error: emptyLevel.json file not found")
