@@ -29,7 +29,7 @@ class GamePlayViewController: UIViewController {
     // MARK: - game loop
     var gameEngine: GameEngine!
     var gameLoop: GameLoop!
-    var levelDataManager = LevelDataManager()
+    var levelDataManager = LevelDataManager.sharedManager
 
     private var isGameLoopRunning = false
     var count: Int = 0

@@ -26,7 +26,7 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var boardAreaView: UIView!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
     var levelDesigner: LevelDesigner! // controller
-    var levelDataManager = LevelDataManager()
+    var levelDataManager = LevelDataManager.sharedManager
 
     override func viewDidLoad() {
         super.viewDidLoad()

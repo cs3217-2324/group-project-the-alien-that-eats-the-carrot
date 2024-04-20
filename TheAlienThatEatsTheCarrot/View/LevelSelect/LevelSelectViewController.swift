@@ -14,7 +14,7 @@ class LevelSelectViewController: UIViewController, LevelViewDelegate {
 
     // Array containing level names
     private var levelInfo: [Level]!
-    private var storageManager = LevelDataManager()
+    private var storageManager = LevelDataManager.sharedManager
 
     override func viewDidLoad() {
         super.viewDidLoad()

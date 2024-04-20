@@ -8,12 +8,13 @@
 import CoreData
 
 struct LevelDataManager {
-    let context: NSManagedObjectContext
+
+    static let sharedManager = LevelDataManager()
+    let context = CoreDataManager.sharedManager.context
     private var preloadedLevels: [Level] = []
 
-    init(mainContext: NSManagedObjectContext = CoreDataManager.sharedManager.context) {
-        self.context = mainContext
-        print("fetch levels")
+    private init() {
+//        deleteAllData() // use when want to clear all data on ipad simulator
         fetchPreloadedLevels()
     }
 
@@ -56,6 +57,7 @@ struct LevelDataManager {
         }
         _ = level.toData(context: context)
         try context.save()
+        print("saved level \(level.name)")
     }
 
     private func fetchAllLevelData() throws -> [LevelData] {
@@ -99,6 +101,7 @@ struct LevelDataManager {
             for levelData in levelDatas {
                 let level = try Level(data: levelData)
                 levels.append(level)
+                print("fetched level \(level.name)")
             }
         } catch {
             print("Error fetching level data: \(error)")
@@ -129,10 +132,10 @@ struct LevelDataManager {
         return nil
     }
 
-    mutating func fetchPreloadedLevels() -> Level? {
+    mutating func fetchPreloadedLevels() {
         guard let fileURL = Bundle.main.url(forResource: "defaultLevels", withExtension: "json") else {
             print("Error: emptyLevel.json file not found")
-            return nil
+            return
         }
         do {
             let jsonData = try Data(contentsOf: fileURL)
@@ -145,6 +148,7 @@ struct LevelDataManager {
                         continue
                     }
                     preloadedLevels.append(level)
+                    print("fetched preloaded level \(level.name)")
                     try saveLevelData(level: level, overwrite: true)
                 } else {
                     print("Error: Failed to create Level instance from JSON string")
@@ -153,6 +157,19 @@ struct LevelDataManager {
         } catch {
             print("Error decoding defaultLevels.json: \(error)")
         }
-        return nil
+        return
+    }
+
+    private mutating func deleteAllData() {
+        print("deleting all data")
+        do {
+            let levelDatas = try fetchAllLevelData()
+            for levelData in levelDatas {
+                context.delete(levelData)
+            }
+        } catch {
+            print("Error fetching level data: \(error)")
+            return
+        }
     }
 }
