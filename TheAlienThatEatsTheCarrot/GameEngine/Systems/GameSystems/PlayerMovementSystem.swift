@@ -55,8 +55,6 @@ class PlayerMovementSystem: System {
             let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
             return
         }
-        // TODO: add a system that modifies canJump if the player is standing on an object
-        // This can either be in the physics system or a separate system
         if jumpStateComponent.isGrounded {
             jumpStateComponent.remainingJump = jumpStateComponent.maxJump
         }

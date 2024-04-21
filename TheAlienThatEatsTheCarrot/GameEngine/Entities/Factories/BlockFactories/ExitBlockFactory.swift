@@ -9,7 +9,6 @@ import Foundation
 
 class ExitBlockFactory: BlockFactory {
     override func createComponents() -> [Component] {
-        // TODO: check if set up properly
         let size = CGSize(width: boardObject.width, height: boardObject.height)
         let blockComponent = BlockComponent(entity: entity)
         let renderableComponent = RenderableComponent(entity: entity,

@@ -15,7 +15,6 @@ public enum ObjectType: Equatable, Hashable {
     case character(CharacterType)
     case projectile(ProjectileType)
 
-    // TODO: delete
     var assetName: String? {
         switch self {
         case .enemy(let enemyType):
