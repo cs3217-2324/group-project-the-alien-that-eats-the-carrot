@@ -124,6 +124,7 @@ struct LevelDataManager {
                 }
             }
         } catch {
+            print("Error decoding defaultLevels.json: \(error)")
         }
         return nil
     }
