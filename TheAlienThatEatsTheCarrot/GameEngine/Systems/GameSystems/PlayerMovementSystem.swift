@@ -27,7 +27,6 @@ class PlayerMovementSystem: System {
         for player in playerComponents {
             updateJumpState(for: player)
             applyPhysicsBasedOnControlAction(for: player)
-            updateCameraBasedOnNewPosition(for: player)
             resetPlayerActionIfJump(for: player)
         }
     }
@@ -80,16 +79,6 @@ class PlayerMovementSystem: System {
         if player.action == .jump {
             player.action = .idle
         }
-    }
-
-    private func updateCameraBasedOnNewPosition(for player: PlayerComponent) {
-        guard
-            let camera = nexus.getComponent(of: CameraComponent.self, for: player.entity),
-            let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: player.entity)
-        else {
-            return
-        }
-        camera.updateCameraBoundsFromCenter(center: renderableComponent.position)
     }
 
     private func doNothing() {

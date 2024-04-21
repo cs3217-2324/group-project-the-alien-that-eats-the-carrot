@@ -99,7 +99,6 @@ class GameEngine {
                         PhysicsSystem(nexus: nexus, physicsWorld: physicsWorld),
                         MovementSystem(nexus: nexus),
                         TimerSystem(nexus: nexus),
-                        CameraSystem(nexus: nexus),
                         DamageSystem(nexus: nexus),
                         FrictionalSystem(nexus: nexus),
                         CreateNewEntitiesSystem(nexus: nexus),

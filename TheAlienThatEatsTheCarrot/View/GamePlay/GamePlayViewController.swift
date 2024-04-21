@@ -149,18 +149,6 @@ class GamePlayViewController: UIViewController {
         CGPoint(x: position.x * unitSize, y: position.y * unitSize)
     }
 
-    private func getPositionWithOffsets(for originalPosition: CGPoint) -> CGPoint {
-        let position = gameEngine.getPlayerPositions().first
-        let verticalCameraOffset = 1_300.0
-        var xPosition = originalPosition.x + boardAreaView.frame.width / scale / 2
-        var yPosition = originalPosition.y + boardAreaView.frame.height / scale / 2 + verticalCameraOffset / scale
-        if let playerPosition = position {
-            xPosition -= playerPosition.x
-            yPosition -= playerPosition.y
-        }
-        return toBoardPosition(position: CGPoint(x: xPosition, y: yPosition))
-    }
-
     // MARK: - game state handling
     private func updateCoinCount(_ count: Int) {
         coinCountText.text = String(count)
