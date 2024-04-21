@@ -475,9 +475,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="jumpButtonTapped:" destination="W3e-M2-jBc" eventType="touchUpInside" id="Pfk-kz-9xn"/>
                                     <action selector="jumpButtonTouchDown:" destination="W3e-M2-jBc" eventType="touchDown" id="5Qp-HV-A8F"/>
-                                    <action selector="jumpButtonTouchUpOutside:" destination="W3e-M2-jBc" eventType="touchUpOutside" id="ixF-hs-2HN"/>
                                 </connections>
                             </button>
                         </subviews>

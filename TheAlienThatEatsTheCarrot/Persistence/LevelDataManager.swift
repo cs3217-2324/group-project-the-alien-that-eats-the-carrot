@@ -14,7 +14,7 @@ struct LevelDataManager {
     private var preloadedLevels: [Level] = []
 
     private init() {
-        deleteAllData() // use when want to clear all data on ipad simulator
+//        deleteAllData() // use when want to clear all data on ipad simulator
         fetchPreloadedLevels()
     }
 

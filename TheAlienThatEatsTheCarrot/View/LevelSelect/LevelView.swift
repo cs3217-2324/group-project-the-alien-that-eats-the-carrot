@@ -35,11 +35,7 @@ class LevelView: UIView {
     }
 
     private func updateScore(_ score: Int) {
-        if score == 0 {
-            bestScoreText.text = "SCORE: -"
-        } else {
-            bestScoreText.text = "SCORE: \(String(score))"
-        }
+        bestScoreText.text = "SCORE: \(String(score))"
     }
 
     private func updateTimer(_ time: Int) {
