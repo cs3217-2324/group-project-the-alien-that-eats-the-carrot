@@ -65,7 +65,6 @@ class LevelDesignerViewController: UIViewController {
         self.unitSize = (frame.maxY - frame.minY) / 50
         boardBounds = (min: 0, max: area.size.width * unitSize)
         displayBounds = (min: 0, max: frame.maxX - frame.minX)
-        print("display \(displayBounds) board \(boardBounds)")
     }
 
     // MARK: - set up tab bars
@@ -160,7 +159,6 @@ class LevelDesignerViewController: UIViewController {
     /// handle tap action in the board area
     @objc func handleBoardTap(_ gesture: UITapGestureRecognizer) {
         let tapLocation = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
-//        print("** tap at \(gesture.location(in: boardAreaView)) -> \(tapLocation)")
         levelDesigner.handleTap(at: tapLocation, objectType: componentSelected)
     }
 
@@ -168,7 +166,6 @@ class LevelDesignerViewController: UIViewController {
     @objc func handleBoardLongPress(_ gesture: UILongPressGestureRecognizer) {
         if gesture.state == .began {
             let location = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
-//            print("** long press (delete) at \(gesture.location(in: boardAreaView)) -> \(location)")
             levelDesigner.handleLongPress(at: location)
         }
     }
@@ -178,14 +175,11 @@ class LevelDesignerViewController: UIViewController {
         switch gesture.state {
         case .began:
             let touchPoint = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
-//            print("** long press pan began at \(gesture.location(in: boardAreaView)) ->  \(touchPoint)")
             levelDesigner.handlePanStart(at: touchPoint)
         case .changed:
             let touchPoint = relativePixelToAbsoluteUnitPosition(point: gesture.location(in: boardAreaView))
-//            print("** long press pan began at \(gesture.location(in: boardAreaView)) ->  \(touchPoint)")
             levelDesigner.handlePanChange(at: touchPoint)
         default:
-//            print("** long press pan end")
             levelDesigner.handlePanEnd()
         }
     }
@@ -196,7 +190,6 @@ class LevelDesignerViewController: UIViewController {
             let translation = gesture.translation(in: boardAreaView)
             moveAllImages(scale: translation.x)
             gesture.setTranslation(.zero, in: boardAreaView)
-            // print("** short pan change \(translation.x)")
         }
     }
 
@@ -222,15 +215,12 @@ class LevelDesignerViewController: UIViewController {
 
         let position = absoluteUnitToRelativePixelPosition(point: center)
 
-        print(">>view >> image added at \(position) for \(objectType) w \(width * unitSize) h \(height * unitSize)")
-
         let imageView = RectangularImageView(objectType: objectType, center: position, width: width * unitSize, height: height * unitSize)
         imageViews[id] = imageView
         boardAreaView.addSubview(imageView.imageView)
     }
 
     func removeImage(id: ObjectIdentifier) {
-//        print("image removed for \(id)")
         guard let removedImageView = imageViews.removeValue(forKey: id) else {
             return
         }
@@ -255,7 +245,6 @@ class LevelDesignerViewController: UIViewController {
 
     func expandLevel(scale: CGFloat) {
         boardBounds.max += scale * unitSize
-//        print("new board bounds \(boardBounds)")
     }
 
     // MARK: - other feature buttons

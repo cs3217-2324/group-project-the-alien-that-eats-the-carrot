@@ -27,7 +27,6 @@ class PlayerMovementSystem: System {
         for player in playerComponents {
             updateJumpState(for: player)
             applyPhysicsBasedOnControlAction(for: player)
-            updateCameraBasedOnNewPosition(for: player)
             resetPlayerActionIfJump(for: player)
         }
     }
@@ -56,8 +55,6 @@ class PlayerMovementSystem: System {
             let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: player.entity) else {
             return
         }
-        // TODO: add a system that modifies canJump if the player is standing on an object
-        // This can either be in the physics system or a separate system
         if jumpStateComponent.isGrounded {
             jumpStateComponent.remainingJump = jumpStateComponent.maxJump
         }
@@ -80,16 +77,6 @@ class PlayerMovementSystem: System {
         if player.action == .jump {
             player.action = .idle
         }
-    }
-
-    private func updateCameraBasedOnNewPosition(for player: PlayerComponent) {
-        guard
-            let camera = nexus.getComponent(of: CameraComponent.self, for: player.entity),
-            let renderableComponent = nexus.getComponent(of: RenderableComponent.self, for: player.entity)
-        else {
-            return
-        }
-        camera.updateCameraBoundsFromCenter(center: renderableComponent.position)
     }
 
     private func doNothing() {

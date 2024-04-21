@@ -86,7 +86,6 @@ struct LevelDataManager {
             let levelNames = levelDatas.compactMap({ $0.name })
             return levelNames
         } catch {
-            print("Error fetching level data: \(error)")
             return []
         }
     }
@@ -112,7 +111,6 @@ struct LevelDataManager {
 
     func fetchEmptyLevel() -> Level? {
         guard let fileURL = Bundle.main.url(forResource: "emptyLevel", withExtension: "json") else {
-            print("Error: emptyLevel.json file not found")
             return nil
         }
         do {
@@ -123,7 +121,6 @@ struct LevelDataManager {
                 if let level = jsonString.flatMap({ Level.fromJSONString(jsonString: $0) }) {
                     return level
                 } else {
-                    print("Error: Failed to create Level instance from JSON string")
                 }
             }
         } catch {

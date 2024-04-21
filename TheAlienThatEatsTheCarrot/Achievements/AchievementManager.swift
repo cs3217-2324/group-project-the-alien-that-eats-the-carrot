@@ -17,7 +17,8 @@ class AchievementManager: ObservableObject, AchievementManagerDelegate {
         self.newAchievement = nil
         self.storage = UserDefaults.standard
         self.achievementGroups = [
-            KillEnemyAchievementGroup()
+            KillEnemyAchievementGroup(),
+            AllTimeAchievementGroup()
         ]
         registerAchievementManagerDelegate()
         registerAchievements()

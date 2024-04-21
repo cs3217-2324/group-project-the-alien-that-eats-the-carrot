@@ -59,7 +59,6 @@ extension Level {
             let jsonData = try encoder.encode(jsonLevel)
             return String(data: jsonData, encoding: .utf8)
         } catch {
-            print("Error encoding level to JSON: \(error)")
             return nil
         }
     }
@@ -70,24 +69,24 @@ extension BoardObjectSet {
     func toJSONBoardObjectSet() -> JSONBoardObjectSet {
         let jsonBlocks = blocks.map { block in
             JSONBlock(position: [block.position.x, block.position.y],
-                             blockType: block.blockType.rawValue,
-                             containedPowerupType: block.containedPowerupType?.rawValue)
+                      blockType: block.blockType.rawValue,
+                      containedPowerupType: block.containedPowerupType?.rawValue)
         }
         let jsonCharacters = characters.map { character in
             JSONCharacter(position: [character.position.x, character.position.y],
-                                  characterType: character.characterType.rawValue)
+                          characterType: character.characterType.rawValue)
         }
         let jsonCollectables = collectables.map { collectable in
             JSONCollectable(position: [collectable.position.x, collectable.position.y],
-                                    collectableType: collectable.collectableType.rawValue)
+                            collectableType: collectable.collectableType.rawValue)
         }
         let jsonEnemies = enemies.map { enemy in
             JSONEnemy(position: [enemy.position.x, enemy.position.y],
-                             enemyType: enemy.enemyType.rawValue)
+                      enemyType: enemy.enemyType.rawValue)
         }
         let jsonPowerups = powerups.map { powerup in
             JSONPowerup(position: [powerup.position.x, powerup.position.y],
-                                powerupType: powerup.powerupType.rawValue)
+                        powerupType: powerup.powerupType.rawValue)
         }
 
         return JSONBoardObjectSet(blocks: jsonBlocks,
@@ -122,7 +121,6 @@ extension Level {
                          bestTime: jsonLevel.bestTime,
                          bestCarrot: jsonLevel.bestCarrot)
         } catch {
-            print("Error decoding JSON: \(error)")
             return nil
         }
     }
@@ -183,18 +181,4 @@ func main() {
                       bestScore: 0,
                       bestTime: 0,
                       bestCarrot: 0)
-
-    if let jsonString = level.toJSONString() {
-        print("JSON String:")
-        print(jsonString)
-
-        if let decodedLevel = Level.fromJSONString(jsonString: jsonString) {
-            print("Decoded Level:")
-            print(decodedLevel)
-        } else {
-            print("Failed to decode Level from JSON string")
-        }
-    } else {
-        print("Failed to convert Level to JSON string")
-    }
 }

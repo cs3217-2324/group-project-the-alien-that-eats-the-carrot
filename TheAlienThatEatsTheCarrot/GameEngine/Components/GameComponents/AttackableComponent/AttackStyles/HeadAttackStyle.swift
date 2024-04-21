@@ -20,7 +20,6 @@ class HeadAttackStyle: AttackStyle {
 
     func attack(attacker: Entity, attackee: Entity,
                 delegate: AttackableDelegate) {
-        // TODO: Either use renderable component or physics component
         guard let attackerPhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attacker),
               let attackeePhysicsComponent = delegate.getComponent(of: PhysicsComponent.self, for: attackee) else {
             return
