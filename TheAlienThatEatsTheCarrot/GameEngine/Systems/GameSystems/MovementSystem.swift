@@ -9,31 +9,32 @@ import Foundation
 
 class MovementSystem: System {
     var nexus: Nexus
-    private var gameStartObserver: NSObjectProtocol?
 
     init(nexus: Nexus) {
         self.nexus = nexus
-        subscribeToEvents()
-    }
-
-    deinit {
-        if let observer = gameStartObserver {
-            EventManager.shared.unsubscribe(from: observer)
-        }
-    }
-
-    func subscribeToEvents() {
-        gameStartObserver = EventManager.shared.subscribe(to: GameStartEvent.self, using: onEventOccur)
-    }
-
-    private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
-        print("A Receiving event! \(event.self)")
     }
 
     func update(deltaTime: CGFloat) {
         let movableComponents = nexus.getComponents(of: MovableComponent.self)
+        let physicsBodies = nexus.getComponents(of: PhysicsComponent.self).map { $0.physicsBody }
+        let jumpStateComponents = nexus.getComponents(of: JumpStateComponent.self)
         for movable in movableComponents {
             movable.moveBasedOnPattern(deltaTime: deltaTime, delegate: self)
+        }
+        for physicsBody in physicsBodies {
+            for jumpStateComponent in jumpStateComponents {
+                resetJumpState(for: jumpStateComponent, ifSteppingOn: physicsBody)
+            }
+        }
+    }
+
+    private func resetJumpState(for jumpStateComponent: JumpStateComponent,
+                                ifSteppingOn physicsBody: PhysicsBody) {
+        guard let jumperPhysicsComponent = nexus.getComponent(of: PhysicsComponent.self, for: jumpStateComponent.entity) else {
+            return
+        }
+        if jumperPhysicsComponent.physicsBody.isCollidingWith(physicsBody, on: .up) {
+            jumpStateComponent.setIsGrounded()
         }
     }
 }

@@ -104,8 +104,7 @@ class PlayerMovementSystem: System {
         }
         if jumpStateComponent.remainingJump > 0 {
             physicsComponent.physicsBody.applyForce(ControlAction.DEFAULT_JUMP_FORCE)
-            // TODO: uncomment this code once we set isGrounded to true when player collides with other physics object
-            // jumpStateComponent.isGrounded = false
+            jumpStateComponent.isGrounded = false
             jumpStateComponent.remainingJump -= 1
         }
     }

@@ -19,7 +19,6 @@ class StrengthPowerupEffect: BasePowerupEffect {
          factor: CGFloat = StrengthPowerupEffect.DEFAULT_FACTOR) {
         self.factor = factor
         super.init(duration: duration)
-        subscribeToEvents()
     }
 
     override func effectWhenCollide(with collidee: Entity, by collider: Entity, delegate: CollisionEffectDelegate) {
