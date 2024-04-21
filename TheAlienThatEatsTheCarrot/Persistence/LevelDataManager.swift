@@ -8,10 +8,14 @@
 import CoreData
 
 struct LevelDataManager {
-    let context: NSManagedObjectContext
 
-    init(mainContext: NSManagedObjectContext = CoreDataManager.sharedManager.context) {
-        self.context = mainContext
+    static let sharedManager = LevelDataManager()
+    let context = CoreDataManager.sharedManager.context
+    private var preloadedLevels: [Level] = []
+
+    private init() {
+//        deleteAllData() // use when want to clear all data on ipad simulator
+        fetchPreloadedLevels()
     }
 
     /// Fetches the saved `LevelData` matching the provided `levelName`. Throws errors
@@ -19,7 +23,7 @@ struct LevelDataManager {
     ///   - Parameters:
     ///     - levelName: the name of the level to fetch.
     ///   - Returns : the fetched `LevelData`.
-    func fetchLevelData(levelName: String) throws -> LevelData {
+    private func fetchLevelData(levelName: String) throws -> LevelData {
         let levelDatas = try fetchAllLevelDataMatching(levelName: levelName)
         if levelDatas.isEmpty {
             throw TheAlienThatEatsTheCarrotError.invalidPersistenceDataError
@@ -53,9 +57,10 @@ struct LevelDataManager {
         }
         _ = level.toData(context: context)
         try context.save()
+        print("saved level \(level.name)")
     }
 
-    func fetchAllLevelData() throws -> [LevelData] {
+    private func fetchAllLevelData() throws -> [LevelData] {
         let request = LevelData.fetchRequest()
         return try context.fetch(request)
     }
@@ -85,6 +90,25 @@ struct LevelDataManager {
         }
     }
 
+    func fetchLevels() -> [Level] {
+        var levels: [Level] = []
+        do {
+            let levelDatas = try fetchAllLevelData()
+            if levelDatas.isEmpty {
+                return levels
+            }
+            for levelData in levelDatas {
+                let level = try Level(data: levelData)
+                levels.append(level)
+                print("fetched level \(level.name)")
+            }
+        } catch {
+            print("Error fetching level data: \(error)")
+            return levels
+        }
+        return levels
+    }
+
     func fetchEmptyLevel() -> Level? {
         guard let fileURL = Bundle.main.url(forResource: "emptyLevel", withExtension: "json") else {
             return nil
@@ -102,5 +126,46 @@ struct LevelDataManager {
         } catch {
         }
         return nil
+    }
+
+    mutating func fetchPreloadedLevels() {
+        guard let fileURL = Bundle.main.url(forResource: "defaultLevels", withExtension: "json") else {
+            print("Error: emptyLevel.json file not found")
+            return
+        }
+        do {
+            let jsonData = try Data(contentsOf: fileURL)
+            let jsonArray = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [[String: Any]] ?? []
+            for jsonDict in jsonArray {
+                let jsonString = String(data: try JSONSerialization.data(withJSONObject: jsonDict, options: []), encoding: .utf8)
+                if let level = jsonString.flatMap({ Level.fromJSONString(jsonString: $0) }) {
+                    if preloadedLevels.contains(where: { $0.name == level.name }) {
+                        // "Level with name '\(levelName)' already exists. Skipping preloaded level."
+                        continue
+                    }
+                    preloadedLevels.append(level)
+                    print("fetched preloaded level \(level.name)")
+                    try saveLevelData(level: level, overwrite: true)
+                } else {
+                    print("Error: Failed to create Level instance from JSON string")
+                }
+            }
+        } catch {
+            print("Error decoding defaultLevels.json: \(error)")
+        }
+        return
+    }
+
+    private mutating func deleteAllData() {
+        print("deleting all data")
+        do {
+            let levelDatas = try fetchAllLevelData()
+            for levelData in levelDatas {
+                context.delete(levelData)
+            }
+        } catch {
+            print("Error fetching level data: \(error)")
+            return
+        }
     }
 }
