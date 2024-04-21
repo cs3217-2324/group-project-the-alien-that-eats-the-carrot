@@ -39,11 +39,15 @@ class LevelView: UIView {
     }
 
     private func updateTimer(_ time: Int) {
-        let totalseconds = time / 60
-        let minutes = totalseconds / 60
-        let seconds = totalseconds % 60
-        let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
-        bestTimeText.text = formattedTime
+        if time == 0 {
+            bestTimeText.text = "TIME: -"
+        } else {
+            let totalseconds = time / 60
+            let minutes = totalseconds / 60
+            let seconds = totalseconds % 60
+            let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
+            bestTimeText.text = formattedTime
+        }
     }
 
     private func updateCarrotCount(_ number: Int) {

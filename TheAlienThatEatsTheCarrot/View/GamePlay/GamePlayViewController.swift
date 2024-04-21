@@ -206,16 +206,11 @@ class GamePlayViewController: UIViewController {
     }
 
     @IBAction private func jumpButtonTouchDown(_ sender: UIButton) {
-        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
-    }
-
-    @IBAction private func jumpButtonTapped(_ sender: UIButton) {
-        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
         EventManager.shared.postEvent(PlayerControlActionEvent(action: .jump))
-    }
-
-    @IBAction private func jumpButtonTouchUpOutside(_ sender: UIButton) {
-        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
+        sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.5)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            sender.backgroundColor = sender.backgroundColor?.withAlphaComponent(0.3)
+        }
     }
 
     // MARK: - pause

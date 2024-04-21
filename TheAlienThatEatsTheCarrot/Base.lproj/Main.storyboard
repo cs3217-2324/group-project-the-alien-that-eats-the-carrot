@@ -475,9 +475,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="jumpButtonTapped:" destination="W3e-M2-jBc" eventType="touchUpInside" id="Pfk-kz-9xn"/>
                                     <action selector="jumpButtonTouchDown:" destination="W3e-M2-jBc" eventType="touchDown" id="5Qp-HV-A8F"/>
-                                    <action selector="jumpButtonTouchUpOutside:" destination="W3e-M2-jBc" eventType="touchUpOutside" id="ixF-hs-2HN"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1046,7 +1044,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="UtR-rT-IS3">
-                                        <rect key="frame" x="0.0" y="93" width="366" height="72.5"/>
+                                        <rect key="frame" x="0.0" y="93" width="464" height="72.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRb-0t-WcX">
                                                 <rect key="frame" x="0.0" y="0.0" width="73" height="72.5"/>
@@ -1096,7 +1094,25 @@
                                                     <action selector="spikeButtonTapped:" destination="aIf-QM-xmW" eventType="touchUpInside" id="FTT-fU-k5e"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aH0-ss-hQ6">
+                                                <rect key="frame" x="391" y="0.0" width="73" height="72.5"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="aH0-ss-hQ6" secondAttribute="height" multiplier="1:1" id="A9G-vW-oGu"/>
+                                                    <constraint firstAttribute="width" secondItem="aH0-ss-hQ6" secondAttribute="height" multiplier="1:1" id="Xcq-aP-UWj"/>
+                                                    <constraint firstAttribute="width" secondItem="aH0-ss-hQ6" secondAttribute="height" multiplier="1:1" id="l6g-lx-56c"/>
+                                                </constraints>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="exit"/>
+                                                <connections>
+                                                    <action selector="exitButtonTapped:" destination="aIf-QM-xmW" eventType="touchUpInside" id="qFJ-qe-1kG"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstItem="aH0-ss-hQ6" firstAttribute="width" secondItem="aH0-ss-hQ6" secondAttribute="height" multiplier="1:1" id="2A0-Zq-YoN"/>
+                                            <constraint firstItem="aH0-ss-hQ6" firstAttribute="width" secondItem="aH0-ss-hQ6" secondAttribute="height" multiplier="1:1" id="IDa-qx-A8c"/>
+                                            <constraint firstItem="aH0-ss-hQ6" firstAttribute="width" secondItem="aH0-ss-hQ6" secondAttribute="height" multiplier="1:1" id="cqv-O5-SvL"/>
+                                        </constraints>
                                     </stackView>
                                 </subviews>
                             </stackView>
@@ -1795,7 +1811,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="S9Z-Cp-U5i"/>
+        <segue reference="uRV-qU-f8V"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="backgound-game-clear" width="2600" height="1413"/>
@@ -1812,6 +1828,7 @@
         <image name="coin-display" width="105" height="105"/>
         <image name="coin-gold" width="57" height="57"/>
         <image name="coin-silver" width="57" height="57"/>
+        <image name="exit" width="105" height="105"/>
         <image name="heart-full" width="105" height="105"/>
         <image name="icon-left" width="105" height="105"/>
         <image name="icon-pause" width="105" height="105"/>
