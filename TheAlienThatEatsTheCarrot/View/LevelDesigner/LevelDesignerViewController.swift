@@ -26,7 +26,7 @@ class LevelDesignerViewController: UIViewController {
     @IBOutlet private var boardAreaView: UIView!
     private var imageViews: [ObjectIdentifier: RectangularImageView] = [:]
     var levelDesigner: LevelDesigner! // controller
-    var levelDataManager = LevelDataManager()
+    var levelDataManager = LevelDataManager.sharedManager
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -280,10 +280,11 @@ class LevelDesignerViewController: UIViewController {
     }
 
     @IBAction private func playLevelButtonTapped(_ sender: UIButton) {
-        printJSON(level: levelDesigner.level)
+//        printJSON(level: levelDesigner.level)
+        AchievementView.displayRectangularPopup(view: view, description: "sadfagwafadwfsgsgsfwafafdsgaewefewe")
     }
 
-    @IBAction func expandLevelButtonTapped(_ sender: UIButton) {
+    @IBAction private func expandLevelButtonTapped(_ sender: UIButton) {
         levelDesigner.expandLevel()
     }
 }

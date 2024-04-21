@@ -23,27 +23,36 @@ class LevelView: UIView {
     @IBOutlet private var bestTimeText: UILabel!
 
     // Function to configure the level view with data
-    func configure(levelName: String) {
+    func configure(levelName: String, score: Int, carrot: Int, time: Int) {
         levelNameText.text = levelName
+        updateScore(score)
+        updateTimer(time)
+        updateCarrotCount(carrot)
     }
 
     @IBAction private func playButtonTapped(_ sender: UIButton) {
         delegate?.playButtonTapped(for: levelNameText.text ?? "")
     }
-    
-    private func updateScore(_ count: Int) {
-//        scoreText.text = "SCORE: \(String(count))"
-        bestScoreText.text = " "
+
+    private func updateScore(_ score: Int) {
+        bestScoreText.text = "SCORE: \(String(score))"
     }
-    
-    private func updateTimer(time: Int) {
-//        let totalseconds = time / 60
-//        let minutes = totalseconds / 60
-//        let seconds = totalseconds % 60
-//        let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
-//        timeText.text = formattedTime
-        bestTimeText.text = " "
+
+    private func updateTimer(_ time: Int) {
+        let totalseconds = time / 60
+        let minutes = totalseconds / 60
+        let seconds = totalseconds % 60
+        let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
+        bestTimeText.text = formattedTime
     }
-    
+
+    private func updateCarrotCount(_ number: Int) {
+        let fullCarrot = #imageLiteral(resourceName: "carrot-1")
+        let emptyCarrot = #imageLiteral(resourceName: "carrot-2")
+
+        carrot1.image = number > 0 ? fullCarrot : emptyCarrot
+        carrot2.image = number > 1 ? fullCarrot : emptyCarrot
+        carrot3.image = number > 2 ? fullCarrot : emptyCarrot
+    }
 
 }

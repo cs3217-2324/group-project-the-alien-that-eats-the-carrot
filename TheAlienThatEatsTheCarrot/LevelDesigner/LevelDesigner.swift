@@ -10,7 +10,7 @@ import Foundation
 class LevelDesigner {
     var level: Level
     var view: LevelDesignerViewController
-    var storageManager = LevelDataManager()
+    var storageManager = LevelDataManager.sharedManager
 
     init(area: CGRect, view: LevelDesignerViewController) {
         self.level = Level(area: area)
