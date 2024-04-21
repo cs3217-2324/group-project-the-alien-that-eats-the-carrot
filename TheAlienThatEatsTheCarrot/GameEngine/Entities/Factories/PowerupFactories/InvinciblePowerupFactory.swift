@@ -27,6 +27,6 @@ class InvinciblePowerupFactory: PowerupFactory {
                                                                 acceptableDirectionsToCollideFrom: [.up, .down, .left, .right],
                                                                 collisionEffect: invinciblePowerupEffect)
         return [powerupComponent, renderableComponent, collisionEffectComponent,
-                physicsComponent, collisionEffectComponent]
+                physicsComponent]
     }
 }
