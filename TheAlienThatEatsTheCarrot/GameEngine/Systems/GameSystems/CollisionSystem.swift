@@ -54,7 +54,6 @@ final class CollisionSystem: System {
                 if dynamicComponent.physicsBody.isCollidingWith(groundPhysicsComponent.physicsBody, on: Direction.up)
                     && dynamicComponent.physicsBody.hasNegligibleYVelocity() {
                     disableGravity(for: dynamicComponent)
-                    resetJumpState(for: dynamicComponent)
                     isCollidingWithGround = true
                     toIgnore.insert([dynamicComponent.physicsBody, groundPhysicsComponent.physicsBody])
                 } else if !dynamicComponent.physicsBody.hasNegligibleYVelocity() {
@@ -73,17 +72,7 @@ final class CollisionSystem: System {
         physicsComponent.disableGravity = true
     }
 
-    private func resetJumpState(for physicsComponent: PhysicsComponent) {
-        guard let jumpStateComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) else {
-            return
-        }
-        jumpStateComponent.setIsGrounded()
-    }
-
     private func restoreGravityAndUpdateJumpState(for physicsComponent: PhysicsComponent) {
-        if let jumpComponent = nexus.getComponent(of: JumpStateComponent.self, for: physicsComponent.entity) {
-            jumpComponent.isGrounded = false
-        }
         physicsComponent.disableGravity = false
     }
 }

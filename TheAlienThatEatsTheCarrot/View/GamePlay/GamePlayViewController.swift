@@ -26,8 +26,9 @@ class GamePlayViewController: UIViewController {
     private var unitSize: CGFloat = 1.0
     private var level: Level!
 
-    // MARK: - game loop
+    // MARK: - game utility classes
     var gameEngine: GameEngine!
+    var gameRenderer: GameRenderer!
     var gameLoop: GameLoop!
     var levelDataManager = LevelDataManager.sharedManager
 
@@ -42,7 +43,6 @@ class GamePlayViewController: UIViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print("viewDidAppear is called")
         guard let levelNameToLoad = levelName else {
             return
         }
@@ -53,15 +53,12 @@ class GamePlayViewController: UIViewController {
             gameEngine = GameEngine(level: level, bounds: boardAreaView.bounds)
             subscribeToEvents()
         } catch {
-            print("Error loading level \(levelNameToLoad): \(error)")
             presentAlert(message: "Failed to load level: \(error.localizedDescription)")
         }
 
         let frame = boardAreaView.frame
         self.unitSize = (frame.maxY - frame.minY) / scale
-        print("game page unitSize \(unitSize)")
-        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX).")
-
+        self.gameRenderer = GameRenderer(scale: scale, unitSize: unitSize, boardAreaFrame: frame)
         self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
             self?.updateUI()
         })
@@ -100,7 +97,6 @@ class GamePlayViewController: UIViewController {
     }
 
     override func viewWillDisappear(_ animated: Bool) {
-        print("viewWillDisappear is called")
         super.viewWillDisappear(animated)
         stopGameLoop()
         unsubscribeToEvents()
@@ -122,9 +118,10 @@ class GamePlayViewController: UIViewController {
     }
 
     func addImage(component: RenderableComponent) {
-        let positionWithOffsets = getPositionWithOffsets(for: component.position)
+        let playerPosition = gameEngine.getPlayerPositions().first
+        let positionWithOffsets = gameRenderer.getPositionWithOffsets(for: component.position, playerPosition: playerPosition)
         let imageView = RectangularImageView(objectType: component.objectType,
-                                             center: toBoardPosition(position: positionWithOffsets),
+                                             center: positionWithOffsets,
                                              width: component.size.width * unitSize,
                                              height: component.size.height * unitSize)
         imageViews[ObjectIdentifier(component)] = imageView
@@ -164,7 +161,7 @@ class GamePlayViewController: UIViewController {
             xPosition -= playerPosition.x
             yPosition -= playerPosition.y
         }
-        return CGPoint(x: xPosition, y: yPosition)
+        return toBoardPosition(position: CGPoint(x: xPosition, y: yPosition))
     }
 
     // MARK: - game state handling
@@ -307,16 +304,16 @@ class GamePlayViewController: UIViewController {
     }
 
     private lazy var onEventOccur = { [weak self] (event: Event) -> Void in
+        let playerPosition = self?.gameEngine.getPlayerPositions().first
         if let damageEvent = event as? DamageEvent {
-            self?.showDamage(at: damageEvent.position, amount: damageEvent.damage)
+            self?.showDamage(at: damageEvent.position, amount: damageEvent.damage, for: playerPosition)
         } else if let playerDiedEvent = event as? PlayerDiedEvent {
             self?.gameStats = self?.gameEngine.getGameStats()
-            print(self?.gameStats.lives[0] ?? "empty")
             if self?.gameStats.lives[0] ?? 0 > 0 {
                 self?.showPlayerDied()
             }
         } else if let powerupActivateEvent = event as? PowerupActivateEvent {
-            self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position)
+            self?.showPowerupActivated(for: powerupActivateEvent.name, at: powerupActivateEvent.position, for: playerPosition)
         } else if let gameEndEvent = event as? GameEndEvent {
             if gameEndEvent.isWin {
                 self?.goToGameClearScreen()
@@ -328,12 +325,13 @@ class GamePlayViewController: UIViewController {
 }
 
 extension GamePlayViewController {
-    func showDamage(at position: CGPoint, amount: CGFloat) {
-        let positionWithOffsets = getPositionWithOffsets(for: position)
+    func showDamage(at position: CGPoint, amount: CGFloat, for playerPosition: CGPoint?) {
+        let positionWithOffsets = gameRenderer.getPositionWithOffsets(for: position,
+                                                                      playerPosition: playerPosition)
         let damageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 125, height: 50))
         damageLabel.text = "-\(amount)"
         damageLabel.textColor = .red
-        damageLabel.center = toBoardPosition(position: positionWithOffsets)
+        damageLabel.center = positionWithOffsets
         boardAreaView.addSubview(damageLabel)
         damageLabel.layer.zPosition = 100
 
@@ -366,7 +364,9 @@ extension GamePlayViewController {
         }
     }
 
-    func showPowerupActivated(for name: String, at position: CGPoint) {
+    func showPowerupActivated(for name: String, at position: CGPoint, for playerPosition: CGPoint?) {
+        let positionWithOffsets = gameRenderer.getPositionWithOffsets(for: position,
+                                                                      playerPosition: playerPosition)
         let powerupLabel = UILabel()
         powerupLabel.text = "\(name) Activated!"
         powerupLabel.textColor = .green
@@ -377,7 +377,7 @@ extension GamePlayViewController {
         view.addSubview(powerupLabel)
 
         let circleView = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-        circleView.center = toBoardPosition(position: getPositionWithOffsets(for: position))
+        circleView.center = positionWithOffsets
         circleView.layer.cornerRadius = 15
         circleView.backgroundColor = UIColor.systemBlue.withAlphaComponent(0.6)
         circleView.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
@@ -402,15 +402,11 @@ extension GamePlayViewController {
 
 extension GamePlayViewController: GameClearReplayDelegate {
     func replayGameFromGameClear() {
-        // TODO: Implement your replay logic here
-        print("replay game")
     }
 }
 
 extension GamePlayViewController: GameOverReplayDelegate {
     func replayGameFromGameOver() {
-        // TODO: Implement your replay logic here
-        print("replay game")
         guard let levelNameToLoad = levelName else {
             return
         }
@@ -419,14 +415,11 @@ extension GamePlayViewController: GameOverReplayDelegate {
             gameEngine = GameEngine(level: level, bounds: boardAreaView.bounds)
             subscribeToEvents()
         } catch {
-            print("Error loading level \(levelNameToLoad): \(error)")
             presentAlert(message: "Failed to load level: \(error.localizedDescription)")
         }
 
         let frame = boardAreaView.frame
         self.unitSize = (frame.maxY - frame.minY) / scale
-        print("game page unitSize \(unitSize)")
-        print("area bottom: \(frame.minY), top: \(frame.maxY), left: \(frame.minX), right: \(frame.maxX).")
 
         self.gameLoop = GameLoop(gameEngine: gameEngine, updateUI: { [weak self] in
             self?.updateUI()
