@@ -35,15 +35,23 @@ class LevelView: UIView {
     }
 
     private func updateScore(_ score: Int) {
-        bestScoreText.text = "SCORE: \(String(score))"
+        if score == 0 {
+            bestScoreText.text = "SCORE: -"
+        } else {
+            bestScoreText.text = "SCORE: \(String(score))"
+        }
     }
 
     private func updateTimer(_ time: Int) {
-        let totalseconds = time / 60
-        let minutes = totalseconds / 60
-        let seconds = totalseconds % 60
-        let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
-        bestTimeText.text = formattedTime
+        if time == 0 {
+            bestTimeText.text = "TIME: -"
+        } else {
+            let totalseconds = time / 60
+            let minutes = totalseconds / 60
+            let seconds = totalseconds % 60
+            let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
+            bestTimeText.text = formattedTime
+        }
     }
 
     private func updateCarrotCount(_ number: Int) {

@@ -46,17 +46,15 @@ class LevelClearedViewController: UIViewController {
     }
 
     private func updateScore(_ count: Int) {
-//        scoreText.text = "SCORE: \(String(count))"
-        scoreText.text = " "
+        scoreText.text = "SCORE: \(String(count))"
     }
 
     private func updateTimer(time: Int) {
-//        let totalseconds = time / 60
-//        let minutes = totalseconds / 60
-//        let seconds = totalseconds % 60
-//        let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
-//        timeText.text = formattedTime
-        timeText.text = " "
+        let totalseconds = time / 60
+        let minutes = totalseconds / 60
+        let seconds = totalseconds % 60
+        let formattedTime = String(format: "TIME: %d : %02d", minutes, seconds)
+        timeText.text = formattedTime
     }
 
     @IBAction private func replayButtonTapped(_ sender: UIButton) {

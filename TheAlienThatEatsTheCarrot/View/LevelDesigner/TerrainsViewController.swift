@@ -46,4 +46,8 @@ class TerrainsViewController: UIViewController {
     @IBAction private func spikeButtonTapped(_ sender: UIButton) {
         delegate?.buttonTapped(type: .block(.spike))
     }
+    
+    @IBAction private func exitButtonTapped(_ sender: UIButton) {
+        delegate?.buttonTapped(type: .block(.exit))
+    }
 }

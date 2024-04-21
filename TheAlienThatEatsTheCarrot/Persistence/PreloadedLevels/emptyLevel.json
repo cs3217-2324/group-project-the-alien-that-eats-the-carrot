@@ -2,7 +2,11 @@
     {
       "bestCarrot" : 0,
       "boardObjects" : {
-        "collectables" : [],
+          "collectables" : [
+              {"position" : [52.5,37.5],"collectableType" :"carrot"},
+              {"position" : [82.5,37.5],"collectableType" :"carrot"},
+              {"position" : [97.5,37.5],"collectableType" :"carrot"},
+          ],
         "blocks" : [
             {"position" : [2.5,47.5],"blockType" :"ground"},
             {"position" : [7.5,47.5],"blockType" :"ground"},
