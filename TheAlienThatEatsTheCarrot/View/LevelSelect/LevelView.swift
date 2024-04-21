@@ -30,12 +30,12 @@ class LevelView: UIView {
     @IBAction private func playButtonTapped(_ sender: UIButton) {
         delegate?.playButtonTapped(for: levelNameText.text ?? "")
     }
-    
+
     private func updateScore(_ count: Int) {
 //        scoreText.text = "SCORE: \(String(count))"
         bestScoreText.text = " "
     }
-    
+
     private func updateTimer(time: Int) {
 //        let totalseconds = time / 60
 //        let minutes = totalseconds / 60
@@ -44,6 +44,5 @@ class LevelView: UIView {
 //        timeText.text = formattedTime
         bestTimeText.text = " "
     }
-    
 
 }
