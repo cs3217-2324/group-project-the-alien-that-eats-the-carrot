@@ -181,15 +181,4 @@ func main() {
                       bestScore: 0,
                       bestTime: 0,
                       bestCarrot: 0)
-
-    if let jsonString = level.toJSONString() {
-        if let decodedLevel = Level.fromJSONString(jsonString: jsonString) {
-            print("Decoded Level:")
-            print(decodedLevel)
-        } else {
-            print("Failed to decode Level from JSON string")
-        }
-    } else {
-        print("Failed to convert Level to JSON string")
-    }
 }
