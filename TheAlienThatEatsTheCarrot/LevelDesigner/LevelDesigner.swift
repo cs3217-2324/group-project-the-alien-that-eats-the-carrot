@@ -103,11 +103,9 @@ class LevelDesigner {
     // MARK: - Delegating to view and model
     func add(boardObject: BoardObject, addToView: Bool = true) {
         if !level.canAdd(boardObject: boardObject) {
-            print("cannot add obejct \(boardObject) at \(boardObject.position)")
             return
         }
         level.add(boardObject: boardObject)
-//        print(">>Level>> object added at \(boardObject.position)")
         if addToView {
             let id = ObjectIdentifier(boardObject)
             view.addImage(id: id, objectType: boardObject.type, center: boardObject.position, width: boardObject.width, height: boardObject.height)
@@ -132,7 +130,6 @@ class LevelDesigner {
 
     private func loadView(with boardObjects: BoardObjectSet, area: CGRect) {
         for boardObject in boardObjects.allObjects {
-            print("loading object to view \(boardObject.type) \(boardObject.position)")
             let id = ObjectIdentifier(boardObject)
             view.loadDisplayBounds(area: area)
             view.addImage(id: id, objectType: boardObject.type, center: boardObject.position, width: boardObject.width, height: boardObject.height)

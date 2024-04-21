@@ -32,7 +32,6 @@ class GameEngine {
         createCountdown()
 
         EventManager.shared.postEvent(GameStartEvent())
-        print("Game started")
     }
 
     func pause() {
